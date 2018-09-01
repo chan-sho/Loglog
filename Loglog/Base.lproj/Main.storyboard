@@ -21,7 +21,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="eP9-2p-n6w">
-                        <barButtonItem key="rightBarButtonItem" title="設定" id="OST-gz-Td9">
+                        <barButtonItem key="rightBarButtonItem" title="設定変更/ﾛｸﾞｱｳﾄ" id="OST-gz-Td9">
                             <connections>
                                 <segue destination="Y8O-m7-27C" kind="show" id="zVf-68-YDZ"/>
                             </connections>
@@ -113,7 +113,7 @@
                                     <action selector="handleLogoutButton:" destination="Y8O-m7-27C" eventType="touchUpInside" id="aAK-vP-7F1"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="xxxxxx" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CvD-Qq-6CL">
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="xxxxxx" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CvD-Qq-6CL">
                                 <rect key="frame" x="37.5" y="324" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="bpj-ib-eQQ"/>
@@ -159,11 +159,44 @@
                     <view key="view" contentMode="scaleToFill" id="TB1-Ch-ZrK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="F5h-Lm-ys0">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="W3k-W2-MlY" appends="YES" id="pz8-Mj-TlC"/>
+                                </connections>
+                            </mapView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="住所、施設名を入れて検索" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="oBD-ec-M0y">
+                                <rect key="frame" x="0.0" y="20" width="375" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="F5h-Lm-ys0" firstAttribute="top" secondItem="VTF-Jj-U8F" secondAttribute="top" id="20N-o9-z4B"/>
+                            <constraint firstItem="VTF-Jj-U8F" firstAttribute="trailing" secondItem="oBD-ec-M0y" secondAttribute="trailing" id="65h-Qo-2Sg"/>
+                            <constraint firstItem="oBD-ec-M0y" firstAttribute="top" secondItem="VTF-Jj-U8F" secondAttribute="top" id="83v-af-rhP"/>
+                            <constraint firstItem="VTF-Jj-U8F" firstAttribute="trailing" secondItem="F5h-Lm-ys0" secondAttribute="trailing" id="8Tc-Ci-nfW"/>
+                            <constraint firstItem="F5h-Lm-ys0" firstAttribute="leading" secondItem="VTF-Jj-U8F" secondAttribute="leading" id="ko0-av-MoV"/>
+                            <constraint firstItem="oBD-ec-M0y" firstAttribute="leading" secondItem="VTF-Jj-U8F" secondAttribute="leading" id="sxo-yr-AKq"/>
+                            <constraint firstItem="VTF-Jj-U8F" firstAttribute="bottom" secondItem="F5h-Lm-ys0" secondAttribute="bottom" id="vbF-hh-7hh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VTF-Jj-U8F"/>
                     </view>
+                    <connections>
+                        <outlet property="displayMap" destination="F5h-Lm-ys0" id="fez-ha-ma8"/>
+                        <outlet property="inputText" destination="oBD-ec-M0y" id="qCw-6O-5t1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LSg-tQ-UYc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="W3k-W2-MlY">
+                    <connections>
+                        <action selector="longPressGesture:" destination="7bl-uk-9cF" id="81I-JY-Ke6"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3159.1999999999998" y="529.38530734632684"/>
         </scene>
@@ -281,11 +314,34 @@
                     <view key="view" contentMode="scaleToFill" id="rda-iN-tmC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Jlu-qZ-hXf">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="NgS-1a-LIg" appends="YES" id="rOg-SG-omU"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GCR-n4-y4A" firstAttribute="trailing" secondItem="Jlu-qZ-hXf" secondAttribute="trailing" id="7UE-D3-uIF"/>
+                            <constraint firstItem="Jlu-qZ-hXf" firstAttribute="top" secondItem="GCR-n4-y4A" secondAttribute="top" id="eoF-tx-glV"/>
+                            <constraint firstItem="GCR-n4-y4A" firstAttribute="bottom" secondItem="Jlu-qZ-hXf" secondAttribute="bottom" id="fY9-5m-pA3"/>
+                            <constraint firstItem="Jlu-qZ-hXf" firstAttribute="leading" secondItem="GCR-n4-y4A" secondAttribute="leading" id="odv-Z6-vdC"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="GCR-n4-y4A"/>
                     </view>
+                    <connections>
+                        <outlet property="currentMapView" destination="Jlu-qZ-hXf" id="IZt-Nl-dt1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eWr-z3-NVH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="NgS-1a-LIg">
+                    <connections>
+                        <action selector="longPressGesture:" destination="N0m-aq-8Lq" id="tiZ-qa-Z0D"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3159.1999999999998" y="-466.41679160419795"/>
         </scene>
