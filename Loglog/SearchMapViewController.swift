@@ -54,13 +54,17 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         })
-        
+        // キーボードを閉じる
+        self.view.endEditing(true)
         return true
+        
     }
     
     @IBAction func longPressGesture(_ sender: UILongPressGestureRecognizer) {
-        //この処理を書くことにより、指を離したときだけ反応するようにする（何回も呼び出されないようになる。最後の話したタイミングで呼ばれる）
+        //この処理を書くことにより、指を離したときだけ反応するようにする（何回も呼び出されないようになる。最後に離したタイミングで呼ばれる）
         if sender.state != UIGestureRecognizerState.began {
+            // キーボードを閉じる
+            self.view.endEditing(true)
             return
         }
         
