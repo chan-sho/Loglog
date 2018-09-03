@@ -105,13 +105,18 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Facebookサインイン
         let fbLoginBtn = FBSDKLoginButton()
         fbLoginBtn.readPermissions = ["public_profile", "email"]
-        fbLoginBtn.center = self.view.center
+        fbLoginBtn.frame = CGRect(x: 40.0, y: 30.0, width: 20.0, height: 10.0)
         fbLoginBtn.delegate = self
         self.view.addSubview(fbLoginBtn)
+        
+        //Googleサインイン
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().signIn()
     }
-
+    
     //Facebookサインイン
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         //エラーチェック
@@ -132,6 +137,20 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
             print("DEBUG_PRINT: " + error.localizedDescription)
             SVProgressHUD.showError(withStatus: "facebookサインインに失敗しました。")
             return
+        }
+        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        
+        Auth.auth().signInAndRetrieveData(with: credential) { (user, error) in
+            if let error = error {
+                print("DEBUG_PRINT: " + error.localizedDescription)
+                SVProgressHUD.showError(withStatus: "facebookサインインに失敗しました。")
+                return
+            }
+            print("DEBUG_PRINT: facebookサインインに成功しました。")
+            // HUDを消す
+            SVProgressHUD.dismiss()
+            // 画面を閉じてViewControllerに戻る
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -162,23 +181,30 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
             SVProgressHUD.dismiss()
             // 画面を閉じてViewControllerに戻る
             self.dismiss(animated: true, completion: nil)
+            let ViewController = self.storyboard?.instantiateViewController(withIdentifier: "View")
+            self.present(ViewController!, animated: true, completion: nil)
         }
     }
-
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
