@@ -63,6 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 return
             }
             print("DEBUG_PRINT: Googleサインインに成功しました。@AppDelegate")
+            return
         }
     }
     
