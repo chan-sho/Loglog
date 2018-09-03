@@ -108,7 +108,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         //Facebookサインイン
         let fbLoginBtn = FBSDKLoginButton()
         fbLoginBtn.readPermissions = ["public_profile", "email"]
-        fbLoginBtn.frame = CGRect(x: 40.0, y: 30.0, width: 20.0, height: 10.0)
+        fbLoginBtn.frame = CGRect(x: 30.0, y: (UIScreen.main.bounds.size.height-55.0), width: 100.0, height: 40.0)
         fbLoginBtn.delegate = self
         self.view.addSubview(fbLoginBtn)
         
@@ -179,10 +179,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
             print("DEBUG_PRINT: Googleサインインに成功しました。")
             // HUDを消す
             SVProgressHUD.dismiss()
-            // 画面を閉じてViewControllerに戻る
+            // 画面を閉じてHomeViewControllerに戻る
             self.dismiss(animated: true, completion: nil)
-            let ViewController = self.storyboard?.instantiateViewController(withIdentifier: "View")
-            self.present(ViewController!, animated: true, completion: nil)
+            let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "Home")
+            self.present(homeViewController!, animated: true, completion: nil)
         }
     }
     

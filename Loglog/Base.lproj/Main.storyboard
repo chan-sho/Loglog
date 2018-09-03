@@ -323,10 +323,13 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="Google"/>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZxV-Ea-vqR" customClass="GIDSignInButton">
-                                <rect key="frame" x="224" y="601" width="112" height="52"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZxV-Ea-vqR" customClass="GIDSignInButton">
+                                <rect key="frame" x="245" y="602" width="100" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="paD-mP-rj6"/>
+                                    <constraint firstAttribute="height" constant="50" id="poK-or-A0q"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -340,8 +343,10 @@
                             <constraint firstItem="0Du-yt-kTS" firstAttribute="top" secondItem="Dxy-WW-jUx" secondAttribute="bottom" constant="10" id="Ghx-PY-WWv"/>
                             <constraint firstItem="uXI-QH-5fF" firstAttribute="top" secondItem="zLm-hA-uhg" secondAttribute="bottom" constant="20" id="JF6-75-ThH"/>
                             <constraint firstItem="VM3-ul-I3e" firstAttribute="top" secondItem="mFd-9f-1X6" secondAttribute="top" constant="160" id="K4B-K0-X3j"/>
+                            <constraint firstItem="mFd-9f-1X6" firstAttribute="bottom" secondItem="ZxV-Ea-vqR" secondAttribute="bottom" constant="15" id="Kbc-ta-Cql"/>
                             <constraint firstItem="52s-Ac-sMd" firstAttribute="top" secondItem="uXI-QH-5fF" secondAttribute="bottom" constant="5" id="T3r-sn-Xmo"/>
                             <constraint firstItem="Dxy-WW-jUx" firstAttribute="centerX" secondItem="AiW-Wj-Pkt" secondAttribute="centerX" id="U2f-nT-CLe"/>
+                            <constraint firstItem="mFd-9f-1X6" firstAttribute="trailing" secondItem="ZxV-Ea-vqR" secondAttribute="trailing" constant="30" id="UZM-Cc-eAi"/>
                             <constraint firstItem="Dxy-WW-jUx" firstAttribute="top" secondItem="u7a-x0-0ge" secondAttribute="bottom" constant="30" id="Z81-Jn-fhW"/>
                             <constraint firstItem="u7a-x0-0ge" firstAttribute="centerX" secondItem="AiW-Wj-Pkt" secondAttribute="centerX" id="c2g-pO-Hck"/>
                             <constraint firstItem="VM3-ul-I3e" firstAttribute="centerX" secondItem="AiW-Wj-Pkt" secondAttribute="centerX" id="cGo-0l-CZN"/>
