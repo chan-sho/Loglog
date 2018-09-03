@@ -22,7 +22,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="eP9-2p-n6w">
-                        <barButtonItem key="rightBarButtonItem" title="設定変更/ﾛｸﾞｱｳﾄ" id="OST-gz-Td9">
+                        <barButtonItem key="rightBarButtonItem" title="設定/ﾛｸﾞｱｳﾄ" id="OST-gz-Td9">
                             <connections>
                                 <segue destination="Y8O-m7-27C" kind="show" id="zVf-68-YDZ"/>
                             </connections>
@@ -109,7 +109,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="ZAZ-u6-oHt"/>
                                 </constraints>
-                                <state key="normal" title="ログアウト" backgroundImage="Btn2"/>
+                                <state key="normal" title="ログアウト" backgroundImage="Btn3"/>
                                 <connections>
                                     <action selector="handleLogoutButton:" destination="Y8O-m7-27C" eventType="touchUpInside" id="aAK-vP-7F1"/>
                                 </connections>
@@ -257,7 +257,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="EaS-lO-MIb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.16323267487046633" green="0.16323267487046633" blue="0.16323267487046633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.24198510362694303" green="0.24198510362694303" blue="0.24198510362694303" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0q-Lr-1c0">
@@ -323,6 +323,11 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="Google"/>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZxV-Ea-vqR" customClass="GIDSignInButton">
+                                <rect key="frame" x="224" y="601" width="112" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -357,11 +362,12 @@
                         <outlet property="displayNameTextField" destination="52s-Ac-sMd" id="BZM-a7-hvJ"/>
                         <outlet property="mailAddressTextField" destination="VM3-ul-I3e" id="s5B-wW-1Xk"/>
                         <outlet property="passwordTextField" destination="zLm-hA-uhg" id="WEQ-Na-BXy"/>
+                        <outlet property="signInButton" destination="ZxV-Ea-vqR" id="CIu-pZ-H0l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6KN-9e-wUz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2345" y="-669"/>
+            <point key="canvasLocation" x="2344.8000000000002" y="-669.71514242878561"/>
         </scene>
         <!--Current Map View Controller-->
         <scene sceneID="KcA-S4-SCF">
@@ -437,6 +443,7 @@
     </scenes>
     <resources>
         <image name="Btn2" width="300" height="40"/>
+        <image name="Btn3" width="300" height="40"/>
         <image name="Facebook" width="48" height="48"/>
         <image name="Google" width="48" height="48"/>
         <image name="Twitter" width="48" height="48"/>

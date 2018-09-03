@@ -10,12 +10,17 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import SVProgressHUD
+import FBSDKCoreKit
+import FBSDKLoginKit
+import GoogleSignIn
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
     
     @IBOutlet weak var mailAddressTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var displayNameTextField: UITextField!
+    
+    @IBOutlet weak var signInButton: GIDSignInButton!
 
     // ログインボタンをタップしたときに呼ばれるメソッド
     @IBAction func handleLoginButton(_ sender: Any) {
@@ -99,8 +104,65 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let fbLoginBtn = FBSDKLoginButton()
+        fbLoginBtn.readPermissions = ["public_profile", "email"]
+        fbLoginBtn.center = self.view.center
+        fbLoginBtn.delegate = self
+        self.view.addSubview(fbLoginBtn)
+    }
 
-        // Do any additional setup after loading the view.
+    //Facebookサインイン
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        //エラーチェック
+        if error == nil {
+            //キャンセルしたかどうか
+            if result.isCancelled {
+                print("DEBUG_PRINT: " + error.localizedDescription)
+                SVProgressHUD.showError(withStatus: "facebookサインインをキャンセルしました。")
+                return
+            }else{
+                print("DEBUG_PRINT: facebookサインインに成功しました。")
+                // HUDを消す
+                SVProgressHUD.dismiss()
+                // 画面を閉じてViewControllerに戻る
+                performSegue(withIdentifier: "Home", sender: self)
+            }
+        }else{
+            print("DEBUG_PRINT: " + error.localizedDescription)
+            SVProgressHUD.showError(withStatus: "facebookサインインに失敗しました。")
+            return
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        
+    }
+    
+    //Googleサインイン
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        // ...
+        if let error = error {
+            print("DEBUG_PRINT: " + error.localizedDescription)
+            SVProgressHUD.showError(withStatus: "Googleサインインに失敗しました。")
+            return
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        Auth.auth().signInAndRetrieveData(with: credential) { (user, error) in
+            if let error = error {
+                print("DEBUG_PRINT: " + error.localizedDescription)
+                SVProgressHUD.showError(withStatus: "Googleサインインに失敗しました。")
+                return
+            }
+            print("DEBUG_PRINT: Googleサインインに成功しました。")
+            // HUDを消す
+            SVProgressHUD.dismiss()
+            // 画面を閉じてViewControllerに戻る
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {
