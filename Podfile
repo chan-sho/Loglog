@@ -14,5 +14,6 @@ target 'Loglog' do
   pod 'SVProgressHUD','2.2.5'
   pod 'FBSDKLoginKit'  
   pod 'GoogleSignIn'
+  pod 'CLImageEditor/AllTools','0.2.3'
 
 end

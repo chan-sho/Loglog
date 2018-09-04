@@ -7,13 +7,48 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
+import SVProgressHUD
 
 class PostFinalizeViewController: UIViewController {
+    
+    var image: UIImage!
+    
+    @IBOutlet weak var categoryTextToPost: UITextField!
+    @IBOutlet weak var contentsTextToPost: UITextView!
+    @IBOutlet weak var relatedURLToPost: UITextView!
+    @IBOutlet weak var secretPassToPost: UITextField!
+    @IBOutlet weak var imageView: UIImageView!
+    
+    // 投稿ボタンをタップしたときに呼ばれるメソッド
+    
+    @IBAction func handlePostButton(_ sender: UIButton) {
+    }
+    
+    // キャンセルボタンをタップしたときに呼ばれるメソッド
+    
+    @IBAction func handleCancelButton(_ sender: Any) {
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // 受け取った画像をImageViewに設定する
+        imageView.image = image
+        
+        // 枠のカラー
+        contentsTextToPost.layer.borderColor = UIColor.black.cgColor
+        relatedURLToPost.layer.borderColor = UIColor.black.cgColor
+        // 枠の幅
+        contentsTextToPost.layer.borderWidth = 1.0
+        relatedURLToPost.layer.borderWidth = 1.0
+        // 枠を角丸にする場合
+        contentsTextToPost.layer.cornerRadius = 10.0
+        contentsTextToPost.layer.masksToBounds = true
+        relatedURLToPost.layer.cornerRadius = 10.0
+        relatedURLToPost.layer.masksToBounds = true
     }
 
     override func didReceiveMemoryWarning() {

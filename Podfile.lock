@@ -5,6 +5,24 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
+  - CLImageEditor/AllTools (0.2.3):
+    - CLImageEditor/Core
+    - CLImageEditor/EmoticonTool
+    - CLImageEditor/ResizeTool
+    - CLImageEditor/SplashTool
+    - CLImageEditor/StickerTool
+    - CLImageEditor/TextTool
+  - CLImageEditor/Core (0.2.3)
+  - CLImageEditor/EmoticonTool (0.2.3):
+    - CLImageEditor/Core
+  - CLImageEditor/ResizeTool (0.2.3):
+    - CLImageEditor/Core
+  - CLImageEditor/SplashTool (0.2.3):
+    - CLImageEditor/Core
+  - CLImageEditor/StickerTool (0.2.3):
+    - CLImageEditor/Core
+  - CLImageEditor/TextTool (0.2.3):
+    - CLImageEditor/Core
   - ESTabBarController (0.2)
   - FBSDKCoreKit (4.35.0):
     - Bolts (~> 1.7)
@@ -69,6 +87,7 @@ PODS:
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
+  - CLImageEditor/AllTools (= 0.2.3)
   - ESTabBarController (= 0.2)
   - FBSDKLoginKit
   - Firebase (= 5.3.0)
@@ -81,6 +100,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Bolts
+    - CLImageEditor
     - ESTabBarController
     - FBSDKCoreKit
     - FBSDKLoginKit
@@ -100,6 +120,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  CLImageEditor: 8e50fa16d9230d5d4677a006bb2a2912079a17d8
   ESTabBarController: e82ac0b135bec16fb646ac1da4ac8953fcd927da
   FBSDKCoreKit: 1a5b2e3ceb5ca827a53c54aa5f4a3480efff80d2
   FBSDKLoginKit: 00a3d65d1226852f9d76dcddff01981e5e6d9c38
@@ -117,6 +138,6 @@ SPEC CHECKSUMS:
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 28d0288b4102f3030c6cd55ee8cd418ec51e492b
+PODFILE CHECKSUM: f4c1f0c1832337711e3a9b4beaa62855809a6694
 
 COCOAPODS: 1.5.3
