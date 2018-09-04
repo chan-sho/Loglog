@@ -14,7 +14,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import GoogleSignIn
 
-class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
     
     @IBOutlet weak var mailAddressTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -114,7 +114,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         
         //Googleサインイン
         GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().signIn()
+        GIDSignIn.sharedInstance().delegate = self
     }
     
     //Facebookサインイン
@@ -159,38 +159,38 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     }
     
     //Googleサインイン
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        // ...
+    @IBAction func tapGoogleSingIn(_ sender: Any) {
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+        
         if let error = error {
             print("DEBUG_PRINT: " + error.localizedDescription)
             SVProgressHUD.showError(withStatus: "Googleサインインに失敗しました。")
             return
         }
+        let authentication = user.authentication
+        // Googleのトークンを渡し、Firebaseクレデンシャルを取得する。
+        let credential = GoogleAuthProvider.credential(withIDToken: (authentication?.idToken)!,accessToken: (authentication?.accessToken)!)
         
-        guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
+        // Firebaseにログインする。
         Auth.auth().signInAndRetrieveData(with: credential) { (user, error) in
-            if let error = error {
-                print("DEBUG_PRINT: " + error.localizedDescription)
-                SVProgressHUD.showError(withStatus: "Googleサインインに失敗しました。")
-                return
-            }
             print("DEBUG_PRINT: Googleサインインに成功しました。")
             // HUDを消す
             SVProgressHUD.dismiss()
-            // 画面を閉じてHomeViewControllerに戻る
-            self.dismiss(animated: true, completion: nil)
-            let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "Home")
-            self.present(homeViewController!, animated: true, completion: nil)
+            
+            let viewController = self.storyboard?.instantiateViewController(withIdentifier: "View")
+            self.present(viewController!, animated: true, completion: nil)
         }
     }
     
+    //エラー処理
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-        // ...
+        print("DEBUG_PRINT: Googleサインアウトに成功しました。")
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
