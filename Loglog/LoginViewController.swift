@@ -14,13 +14,45 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import GoogleSignIn
 
-class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate, GIDSignInDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var mailAddressTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var displayNameTextField: UITextField!
     
     @IBOutlet weak var signInButton: GIDSignInButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //Facebookサインイン
+        let fbLoginBtn = FBSDKLoginButton()
+        fbLoginBtn.readPermissions = ["public_profile", "email"]
+        fbLoginBtn.frame = CGRect(x: 30.0, y: (UIScreen.main.bounds.size.height-55.0), width: 100.0, height: 40.0)
+        fbLoginBtn.delegate = self
+        self.view.addSubview(fbLoginBtn)
+        
+        //Googleサインイン
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
+        
+        mailAddressTextField.delegate = self
+        passwordTextField.delegate = self
+        displayNameTextField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        mailAddressTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        displayNameTextField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        mailAddressTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        displayNameTextField.resignFirstResponder()
+    }
 
     // ログインボタンをタップしたときに呼ばれるメソッド
     @IBAction func handleLoginButton(_ sender: Any) {
@@ -102,21 +134,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //Facebookサインイン
-        let fbLoginBtn = FBSDKLoginButton()
-        fbLoginBtn.readPermissions = ["public_profile", "email"]
-        fbLoginBtn.frame = CGRect(x: 30.0, y: (UIScreen.main.bounds.size.height-55.0), width: 100.0, height: 40.0)
-        fbLoginBtn.delegate = self
-        self.view.addSubview(fbLoginBtn)
-        
-        //Googleサインイン
-        GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().delegate = self
-    }
-    
     //Facebookサインイン
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         //エラーチェック
@@ -180,31 +197,19 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
             print("DEBUG_PRINT: Googleサインインに成功しました。")
             // HUDを消す
             SVProgressHUD.dismiss()
-            
-            let viewController = self.storyboard?.instantiateViewController(withIdentifier: "View")
-            self.present(viewController!, animated: true, completion: nil)
+            // 画面を閉じてViewControllerに戻る
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
     //エラー処理
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        print("DEBUG_PRINT: Googleサインアウトに成功しました。")
+        print("DEBUG_PRINT: Google Disconnectしました。")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

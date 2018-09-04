@@ -12,7 +12,7 @@ import Firebase
 import FirebaseAuth
 import SVProgressHUD
 
-class SettingViewController: UIViewController {
+class SettingViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var displayNameTextField: UITextField!
     @IBOutlet weak var mailAddressTextField: UITextField!
@@ -86,6 +86,19 @@ class SettingViewController: UIViewController {
         self.present(loginViewController!, animated: true, completion: nil)
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        mailAddressTextField.resignFirstResponder()
+        passWordTextField.resignFirstResponder()
+        displayNameTextField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        mailAddressTextField.resignFirstResponder()
+        passWordTextField.resignFirstResponder()
+        displayNameTextField.resignFirstResponder()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -104,7 +117,9 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        mailAddressTextField.delegate = self
+        passWordTextField.delegate = self
+        displayNameTextField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {

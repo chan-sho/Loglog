@@ -244,7 +244,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワードを入力（※6文字以上）" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zLm-hA-uhg">
                                 <rect key="frame" x="37.5" y="220" width="300" height="30"/>
@@ -253,7 +253,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="アカウント名（＝表示名）" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="52s-Ac-sMd">
                                 <rect key="frame" x="37.5" y="296" width="300" height="30"/>
@@ -262,7 +262,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新規アカウント作成時のみ入力必須" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXI-QH-5fF">
                                 <rect key="frame" x="37.5" y="270" width="300" height="21"/>
@@ -544,17 +544,6 @@
                                     <segue destination="oAy-KL-H3R" kind="show" id="C8V-yE-APo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1I-Pe-hSD">
-                                <rect key="frame" x="37" y="594" width="300" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="3PF-dR-jpH"/>
-                                </constraints>
-                                <state key="normal" title="キャンセル" backgroundImage="Btn3"/>
-                                <connections>
-                                    <action selector="cancelButton:" destination="W2d-iz-8yz" eventType="touchUpInside" id="haC-il-xap"/>
-                                    <segue destination="irw-hS-mfs" kind="unwind" unwindAction="unwind:" id="CC0-BF-MPI"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -566,7 +555,6 @@
                             <constraint firstItem="u9E-uR-SS7" firstAttribute="top" secondItem="tnh-3o-SoN" secondAttribute="bottom" constant="50" id="KB5-rJ-Xpk"/>
                             <constraint firstItem="u9E-uR-SS7" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="LGr-a8-3MJ"/>
                             <constraint firstItem="szb-lR-jLe" firstAttribute="top" secondItem="q6m-UB-YAm" secondAttribute="bottom" constant="10" id="MVI-Yz-wGc"/>
-                            <constraint firstItem="a1I-Pe-hSD" firstAttribute="top" secondItem="AOX-uc-vKt" secondAttribute="bottom" constant="20" id="SN9-kP-JvA"/>
                             <constraint firstItem="qjd-Oh-CeH" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="TxS-BJ-E2r"/>
                             <constraint firstItem="qJU-rN-nfh" firstAttribute="top" secondItem="szb-lR-jLe" secondAttribute="bottom" constant="20" id="Xse-Ro-0uZ"/>
                             <constraint firstItem="cCc-Xv-uaM" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="aEJ-4i-egh"/>
@@ -579,12 +567,10 @@
                             <constraint firstItem="qjd-Oh-CeH" firstAttribute="top" secondItem="cCc-Xv-uaM" secondAttribute="bottom" constant="10" id="nKL-a7-RBI"/>
                             <constraint firstItem="tnh-3o-SoN" firstAttribute="top" secondItem="qJU-rN-nfh" secondAttribute="bottom" constant="10" id="oTx-dZ-LTs"/>
                             <constraint firstItem="chl-pV-tEg" firstAttribute="top" secondItem="ePC-bc-0g2" secondAttribute="top" constant="10" id="pIG-ik-37D"/>
-                            <constraint firstItem="a1I-Pe-hSD" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="ymO-je-I6D"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ePC-bc-0g2"/>
                     </view>
                     <connections>
-                        <outlet property="cancelButton" destination="a1I-Pe-hSD" id="pqT-zj-5ht"/>
                         <outlet property="categoryText" destination="u8F-Op-ZIQ" id="IEg-Gn-8Ai"/>
                         <outlet property="contentsText" destination="qjd-Oh-CeH" id="gkq-Pa-11z"/>
                         <outlet property="postWithPhoto" destination="AOX-uc-vKt" id="RsO-KC-mJJ"/>
@@ -594,7 +580,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LJv-pR-g8Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="irw-hS-mfs" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4002" y="27"/>
         </scene>

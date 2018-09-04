@@ -21,7 +21,6 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     @IBOutlet weak var postWithoutPhoto: UIButton!
     @IBOutlet weak var postWithPhoto: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
     
     
     @IBAction func postWithoutPhoto(_ sender: Any) {
@@ -32,11 +31,6 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         postFinalizeViewController.secretPassToPost.text = "\(self.secretPass!)"
         postFinalizeViewController.image = nil
         
-    }
-    
-    @IBAction func cancelButton(_ sender: Any) {
-        // 画面を閉じる
-        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
