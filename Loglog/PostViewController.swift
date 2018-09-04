@@ -34,16 +34,6 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         relatedURL.resignFirstResponder()
     }
     
-    @IBAction func postWithoutPhoto(_ sender: Any) {
-        let postFinalizeViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostFinalize") as! PostFinalizeViewController
-        postFinalizeViewController.categoryTextToPost.text = "\(self.categoryText!)"
-        postFinalizeViewController.contentsTextToPost.text = "\(self.contentsText!)"
-        postFinalizeViewController.relatedURLToPost.text = "\(self.relatedURL!)"
-        postFinalizeViewController.secretPassToPost.text = "\(self.secretPass!)"
-        postFinalizeViewController.image = nil
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -76,6 +66,19 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let postFinalizeViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostFinalize") as! PostFinalizeViewController
+        postFinalizeViewController.categoryTextToPost = self.categoryText!
+        postFinalizeViewController.contentsTextToPost = self.contentsText!
+        postFinalizeViewController.relatedURLToPost = self.relatedURL!
+        postFinalizeViewController.secretPassToPost = self.secretPass!
+    }
+    
+    
+    @IBAction func postWithoutPhoto(_ sender: Any) {
+    
     }
     
     @IBAction func unwind(_ segue: UIStoryboardSegue) {

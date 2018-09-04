@@ -11,7 +11,7 @@ import Firebase
 import FirebaseDatabase
 import SVProgressHUD
 
-class PostFinalizeViewController: UIViewController {
+class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     var image: UIImage!
     
@@ -34,7 +34,12 @@ class PostFinalizeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        categoryTextToPost.delegate = self
+        contentsTextToPost.delegate = self
+        relatedURLToPost.delegate = self
+        secretPassToPost.delegate = self
+        
         // 受け取った画像をImageViewに設定する
         imageView.image = image
         

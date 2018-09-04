@@ -530,8 +530,8 @@
                                 </constraints>
                                 <state key="normal" title="画像をつけずに投稿" backgroundImage="Btn2"/>
                                 <connections>
-                                    <action selector="postWithoutPhoto:" destination="W2d-iz-8yz" eventType="touchUpInside" id="qL2-I2-eWk"/>
-                                    <segue destination="xsQ-S4-hef" kind="show" id="I1T-XE-Vh0"/>
+                                    <action selector="postWithoutPhoto:" destination="W2d-iz-8yz" eventType="touchUpInside" id="VNv-zE-enD"/>
+                                    <segue destination="xsQ-S4-hef" kind="show" id="f2M-TS-wRk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AOX-uc-vKt">
