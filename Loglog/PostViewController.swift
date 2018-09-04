@@ -18,10 +18,21 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     @IBOutlet weak var relatedURL: UITextView!
     @IBOutlet weak var secretPass: UITextField!
     
-    
     @IBOutlet weak var postWithoutPhoto: UIButton!
     @IBOutlet weak var postWithPhoto: UIButton!
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        categoryText.resignFirstResponder()
+        secretPass.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        categoryText.resignFirstResponder()
+        secretPass.resignFirstResponder()
+        contentsText.resignFirstResponder()
+        relatedURL.resignFirstResponder()
+    }
     
     @IBAction func postWithoutPhoto(_ sender: Any) {
         let postFinalizeViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostFinalize") as! PostFinalizeViewController

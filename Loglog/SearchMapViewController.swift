@@ -28,16 +28,17 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        inputText.resignFirstResponder()
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        inputText.resignFirstResponder()
         
         let searchKeyword = textField.text
-        
         print(searchKeyword!)
         
         let geocoder = CLGeocoder()
-        
         geocoder.geocodeAddressString(searchKeyword!, completionHandler: { (placemarks:[CLPlacemark]?, error:Error?) in
             
             if let placemark = placemarks?[0] {
@@ -57,7 +58,6 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
         // キーボードを閉じる
         self.view.endEditing(true)
         return true
-        
     }
     
     @IBAction func longPressGesture(_ sender: UILongPressGestureRecognizer) {
