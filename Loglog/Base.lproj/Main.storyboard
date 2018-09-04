@@ -769,7 +769,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j88-el-QwH">
                                 <rect key="frame" x="37.5" y="624" width="300" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="jaN-KD-SBV"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="jaN-KD-SBV"/>
                                 </constraints>
                                 <state key="normal" title="キャンセルして戻る" backgroundImage="Btn3"/>
                                 <connections>

@@ -48,16 +48,24 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         secretPass.delegate = self
 
         // 枠のカラー
+        categoryText.layer.borderColor = UIColor.black.cgColor
         contentsText.layer.borderColor = UIColor.black.cgColor
         relatedURL.layer.borderColor = UIColor.black.cgColor
+        secretPass.layer.borderColor = UIColor.black.cgColor
         // 枠の幅
+        categoryText.layer.borderWidth = 1.0
         contentsText.layer.borderWidth = 1.0
         relatedURL.layer.borderWidth = 1.0
+        secretPass.layer.borderWidth = 1.0
         // 枠を角丸にする場合
+        categoryText.layer.cornerRadius = 10.0
+        categoryText.layer.masksToBounds = true
         contentsText.layer.cornerRadius = 10.0
         contentsText.layer.masksToBounds = true
         relatedURL.layer.cornerRadius = 10.0
         relatedURL.layer.masksToBounds = true
+        secretPass.layer.cornerRadius = 10.0
+        secretPass.layer.masksToBounds = true
     }
 
     override func didReceiveMemoryWarning() {

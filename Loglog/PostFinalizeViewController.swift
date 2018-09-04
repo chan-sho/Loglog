@@ -39,16 +39,24 @@ class PostFinalizeViewController: UIViewController {
         imageView.image = image
         
         // 枠のカラー
+        categoryTextToPost.layer.borderColor = UIColor.black.cgColor
         contentsTextToPost.layer.borderColor = UIColor.black.cgColor
         relatedURLToPost.layer.borderColor = UIColor.black.cgColor
+        secretPassToPost.layer.borderColor = UIColor.black.cgColor
         // 枠の幅
+        categoryTextToPost.layer.borderWidth = 1.0
         contentsTextToPost.layer.borderWidth = 1.0
         relatedURLToPost.layer.borderWidth = 1.0
+        secretPassToPost.layer.borderWidth = 1.0
         // 枠を角丸にする場合
+        categoryTextToPost.layer.cornerRadius = 10.0
+        categoryTextToPost.layer.masksToBounds = true
         contentsTextToPost.layer.cornerRadius = 10.0
         contentsTextToPost.layer.masksToBounds = true
         relatedURLToPost.layer.cornerRadius = 10.0
         relatedURLToPost.layer.masksToBounds = true
+        secretPassToPost.layer.cornerRadius = 10.0
+        secretPassToPost.layer.masksToBounds = true
     }
 
     override func didReceiveMemoryWarning() {
