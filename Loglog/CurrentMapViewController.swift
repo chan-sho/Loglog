@@ -128,4 +128,8 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
         //ピンをdisplayMapの上に置く
         self.currentMapView.addAnnotation(pin)
     }
+    
+    @IBAction func unwind(_ segue: UIStoryboardSegue) {
+        // 他の画面から segue を使って戻ってきた時に呼ばれる
+    }
 }

@@ -10,6 +10,21 @@ import UIKit
 
 class PostViewController: UIViewController {
 
+    @IBOutlet weak var categoryText: UITextField!
+    @IBOutlet weak var contentsText: UITextView!
+    @IBOutlet weak var relatedURL: UITextView!
+    @IBOutlet weak var secretPass: UITextField!
+    
+    
+    @IBOutlet weak var postWithoutPhoto: UIButton!
+    @IBOutlet weak var postWithPhoto: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    
+    @IBAction func cancelButton(_ sender: Any) {
+        // 画面を閉じる
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +34,10 @@ class PostViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func unwind(_ segue: UIStoryboardSegue) {
+        // 他の画面から segue を使って戻ってきた時に呼ばれる
     }
     
 
