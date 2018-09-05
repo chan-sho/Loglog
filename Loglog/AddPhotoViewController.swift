@@ -78,6 +78,10 @@ class AddPhotoViewController: UIViewController, UIImagePickerControllerDelegate,
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func unwind(_ segue: UIStoryboardSegue) {
+        // 他の画面から segue を使って戻ってきた時に呼ばれる
+    }
+    
 
     /*
     // MARK: - Navigation

@@ -762,6 +762,7 @@
                                 <state key="normal" title="キャンセルして戻る" backgroundImage="Btn3"/>
                                 <connections>
                                     <action selector="handleCancelButton:" destination="xsQ-S4-hef" eventType="touchUpInside" id="9LW-vA-6wf"/>
+                                    <segue destination="Eeb-kp-C3d" kind="unwind" unwindAction="unwind:" id="ZjX-hc-DnA"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ieQ-JB-sS2">
@@ -808,6 +809,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tqg-go-lJ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Eeb-kp-C3d" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5664.8000000000002" y="25.637181409295355"/>
         </scene>

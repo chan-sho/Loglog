@@ -26,12 +26,30 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
     
     // 投稿ボタンをタップしたときに呼ばれるメソッド
     @IBAction func handlePostButton(_ sender: UIButton) {
+        // ImageViewから画像を取得する
+        let imageData = UIImageJPEGRepresentation(imageView.image!, 0.5)
+        let imageString = imageData!.base64EncodedString(options: .lineLength64Characters)
+        
+        // postDataに必要な情報を取得しておく
+        let time = Date.timeIntervalSinceReferenceDate
+        let name = Auth.auth().currentUser?.displayName
+        
+        // **重要** 辞書を作成してFirebaseに保存する 【※後でAnnotationの位置情報も追加する！！】
+        let postRef = Database.database().reference().child(Const.PostPath)
+        let postDic = ["category": categoryTextToPost.text!, "contents": contentsTextToPost.text!, "related URL": relatedURLToPost.text!, "secretpass": secretPassToPost.text!, "image": imageString, "time": String(time), "name": name!]
+        postRef.childByAutoId().setValue(postDic)
+        
+        // HUDで投稿完了を表示する
+        SVProgressHUD.showSuccess(withStatus: "投稿しました")
+        
+        // 全てのモーダルを閉じる
+        UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
     // キャンセルボタンをタップしたときに呼ばれるメソッド
     @IBAction func handleCancelButton(_ sender: Any) {
         // 画面を閉じてViewControllerに戻る
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
