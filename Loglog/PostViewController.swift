@@ -49,7 +49,7 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         secretPass.delegate = self
         
         // userdefaultsで受け取ったデータを設定する
-        pincoordinate = userDefaults.string(forKey: "pincoordinate")
+        //pincoordinate = userDefaults.string(forKey: "pincoordinate")
 
         // 枠のカラー
         categoryText.layer.borderColor = UIColor.black.cgColor
@@ -78,6 +78,18 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     }
     
     @IBAction func postWithoutPhoto(_ sender: Any) {
+        userDefaults.set(categoryText.text, forKey: "categoryText")
+        userDefaults.set(contentsText.text, forKey: "contentsText")
+        userDefaults.set(relatedURL.text, forKey: "relatedURL")
+        userDefaults.set(secretPass.text, forKey: "secretPass")
+        userDefaults.set(pincoordinate, forKey: "pincoordinate")
+        
+        //pin座標値の確認
+        //print("\(pincoordinate!)")
+    }
+    
+    
+    @IBAction func postWithPhoto(_ sender: Any) {
         userDefaults.set(categoryText.text, forKey: "categoryText")
         userDefaults.set(contentsText.text, forKey: "contentsText")
         userDefaults.set(relatedURL.text, forKey: "relatedURL")

@@ -137,7 +137,14 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
         // *座標値の確認：CLLocationCoordinate2D(latitude: , longitude: )で表示
         print("\(pin.coordinate)")
     }
-
+    
+    
+    @IBAction func postFromCurrent(_ sender: Any) {
+        let postViewController = self.storyboard!.instantiateViewController(withIdentifier: "Post")
+        //NavigationControllerの移動を強制定義してみたらいけた！！
+        self.navigationController?.pushViewController(postViewController, animated: true)
+    }
+    
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
         // 他の画面から segue を使って戻ってきた時に呼ばれる
     }

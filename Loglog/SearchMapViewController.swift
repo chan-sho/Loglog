@@ -14,6 +14,7 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var inputText: UITextField!
     @IBOutlet weak var displayMap: MKMapView!
+    @IBOutlet weak var postWithSearch: UIButton!
     
     var pinView:MKPinAnnotationView!
     
@@ -102,6 +103,13 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
         pinView.canShowCallout = true
         
         return pinView
+    }
+    
+    
+    @IBAction func postWithSearch(_ sender: Any) {
+        let postViewController = self.storyboard!.instantiateViewController(withIdentifier: "Post")
+        //NavigationControllerの移動を強制定義してみたらいけた！！
+        self.navigationController?.pushViewController(postViewController, animated: true)
     }
     
     @IBAction func unwind(_ segue: UIStoryboardSegue) {

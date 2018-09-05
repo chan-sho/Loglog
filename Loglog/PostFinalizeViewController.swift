@@ -23,7 +23,7 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
     
     //user defaultsを使う準備
     let userDefaults:UserDefaults = UserDefaults.standard
-    var pincoordinateToPost : String?
+    let pincoordinateToPost : String? = nil
     
     // 投稿ボタンをタップしたときに呼ばれるメソッド
     @IBAction func handlePostButton(_ sender: UIButton) {
@@ -37,7 +37,7 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         
         // **重要** 辞書を作成してFirebaseに保存する 【※後でAnnotationの位置情報も追加する！！】
         let postRef = Database.database().reference().child(Const.PostPath)
-        let postDic = ["category": categoryTextToPost.text!, "contents": contentsTextToPost.text!, "related URL": relatedURLToPost.text!, "secretpass": secretPassToPost.text!, "image": imageString, "time": String(time), "name": name!]
+        let postDic = ["category": categoryTextToPost.text!, "contents": contentsTextToPost.text!, "related URL": relatedURLToPost.text!, "secretpass": secretPassToPost.text!, "image": imageString, "time": String(time), "name": name!, "pincoodinate": pincoordinateToPost]
         postRef.childByAutoId().setValue(postDic)
         
         // HUDで投稿完了を表示する
@@ -66,7 +66,7 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         contentsTextToPost.text = userDefaults.string(forKey: "contentsText")
         relatedURLToPost.text = userDefaults.string(forKey: "relatedURL")
         secretPassToPost.text = userDefaults.string(forKey: "secretPass")
-        pincoordinateToPost = userDefaults.string(forKey: "pincoordinate")
+        //pincoordinateToPost = 遷移元の画面から引き継ぐ！！
         
         //pin座標値の確認
         //print("\(pincoordinateToPost!)")

@@ -178,11 +178,11 @@
                                 <rect key="frame" x="285" y="60" width="80" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="alC-Sb-6v7"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="j5I-2W-0cC"/>
+                                    <constraint firstAttribute="height" constant="40" id="j5I-2W-0cC"/>
                                 </constraints>
                                 <state key="normal" title="【仮】投稿"/>
                                 <connections>
-                                    <segue destination="W2d-iz-8yz" kind="show" id="A65-c3-P7E"/>
+                                    <action selector="postWithSearch:" destination="7bl-uk-9cF" eventType="touchUpInside" id="IKW-ib-dRw"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -203,6 +203,7 @@
                     <connections>
                         <outlet property="displayMap" destination="F5h-Lm-ys0" id="fez-ha-ma8"/>
                         <outlet property="inputText" destination="oBD-ec-M0y" id="qCw-6O-5t1"/>
+                        <outlet property="postWithSearch" destination="5Bd-uB-wiR" id="va4-lo-dFA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LSg-tQ-UYc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -413,7 +414,7 @@
                                 </constraints>
                                 <state key="normal" title="【仮】投稿"/>
                                 <connections>
-                                    <segue destination="W2d-iz-8yz" kind="show" id="yqw-LJ-Xfx"/>
+                                    <action selector="postFromCurrent:" destination="N0m-aq-8Lq" eventType="touchUpInside" id="Ftp-zm-cJv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -542,6 +543,7 @@
                                 </constraints>
                                 <state key="normal" title="画像をつけて投稿" backgroundImage="Btn2"/>
                                 <connections>
+                                    <action selector="postWithPhoto:" destination="W2d-iz-8yz" eventType="touchUpInside" id="Zic-4J-ddK"/>
                                     <segue destination="oAy-KL-H3R" kind="show" id="C8V-yE-APo"/>
                                 </connections>
                             </button>
@@ -840,7 +842,4 @@
         <image name="Google" width="48" height="48"/>
         <image name="Twitter" width="48" height="48"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="yqw-LJ-Xfx"/>
-    </inferredMetricsTieBreakers>
 </document>
