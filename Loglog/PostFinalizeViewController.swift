@@ -21,15 +21,17 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
     @IBOutlet weak var secretPassToPost: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     
-    // 投稿ボタンをタップしたときに呼ばれるメソッド
+    //user defaultsを使う準備
+    let userDefaults:UserDefaults = UserDefaults.standard
     
+    // 投稿ボタンをタップしたときに呼ばれるメソッド
     @IBAction func handlePostButton(_ sender: UIButton) {
     }
     
     // キャンセルボタンをタップしたときに呼ばれるメソッド
-    
     @IBAction func handleCancelButton(_ sender: Any) {
-        
+        // 画面を閉じてViewControllerに戻る
+        self.dismiss(animated: true, completion: nil)
     }
 
     override func viewDidLoad() {
@@ -39,6 +41,12 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         contentsTextToPost.delegate = self
         relatedURLToPost.delegate = self
         secretPassToPost.delegate = self
+        
+        // uerdefaultsで受け取ったデータを各TextView, TextFieldに設定する
+        categoryTextToPost.text = userDefaults.string(forKey: "categoryText")
+        contentsTextToPost.text = userDefaults.string(forKey: "contentsText")
+        relatedURLToPost.text = userDefaults.string(forKey: "relatedURL")
+        secretPassToPost.text = userDefaults.string(forKey: "secretPass")
         
         // 受け取った画像をImageViewに設定する
         imageView.image = image

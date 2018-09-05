@@ -21,6 +21,9 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     @IBOutlet weak var postWithoutPhoto: UIButton!
     @IBOutlet weak var postWithPhoto: UIButton!
     
+    //user defaultsを使う準備
+    let userDefaults:UserDefaults = UserDefaults.standard
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         categoryText.resignFirstResponder()
         secretPass.resignFirstResponder()
@@ -69,16 +72,18 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let postFinalizeViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostFinalize") as! PostFinalizeViewController
-        postFinalizeViewController.categoryTextToPost = self.categoryText!
-        postFinalizeViewController.contentsTextToPost = self.contentsText!
-        postFinalizeViewController.relatedURLToPost = self.relatedURL!
-        postFinalizeViewController.secretPassToPost = self.secretPass!
+        userDefaults.set(categoryText.text, forKey: "categoryText")
+        userDefaults.set(contentsText.text, forKey: "contentsText")
+        userDefaults.set(relatedURL.text, forKey: "relatedURL")
+        userDefaults.set(secretPass.text, forKey: "secretPass")
     }
     
     
     @IBAction func postWithoutPhoto(_ sender: Any) {
-    
+        userDefaults.set(categoryText.text, forKey: "categoryText")
+        userDefaults.set(contentsText.text, forKey: "contentsText")
+        userDefaults.set(relatedURL.text, forKey: "relatedURL")
+        userDefaults.set(secretPass.text, forKey: "secretPass")
     }
     
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
