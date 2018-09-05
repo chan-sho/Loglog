@@ -86,6 +86,7 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
         self.present(loginViewController!, animated: true, completion: nil)
     }
     
+    // Returnボタンを押した際にキーボードを消す
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         mailAddressTextField.resignFirstResponder()
         passWordTextField.resignFirstResponder()
@@ -93,6 +94,7 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    // テキスト以外の場所をタッチした際にキーボードを消す
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         mailAddressTextField.resignFirstResponder()
         passWordTextField.resignFirstResponder()

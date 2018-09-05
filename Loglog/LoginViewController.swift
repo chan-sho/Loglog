@@ -41,6 +41,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         displayNameTextField.delegate = self
     }
     
+    // Returnボタンを押した際にキーボードを消す
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         mailAddressTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
@@ -48,6 +49,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         return true
     }
     
+    // テキスト以外の場所をタッチした際にキーボードを消す
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         mailAddressTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()

@@ -23,13 +23,16 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     //user defaultsを使う準備
     let userDefaults:UserDefaults = UserDefaults.standard
+    var pincoordinate : String?
     
+    // Returnボタンを押した際にキーボードを消す（※TextViewには設定できない。改行できなくなる為＾＾）
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         categoryText.resignFirstResponder()
         secretPass.resignFirstResponder()
         return true
     }
     
+    // テキスト以外の場所をタッチした際にキーボードを消す
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         categoryText.resignFirstResponder()
         secretPass.resignFirstResponder()
@@ -44,6 +47,9 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         contentsText.delegate = self
         relatedURL.delegate = self
         secretPass.delegate = self
+        
+        // userdefaultsで受け取ったデータを設定する
+        pincoordinate = userDefaults.string(forKey: "pincoordinate")
 
         // 枠のカラー
         categoryText.layer.borderColor = UIColor.black.cgColor
@@ -71,19 +77,15 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        userDefaults.set(categoryText.text, forKey: "categoryText")
-        userDefaults.set(contentsText.text, forKey: "contentsText")
-        userDefaults.set(relatedURL.text, forKey: "relatedURL")
-        userDefaults.set(secretPass.text, forKey: "secretPass")
-    }
-    
-    
     @IBAction func postWithoutPhoto(_ sender: Any) {
         userDefaults.set(categoryText.text, forKey: "categoryText")
         userDefaults.set(contentsText.text, forKey: "contentsText")
         userDefaults.set(relatedURL.text, forKey: "relatedURL")
         userDefaults.set(secretPass.text, forKey: "secretPass")
+        userDefaults.set(pincoordinate, forKey: "pincoordinate")
+        
+        //pin座標値の確認
+        //print("\(pincoordinate!)")
     }
     
     @IBAction func unwind(_ segue: UIStoryboardSegue) {

@@ -52,6 +52,9 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
                     
                     self.displayMap.addAnnotation(pin)
                     self.displayMap.region = MKCoordinateRegionMakeWithDistance(targetCoordinate,500.0,500.0)
+                    
+                    // *座標値の確認：CLLocationCoordinate2D(latitude: , longitude: )で表示
+                    print("\(pin.coordinate)")
                 }
             }
         })
@@ -83,6 +86,9 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
         pin.subtitle = "OKなら「投稿」をクリック"
         //ピンをdisplayMapの上に置く
         self.displayMap.addAnnotation(pin)
+        
+        // *座標値の確認：CLLocationCoordinate2D(latitude: , longitude: )で表示
+        print("\(pin.coordinate)")
     }
     //アノテーションビューを返すメソッド
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {

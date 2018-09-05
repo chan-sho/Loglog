@@ -23,6 +23,7 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
     
     //user defaultsを使う準備
     let userDefaults:UserDefaults = UserDefaults.standard
+    var pincoordinateToPost : String?
     
     // 投稿ボタンをタップしたときに呼ばれるメソッド
     @IBAction func handlePostButton(_ sender: UIButton) {
@@ -60,11 +61,15 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         relatedURLToPost.delegate = self
         secretPassToPost.delegate = self
         
-        // uerdefaultsで受け取ったデータを各TextView, TextFieldに設定する
+        // userdefaultsで受け取ったデータを各TextView, TextFieldに設定する
         categoryTextToPost.text = userDefaults.string(forKey: "categoryText")
         contentsTextToPost.text = userDefaults.string(forKey: "contentsText")
         relatedURLToPost.text = userDefaults.string(forKey: "relatedURL")
         secretPassToPost.text = userDefaults.string(forKey: "secretPass")
+        pincoordinateToPost = userDefaults.string(forKey: "pincoordinate")
+        
+        //pin座標値の確認
+        //print("\(pincoordinateToPost!)")
         
         // 受け取った画像をImageViewに設定する
         imageView.image = image

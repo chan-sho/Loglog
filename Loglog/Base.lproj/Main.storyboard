@@ -430,6 +430,7 @@
                     </view>
                     <connections>
                         <outlet property="currentMapView" destination="Jlu-qZ-hXf" id="IZt-Nl-dt1"/>
+                        <outlet property="postFromCurrent" destination="wHE-bK-Uqj" id="POC-2x-lqj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eWr-z3-NVH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -840,6 +841,6 @@
         <image name="Twitter" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="A65-c3-P7E"/>
+        <segue reference="yqw-LJ-Xfx"/>
     </inferredMetricsTieBreakers>
 </document>

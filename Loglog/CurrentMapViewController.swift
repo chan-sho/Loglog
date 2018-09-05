@@ -13,6 +13,11 @@ import CoreLocation
 class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
     
     @IBOutlet weak var currentMapView: MKMapView!
+    @IBOutlet weak var postFromCurrent: UIButton!
+    
+    //user defaultsを使う準備
+    let userDefaults:UserDefaults = UserDefaults.standard
+    var pincoordinate : String?
     
     var currentMapManager:CLLocationManager = CLLocationManager()
     
@@ -25,7 +30,6 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
         currentMapManager.startUpdatingLocation()
         //位置情報の利用許可を変更する画面をポップアップ表示する。
         currentMapManager.requestWhenInUseAuthorization()
-        
         
     }
 
@@ -103,6 +107,8 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
             //ピンのサブタイトルの設定
             pin.subtitle = "OKなら「投稿」をクリック"
             
+            // *座標値の確認：CLLocationCoordinate2D(latitude: , longitude: )で表示
+            print("\(pin.coordinate)")
         }
     }
     
@@ -127,9 +133,13 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
         pin.subtitle = "OKなら「投稿」をクリック"
         //ピンをdisplayMapの上に置く
         self.currentMapView.addAnnotation(pin)
+        
+        // *座標値の確認：CLLocationCoordinate2D(latitude: , longitude: )で表示
+        print("\(pin.coordinate)")
     }
-    
+
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
         // 他の画面から segue を使って戻ってきた時に呼ばれる
     }
+    
 }
