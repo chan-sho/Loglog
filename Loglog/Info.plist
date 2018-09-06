@@ -24,31 +24,26 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.googleusercontent.apps.115747942661-mhj087jmr98csghl8hp1hd552su0m8or</string>
-				<string>fb2137853569811166</string>
 			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>fb2137853569811166</string>
-			</array>
-		</dict>
-	</array>
-	<key>CFBundleVersion</key>
-	<string>1</string>
-	<key>FacebookAppID</key>
-	<string>2137853569811166</string>
-	<key>FacebookDisplayName</key>
-	<string>Loglog</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>fbapi</string>
-		<string>fb-messenger-share-api</string>
-		<string>fbauth2</string>
-		<string>fbshareextension</string>
-	</array>
+        </dict>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb2137853569811166</string>
+            </array>
+        </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>2137853569811166</string>
+    <key>FacebookDisplayName</key>
+    <string>Loglog</string>
+            <key>LSApplicationQueriesSchemes</key>
+            <array>
+                <string>fbapi</string>
+                <string>fb-messenger-share-api</string>
+                <string>fbauth2</string>
+                <string>fbshareextension</string>
+            </array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>

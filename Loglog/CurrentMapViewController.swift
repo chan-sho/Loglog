@@ -138,12 +138,17 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
         print("\(pin.coordinate)")
     }
     
-    
+    //最後に表示されているpinの座標値を緯度と経度に分ける
+
     @IBAction func postFromCurrent(_ sender: Any) {
+        
+        // userDefaults.synchronize()
+        
         let postViewController = self.storyboard!.instantiateViewController(withIdentifier: "Post")
         //NavigationControllerの移動を強制定義してみたらいけた！！
         self.navigationController?.pushViewController(postViewController, animated: true)
     }
+
     
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
         // 他の画面から segue を使って戻ってきた時に呼ばれる
