@@ -35,9 +35,9 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         let time = Date.timeIntervalSinceReferenceDate
         let name = Auth.auth().currentUser?.displayName
         
-        // **重要** 辞書を作成してFirebaseに保存する 【※後でAnnotationの位置情報も追加する！！】
+        // **重要** 辞書を作成してFirebaseに保存する 【※後でAnnotationの位置情報も正確に追加する！！】
         let postRef = Database.database().reference().child(Const.PostPath)
-        let postDic = ["category": categoryTextToPost.text!, "contents": contentsTextToPost.text!, "related URL": relatedURLToPost.text!, "secretpass": secretPassToPost.text!, "image": imageString, "time": String(time), "name": name!, "pincoodinate": pincoordinateToPost]
+        let postDic = ["category": categoryTextToPost.text!, "contents": contentsTextToPost.text!, "relatedURL": relatedURLToPost.text!, "secretpass": secretPassToPost.text!, "image": imageString, "time": String(time), "name": name!, "pincoodinate": pincoordinateToPost, "pincoodinateLatitude": pincoordinateToPost, "pincoodinateLongitude": pincoordinateToPost]
         postRef.childByAutoId().setValue(postDic)
         
         // HUDで投稿完了を表示する
@@ -66,10 +66,11 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         contentsTextToPost.text = userDefaults.string(forKey: "contentsText")
         relatedURLToPost.text = userDefaults.string(forKey: "relatedURL")
         secretPassToPost.text = userDefaults.string(forKey: "secretPass")
-        //pincoordinateToPost = 遷移元の画面から引き継ぐ！！
+        
+        //* pincoordinateToPost.text = userDefaults.Double(forKey: "pincoodinate")
         
         //pin座標値の確認
-        //print("\(pincoordinateToPost!)")
+        //* print("\(pincoordinateToPost!)")
         
         // 受け取った画像をImageViewに設定する
         imageView.image = image

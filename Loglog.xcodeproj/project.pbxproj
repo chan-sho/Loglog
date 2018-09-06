@@ -20,6 +20,9 @@
 		311D535F213A7BC80001DF77 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311D535E213A7BC80001DF77 /* HomeViewController.swift */; };
 		311D5361213A7BD60001DF77 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311D5360213A7BD60001DF77 /* SettingViewController.swift */; };
 		316DF8F2213F6297000E1E11 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316DF8F1213F6297000E1E11 /* Const.swift */; };
+		318F81052140FB8F00A8F17B /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318F81042140FB8F00A8F17B /* PostData.swift */; };
+		318F81082141023B00A8F17B /* PostedDataViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318F81062141023B00A8F17B /* PostedDataViewCell.swift */; };
+		318F81092141023B00A8F17B /* PostedDataViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 318F81072141023B00A8F17B /* PostedDataViewCell.xib */; };
 		31C45819213E3A1000591DCF /* PostFinalizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C45818213E3A1000591DCF /* PostFinalizeViewController.swift */; };
 		31C4581B213E3C7400591DCF /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C4581A213E3C7400591DCF /* AddPhotoViewController.swift */; };
 		31D5C2A4213AD11A00E9E6A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31D5C2A3213AD11A00E9E6A7 /* GoogleService-Info.plist */; };
@@ -44,6 +47,9 @@
 		311D535E213A7BC80001DF77 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		311D5360213A7BD60001DF77 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		316DF8F1213F6297000E1E11 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		318F81042140FB8F00A8F17B /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
+		318F81062141023B00A8F17B /* PostedDataViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedDataViewCell.swift; sourceTree = "<group>"; };
+		318F81072141023B00A8F17B /* PostedDataViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostedDataViewCell.xib; sourceTree = "<group>"; };
 		31AFC7ED213CD7380060DE76 /* Loglog.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Loglog.entitlements; sourceTree = "<group>"; };
 		31C45818213E3A1000591DCF /* PostFinalizeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFinalizeViewController.swift; sourceTree = "<group>"; };
 		31C4581A213E3C7400591DCF /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +107,9 @@
 				31C4581A213E3C7400591DCF /* AddPhotoViewController.swift */,
 				31C45818213E3A1000591DCF /* PostFinalizeViewController.swift */,
 				311D535C213A7BAD0001DF77 /* PostedDataViewController.swift */,
+				318F81062141023B00A8F17B /* PostedDataViewCell.swift */,
+				318F81072141023B00A8F17B /* PostedDataViewCell.xib */,
+				318F81042140FB8F00A8F17B /* PostData.swift */,
 				316DF8F1213F6297000E1E11 /* Const.swift */,
 				311D5346213A65830001DF77 /* Main.storyboard */,
 				311D5349213A65850001DF77 /* Assets.xcassets */,
@@ -199,6 +208,7 @@
 			files = (
 				311D534D213A65850001DF77 /* LaunchScreen.storyboard in Resources */,
 				31D5C2A4213AD11A00E9E6A7 /* GoogleService-Info.plist in Resources */,
+				318F81092141023B00A8F17B /* PostedDataViewCell.xib in Resources */,
 				311D534A213A65850001DF77 /* Assets.xcassets in Resources */,
 				311D5348213A65830001DF77 /* Main.storyboard in Resources */,
 			);
@@ -292,12 +302,14 @@
 				311D5355213A7AD00001DF77 /* LoginViewController.swift in Sources */,
 				311D5357213A7B120001DF77 /* CurrentMapViewController.swift in Sources */,
 				311D535F213A7BC80001DF77 /* HomeViewController.swift in Sources */,
+				318F81052140FB8F00A8F17B /* PostData.swift in Sources */,
 				311D5345213A65830001DF77 /* ViewController.swift in Sources */,
 				316DF8F2213F6297000E1E11 /* Const.swift in Sources */,
 				311D5361213A7BD60001DF77 /* SettingViewController.swift in Sources */,
 				31C4581B213E3C7400591DCF /* AddPhotoViewController.swift in Sources */,
 				311D5359213A7B360001DF77 /* SearchMapViewController.swift in Sources */,
 				311D535D213A7BAD0001DF77 /* PostedDataViewController.swift in Sources */,
+				318F81082141023B00A8F17B /* PostedDataViewCell.swift in Sources */,
 				31C45819213E3A1000591DCF /* PostFinalizeViewController.swift in Sources */,
 				311D5343213A65830001DF77 /* AppDelegate.swift in Sources */,
 			);
