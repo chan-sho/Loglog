@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import SVProgressHUD
 
 class PostedDataViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -22,6 +23,10 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // HUDで投稿完了を表示する
+        SVProgressHUD.show(withStatus: "データ読み込み中です")
+        SVProgressHUD.dismiss(withDelay: 3.0)
 
         tableView.delegate = self
         tableView.dataSource = self
