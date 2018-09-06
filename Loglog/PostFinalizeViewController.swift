@@ -43,11 +43,12 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         // HUDで投稿完了を表示する
         SVProgressHUD.showSuccess(withStatus: "投稿しました")
         
-        // 全てのモーダルを閉じる
-        UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
-        //* let viewController = self.storyboard!.instantiateViewController(withIdentifier: "View")
+        // 以下の「全てのモーダルを閉じる」を止めると画面遷移が上手くいった！
+        //* UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
+        
         //NavigationControllerの移動を強制定義してみたらいけた！！
-        //* self.navigationController?.pushViewController(viewController, animated: true)
+        let viewController = self.storyboard!.instantiateViewController(withIdentifier: "View")
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     // キャンセルボタンをタップしたときに呼ばれるメソッド
