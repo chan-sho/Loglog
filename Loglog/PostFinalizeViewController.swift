@@ -45,6 +45,9 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         
         // 全てのモーダルを閉じる
         UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
+        //* let viewController = self.storyboard!.instantiateViewController(withIdentifier: "View")
+        //NavigationControllerの移動を強制定義してみたらいけた！！
+        //* self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     // キャンセルボタンをタップしたときに呼ばれるメソッド
@@ -73,7 +76,12 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         //* print("\(pincoordinateToPost!)")
         
         // 受け取った画像をImageViewに設定する
-        imageView.image = image
+        if image == nil {
+            imageView.image = UIImage(named:"NoPhoto")
+        }
+        else {
+            imageView.image = image
+        }
         
         // 枠のカラー
         categoryTextToPost.layer.borderColor = UIColor.black.cgColor

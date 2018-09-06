@@ -29,7 +29,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         // テーブルセルのタップを無効にする
         tableView.allowsSelection = false
         
-        let nib = UINib(nibName: "PostTableViewCell", bundle: nil)
+        let nib = UINib(nibName: "PostedDataViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         
         // テーブル行の高さをAutoLayoutで自動調整する
@@ -42,7 +42,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("DEBUG_PRINT: viewWillAppear")

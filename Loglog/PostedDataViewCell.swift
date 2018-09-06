@@ -11,13 +11,14 @@ import UIKit
 class PostedDataViewCell: UITableViewCell {
     
     @IBOutlet weak var category: UILabel!
-    @IBOutlet weak var contents: UITextView!
-    @IBOutlet weak var relatedURL: UITextView!
+    @IBOutlet weak var contents: UILabel!
+    @IBOutlet weak var relatedURL: UILabel!
     @IBOutlet weak var secretPass: UILabel!
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var mayMapButton: UIButton!
     
     
@@ -38,6 +39,7 @@ class PostedDataViewCell: UITableViewCell {
         self.contents.text = "\(postData.contents!)"
         self.relatedURL.text = "\(postData.relatedURL!)"
         self.secretPass.text = "\(postData.secretpass!)"
+        self.nameLabel.text = "\(postData.name!)"
         
         self.postImageView.image = postData.image
         
@@ -50,19 +52,19 @@ class PostedDataViewCell: UITableViewCell {
         self.dateLabel.text = dateString
         
         if postData.isLiked {
-            let buttonImage = UIImage(named: "like_exist")
+            let buttonImage = UIImage(named:"like_exist")
             self.likeButton.setImage(buttonImage, for: .normal)
         } else {
-            let buttonImage = UIImage(named: "like_none")
+            let buttonImage = UIImage(named:"like_none")
             self.likeButton.setImage(buttonImage, for: .normal)
         }
         
         if postData.myMapSelected {
-            let buttonImage = UIImage(named: "mymap_yes")
-            self.likeButton.setImage(buttonImage, for: .normal)
+            let buttonImage = UIImage(named:"mymap_yes")
+            self.mayMapButton.setImage(buttonImage, for: .normal)
         } else {
-            let buttonImage = UIImage(named: "mymap_no")
-            self.likeButton.setImage(buttonImage, for: .normal)
+            let buttonImage = UIImage(named:"mymap_no")
+            self.mayMapButton.setImage(buttonImage, for: .normal)
         }
         
     }
