@@ -15,6 +15,8 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
     @IBOutlet weak var currentMapView: MKMapView!
     @IBOutlet weak var postFromCurrent: UIButton!
     
+    let pin = MKPointAnnotation()
+    
     //user defaultsを使う準備
     let userDefaults:UserDefaults = UserDefaults.standard
     var pincoordinate : String?
@@ -141,8 +143,10 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
     //最後に表示されているpinの座標値を緯度と経度に分ける
 
     @IBAction func postFromCurrent(_ sender: Any) {
-        
-        // userDefaults.synchronize()
+        //最後に表示されているpinの座標値を緯度と経度に分けてUserDefaultsに保存
+        userDefaults.set(pin.coordinate.latitude, forKey: "pincoodinateLatitude")
+        userDefaults.set(pin.coordinate.longitude, forKey: "pincoodinateLongitude")
+        userDefaults.synchronize()
         
         let postViewController = self.storyboard!.instantiateViewController(withIdentifier: "Post")
         //NavigationControllerの移動を強制定義してみたらいけた！！

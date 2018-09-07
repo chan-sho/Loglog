@@ -179,7 +179,9 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="alC-Sb-6v7"/>
                                     <constraint firstAttribute="height" constant="40" id="j5I-2W-0cC"/>
                                 </constraints>
-                                <state key="normal" title="【仮】投稿"/>
+                                <state key="normal" title="【仮】投稿">
+                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="postWithSearch:" destination="7bl-uk-9cF" eventType="touchUpInside" id="IKW-ib-dRw"/>
                                 </connections>
@@ -392,7 +394,9 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="8i8-9A-tx5"/>
                                     <constraint firstAttribute="height" constant="40" id="gfK-N3-d1Y"/>
                                 </constraints>
-                                <state key="normal" title="【仮】投稿"/>
+                                <state key="normal" title="【仮】投稿">
+                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="postFromCurrent:" destination="N0m-aq-8Lq" eventType="touchUpInside" id="Ftp-zm-cJv"/>
                                 </connections>

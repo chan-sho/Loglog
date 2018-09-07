@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import SVProgressHUD
+import FirebaseAuth
 
 class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
@@ -47,8 +48,14 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         //* UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
         
         //NavigationControllerの移動を強制定義してみたらいけた！！
+        //* let viewController = self.storyboard!.instantiateViewController(withIdentifier: "View")
+        //* self.navigationController?.pushViewController(viewController, animated: true)
+        
+        //* navigationController?.popToRootViewController(animated: true)
+        dismiss(animated: true, completion: nil)
         let viewController = self.storyboard!.instantiateViewController(withIdentifier: "View")
         self.navigationController?.pushViewController(viewController, animated: true)
+        
     }
     
     // キャンセルボタンをタップしたときに呼ばれるメソッド
