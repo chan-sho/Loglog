@@ -19,7 +19,6 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
     
     //user defaultsを使う準備
     let userDefaults:UserDefaults = UserDefaults.standard
-    var pincoordinate : String?
     
     var currentMapManager:CLLocationManager = CLLocationManager()
     
@@ -109,8 +108,11 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
             //ピンのサブタイトルの設定
             pin.subtitle = "OKなら「投稿」をクリック"
             
-            // *座標値の確認：CLLocationCoordinate2D(latitude: , longitude: )で表示
+            //座標確認
             print("\(pin.coordinate)")
+            print("\(pin.coordinate.latitude)")
+            print("\(pin.coordinate.longitude)")
+            
         }
     }
     
@@ -136,17 +138,24 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
         //ピンをdisplayMapの上に置く
         self.currentMapView.addAnnotation(pin)
         
-        // *座標値の確認：CLLocationCoordinate2D(latitude: , longitude: )で表示
+        //座標確認
         print("\(pin.coordinate)")
+        print("\(pin.coordinate.latitude)")
+        print("\(pin.coordinate.longitude)")
+        
     }
     
     //最後に表示されているpinの座標値を緯度と経度に分ける
 
     @IBAction func postFromCurrent(_ sender: Any) {
-        //最後に表示されているpinの座標値を緯度と経度に分けてUserDefaultsに保存
+
         userDefaults.set(pin.coordinate.latitude, forKey: "pincoodinateLatitude")
         userDefaults.set(pin.coordinate.longitude, forKey: "pincoodinateLongitude")
         userDefaults.synchronize()
+        
+        //座標値の最終確認
+        print("Lati座標確認＝\(pin.coordinate.latitude)")
+        print("Long座標確認＝\(pin.coordinate.longitude)")
         
         let postViewController = self.storyboard!.instantiateViewController(withIdentifier: "Post")
         //NavigationControllerの移動を強制定義してみたらいけた！！

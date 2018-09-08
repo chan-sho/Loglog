@@ -23,7 +23,6 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     //user defaultsを使う準備
     let userDefaults:UserDefaults = UserDefaults.standard
-    var pincoordinate : String?
     
     // Returnボタンを押した際にキーボードを消す（※TextViewには設定できない。改行できなくなる為＾＾）
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -47,9 +46,6 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         contentsText.delegate = self
         relatedURL.delegate = self
         secretPass.delegate = self
-        
-        // userdefaultsで受け取ったデータを設定する
-        //pincoordinate = userDefaults.string(forKey: "pincoordinate")
 
         // 枠のカラー
         categoryText.layer.borderColor = UIColor.black.cgColor
@@ -82,7 +78,6 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         userDefaults.set(contentsText.text, forKey: "contentsText")
         userDefaults.set(relatedURL.text, forKey: "relatedURL")
         userDefaults.set(secretPass.text, forKey: "secretPass")
-        userDefaults.set(pincoordinate, forKey: "pincoordinate")
     }
     
     
@@ -91,7 +86,6 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         userDefaults.set(contentsText.text, forKey: "contentsText")
         userDefaults.set(relatedURL.text, forKey: "relatedURL")
         userDefaults.set(secretPass.text, forKey: "secretPass")
-        userDefaults.set(pincoordinate, forKey: "pincoordinate")
     }
     
     @IBAction func unwind(_ segue: UIStoryboardSegue) {

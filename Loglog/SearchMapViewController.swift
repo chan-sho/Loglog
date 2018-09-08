@@ -16,7 +16,11 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var displayMap: MKMapView!
     @IBOutlet weak var postWithSearch: UIButton!
     
+    let pin = MKPointAnnotation()
     var pinView:MKPinAnnotationView!
+    
+    //user defaultsを使う準備
+    let userDefaults:UserDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,8 +58,10 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
                     self.displayMap.addAnnotation(pin)
                     self.displayMap.region = MKCoordinateRegionMakeWithDistance(targetCoordinate,500.0,500.0)
                     
-                    // *座標値の確認：CLLocationCoordinate2D(latitude: , longitude: )で表示
+                    //座標確認
                     print("\(pin.coordinate)")
+                    print("\(pin.coordinate.latitude)")
+                    print("\(pin.coordinate.longitude)")
                 }
             }
         })
@@ -88,8 +94,10 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
         //ピンをdisplayMapの上に置く
         self.displayMap.addAnnotation(pin)
         
-        // *座標値の確認：CLLocationCoordinate2D(latitude: , longitude: )で表示
+        //座標確認
         print("\(pin.coordinate)")
+        print("\(pin.coordinate.latitude)")
+        print("\(pin.coordinate.longitude)")
     }
     //アノテーションビューを返すメソッド
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
@@ -107,6 +115,15 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func postWithSearch(_ sender: Any) {
+        
+        userDefaults.set(pin.coordinate.latitude, forKey: "pincoodinateLatitude")
+        userDefaults.set(pin.coordinate.longitude, forKey: "pincoodinateLongitude")
+        userDefaults.synchronize()
+        
+        //座標値の最終確認
+        print("Lati座標確認＝\(pin.coordinate.latitude)")
+        print("Long座標確認＝\(pin.coordinate.longitude)")
+        
         let postViewController = self.storyboard!.instantiateViewController(withIdentifier: "Post")
         //NavigationControllerの移動を強制定義してみたらいけた！！
         self.navigationController?.pushViewController(postViewController, animated: true)

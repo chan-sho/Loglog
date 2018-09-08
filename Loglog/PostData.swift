@@ -44,7 +44,6 @@ class PostData: NSObject {
         self.relatedURL = valueDictionary["relatedURL"] as? String
         self.secretpass = valueDictionary["secretpass"] as? String
         
-        self.pincoodinate = valueDictionary["pincoodinate"] as? Double
         self.pincoodinateLatitude = valueDictionary["pincoodinateLatitude"] as? Double
         self.pincoodinateLongitude = valueDictionary["pincoodinateLongitude"] as? Double
         

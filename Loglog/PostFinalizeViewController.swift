@@ -24,7 +24,8 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
     
     //user defaultsを使う準備
     let userDefaults:UserDefaults = UserDefaults.standard
-    let pincoordinateToPost : String? = nil
+    var pincoordinateToPostLatitude : Double? = 0.0
+    var pincoordinateToPostLongitude : Double? = 0.0
     
     // 投稿ボタンをタップしたときに呼ばれるメソッド
     @IBAction func handlePostButton(_ sender: UIButton) {
@@ -38,7 +39,7 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         
         // **重要** 辞書を作成してFirebaseに保存する 【※後でAnnotationの位置情報も正確に追加する！！】
         let postRef = Database.database().reference().child(Const.PostPath)
-        let postDic = ["category": categoryTextToPost.text!, "contents": contentsTextToPost.text!, "relatedURL": relatedURLToPost.text!, "secretpass": secretPassToPost.text!, "image": imageString, "time": String(time), "name": name!, "pincoodinate": pincoordinateToPost, "pincoodinateLatitude": pincoordinateToPost, "pincoodinateLongitude": pincoordinateToPost]
+        let postDic = ["category": categoryTextToPost.text!, "contents": contentsTextToPost.text!, "relatedURL": relatedURLToPost.text!, "secretpass": secretPassToPost.text!, "image": imageString, "time": String(time), "name": name!, "pincoodinateLatitude": Double(pincoordinateToPostLatitude!), "pincoodinateLongitude": Double(pincoordinateToPostLongitude!)] as [String : Any]
         postRef.childByAutoId().setValue(postDic)
         
         // HUDで投稿完了を表示する
@@ -105,11 +106,8 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         contentsTextToPost.text = userDefaults.string(forKey: "contentsText")
         relatedURLToPost.text = userDefaults.string(forKey: "relatedURL")
         secretPassToPost.text = userDefaults.string(forKey: "secretPass")
-        
-        //* pincoordinateToPost.text = userDefaults.Double(forKey: "pincoodinate")
-        
-        //pin座標値の確認
-        //* print("\(pincoordinateToPost!)")
+        pincoordinateToPostLatitude = userDefaults.double(forKey: "pincoodinateLatitude")
+        pincoordinateToPostLongitude = userDefaults.double(forKey: "pincoodinateLongitude")
         
         // 受け取った画像をImageViewに設定する
         if image == nil {
