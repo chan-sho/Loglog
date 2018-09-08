@@ -25,6 +25,11 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         inputText.delegate = self
+        
+        postWithSearch.backgroundColor = UIColor.white
+        postWithSearch.layer.borderColor = UIColor.blue.cgColor
+        postWithSearch.layer.borderWidth = 1.0
+        postWithSearch.layer.cornerRadius = 10.0 //丸みを数値で変更できる
     }
     
     
@@ -52,7 +57,7 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
                     
                     self.pin.coordinate = targetCoordinate
                     self.pin.title = searchKeyword
-                    self.pin.subtitle = "OKなら「投稿」をクリック"
+                    self.pin.subtitle = "OKなら「投稿準備」をクリック"
                     
                     self.displayMap.addAnnotation(self.pin)
                     self.displayMap.region = MKCoordinateRegionMakeWithDistance(targetCoordinate,500.0,500.0)
@@ -87,7 +92,7 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
         //ピンのタイトルを設定
         pin.title = "この場所で良いですか？"
         //ピンのサブタイトルの設定
-        pin.subtitle = "OKなら「投稿」をクリック"
+        pin.subtitle = "OKなら「投稿準備」をクリック"
         //ピンをdisplayMapの上に置く
         self.displayMap.addAnnotation(pin)
         

@@ -32,6 +32,11 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
         //位置情報の利用許可を変更する画面をポップアップ表示する。
         currentMapManager.requestWhenInUseAuthorization()
         
+        postFromCurrent.backgroundColor = UIColor.white
+        postFromCurrent.layer.borderColor = UIColor.blue.cgColor
+        postFromCurrent.layer.borderWidth = 1.0
+        postFromCurrent.layer.cornerRadius = 10.0 //丸みを数値で変更できる
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -105,7 +110,7 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
             //ピンのタイトルを設定
             pin.title = "この場所で良いですか？"
             //ピンのサブタイトルの設定
-            pin.subtitle = "OKなら「投稿」をクリック"
+            pin.subtitle = "OKなら「投稿準備」をクリック"
             
             //座標確認
             print("\(pin.coordinate)")
@@ -131,7 +136,7 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
         //ピンのタイトルを設定
         pin.title = "この場所で良いですか？"
         //ピンのサブタイトルの設定
-        pin.subtitle = "OKなら「投稿」をクリック"
+        pin.subtitle = "OKなら「準備投稿」をクリック"
         //ピンをdisplayMapの上に置く
         self.currentMapView.addAnnotation(pin)
         
