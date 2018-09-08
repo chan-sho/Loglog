@@ -55,6 +55,7 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         dismiss(animated: true, completion: nil)
         let viewController = self.storyboard!.instantiateViewController(withIdentifier: "View")
         self.navigationController?.pushViewController(viewController, animated: true)
+        dismiss(animated: true, completion: nil)
         
     }
     
