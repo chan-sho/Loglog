@@ -21,9 +21,6 @@ class PostedDataViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var mayMapButton: UIButton!
     
-    @IBOutlet weak var pincoodinateLatitude: UILabel!
-    @IBOutlet weak var pincoodinateLongitude: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -44,9 +41,6 @@ class PostedDataViewCell: UITableViewCell {
         self.nameLabel.text = "\(postData.name!)"
         
         self.postImageView.image = postData.image
-        
-        //self.pincoodinateLatitude.text = "\(postData.pincoodinateLatitude!)"
-        //self.pincoodinateLongitude.text = "\(postData.pincoodinateLongitude!)"
         
         let likeNumber = postData.likes.count
         likeLabel.text = "\(likeNumber)"

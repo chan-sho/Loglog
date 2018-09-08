@@ -119,33 +119,18 @@
                         </constraints>
                         <state key="normal" backgroundImage="mymap_no"/>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yo5-xI-qS4">
-                        <rect key="frame" x="46.5" y="267.5" width="17" height="7.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="6"/>
-                        <color key="textColor" red="0.81466564119170981" green="0.81466564119170981" blue="0.81466564119170981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76O-ue-fVQ">
-                        <rect key="frame" x="46.5" y="255" width="17" height="7.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="6"/>
-                        <color key="textColor" red="0.81466564119170981" green="0.81466564119170981" blue="0.81466564119170981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="yFt-jG-ejy" firstAttribute="top" secondItem="c2S-5Q-Xkj" secondAttribute="top" id="01r-gb-KOd"/>
                     <constraint firstItem="dIg-KE-Voh" firstAttribute="top" secondItem="mES-9C-0Kk" secondAttribute="top" id="1sD-jU-feq"/>
                     <constraint firstItem="RDj-jL-TUq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="2u9-Sq-auC"/>
                     <constraint firstItem="3HW-ey-cDv" firstAttribute="top" secondItem="c2S-5Q-Xkj" secondAttribute="bottom" constant="10" id="34e-4L-ba4"/>
-                    <constraint firstItem="yo5-xI-qS4" firstAttribute="top" secondItem="76O-ue-fVQ" secondAttribute="bottom" constant="5" id="3Aj-2R-VtK"/>
                     <constraint firstItem="mES-9C-0Kk" firstAttribute="top" secondItem="qzT-Fp-Noq" secondAttribute="bottom" constant="10" id="3Ca-wc-UjR"/>
                     <constraint firstItem="yFt-jG-ejy" firstAttribute="top" secondItem="eaC-Zp-3wU" secondAttribute="bottom" constant="20" id="5WX-LQ-e1a"/>
-                    <constraint firstItem="yo5-xI-qS4" firstAttribute="bottom" secondItem="yFt-jG-ejy" secondAttribute="bottom" id="5ev-Oc-eAw"/>
                     <constraint firstItem="L86-PH-i0u" firstAttribute="leading" secondItem="yFt-jG-ejy" secondAttribute="trailing" constant="5" id="6M2-Ot-phP"/>
                     <constraint firstAttribute="bottomMargin" secondItem="yFt-jG-ejy" secondAttribute="bottom" constant="4" id="8BJ-ua-cqB"/>
                     <constraint firstItem="3HW-ey-cDv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="AFQ-MO-mSR"/>
                     <constraint firstItem="9Oi-wj-dMF" firstAttribute="bottom" secondItem="U14-Pu-R4n" secondAttribute="bottom" id="AnN-ty-m4e"/>
-                    <constraint firstItem="yFt-jG-ejy" firstAttribute="leading" secondItem="76O-ue-fVQ" secondAttribute="trailing" constant="5" id="C8X-j7-Wef"/>
                     <constraint firstItem="RDj-jL-TUq" firstAttribute="top" secondItem="mES-9C-0Kk" secondAttribute="bottom" constant="10" id="Ecy-Uw-U5n"/>
                     <constraint firstItem="DWZ-xk-y73" firstAttribute="top" secondItem="RDj-jL-TUq" secondAttribute="top" id="EjD-5U-KXL"/>
                     <constraint firstItem="L86-PH-i0u" firstAttribute="bottom" secondItem="yFt-jG-ejy" secondAttribute="bottom" id="Fho-yp-6fP"/>
@@ -161,7 +146,6 @@
                     <constraint firstItem="yFt-jG-ejy" firstAttribute="top" secondItem="621-Wi-aXx" secondAttribute="bottom" constant="20" id="U9J-3S-ZsM"/>
                     <constraint firstItem="621-Wi-aXx" firstAttribute="top" secondItem="DWZ-xk-y73" secondAttribute="bottom" constant="10" id="V2A-gI-soH"/>
                     <constraint firstItem="c2S-5Q-Xkj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="VfF-SY-YSh"/>
-                    <constraint firstItem="yFt-jG-ejy" firstAttribute="leading" secondItem="yo5-xI-qS4" secondAttribute="trailing" constant="5" id="Ywx-VX-Qog"/>
                     <constraint firstItem="Bsx-Gj-eJX" firstAttribute="leading" secondItem="qzT-Fp-Noq" secondAttribute="trailing" constant="10" id="boS-fW-XJq"/>
                     <constraint firstItem="yFt-jG-ejy" firstAttribute="leading" secondItem="c2S-5Q-Xkj" secondAttribute="trailing" constant="5" id="fCW-1o-gt1"/>
                     <constraint firstItem="U14-Pu-R4n" firstAttribute="leading" secondItem="yFt-jG-ejy" secondAttribute="trailing" constant="5" id="fbN-Qa-aZH"/>
@@ -184,8 +168,6 @@
                 <outlet property="likeLabel" destination="9Oi-wj-dMF" id="kFE-RY-pYY"/>
                 <outlet property="mayMapButton" destination="L86-PH-i0u" id="HFm-sF-zCR"/>
                 <outlet property="nameLabel" destination="3HW-ey-cDv" id="OAN-es-LF3"/>
-                <outlet property="pincoodinateLatitude" destination="76O-ue-fVQ" id="QDo-Nd-6By"/>
-                <outlet property="pincoodinateLongitude" destination="yo5-xI-qS4" id="MC3-1h-cQc"/>
                 <outlet property="postImageView" destination="yFt-jG-ejy" id="kuP-gi-VmF"/>
                 <outlet property="relatedURL" destination="DWZ-xk-y73" id="0a9-d2-LLp"/>
                 <outlet property="secretPass" destination="621-Wi-aXx" id="tTq-Iw-xSm"/>
