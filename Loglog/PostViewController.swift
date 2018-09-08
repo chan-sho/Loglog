@@ -83,9 +83,6 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         userDefaults.set(relatedURL.text, forKey: "relatedURL")
         userDefaults.set(secretPass.text, forKey: "secretPass")
         userDefaults.set(pincoordinate, forKey: "pincoordinate")
-        
-        //pin座標値の確認
-        //print("\(pincoordinate!)")
     }
     
     
@@ -95,9 +92,6 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         userDefaults.set(relatedURL.text, forKey: "relatedURL")
         userDefaults.set(secretPass.text, forKey: "secretPass")
         userDefaults.set(pincoordinate, forKey: "pincoordinate")
-        
-        //pin座標値の確認
-        //print("\(pincoordinate!)")
     }
     
     @IBAction func unwind(_ segue: UIStoryboardSegue) {

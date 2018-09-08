@@ -44,19 +44,46 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         // HUDで投稿完了を表示する
         SVProgressHUD.showSuccess(withStatus: "投稿しました")
         
-        // 以下の「全てのモーダルを閉じる」を止めると画面遷移が上手くいった！
-        //* UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
+        //--------------------------------------------------------------------------------------------
+        //【今まで試した方法】　結果＝Photoあり／なし
         
-        //NavigationControllerの移動を強制定義してみたらいけた！！
-        //* let viewController = self.storyboard!.instantiateViewController(withIdentifier: "View")
-        //* self.navigationController?.pushViewController(viewController, animated: true)
+        //全てのモーダルを閉じる：　結果＝×／×
+        //UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
         
-        //* navigationController?.popToRootViewController(animated: true)
-        dismiss(animated: true, completion: nil)
+        //NavigationControllerの移動を強制定義：　結果＝×／○
+        //let viewController = self.storyboard!.instantiateViewController(withIdentifier: "View")
+        //self.navigationController?.pushViewController(viewController, animated: true)
+        
+        //画面を閉じてViewControllerに戻る：　結果＝×／×
+        //dismiss(animated: true, completion: nil)
+        
+        //NavigationControllerを戻す：　結果＝×／×
+        //let viewController = self.storyboard!.instantiateViewController(withIdentifier: "View")
+        //navigationController?.popToViewController(viewController, animated: true)
+        
+        //現在の画面から2つ前の画面に戻す：　結果＝○／×（ただし目的のHome画面に戻る事はできず）
+        //self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        
+        //PostViewControllerを取得し戻る→2つViewControllerを戻る：　結果＝×／×
+        //guard let postVc = self.presentingViewController as? PostViewController else {return}
+        //postVc.dismiss(animated: false, completion: nil)
+        //postVc.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        
+        //--------------------------------------------------------------------------------------------
+        
+        if imageView.image == UIImage(named:"NoPhoto"){
         let viewController = self.storyboard!.instantiateViewController(withIdentifier: "View")
         self.navigationController?.pushViewController(viewController, animated: true)
-        dismiss(animated: true, completion: nil)
-        
+        }
+        else {
+            self.presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
+            //* guard let addPhotoVc = self.presentingViewController as? AddPhotoViewController else {return}
+            //* addPhotoVc.handleCancelButton(UIButton())
+            
+            //* let postViewController = self.storyboard?.instantiateViewController(withIdentifier: "Post")
+            //* self.present(postViewController!, animated: true, completion: nil)
+        }
+
     }
     
     // キャンセルボタンをタップしたときに呼ばれるメソッド
@@ -117,16 +144,5 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
