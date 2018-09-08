@@ -19,7 +19,6 @@ class PostData: NSObject {
     var contents: String?
     var relatedURL: String?
     var secretpass: String?
-    var pincoodinate: Double?
     var pincoodinateLatitude: Double?
     var pincoodinateLongitude: Double?
     var date: Date?

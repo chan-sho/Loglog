@@ -45,8 +45,8 @@ class PostedDataViewCell: UITableViewCell {
         
         self.postImageView.image = postData.image
         
-        self.pincoodinateLatitude.text = "\(postData.pincoodinateLatitude!)"
-        self.pincoodinateLongitude.text = "\(postData.pincoodinateLongitude!)"
+        //self.pincoodinateLatitude.text = "\(postData.pincoodinateLatitude!)"
+        //self.pincoodinateLongitude.text = "\(postData.pincoodinateLongitude!)"
         
         let likeNumber = postData.likes.count
         likeLabel.text = "\(likeNumber)"

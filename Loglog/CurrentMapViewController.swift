@@ -100,7 +100,6 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
             currentMapView.setRegion(region, animated:true)
             
             //ピンを作成してマップビューに登録する。
-            let pin = MKPointAnnotation()
             pin.coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, pin.coordinate.longitude)
             self.currentMapView.addAnnotation(pin)
             //ピンのタイトルを設定
@@ -127,8 +126,6 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
         let tappedPoint = currentMapView.convert(tappedLocation, toCoordinateFrom: currentMapView)
         // update annotation
         currentMapView.removeAnnotations(currentMapView.annotations)
-        //ピンの生成
-        let pin = MKPointAnnotation()
         //ピンを置く場所を指定
         pin.coordinate = tappedPoint
         //ピンのタイトルを設定

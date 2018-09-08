@@ -50,18 +50,17 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
                 if let targetCoordinate = placemark.location?.coordinate {
                     print(targetCoordinate)
                     
-                    let pin = MKPointAnnotation()
-                    pin.coordinate = targetCoordinate
-                    pin.title = searchKeyword
-                    pin.subtitle = "OKなら「投稿」をクリック"
+                    self.pin.coordinate = targetCoordinate
+                    self.pin.title = searchKeyword
+                    self.pin.subtitle = "OKなら「投稿」をクリック"
                     
-                    self.displayMap.addAnnotation(pin)
+                    self.displayMap.addAnnotation(self.pin)
                     self.displayMap.region = MKCoordinateRegionMakeWithDistance(targetCoordinate,500.0,500.0)
                     
                     //座標確認
-                    print("\(pin.coordinate)")
-                    print("\(pin.coordinate.latitude)")
-                    print("\(pin.coordinate.longitude)")
+                    print("\(self.pin.coordinate)")
+                    print("\(self.pin.coordinate.latitude)")
+                    print("\(self.pin.coordinate.longitude)")
                 }
             }
         })
@@ -83,8 +82,6 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
         let tappedPoint = displayMap.convert(tappedLocation, toCoordinateFrom: displayMap)
         // update annotation
         displayMap.removeAnnotations(displayMap.annotations)
-        //ピンの生成
-        let pin = MKPointAnnotation()
         //ピンを置く場所を指定
         pin.coordinate = tappedPoint
         //ピンのタイトルを設定
