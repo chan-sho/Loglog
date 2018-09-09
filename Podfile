@@ -12,7 +12,9 @@ target 'Loglog' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'SVProgressHUD','2.2.5'
-  pod 'FBSDKLoginKit'  
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKShareKit'
   pod 'GoogleSignIn'
   pod 'CLImageEditor/AllTools','0.2.3'
 
