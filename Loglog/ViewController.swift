@@ -27,8 +27,13 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        print("ログイン画面処理チェックポイント①")
+        
         // currentUserがnilならログインしていない
         if Auth.auth().currentUser == nil {
+            
+            print("ログイン画面処理チェックポイント②")
+            
             // ログインしていないときの処理
             let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "Login")
             self.present(loginViewController!, animated: true, completion: nil)

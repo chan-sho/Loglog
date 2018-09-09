@@ -135,30 +135,24 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
             }
         }
     }
+
     
-    //Facebookサインイン
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        //エラーチェック
-        if error == nil {
-            //キャンセルしたかどうか
-            if result.isCancelled {
-                SVProgressHUD.showError(withStatus: "facebookサインインをキャンセルしました。")
-                return
-            }else{
-                print("DEBUG_PRINT: facebookサインインに成功しました①")
-                // HUDを消す
-                SVProgressHUD.dismiss()
-                // 画面を閉じてViewControllerに戻る
-                self.dismiss(animated: true, completion: nil)
-            }
-        }else{
+    //Facebookサインイン（パターン②）
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error?) {
+        if let error = error {
+            print("DEBUG_PRINT: " + error.localizedDescription)
             SVProgressHUD.showError(withStatus: "facebookサインインに失敗しました。")
             return
         }
         let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         
         Auth.auth().signInAndRetrieveData(with: credential) { (user, error) in
-            print("DEBUG_PRINT: facebookサインインに成功しました②")
+            if let error = error {
+                print("DEBUG_PRINT: " + error.localizedDescription)
+                SVProgressHUD.showError(withStatus: "facebookサインインに失敗しました。②")
+                return
+            }
+            print("DEBUG_PRINT: facebookサインインに成功しました！！（by パターン②）")
             // HUDを消す
             SVProgressHUD.dismiss()
             // 画面を閉じてViewControllerに戻る
@@ -166,22 +160,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         }
     }
     
-    func loginButtonDidCompleteLogin(_ loginButton: FBSDKLoginButton!, result: FBSDKLoginManagerLoginResult!) {
-        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-        // Firebaseにcredentialを渡してlogin
-        Auth.auth().signInAndRetrieveData(with: credential) { (user, error) in
-            print("DEBUG_PRINT: facebookサインインに成功しました③")
-            
-            // 画面を閉じてViewControllerに戻る
-            self.dismiss(animated: true, completion: nil)
-            
-        }
-        
-    }
-    
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         
     }
+    
     
     //Googleサインイン
     @IBAction func tapGoogleSingIn(_ sender: Any) {
