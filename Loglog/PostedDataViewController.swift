@@ -31,7 +31,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         tableView.delegate = self
         tableView.dataSource = self
         
-        // テーブルセルのタップを無効にする
+        // テーブルセルのタップを【無効】にする
         tableView.allowsSelection = false
         
         let nib = UINib(nibName: "PostedDataViewCell", bundle: nil)
@@ -143,6 +143,9 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         
         // 配列からタップされたインデックスのデータを取り出す
         let postData = postArray[indexPath!.row]
+        
+        // タップされたインデックスのデータを確認
+        print("タップされたインデックスのデータ＝\(postData)")
         
         // Firebaseに保存するデータの準備
         if let uid = Auth.auth().currentUser?.uid {

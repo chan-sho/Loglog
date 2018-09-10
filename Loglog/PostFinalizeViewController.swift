@@ -39,7 +39,7 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         
         // **重要** 辞書を作成してFirebaseに保存する 【※後でAnnotationの位置情報も正確に追加する！！】
         let postRef = Database.database().reference().child(Const.PostPath)
-        let postDic = ["category": categoryTextToPost.text!, "contents": contentsTextToPost.text!, "relatedURL": relatedURLToPost.text!, "secretpass": secretPassToPost.text!, "image": imageString, "time": String(time), "name": name!, "pincoodinateLatitude": Double(pincoordinateToPostLatitude!), "pincoodinateLongitude": Double(pincoordinateToPostLongitude!)] as [String : Any]
+        let postDic = ["userID": Auth.auth().currentUser!.uid, "category": categoryTextToPost.text!, "contents": contentsTextToPost.text!, "relatedURL": relatedURLToPost.text!, "secretpass": secretPassToPost.text!, "image": imageString, "time": String(time), "name": name!, "pincoodinateLatitude": Double(pincoordinateToPostLatitude!), "pincoodinateLongitude": Double(pincoordinateToPostLongitude!)] as [String : Any]
         postRef.childByAutoId().setValue(postDic)
         
         // HUDで投稿完了を表示する

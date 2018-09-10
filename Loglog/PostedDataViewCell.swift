@@ -10,6 +10,7 @@ import UIKit
 
 class PostedDataViewCell: UITableViewCell {
     
+    @IBOutlet weak var id: UILabel!
     @IBOutlet weak var category: UILabel!
     @IBOutlet weak var contents: UILabel!
     @IBOutlet weak var relatedURL: UILabel!
@@ -23,7 +24,7 @@ class PostedDataViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        backgroundColor = UIColor.lightGray.withAlphaComponent(0.10)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -34,6 +35,7 @@ class PostedDataViewCell: UITableViewCell {
     
     func setPostData(_ postData: PostData) {
         
+        self.id.text = "\(postData.self.id!)"
         self.category.text = "\(postData.category!)"
         self.contents.text = "\(postData.contents!)"
         self.relatedURL.text = "\(postData.relatedURL!)"

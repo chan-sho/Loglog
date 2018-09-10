@@ -74,6 +74,5 @@ class ViewController: UIViewController {
         tabBarController.setView(currentViewController, at: 1)
         tabBarController.setView(searchViewController, at: 2)
         tabBarController.setView(postedDataViewController, at: 3)
-        
     }
 }
