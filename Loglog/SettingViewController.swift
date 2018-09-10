@@ -122,6 +122,12 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
         mailAddressTextField.delegate = self
         passWordTextField.delegate = self
         displayNameTextField.delegate = self
+        
+        //背景の設定
+        let bg = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        bg.image = UIImage(named: "背景2")
+        bg.layer.zPosition = -1
+        self.view.addSubview(bg)
     }
 
     override func didReceiveMemoryWarning() {

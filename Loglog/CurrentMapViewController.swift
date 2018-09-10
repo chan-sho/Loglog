@@ -33,7 +33,7 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
         currentMapManager.requestWhenInUseAuthorization()
         
         postFromCurrent.backgroundColor = UIColor.white
-        postFromCurrent.layer.borderColor = UIColor.blue.cgColor
+        postFromCurrent.layer.borderColor = UIColor.darkGray.cgColor
         postFromCurrent.layer.borderWidth = 1.0
         postFromCurrent.layer.cornerRadius = 10.0 //丸みを数値で変更できる
         

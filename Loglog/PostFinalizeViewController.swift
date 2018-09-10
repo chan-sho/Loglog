@@ -136,6 +136,12 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         relatedURLToPost.layer.masksToBounds = true
         secretPassToPost.layer.cornerRadius = 10.0
         secretPassToPost.layer.masksToBounds = true
+        
+        //背景の設定
+        let bg = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        bg.image = UIImage(named: "背景3")
+        bg.layer.zPosition = -1
+        self.view.addSubview(bg)
     }
 
     override func didReceiveMemoryWarning() {

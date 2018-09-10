@@ -39,6 +39,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         mailAddressTextField.delegate = self
         passwordTextField.delegate = self
         displayNameTextField.delegate = self
+        
+        //背景の設定
+        let bg = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        bg.image = UIImage(named: "背景10")
+        bg.layer.zPosition = -1
+        self.view.addSubview(bg)
     }
     
     // Returnボタンを押した際にキーボードを消す
