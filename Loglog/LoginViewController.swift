@@ -137,13 +137,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     }
 
     
-    //Facebookサインイン（パターン②）
+    //Facebookサインイン（パターン②：成功！！）
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error?) {
         if let error = error {
             print("DEBUG_PRINT: " + error.localizedDescription)
             SVProgressHUD.showError(withStatus: "facebookサインインに失敗しました。")
             return
         }
+        
         let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         
         Auth.auth().signInAndRetrieveData(with: credential) { (user, error) in
@@ -161,7 +162,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        
+        // ログアウトする
+        try! Auth.auth().signOut()
     }
     
     
