@@ -41,6 +41,9 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         tableView.rowHeight = UITableViewAutomaticDimension
         // テーブル行の高さの概算値を設定しておく
         tableView.estimatedRowHeight = UIScreen.main.bounds.width + 400
+        
+        // TableViewを再表示する
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -129,10 +132,13 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         // セル内のボタンのアクションをソースコードで設定する
         cell.likeButton.addTarget(self, action:#selector(handleButton(_:forEvent:)), for: .touchUpInside)
         
+        // セル内のmyMapボタンを追加で管理
+        cell.myMapButton.addTarget(self, action:#selector(handleMyMapButton(_:forEvent:)), for: .touchUpInside)
+        
         return cell
     }
     
-    // セル内のボタンがタップされた時に呼ばれるメソッド
+    // セル内のlikeボタンがタップされた時に呼ばれるメソッド
     @objc func handleButton(_ sender: UIButton, forEvent event: UIEvent) {
         print("DEBUG_PRINT: likeボタンがタップされました。")
         
@@ -145,7 +151,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         let postData = postArray[indexPath!.row]
         
         // タップされたインデックスのデータを確認
-        print("タップされたインデックスのデータ＝\(postData)")
+        print("タップされたインデックスのデータ by likeボタン＝\(postData)")
         
         // Firebaseに保存するデータの準備
         if let uid = Auth.auth().currentUser?.uid {
@@ -170,5 +176,53 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             postRef.updateChildValues(likes)
             
         }
+    }
+    
+    // セル内のMyMapボタンがタップされた時に呼ばれるメソッド
+    @objc func handleMyMapButton(_ sender: UIButton, forEvent event: UIEvent) {
+        print("DEBUG_PRINT: MyMapボタンがタップされました。")
+        
+        // タップされたセルのインデックスを求める
+        let touch = event.allTouches?.first
+        let point = touch!.location(in: self.tableView)
+        let indexPath = tableView.indexPathForRow(at: point)
+        
+        // 配列からタップされたインデックスのデータを取り出す
+        let postData = postArray[indexPath!.row]
+        
+        // タップされたインデックスのデータを確認
+        print("タップされたインデックスのデータ by MyMapボタン＝\(postData)")
+        
+        // Firebaseに保存するデータの準備
+        if let uid = Auth.auth().currentUser?.uid {
+            if postData.myMapSelected {
+            // すでにタップをしていた場合
+            for myMapId in postData.myMap {
+                if myMapId == uid {
+                    postData.myMap.removeAll()
+                    break
+                }
+                if myMapId != uid {
+                    break
+                    }
+                }
+            // まだタップされていない場合
+            }
+            else {
+                if postData.userID == uid {
+                    postData.myMap.append(uid)
+                    }
+                    else {
+                    return
+                    }
+            }
+            
+            // 増えたmyMapをFirebaseに保存する
+            let postRef = Database.database().reference().child(Const.PostPath).child(postData.id!)
+            let myMap = ["myMap": postData.myMap]
+            postRef.updateChildValues(myMap)
+            
+        }
+        
     }
 }

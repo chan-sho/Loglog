@@ -11,6 +11,7 @@ import Firebase
 import FirebaseDatabase
 
 class PostData: NSObject {
+    
     var id: String?
     var image: UIImage?
     var imageString: String?
@@ -29,8 +30,13 @@ class PostData: NSObject {
     var myMap: [String] = []
     var myMapSelected: Bool = false
     
+    var userID: String?
+    
     init(snapshot: DataSnapshot, myId: String) {
         self.id = snapshot.key
+        
+        //デバッグPrint
+        print("snapshot.keyの確認：\(self.id!)")
         
         let valueDictionary = snapshot.value as! [String: Any]
         
@@ -42,6 +48,7 @@ class PostData: NSObject {
         self.contents = valueDictionary["contents"] as? String
         self.relatedURL = valueDictionary["relatedURL"] as? String
         self.secretpass = valueDictionary["secretpass"] as? String
+        self.userID = valueDictionary["userID"] as? String
         
         self.pincoodinateLatitude = valueDictionary["pincoodinateLatitude"] as? Double
         self.pincoodinateLongitude = valueDictionary["pincoodinateLongitude"] as? Double
@@ -67,6 +74,10 @@ class PostData: NSObject {
         for myMapId in self.myMap {
             if myMapId == myId {
                 self.myMapSelected = true
+                break
+            }
+            else {
+                self.myMapSelected = false
                 break
             }
         }

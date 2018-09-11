@@ -10,8 +10,12 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var HomeBackgroundView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        HomeBackgroundView.image = UIImage(named: "背景4")
     }
 
     override func didReceiveMemoryWarning() {

@@ -20,7 +20,7 @@ class PostedDataViewCell: UITableViewCell {
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var mayMapButton: UIButton!
+    @IBOutlet weak var myMapButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -62,10 +62,10 @@ class PostedDataViewCell: UITableViewCell {
         
         if postData.myMapSelected {
             let buttonImage = UIImage(named:"mymap_yes")
-            self.mayMapButton.setImage(buttonImage, for: .normal)
+            self.myMapButton.setImage(buttonImage, for: .normal)
         } else {
             let buttonImage = UIImage(named:"mymap_no")
-            self.mayMapButton.setImage(buttonImage, for: .normal)
+            self.myMapButton.setImage(buttonImage, for: .normal)
         }
         
     }

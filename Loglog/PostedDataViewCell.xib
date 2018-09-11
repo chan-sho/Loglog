@@ -175,7 +175,7 @@
                 <outlet property="id" destination="Rg8-GA-MIJ" id="PrW-zg-dcP"/>
                 <outlet property="likeButton" destination="U14-Pu-R4n" id="8EX-s2-Mr8"/>
                 <outlet property="likeLabel" destination="9Oi-wj-dMF" id="kFE-RY-pYY"/>
-                <outlet property="mayMapButton" destination="L86-PH-i0u" id="HFm-sF-zCR"/>
+                <outlet property="myMapButton" destination="L86-PH-i0u" id="shT-MX-FRW"/>
                 <outlet property="nameLabel" destination="3HW-ey-cDv" id="OAN-es-LF3"/>
                 <outlet property="postImageView" destination="yFt-jG-ejy" id="kuP-gi-VmF"/>
                 <outlet property="relatedURL" destination="DWZ-xk-y73" id="0a9-d2-LLp"/>
