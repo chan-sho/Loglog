@@ -126,9 +126,9 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
         print("Lati座標確認＝\(pin.coordinate.latitude)")
         print("Long座標確認＝\(pin.coordinate.longitude)")
         
-        let postViewController = self.storyboard!.instantiateViewController(withIdentifier: "Post")
+        //* let postViewController = self.storyboard!.instantiateViewController(withIdentifier: "Post")
         //NavigationControllerの移動を強制定義してみたらいけた！！
-        self.navigationController?.pushViewController(postViewController, animated: true)
+        //* self.navigationController?.pushViewController(postViewController, animated: true)
     }
     
     @IBAction func unwind(_ segue: UIStoryboardSegue) {

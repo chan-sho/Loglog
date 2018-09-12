@@ -204,6 +204,7 @@
                                 </state>
                                 <connections>
                                     <action selector="postWithSearch:" destination="7bl-uk-9cF" eventType="touchUpInside" id="IKW-ib-dRw"/>
+                                    <segue destination="W2d-iz-8yz" kind="show" id="WZW-Mr-Cpv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -425,6 +426,7 @@
                                 </state>
                                 <connections>
                                     <action selector="postFromCurrent:" destination="N0m-aq-8Lq" eventType="touchUpInside" id="Ftp-zm-cJv"/>
+                                    <segue destination="W2d-iz-8yz" kind="show" id="0gi-RD-ILx"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -471,74 +473,74 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCc-Xv-uaM">
-                                <rect key="frame" x="37.5" y="114" width="300" height="24"/>
+                                <rect key="frame" x="37.5" y="104" width="300" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="71B-Q7-Kbb"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="TXH-u5-uA9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="関連URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6m-UB-YAm">
-                                <rect key="frame" x="37.5" y="288" width="300" height="24"/>
+                                <rect key="frame" x="37.5" y="268" width="300" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="k0T-Sw-a35"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="c3d-4j-8Nx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u8F-Op-ZIQ">
-                                <rect key="frame" x="37.5" y="64" width="300" height="30"/>
+                                <rect key="frame" x="37.5" y="59" width="300" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="wYT-ve-c2X"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Rbk-cq-FiU"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qjd-Oh-CeH">
-                                <rect key="frame" x="37.5" y="148" width="300" height="120"/>
+                                <rect key="frame" x="37.5" y="133" width="300" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="4G7-Hr-zEu"/>
-                                    <constraint firstAttribute="height" constant="120" id="wRS-nq-Ic1"/>
+                                    <constraint firstAttribute="width" constant="300" id="3fO-1h-2EV"/>
+                                    <constraint firstAttribute="height" constant="120" id="UKs-Nc-QsL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="szb-lR-jLe">
-                                <rect key="frame" x="37.5" y="322" width="300" height="30"/>
+                                <rect key="frame" x="37.5" y="297" width="300" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Lea-J7-FJI"/>
-                                    <constraint firstAttribute="width" constant="300" id="tA1-zU-4sz"/>
+                                    <constraint firstAttribute="height" constant="30" id="ITt-IA-Pcr"/>
+                                    <constraint firstAttribute="width" constant="300" id="xZd-xr-4Rc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="URL" returnKeyType="done"/>
                             </textView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="※特定の相手に向けた投稿などで使用" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tnh-3o-SoN">
-                                <rect key="frame" x="34" y="406" width="307" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="※特定の相手への投稿などで使用" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tnh-3o-SoN">
+                                <rect key="frame" x="37.5" y="371" width="300" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Hdi-dM-yrW"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Mm2-qq-2aP"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="秘密のパスワード" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJU-rN-nfh">
-                                <rect key="frame" x="37.5" y="372" width="300" height="24"/>
+                                <rect key="frame" x="37.5" y="342" width="300" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="5EE-Zf-W1l"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="YUn-Fy-Bjc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u9E-uR-SS7">
-                                <rect key="frame" x="37.5" y="486" width="300" height="40"/>
+                                <rect key="frame" x="37.5" y="426" width="300" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="gOY-Hz-ba7"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="bIl-8r-Gqy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
                                 <state key="normal" title="画像をつけずに投稿" backgroundImage="Btn2"/>
@@ -548,9 +550,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AOX-uc-vKt">
-                                <rect key="frame" x="37" y="556" width="300" height="40"/>
+                                <rect key="frame" x="37" y="491" width="300" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="UWZ-Ry-icg"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="2sB-Gk-h4Q"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
                                 <state key="normal" title="画像をつけて投稿" backgroundImage="Btn2"/>
@@ -559,33 +561,47 @@
                                     <segue destination="oAy-KL-H3R" kind="show" id="C8V-yE-APo"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvT-oI-OaP">
+                                <rect key="frame" x="37" y="556" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="wn8-qB-OGc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
+                                <state key="normal" title="キャンセルして戻る" backgroundImage="Btn3"/>
+                                <connections>
+                                    <segue destination="rdc-2k-kfV" kind="unwind" unwindAction="unwind:" id="B0p-Th-fa5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="AOX-uc-vKt" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="0b8-Zh-2cc"/>
-                            <constraint firstItem="szb-lR-jLe" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="18W-Bn-1xd"/>
-                            <constraint firstItem="qJU-rN-nfh" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="4Rd-lx-a0Q"/>
-                            <constraint firstItem="q6m-UB-YAm" firstAttribute="top" secondItem="qjd-Oh-CeH" secondAttribute="bottom" constant="20" id="AfF-jW-hHM"/>
-                            <constraint firstItem="q6m-UB-YAm" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="Iw9-Dm-X3O"/>
-                            <constraint firstItem="u9E-uR-SS7" firstAttribute="top" secondItem="tnh-3o-SoN" secondAttribute="bottom" constant="50" id="KB5-rJ-Xpk"/>
-                            <constraint firstItem="u9E-uR-SS7" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="LGr-a8-3MJ"/>
-                            <constraint firstItem="szb-lR-jLe" firstAttribute="top" secondItem="q6m-UB-YAm" secondAttribute="bottom" constant="10" id="MVI-Yz-wGc"/>
-                            <constraint firstItem="AOX-uc-vKt" firstAttribute="top" secondItem="u9E-uR-SS7" secondAttribute="bottom" constant="30" id="Rji-we-Jzg"/>
-                            <constraint firstItem="qjd-Oh-CeH" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="TxS-BJ-E2r"/>
-                            <constraint firstItem="qJU-rN-nfh" firstAttribute="top" secondItem="szb-lR-jLe" secondAttribute="bottom" constant="20" id="Xse-Ro-0uZ"/>
-                            <constraint firstItem="cCc-Xv-uaM" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="aEJ-4i-egh"/>
-                            <constraint firstItem="tnh-3o-SoN" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="cUX-Bb-Oku"/>
+                            <constraint firstItem="u9E-uR-SS7" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="16a-Gj-6Xp"/>
+                            <constraint firstItem="AOX-uc-vKt" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="3cs-we-N75"/>
+                            <constraint firstItem="tnh-3o-SoN" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="4So-U4-54b"/>
+                            <constraint firstItem="szb-lR-jLe" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="AZh-iA-rlm"/>
+                            <constraint firstItem="cCc-Xv-uaM" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="HbE-B8-5yz"/>
+                            <constraint firstItem="qJU-rN-nfh" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="LEc-Dl-IDh"/>
+                            <constraint firstItem="cCc-Xv-uaM" firstAttribute="top" secondItem="u8F-Op-ZIQ" secondAttribute="bottom" constant="15" id="Mha-1F-tAh"/>
+                            <constraint firstItem="pvT-oI-OaP" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="MsS-Kp-09r"/>
+                            <constraint firstItem="qJU-rN-nfh" firstAttribute="top" secondItem="szb-lR-jLe" secondAttribute="bottom" constant="15" id="QPc-zI-DuK"/>
+                            <constraint firstItem="qjd-Oh-CeH" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="Sbw-nR-ExL"/>
+                            <constraint firstItem="u9E-uR-SS7" firstAttribute="top" secondItem="tnh-3o-SoN" secondAttribute="bottom" constant="25" id="WDs-Q8-Fg6"/>
+                            <constraint firstItem="tnh-3o-SoN" firstAttribute="top" secondItem="qJU-rN-nfh" secondAttribute="bottom" constant="5" id="WQ0-hd-pRb"/>
+                            <constraint firstItem="szb-lR-jLe" firstAttribute="top" secondItem="q6m-UB-YAm" secondAttribute="bottom" constant="5" id="ZXO-86-j0X"/>
                             <constraint firstItem="chl-pV-tEg" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="d19-Lt-8xk"/>
-                            <constraint firstItem="cCc-Xv-uaM" firstAttribute="top" secondItem="u8F-Op-ZIQ" secondAttribute="bottom" constant="20" id="d9m-29-M9U"/>
-                            <constraint firstItem="u8F-Op-ZIQ" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="dYL-1F-VjF"/>
-                            <constraint firstItem="u8F-Op-ZIQ" firstAttribute="top" secondItem="chl-pV-tEg" secondAttribute="bottom" constant="10" id="eZN-Yd-Lxu"/>
-                            <constraint firstItem="qjd-Oh-CeH" firstAttribute="top" secondItem="cCc-Xv-uaM" secondAttribute="bottom" constant="10" id="nKL-a7-RBI"/>
-                            <constraint firstItem="tnh-3o-SoN" firstAttribute="top" secondItem="qJU-rN-nfh" secondAttribute="bottom" constant="10" id="oTx-dZ-LTs"/>
+                            <constraint firstItem="AOX-uc-vKt" firstAttribute="top" secondItem="u9E-uR-SS7" secondAttribute="bottom" constant="25" id="mFs-W7-x5Y"/>
+                            <constraint firstItem="u8F-Op-ZIQ" firstAttribute="top" secondItem="chl-pV-tEg" secondAttribute="bottom" constant="5" id="mVh-f0-hqZ"/>
+                            <constraint firstItem="q6m-UB-YAm" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="moE-wW-JoR"/>
                             <constraint firstItem="chl-pV-tEg" firstAttribute="top" secondItem="ePC-bc-0g2" secondAttribute="top" constant="10" id="pIG-ik-37D"/>
+                            <constraint firstItem="q6m-UB-YAm" firstAttribute="top" secondItem="qjd-Oh-CeH" secondAttribute="bottom" constant="15" id="s2S-gc-Bqb"/>
+                            <constraint firstItem="pvT-oI-OaP" firstAttribute="top" secondItem="AOX-uc-vKt" secondAttribute="bottom" constant="25" id="sxt-WQ-mzB"/>
+                            <constraint firstItem="u8F-Op-ZIQ" firstAttribute="centerX" secondItem="AbI-74-RLv" secondAttribute="centerX" id="uaZ-gf-FJu"/>
+                            <constraint firstItem="qjd-Oh-CeH" firstAttribute="top" secondItem="cCc-Xv-uaM" secondAttribute="bottom" constant="5" id="zQl-BW-jl9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ePC-bc-0g2"/>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="pvT-oI-OaP" id="gBV-TV-ahK"/>
                         <outlet property="categoryText" destination="u8F-Op-ZIQ" id="IEg-Gn-8Ai"/>
                         <outlet property="contentsText" destination="qjd-Oh-CeH" id="gkq-Pa-11z"/>
                         <outlet property="postWithPhoto" destination="AOX-uc-vKt" id="RsO-KC-mJJ"/>
@@ -595,6 +611,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LJv-pR-g8Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="rdc-2k-kfV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4002" y="27"/>
         </scene>
@@ -857,4 +874,7 @@
         <image name="Btn2" width="300" height="40"/>
         <image name="Btn3" width="300" height="40"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="0gi-RD-ILx"/>
+    </inferredMetricsTieBreakers>
 </document>

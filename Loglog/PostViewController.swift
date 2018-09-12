@@ -20,6 +20,7 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     @IBOutlet weak var postWithoutPhoto: UIButton!
     @IBOutlet weak var postWithPhoto: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     //user defaultsを使う準備
     let userDefaults:UserDefaults = UserDefaults.standard
