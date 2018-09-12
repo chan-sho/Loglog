@@ -32,7 +32,7 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
         //位置情報の利用許可を変更する画面をポップアップ表示する。
         currentMapManager.requestWhenInUseAuthorization()
         
-        postFromCurrent.backgroundColor = UIColor.white
+        postFromCurrent.backgroundColor = UIColor.white.withAlphaComponent(0.8)
         postFromCurrent.layer.borderColor = UIColor.darkGray.cgColor
         postFromCurrent.layer.borderWidth = 1.0
         postFromCurrent.layer.cornerRadius = 10.0 //丸みを数値で変更できる

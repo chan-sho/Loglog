@@ -26,7 +26,7 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         inputText.delegate = self
         
-        postWithSearch.backgroundColor = UIColor.white
+        postWithSearch.backgroundColor = UIColor.white.withAlphaComponent(0.8)
         postWithSearch.layer.borderColor = UIColor.darkGray.cgColor
         postWithSearch.layer.borderWidth = 1.0
         postWithSearch.layer.cornerRadius = 10.0 //丸みを数値で変更できる
