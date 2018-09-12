@@ -151,12 +151,17 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
             return
         }
         
+        if result.isCancelled {
+            SVProgressHUD.showError(withStatus: "facebookサインインをキャンセルしました。")
+            return
+        }
+        
         let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         
         Auth.auth().signInAndRetrieveData(with: credential) { (user, error) in
             if let error = error {
                 print("DEBUG_PRINT: " + error.localizedDescription)
-                SVProgressHUD.showError(withStatus: "facebookサインインに失敗しました。②")
+                SVProgressHUD.showError(withStatus: "facebookサインインに失敗しました。")
                 return
             }
             print("DEBUG_PRINT: facebookサインインに成功しました！！（by パターン②）")
@@ -180,12 +185,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
-        
         if let error = error {
             print("DEBUG_PRINT: " + error.localizedDescription)
             SVProgressHUD.showError(withStatus: "Googleサインインに失敗しました。")
             return
         }
+        
         let authentication = user.authentication
         // Googleのトークンを渡し、Firebaseクレデンシャルを取得する。
         let credential = GoogleAuthProvider.credential(withIDToken: (authentication?.idToken)!,accessToken: (authentication?.accessToken)!)
