@@ -90,38 +90,29 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
     }
     
     //位置情報取得時の呼び出しメソッド
+    var firstFlg = false
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        for location in locations {
-            
-            //中心座標
-            let center = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-            
-            //表示範囲
-            let span = MKCoordinateSpanMake(0.01, 0.01)
-            
-            //中心座標と表示範囲をマップに登録する。
-            let region = MKCoordinateRegionMake(center, span)
-            currentMapView.setRegion(region, animated:true)
-            
-            //ピンを作成してマップビューに登録する。
-            pin.coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, pin.coordinate.longitude)
-            self.currentMapView.addAnnotation(pin)
-            //ピンのタイトルを設定
-            pin.title = "この場所で良いですか？"
-            //ピンのサブタイトルの設定
-            pin.subtitle = "OKなら「投稿準備」をクリック"
-            
-            //座標確認
-            print("\(pin.coordinate)")
-            print("\(pin.coordinate.latitude)")
-            print("\(pin.coordinate.longitude)")
-            
+        if (firstFlg == false) {
+            for location in locations {
+                
+                //中心座標
+                let center = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+                //表示範囲
+                let span = MKCoordinateSpanMake(0.01, 0.01)
+                //中心座標と表示範囲をマップに登録する。
+                let region = MKCoordinateRegionMake(center, span)
+                currentMapView.setRegion(region, animated:true)
+                
+            }
+            firstFlg = true
         }
     }
     
+    
     @IBAction func longPressGesture(_ sender: UILongPressGestureRecognizer) {
-        //この処理を書くことにより、指を離したときだけ反応するようにする（何回も呼び出されないようになる。最後の話したタイミングで呼ばれる）
+        //この処理を書くことにより、指を離したときだけ反応するようにする（何回も呼び出されないようになる。最後の離したタイミングで呼ばれる）
         if sender.state != UIGestureRecognizerState.began {
             return
         }
@@ -159,9 +150,6 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
         print("Lati座標確認＝\(pin.coordinate.latitude)")
         print("Long座標確認＝\(pin.coordinate.longitude)")
         
-        //* let postViewController = self.storyboard!.instantiateViewController(withIdentifier: "Post")
-        //NavigationControllerの移動を強制定義してみたらいけた！！
-        //* self.navigationController?.pushViewController(postViewController, animated: true)
     }
 
     

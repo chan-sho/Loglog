@@ -34,6 +34,10 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         // テーブルセルのタップを【無効】にする
         tableView.allowsSelection = false
         
+        //separatorを左端始まりにして、黒色にする
+        tableView.separatorColor = UIColor.black
+        tableView.separatorInset = .zero
+        
         let nib = UINib(nibName: "PostedDataViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         

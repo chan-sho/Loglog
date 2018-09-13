@@ -77,12 +77,8 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         self.navigationController?.pushViewController(viewController, animated: true)
         }
         else {
+            //２つ前の画面に戻る
             self.presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
-            //* guard let addPhotoVc = self.presentingViewController as? AddPhotoViewController else {return}
-            //* addPhotoVc.handleCancelButton(UIButton())
-            
-            //* let postViewController = self.storyboard?.instantiateViewController(withIdentifier: "Post")
-            //* self.present(postViewController!, animated: true, completion: nil)
         }
 
     }
