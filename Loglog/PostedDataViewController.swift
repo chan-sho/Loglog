@@ -18,6 +18,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var textSearchBar: UISearchBar!
     
     var postArray: [PostData] = []
+    var postArrayBySearch: [PostData] = []
     
     // DatabaseのobserveEventの登録状態を表す
     var observing = false
@@ -43,6 +44,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         textSearchBar.placeholder = "カテゴリー／内容などで検索"
         //何も入力されていなくてもReturnキーを押せるようにする。
         textSearchBar.enablesReturnKeyAutomatically = false
+        tableView.tableHeaderView = textSearchBar
         
         let nib = UINib(nibName: "PostedDataViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
@@ -54,6 +56,17 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         
         // TableViewを再表示する
         self.tableView.reloadData()
+    }
+    
+    // Returnボタンを押した際にキーボードを消す
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //キーボードを閉じる
+        self.view.endEditing(true)
+    }
+    
+    // テキスト以外の場所をタッチした際にキーボードを消す
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        textSearchBar.resignFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -236,4 +249,14 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
+    //検索バーでテキストを打ち込まれた／全て消された時の呼び出しメソッド
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if(textSearchBar.text == "") {
+            self.tableView.reloadData()
+        } else {
+            postArrayBySearch = postArray.filter({ ($0.category?.contains(textSearchBar.text!))! || ($0.contents?.contains(textSearchBar.text!))! || ($0.relatedURL?.contains(textSearchBar.text!))! || ($0.secretpass?.contains(textSearchBar.text!))! })
+            self.tableView.reloadData()
+        }
+    }
 }
+
