@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class PostedDataViewCell: UITableViewCell {
     
@@ -24,7 +25,33 @@ class PostedDataViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundColor = UIColor.lightGray.withAlphaComponent(0.10)
+        backgroundColor = UIColor.lightGray.withAlphaComponent(0.05)
+        
+        contents.isUserInteractionEnabled = true
+        relatedURL.isUserInteractionEnabled = true
+        secretPass.isUserInteractionEnabled = true
+        id.isUserInteractionEnabled = true
+        
+        // ↓各Labelをタップする事でコピーができるようにする（ここから）
+        let tgContents = UILongPressGestureRecognizer(target: self, action: #selector(PostedDataViewCell.tappedContents(_:)))
+        contents.addGestureRecognizer(tgContents)
+        
+        let tgRelatedURL = UILongPressGestureRecognizer(target: self, action: #selector(PostedDataViewCell.tappedrelatedURL(_:)))
+        relatedURL.addGestureRecognizer(tgRelatedURL)
+        
+        let tgSecretPass = UILongPressGestureRecognizer(target: self, action: #selector(PostedDataViewCell.tappedsecretPass(_:)))
+        secretPass.addGestureRecognizer(tgSecretPass)
+        
+        let tgId = UILongPressGestureRecognizer(target: self, action: #selector(PostedDataViewCell.tappedid(_:)))
+        id.addGestureRecognizer(tgId)
+        // ↑各Labelをタップする事でコピーができるようにする（ここまで）
+        
+        tgContents.cancelsTouchesInView = false
+        tgRelatedURL.cancelsTouchesInView = false
+        tgSecretPass.cancelsTouchesInView = false
+        tgSecretPass.cancelsTouchesInView = false
+        tgId.cancelsTouchesInView = false
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -32,6 +59,34 @@ class PostedDataViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    // ↓各Labelをタップする事でコピーができるようにする（ここから）
+    @objc func tappedContents(_ sender:UILongPressGestureRecognizer) {
+        UIPasteboard.general.string = contents.text
+        print("clip board of contents:\(UIPasteboard.general.string!)")
+        SVProgressHUD.showSuccess(withStatus: "テキストコピー完了：\n\(UIPasteboard.general.string!)")
+        SVProgressHUD.dismiss(withDelay: 2.0)
+    }
+    @objc func tappedrelatedURL(_ sender:UILongPressGestureRecognizer) {
+        UIPasteboard.general.string = relatedURL.text
+        print("clip board of relatedURL:\(UIPasteboard.general.string!)")
+        SVProgressHUD.showSuccess(withStatus: "テキストコピー完了：\n\(UIPasteboard.general.string!)")
+        SVProgressHUD.dismiss(withDelay: 2.0)
+    }
+    @objc func tappedsecretPass(_ sender:UILongPressGestureRecognizer) {
+        UIPasteboard.general.string = secretPass.text
+        print("clip board of secretPass:\(UIPasteboard.general.string!)")
+        SVProgressHUD.showSuccess(withStatus: "テキストコピー完了：\n\(UIPasteboard.general.string!)")
+        SVProgressHUD.dismiss(withDelay: 2.0)
+    }
+    @objc func tappedid(_ sender:UILongPressGestureRecognizer) {
+        UIPasteboard.general.string = id.text
+        print("clip board of id:\(UIPasteboard.general.string!)")
+        SVProgressHUD.showSuccess(withStatus: "テキストコピー完了：\n\(UIPasteboard.general.string!)")
+        SVProgressHUD.dismiss(withDelay: 2.0)
+    }
+    // ↑各Labelをタップする事でコピーができるようにする（ここまで）
+    
     
     func setPostData(_ postData: PostData) {
         

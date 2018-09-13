@@ -11,7 +11,7 @@ import Firebase
 import FirebaseDatabase
 import SVProgressHUD
 
-class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var categoryText: UITextField!
     @IBOutlet weak var contentsText: UITextView!
@@ -21,6 +21,10 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     @IBOutlet weak var postWithoutPhoto: UIButton!
     @IBOutlet weak var postWithPhoto: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
+    
+    // categoryTextにPickerを実装する準備
+    var pickerView: UIPickerView = UIPickerView()
+    let list = ["思い出", "伝えられなかったありがとう", "親切な貴方へありがとう", "ジョブマッチング", "秘密の場所", "観光スポット", "グルメ（ランチ）", "グルメ（ディナー）", "レジャー", "その他"]
     
     //user defaultsを使う準備
     let userDefaults:UserDefaults = UserDefaults.standard
@@ -73,12 +77,27 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         bg.image = UIImage(named: "背景5")
         bg.layer.zPosition = -1
         self.view.addSubview(bg)
+        
+        // categoryTextにPickerを実装する準備
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        pickerView.showsSelectionIndicator = true
+        
+        let toolbar = UIToolbar(frame: CGRectMake(0, 0, 0, 35))
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(PostViewController.done))
+        let cancelItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(PostViewController.cancel))
+        toolbar.setItems([cancelItem, doneItem], animated: true)
+        
+        self.categoryText.inputView = pickerView
+        self.categoryText.inputAccessoryView = toolbar
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     @IBAction func postWithoutPhoto(_ sender: Any) {
         userDefaults.set(categoryText.text, forKey: "categoryText")
@@ -95,19 +114,40 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         userDefaults.set(secretPass.text, forKey: "secretPass")
     }
     
+    
+    // categoryTextにPickerを実装する
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return list.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return list[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.categoryText.text = list[row]
+    }
+    
+    @objc func cancel() {
+        self.categoryText.text = ""
+        self.categoryText.endEditing(true)
+    }
+    
+    @objc func done() {
+        self.categoryText.endEditing(true)
+    }
+    
+    func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
+        return CGRect(x: x, y: y, width: width, height: height)
+    }
+    
+    
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
         // 他の画面から segue を使って戻ってきた時に呼ばれる
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

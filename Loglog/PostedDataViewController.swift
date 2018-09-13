@@ -12,9 +12,10 @@ import FirebaseAuth
 import FirebaseDatabase
 import SVProgressHUD
 
-class PostedDataViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class PostedDataViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var textSearchBar: UISearchBar!
     
     var postArray: [PostData] = []
     
@@ -26,7 +27,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         
         // HUDで投稿完了を表示する
         SVProgressHUD.show(withStatus: "データ読み込み中です")
-        SVProgressHUD.dismiss(withDelay: 3.0)
+        SVProgressHUD.dismiss(withDelay: 4.0)
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -37,6 +38,11 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         //separatorを左端始まりにして、黒色にする
         tableView.separatorColor = UIColor.black
         tableView.separatorInset = .zero
+        
+        textSearchBar.delegate = self
+        textSearchBar.placeholder = "カテゴリー／内容などで検索"
+        //何も入力されていなくてもReturnキーを押せるようにする。
+        textSearchBar.enablesReturnKeyAutomatically = false
         
         let nib = UINib(nibName: "PostedDataViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
@@ -229,4 +235,5 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         }
         
     }
+    
 }
