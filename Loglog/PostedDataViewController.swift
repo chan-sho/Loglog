@@ -76,6 +76,10 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        // TableViewを再表示する（※superの前に入れておくのが大事！！）
+        self.tableView.dataSource = self
+        self.tableView.reloadData()
+        
         super.viewWillAppear(animated)
         print("DEBUG_PRINT: viewWillAppear")
         
