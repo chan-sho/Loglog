@@ -18,8 +18,8 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var textSearchBar: UISearchBar!
     
     var postArray: [PostData] = []
-    var postArrayNoSearch: [PostData] = []
     var postArrayBySearch: [PostData] = []
+    var postArrayAll: [PostData] = []
     
     // DatabaseのobserveEventの登録状態を表す
     var observing = false
@@ -55,9 +55,6 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         // テーブル行の高さの概算値を設定しておく
         tableView.estimatedRowHeight = UIScreen.main.bounds.width + 400
         
-        //検索バーの初期設定
-        textSearchBar.text = ""
-        
         // TableViewを再表示する
         self.tableView.reloadData()
     }
@@ -68,7 +65,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         self.view.endEditing(true)
     }
     
-    // テキスト以外の場所をタッチした際にキーボードを消す
+    // テキスト以外の場所をタッチした際にキーボードを消す（←機能していない・・・）
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         textSearchBar.resignFirstResponder()
     }
@@ -92,7 +89,15 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                     // PostDataクラスを生成して受け取ったデータを設定する
                     if let uid = Auth.auth().currentUser?.uid {
                         let postData = PostData(snapshot: snapshot, myId: uid)
-                        self.postArray.insert(postData, at: 0)
+                        
+                        // 始めのinsertの段階でuidと異なるmyMap(ID)の投稿データを除いておく
+                        if postData.myMap == [] || postData.myMap.contains(uid) {
+                            
+                            self.postArray.insert(postData, at: 0)
+                            // 念のため同じデータをpostArrayAllに入れておく
+                            self.postArrayAll.insert(postData, at: 0)
+                            
+                        }
                         
                         // TableViewを再表示する
                         self.tableView.reloadData()
@@ -148,32 +153,29 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
-    
     //検索バーでテキストが空白or全て消された時 / テキスト入力された時の呼び出しメソッド
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let uid = Auth.auth().currentUser?.uid
-        
+     
         if textSearchBar.text == "" {
-            // myMapが空 or 自身のuidと同じ
-            postArray = postArray.filter( { $0.myMap == [] || ($0.myMap.contains(uid!))} )
+            tableView.reloadData()
         }
         else {
-            // 検索バーのテキストを一部でも含む　もしくは　myMapが空 or 自身のuidと同じ
-            postArrayBySearch = postArray.filter({ ($0.category?.contains(textSearchBar.text!))! || ($0.contents?.contains(textSearchBar.text!))! || ($0.relatedURL?.contains(textSearchBar.text!))! || ($0.secretpass?.contains(textSearchBar.text!))! || $0.myMap == [] || ($0.myMap.contains(uid!))})
+            // 検索バーのテキストを一部でも含む
+            postArrayBySearch = postArrayAll.filter({ ($0.category?.contains(textSearchBar.text!))! || ($0.contents?.contains(textSearchBar.text!))! || ($0.relatedURL?.contains(textSearchBar.text!))! || ($0.secretpass?.contains(textSearchBar.text!))!})
+            
+            tableView.reloadData()
         }
-        
-        tableView.reloadData()
     }
     
     // tableviewの行数をカウント
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-             if textSearchBar.text == "" {
-                return postArray.count
-            }
-             else {
-                return postArrayBySearch.count
-            }
+        if textSearchBar.text == "" {
+            return postArray.count
         }
+        else {
+            return postArrayBySearch.count
+        }
+    }
     
     // tablewviewのcellにデータを受け渡すfunc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
