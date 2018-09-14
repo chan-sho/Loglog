@@ -44,7 +44,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         textSearchBar.placeholder = "カテゴリー／内容などで検索"
         //何も入力されていなくてもReturnキーを押せるようにする。
         textSearchBar.enablesReturnKeyAutomatically = false
-        tableView.tableHeaderView = textSearchBar
+        //* tableView.tableHeaderView = textSearchBar
         
         let nib = UINib(nibName: "PostedDataViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
