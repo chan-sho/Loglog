@@ -18,6 +18,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var textSearchBar: UISearchBar!
     
     var postArray: [PostData] = []
+    var postArrayNoSearch: [PostData] = []
     var postArrayBySearch: [PostData] = []
     
     // DatabaseのobserveEventの登録状態を表す
@@ -53,6 +54,9 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         tableView.rowHeight = UITableViewAutomaticDimension
         // テーブル行の高さの概算値を設定しておく
         tableView.estimatedRowHeight = UIScreen.main.bounds.width + 400
+        
+        //検索バーの初期設定
+        textSearchBar.text = ""
         
         // TableViewを再表示する
         self.tableView.reloadData()
@@ -102,6 +106,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                         // PostDataクラスを生成して受け取ったデータを設定する
                         let postData = PostData(snapshot: snapshot, myId: uid)
                         
+                        
                         // 保持している配列からidが同じものを探す
                         var index: Int = 0
                         for post in self.postArray {
@@ -143,10 +148,19 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
+    
     //検索バーでテキストが空白or全て消された時 / テキスト入力された時の呼び出しメソッド
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let uid = Auth.auth().currentUser?.uid
         
-        postArrayBySearch = postArray.filter({ ($0.category?.contains(textSearchBar.text!))! || ($0.contents?.contains(textSearchBar.text!))! || ($0.relatedURL?.contains(textSearchBar.text!))! || ($0.secretpass?.contains(textSearchBar.text!))! })
+        if textSearchBar.text == "" {
+            // myMapが空 or 自身のuidと同じ
+            postArray = postArray.filter( { $0.myMap == [] || ($0.myMap.contains(uid!))} )
+        }
+        else {
+            // 検索バーのテキストを一部でも含む　もしくは　myMapが空 or 自身のuidと同じ
+            postArrayBySearch = postArray.filter({ ($0.category?.contains(textSearchBar.text!))! || ($0.contents?.contains(textSearchBar.text!))! || ($0.relatedURL?.contains(textSearchBar.text!))! || ($0.secretpass?.contains(textSearchBar.text!))! || $0.myMap == [] || ($0.myMap.contains(uid!))})
+        }
         
         tableView.reloadData()
     }
@@ -191,6 +205,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             }
         }
     
+    
     // セル内のlikeボタンがタップされた時に呼ばれるメソッド
     @objc func handleButton(_ sender: UIButton, forEvent event: UIEvent) {
         print("DEBUG_PRINT: likeボタンがタップされました。")
@@ -230,6 +245,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             
         }
     }
+    
     
     // セル内のMyMapボタンがタップされた時に呼ばれるメソッド
     @objc func handleMyMapButton(_ sender: UIButton, forEvent event: UIEvent) {
