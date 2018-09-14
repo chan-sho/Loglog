@@ -143,23 +143,53 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return postArray.count
+    //検索バーでテキストが空白or全て消された時 / テキスト入力された時の呼び出しメソッド
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        postArrayBySearch = postArray.filter({ ($0.category?.contains(textSearchBar.text!))! || ($0.contents?.contains(textSearchBar.text!))! || ($0.relatedURL?.contains(textSearchBar.text!))! || ($0.secretpass?.contains(textSearchBar.text!))! })
+        
+        tableView.reloadData()
     }
     
+    // tableviewの行数をカウント
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+             if textSearchBar.text == "" {
+                return postArray.count
+            }
+             else {
+                return postArrayBySearch.count
+            }
+        }
+    
+    // tablewviewのcellにデータを受け渡すfunc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // セルを取得してデータを設定する
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostedDataViewCell
-        cell.setPostData(postArray[indexPath.row])
-        
-        // セル内のボタンのアクションをソースコードで設定する
-        cell.likeButton.addTarget(self, action:#selector(handleButton(_:forEvent:)), for: .touchUpInside)
-        
-        // セル内のmyMapボタンを追加で管理
-        cell.myMapButton.addTarget(self, action:#selector(handleMyMapButton(_:forEvent:)), for: .touchUpInside)
-        
-        return cell
-    }
+        if textSearchBar.text == "" {
+                // セルを取得してデータを設定する
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostedDataViewCell
+                cell.setPostData(postArray[indexPath.row])
+                
+                // セル内のボタンのアクションをソースコードで設定する
+                cell.likeButton.addTarget(self, action:#selector(handleButton(_:forEvent:)), for: .touchUpInside)
+                
+                // セル内のmyMapボタンを追加で管理
+                cell.myMapButton.addTarget(self, action:#selector(handleMyMapButton(_:forEvent:)), for: .touchUpInside)
+                
+                return cell
+            }
+        else {
+                // セルを取得してデータを設定する
+                let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostedDataViewCell
+                cell.setPostData(postArrayBySearch[indexPath.row])
+                
+                // セル内のボタンのアクションをソースコードで設定する
+                cell.likeButton.addTarget(self, action:#selector(handleButton(_:forEvent:)), for: .touchUpInside)
+                
+                // セル内のmyMapボタンを追加で管理
+                cell.myMapButton.addTarget(self, action:#selector(handleMyMapButton(_:forEvent:)), for: .touchUpInside)
+                
+                return cell
+            }
+        }
     
     // セル内のlikeボタンがタップされた時に呼ばれるメソッド
     @objc func handleButton(_ sender: UIButton, forEvent event: UIEvent) {
@@ -223,6 +253,8 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             for myMapId in postData.myMap {
                 if myMapId == uid {
                     postData.myMap.removeAll()
+                    SVProgressHUD.showSuccess(withStatus: "「自分専用」を解除しました\n※この投稿は他のユーザーにも表示されます")
+                    SVProgressHUD.dismiss(withDelay: 3.0)
                     break
                 }
                 if myMapId != uid {
@@ -234,6 +266,8 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             else {
                 if postData.userID == uid {
                     postData.myMap.append(uid)
+                    SVProgressHUD.showSuccess(withStatus: "「自分専用」に設定しました\n※この投稿は他のユーザーからは見えなくなります")
+                    SVProgressHUD.dismiss(withDelay: 3.0)
                     }
                     else {
                     return
@@ -249,14 +283,5 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
-    //検索バーでテキストを打ち込まれた／全て消された時の呼び出しメソッド
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if(textSearchBar.text == "") {
-            self.tableView.reloadData()
-        } else {
-            postArrayBySearch = postArray.filter({ ($0.category?.contains(textSearchBar.text!))! || ($0.contents?.contains(textSearchBar.text!))! || ($0.relatedURL?.contains(textSearchBar.text!))! || ($0.secretpass?.contains(textSearchBar.text!))! })
-            self.tableView.reloadData()
-        }
-    }
 }
 
