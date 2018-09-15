@@ -217,6 +217,18 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="検索"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzO-UP-LaC">
+                                <rect key="frame" x="162.5" y="55" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="7Oi-cd-wcy"/>
+                                    <constraint firstAttribute="width" secondItem="pzO-UP-LaC" secondAttribute="height" multiplier="1:1" id="ZfR-mg-Ocx"/>
+                                    <constraint firstAttribute="height" constant="50" id="z5l-mC-dia"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="現在地"/>
+                                <connections>
+                                    <action selector="userLocationButton:" destination="7bl-uk-9cF" eventType="touchUpInside" id="flV-ni-ifB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -225,10 +237,12 @@
                             <constraint firstItem="VTF-Jj-U8F" firstAttribute="trailing" secondItem="oBD-ec-M0y" secondAttribute="trailing" id="65h-Qo-2Sg"/>
                             <constraint firstItem="oBD-ec-M0y" firstAttribute="top" secondItem="VTF-Jj-U8F" secondAttribute="top" id="83v-af-rhP"/>
                             <constraint firstItem="VTF-Jj-U8F" firstAttribute="trailing" secondItem="F5h-Lm-ys0" secondAttribute="trailing" id="8Tc-Ci-nfW"/>
+                            <constraint firstItem="pzO-UP-LaC" firstAttribute="centerX" secondItem="TB1-Ch-ZrK" secondAttribute="centerX" id="enr-vG-J7Q"/>
                             <constraint firstItem="wVc-kL-bVS" firstAttribute="leading" secondItem="VTF-Jj-U8F" secondAttribute="leading" constant="5" id="iZe-LN-crk"/>
                             <constraint firstItem="wVc-kL-bVS" firstAttribute="top" secondItem="oBD-ec-M0y" secondAttribute="bottom" constant="5" id="k7j-xm-xz1"/>
                             <constraint firstItem="F5h-Lm-ys0" firstAttribute="leading" secondItem="VTF-Jj-U8F" secondAttribute="leading" id="ko0-av-MoV"/>
                             <constraint firstItem="VTF-Jj-U8F" firstAttribute="trailing" secondItem="5Bd-uB-wiR" secondAttribute="trailing" constant="5" id="nUM-jH-Kl1"/>
+                            <constraint firstItem="pzO-UP-LaC" firstAttribute="top" secondItem="oBD-ec-M0y" secondAttribute="bottom" constant="5" id="q24-1b-Aat"/>
                             <constraint firstItem="oBD-ec-M0y" firstAttribute="leading" secondItem="VTF-Jj-U8F" secondAttribute="leading" id="sxo-yr-AKq"/>
                             <constraint firstItem="VTF-Jj-U8F" firstAttribute="bottom" secondItem="F5h-Lm-ys0" secondAttribute="bottom" id="vbF-hh-7hh"/>
                         </constraints>
@@ -477,6 +491,18 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="検索"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQ8-aM-CKp">
+                                <rect key="frame" x="162" y="25" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="59O-km-YkQ"/>
+                                    <constraint firstAttribute="width" constant="50" id="Ft9-qK-KmR"/>
+                                    <constraint firstAttribute="width" secondItem="OQ8-aM-CKp" secondAttribute="height" multiplier="1:1" id="Qdt-2d-wwi"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="現在地"/>
+                                <connections>
+                                    <action selector="userLocationButton:" destination="N0m-aq-8Lq" eventType="touchUpInside" id="Zq4-Bd-MJZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -486,7 +512,9 @@
                             <constraint firstItem="Jlu-qZ-hXf" firstAttribute="top" secondItem="GCR-n4-y4A" secondAttribute="top" id="eoF-tx-glV"/>
                             <constraint firstItem="GCR-n4-y4A" firstAttribute="bottom" secondItem="Jlu-qZ-hXf" secondAttribute="bottom" id="fY9-5m-pA3"/>
                             <constraint firstItem="Jlu-qZ-hXf" firstAttribute="leading" secondItem="GCR-n4-y4A" secondAttribute="leading" id="odv-Z6-vdC"/>
+                            <constraint firstItem="OQ8-aM-CKp" firstAttribute="top" secondItem="GCR-n4-y4A" secondAttribute="top" constant="5" id="vbr-0A-0K4"/>
                             <constraint firstItem="eiC-1U-diE" firstAttribute="top" secondItem="GCR-n4-y4A" secondAttribute="top" constant="5" id="wbp-g3-Jdp"/>
+                            <constraint firstItem="OQ8-aM-CKp" firstAttribute="centerX" secondItem="rda-iN-tmC" secondAttribute="centerX" id="zWl-j1-KsW"/>
                             <constraint firstItem="wHE-bK-Uqj" firstAttribute="top" secondItem="GCR-n4-y4A" secondAttribute="top" constant="5" id="zYe-KN-3DA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GCR-n4-y4A"/>
@@ -495,6 +523,7 @@
                         <outlet property="currentMapView" destination="Jlu-qZ-hXf" id="IZt-Nl-dt1"/>
                         <outlet property="postFromCurrent" destination="wHE-bK-Uqj" id="POC-2x-lqj"/>
                         <outlet property="searchButton" destination="eiC-1U-diE" id="4dd-US-egm"/>
+                        <outlet property="userLocationButton" destination="OQ8-aM-CKp" id="ZhX-sH-eiw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eWr-z3-NVH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -926,6 +955,7 @@
         <image name="Btn3" width="300" height="40"/>
         <image name="投稿準備" width="100" height="100"/>
         <image name="検索" width="100" height="100"/>
+        <image name="現在地" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="WZW-Mr-Cpv"/>

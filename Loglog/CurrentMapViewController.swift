@@ -16,6 +16,7 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
     @IBOutlet weak var currentMapView: MKMapView!
     @IBOutlet weak var postFromCurrent: UIButton!
     @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var userLocationButton: UIButton!
     
     let pin = MKPointAnnotation()
     
@@ -27,6 +28,10 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //ユーザーの場所を表示する
+        self.currentMapView.showsUserLocation = true
+        self.currentMapView.userTrackingMode = MKUserTrackingMode.followWithHeading
         
         //デリゲート先に自分を設定する。
         currentMapManager.delegate = self
@@ -164,7 +169,12 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
         print("Lati座標確認＝\(pin.coordinate.latitude)")
         print("Long座標確認＝\(pin.coordinate.longitude)")
     }
-
+    
+    
+    @IBAction func userLocationButton(_ sender: Any) {
+        currentMapView.setCenter(currentMapView.userLocation.coordinate, animated: true)
+    }
+    
     
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
         // 他の画面から segue を使って戻ってきた時に呼ばれる

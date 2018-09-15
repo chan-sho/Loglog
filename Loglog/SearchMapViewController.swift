@@ -132,6 +132,13 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, MKMapViewD
     }
     
     
+    @IBAction func userLocationButton(_ sender: Any) {
+        self.displayMap.showsUserLocation = true
+        self.displayMap.userTrackingMode = MKUserTrackingMode.followWithHeading
+        displayMap.setCenter(displayMap.userLocation.coordinate, animated: true)
+    }
+    
+    
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
         // 他の画面から segue を使って戻ってきた時に呼ばれる
     }
