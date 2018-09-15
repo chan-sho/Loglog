@@ -12,11 +12,13 @@ import Firebase
 import FirebaseAuth
 import SVProgressHUD
 
+
 class SettingViewController: UIViewController, UITextFieldDelegate {
-    
+
     @IBOutlet weak var displayNameTextField: UITextField!
     @IBOutlet weak var mailAddressTextField: UITextField!
     @IBOutlet weak var passWordTextField: UITextField!
+    
     
     @IBAction func handleNameChangeButton(_ sender: Any) {
         if let displayName = displayNameTextField.text {
@@ -49,6 +51,7 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
+    
     @IBAction func handleMailChangeButton(_ sender: Any) {
         if let mailAddress = mailAddressTextField.text {
             
@@ -74,17 +77,18 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
+    
     @IBAction func handlePasswordChangeButton(_ sender: Any) {
     }
+    
     
     @IBAction func handleLogoutButton(_ sender: Any) {
         // ログアウトする
         try! Auth.auth().signOut()
         
-        // ログイン画面を表示する
-        let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "Login")
-        self.present(loginViewController!, animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
+    
     
     // Returnボタンを押した際にキーボードを消す
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -94,12 +98,14 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    
     // テキスト以外の場所をタッチした際にキーボードを消す
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         mailAddressTextField.resignFirstResponder()
         passWordTextField.resignFirstResponder()
         displayNameTextField.resignFirstResponder()
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -116,6 +122,7 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
 
     }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -130,20 +137,9 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(bg)
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

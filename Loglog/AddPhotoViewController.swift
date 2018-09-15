@@ -9,6 +9,7 @@
 import UIKit
 import CLImageEditor
 
+
 class AddPhotoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLImageEditorDelegate {
 
     
@@ -39,7 +40,8 @@ class AddPhotoViewController: UIViewController, UIImagePickerControllerDelegate,
         self.dismiss(animated: true, completion: nil)
     }
     
-    // 写真を撮影/選択したときに呼ばれるメソッド
+    
+    // 写真を撮影or選択したときに呼ばれるメソッド
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if info[UIImagePickerControllerOriginalImage] != nil {
             // 撮影/選択された画像を取得する
@@ -54,10 +56,12 @@ class AddPhotoViewController: UIViewController, UIImagePickerControllerDelegate,
         }
     }
     
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         // 閉じる
         picker.dismiss(animated: true, completion: nil)
     }
+    
     
     // CLImageEditorで加工が終わったときに呼ばれるメソッド
     func imageEditor(_ editor: CLImageEditor!, didFinishEditingWith image: UIImage!) {
@@ -66,6 +70,7 @@ class AddPhotoViewController: UIViewController, UIImagePickerControllerDelegate,
         postFinalizeViewController.image = image!
         editor.present(postFinalizeViewController, animated: true, completion: nil)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,24 +82,15 @@ class AddPhotoViewController: UIViewController, UIImagePickerControllerDelegate,
         self.view.addSubview(bg)
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
         // 他の画面から segue を使って戻ってきた時に呼ばれる
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

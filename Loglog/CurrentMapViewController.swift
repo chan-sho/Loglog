@@ -11,10 +11,11 @@ import MapKit
 import CoreLocation
 import SVProgressHUD
 
-class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
+class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var currentMapView: MKMapView!
     @IBOutlet weak var postFromCurrent: UIButton!
+    @IBOutlet weak var searchButton: UIButton!
     
     let pin = MKPointAnnotation()
     
@@ -22,6 +23,7 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
     let userDefaults:UserDefaults = UserDefaults.standard
     
     var currentMapManager:CLLocationManager = CLLocationManager()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,12 +40,17 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
         postFromCurrent.layer.borderWidth = 1.0
         postFromCurrent.layer.cornerRadius = 10.0 //丸みを数値で変更できる
         
+        searchButton.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        searchButton.layer.borderColor = UIColor.darkGray.cgColor
+        searchButton.layer.borderWidth = 1.0
+        searchButton.layer.cornerRadius = 10.0 //丸みを数値で変更できる
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+    
     
     //画面表示後の呼び出しメソッド
     override func viewDidAppear(_ animated: Bool) {
@@ -80,6 +87,7 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
         }
     }
     
+    
     //メッセージ出力メソッド
     func alertMessage(message:String) {
         let aleartController = UIAlertController(title: "注意", message: message, preferredStyle: .alert)
@@ -87,8 +95,8 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
         aleartController.addAction(defaultAction)
         
         present(aleartController, animated:true, completion:nil)
-        
     }
+    
     
     //位置情報取得時の呼び出しメソッド
     var firstFlg = false
@@ -136,11 +144,9 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
         print("\(pin.coordinate)")
         print("\(pin.coordinate.latitude)")
         print("\(pin.coordinate.longitude)")
-        
     }
     
-    //最後に表示されているpinの座標値を緯度と経度に分ける
-
+    
     @IBAction func postFromCurrent(_ sender: Any) {
         
         // ピンが立てられていない場合（＝場所を指定せずに投稿準備ボタンを押した場合）
@@ -148,7 +154,8 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
             SVProgressHUD.showError(withStatus: "場所が指定されていません！\n\n希望の場所を長押し&ピンを立てて投稿準備をしてください。\n\nこのままでも投稿可能ですが後程地図上に再表示できません。")
             SVProgressHUD.dismiss(withDelay: 7.0)
         }
-
+        
+        //最後に表示されているpinの座標値を緯度と経度に分けてuserDefaultsに入れる
         userDefaults.set(pin.coordinate.latitude, forKey: "pincoodinateLatitude")
         userDefaults.set(pin.coordinate.longitude, forKey: "pincoodinateLongitude")
         userDefaults.synchronize()
@@ -156,7 +163,6 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
         //座標値の最終確認
         print("Lati座標確認＝\(pin.coordinate.latitude)")
         print("Long座標確認＝\(pin.coordinate.longitude)")
-        
     }
 
     

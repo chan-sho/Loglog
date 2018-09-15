@@ -11,27 +11,26 @@ import ESTabBarController
 import Firebase
 import FirebaseAuth
 
+
 class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupTab()
     }
     
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         print("ログイン画面処理チェックポイント①")
-        
+
         // currentUserがnilならログインしていない
         if Auth.auth().currentUser == nil {
-            
             print("ログイン画面処理チェックポイント②")
             
             // ログインしていないときの処理
@@ -39,6 +38,7 @@ class ViewController: UIViewController {
             self.present(loginViewController!, animated: true, completion: nil)
         }
     }
+    
     
     func setupTab() {
         
@@ -75,4 +75,5 @@ class ViewController: UIViewController {
         tabBarController.setView(searchViewController, at: 2)
         tabBarController.setView(postedDataViewController, at: 3)
     }
+    
 }

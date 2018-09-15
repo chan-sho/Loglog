@@ -12,6 +12,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import SVProgressHUD
 
+
 class PostedDataViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
@@ -59,22 +60,25 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         self.tableView.reloadData()
     }
     
+    
     // Returnボタンを押した際にキーボードを消す
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         //キーボードを閉じる
         self.view.endEditing(true)
     }
     
+    
     // テキスト以外の場所をタッチした際にキーボードを消す（←機能していない・・・）
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         textSearchBar.resignFirstResponder()
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
+    
     override func viewWillAppear(_ animated: Bool) {
         // TableViewを再表示する（※superの前に入れておくのが大事！！）
         self.tableView.dataSource = self
@@ -100,9 +104,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                             self.postArray.insert(postData, at: 0)
                             // 念のため同じデータをpostArrayAllに入れておく
                             self.postArrayAll.insert(postData, at: 0)
-                            
                         }
-                        
                         // TableViewを再表示する
                         self.tableView.reloadData()
                     }
@@ -181,6 +183,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
+    
     //検索バーでテキストが空白or全て消された時 / テキスト入力された時の呼び出しメソッド
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
      
@@ -195,6 +198,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
+    
     // tableviewの行数をカウント
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if textSearchBar.text == "" {
@@ -204,6 +208,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             return postArrayBySearch.count
         }
     }
+    
     
     // tablewviewのcellにデータを受け渡すfunc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -349,9 +354,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             let postRef = Database.database().reference().child(Const.PostPath).child(postData.id!)
             let myMap = ["myMap": postData.myMap]
             postRef.updateChildValues(myMap)
-
         }
-        
     }
     
 }

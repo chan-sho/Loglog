@@ -11,6 +11,7 @@ import Firebase
 import FirebaseDatabase
 import SVProgressHUD
 
+
 class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var categoryText: UITextField!
@@ -36,6 +37,7 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         return true
     }
     
+    
     // テキスト以外の場所をタッチした際にキーボードを消す
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         categoryText.resignFirstResponder()
@@ -43,6 +45,7 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         contentsText.resignFirstResponder()
         relatedURL.resignFirstResponder()
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,12 +93,11 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         
         self.categoryText.inputView = pickerView
         self.categoryText.inputAccessoryView = toolbar
-        
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     

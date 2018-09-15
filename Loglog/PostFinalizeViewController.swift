@@ -12,6 +12,7 @@ import FirebaseDatabase
 import SVProgressHUD
 import FirebaseAuth
 
+
 class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     var image: UIImage!
@@ -73,15 +74,16 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         //--------------------------------------------------------------------------------------------
         
         if imageView.image == UIImage(named:"NoPhoto"){
-        let viewController = self.storyboard!.instantiateViewController(withIdentifier: "View")
-        self.navigationController?.pushViewController(viewController, animated: true)
+            self.navigationController!.popToRootViewController(animated: true)
         }
         else {
-            //２つ前の画面に戻る
-            self.presentingViewController?.presentingViewController?.dismiss(animated: false, completion: nil)
+            let navigationController = self.presentingViewController!.presentingViewController as! UINavigationController
+            navigationController.popToRootViewController(animated: true)
+            navigationController.dismiss(animated: false, completion: nil)
         }
 
     }
+    
     
     // キャンセルボタンをタップしたときに呼ばれるメソッド
     @IBAction func handleCancelButton(_ sender: Any) {
@@ -89,6 +91,7 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         dismiss(animated: true, completion: nil)
     }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -140,6 +143,7 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         self.view.addSubview(bg)
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

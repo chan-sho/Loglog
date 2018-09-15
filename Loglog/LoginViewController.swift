@@ -14,13 +14,14 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import GoogleSignIn
 
+
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate, GIDSignInDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var mailAddressTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var displayNameTextField: UITextField!
-    
     @IBOutlet weak var signInButton: GIDSignInButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +48,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         self.view.addSubview(bg)
     }
     
+    
     // Returnボタンを押した際にキーボードを消す
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         mailAddressTextField.resignFirstResponder()
@@ -55,6 +57,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         return true
     }
     
+    
     // テキスト以外の場所をタッチした際にキーボードを消す
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         mailAddressTextField.resignFirstResponder()
@@ -62,6 +65,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         displayNameTextField.resignFirstResponder()
     }
 
+    
     // ログインボタンをタップしたときに呼ばれるメソッド
     @IBAction func handleLoginButton(_ sender: Any) {
         if let address = mailAddressTextField.text, let password = passwordTextField.text {
@@ -80,12 +84,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
                     print("DEBUG_PRINT: " + error.localizedDescription)
                     SVProgressHUD.showError(withStatus: "サインインに失敗しました。")
                     return
-                } else {
+                }
+                else {
                     print("DEBUG_PRINT: ログインに成功しました。")
                     
                     // HUDを消す
                     SVProgressHUD.dismiss()
-                    
                     // 画面を閉じてViewControllerに戻る
                     self.dismiss(animated: true, completion: nil)
                 }
@@ -133,7 +137,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
                         
                         // HUDを消す
                         SVProgressHUD.dismiss()
-                        
                         // 画面を閉じてViewControllerに戻る
                         self.dismiss(animated: true, completion: nil)
                     }

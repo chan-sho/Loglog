@@ -12,17 +12,18 @@ import CoreLocation
 import SVProgressHUD
 
 
-class SearchMapViewController: UIViewController, UITextFieldDelegate {
+class SearchMapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var inputText: UITextField!
     @IBOutlet weak var displayMap: MKMapView!
     @IBOutlet weak var postWithSearch: UIButton!
+    @IBOutlet weak var searchButton: UIButton!
     
     let pin = MKPointAnnotation()
-    var pinView:MKPinAnnotationView!
     
     //user defaultsを使う準備
     let userDefaults:UserDefaults = UserDefaults.standard
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,17 +33,23 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
         postWithSearch.layer.borderColor = UIColor.darkGray.cgColor
         postWithSearch.layer.borderWidth = 1.0
         postWithSearch.layer.cornerRadius = 10.0 //丸みを数値で変更できる
+        
+        searchButton.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        searchButton.layer.borderColor = UIColor.darkGray.cgColor
+        searchButton.layer.borderWidth = 1.0
+        searchButton.layer.cornerRadius = 10.0 //丸みを数値で変更できる
     }
     
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         inputText.resignFirstResponder()
     }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         inputText.resignFirstResponder()
@@ -76,6 +83,7 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    
     @IBAction func longPressGesture(_ sender: UILongPressGestureRecognizer) {
         //この処理を書くことにより、指を離したときだけ反応するようにする（何回も呼び出されないようになる。最後に離したタイミングで呼ばれる）
         if sender.state != UIGestureRecognizerState.began {
@@ -103,19 +111,6 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
         print("\(pin.coordinate.latitude)")
         print("\(pin.coordinate.longitude)")
     }
-    //アノテーションビューを返すメソッド
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        //アノテーションビューを作成する。
-        let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: nil)
-        //アノテーションビューに座標、タイトル、サブタイトルを設定する。
-        pinView.annotation = annotation
-        //アノテーションビューに色を設定する。
-        pinView.backgroundColor = UIColor.white
-        //吹き出しを表示可能にする。
-        pinView.canShowCallout = true
-        
-        return pinView
-    }
     
     
     @IBAction func postWithSearch(_ sender: Any) {
@@ -126,6 +121,7 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
             SVProgressHUD.dismiss(withDelay: 7.0)
         }
         
+        //最後に表示されているpinの座標値を緯度と経度に分けてuserDefaultsに入れる
         userDefaults.set(pin.coordinate.latitude, forKey: "pincoodinateLatitude")
         userDefaults.set(pin.coordinate.longitude, forKey: "pincoodinateLongitude")
         userDefaults.synchronize()
@@ -133,8 +129,8 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate {
         //座標値の最終確認
         print("Lati座標確認＝\(pin.coordinate.latitude)")
         print("Long座標確認＝\(pin.coordinate.longitude)")
-        
     }
+    
     
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
         // 他の画面から segue を使って戻ってきた時に呼ばれる

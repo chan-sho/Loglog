@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
+
 class PostData: NSObject {
     
     var id: String?

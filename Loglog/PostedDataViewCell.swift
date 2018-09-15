@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 
+
 class PostedDataViewCell: UITableViewCell {
     
     @IBOutlet weak var id: UILabel!
@@ -55,14 +56,13 @@ class PostedDataViewCell: UITableViewCell {
         tgSecretPass.cancelsTouchesInView = false
         tgSecretPass.cancelsTouchesInView = false
         tgId.cancelsTouchesInView = false
-        
     }
 
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
+    
     
     // ↓各Labelをタップする事でコピーができるようにする（ここから）
     @objc func tappedCategory(_ sender:UILongPressGestureRecognizer) {
@@ -132,7 +132,6 @@ class PostedDataViewCell: UITableViewCell {
             let buttonImage = UIImage(named:"mymap_no")
             self.myMapButton.setImage(buttonImage, for: .normal)
         }
-        
     }
     
 }
