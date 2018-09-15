@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import SVProgressHUD
 
 class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
     
@@ -141,6 +142,12 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate  {
     //最後に表示されているpinの座標値を緯度と経度に分ける
 
     @IBAction func postFromCurrent(_ sender: Any) {
+        
+        // ピンが立てられていない場合（＝場所を指定せずに投稿準備ボタンを押した場合）
+        if pin.coordinate.latitude == 0.0 && pin.coordinate.longitude == 0.0  {
+            SVProgressHUD.showError(withStatus: "場所が指定されていません！\n\n希望の場所を長押し&ピンを立てて投稿準備をしてください。\n\nこのままでも投稿可能ですが後程地図上に再表示できません。")
+            SVProgressHUD.dismiss(withDelay: 7.0)
+        }
 
         userDefaults.set(pin.coordinate.latitude, forKey: "pincoodinateLatitude")
         userDefaults.set(pin.coordinate.longitude, forKey: "pincoodinateLongitude")

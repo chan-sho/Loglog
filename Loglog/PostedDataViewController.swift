@@ -115,7 +115,8 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                         // PostDataクラスを生成して受け取ったデータを設定する
                         let postData = PostData(snapshot: snapshot, myId: uid)
                         
-                        
+                    // 検索バーのテキスト有無で場合分け
+                    if self.textSearchBar.text == "" {
                         // 保持している配列からidが同じものを探す
                         var index: Int = 0
                         for post in self.postArray {
@@ -133,6 +134,29 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                         
                         // TableViewを再表示する
                         self.tableView.reloadData()
+                        }
+                    else {
+                        // 検索バーのテキストを一部でも含む
+                        self.postArrayBySearch = self.postArrayAll.filter({ ($0.category?.contains(self.textSearchBar.text!))! || ($0.contents?.contains(self.textSearchBar.text!))! || ($0.relatedURL?.contains(self.textSearchBar.text!))! || ($0.secretpass?.contains(self.textSearchBar.text!))! || ($0.id?.contains(self.textSearchBar.text!))!})
+                        
+                            // 保持している配列からidが同じものを探す
+                            var index: Int = 0
+                            for post in self.postArrayBySearch {
+                                if post.id == postData.id {
+                                    index = self.postArrayBySearch.index(of: post)!
+                                    break
+                                }
+                            }
+                            
+                            // 差し替えるため一度削除する
+                            self.postArrayBySearch.remove(at: index)
+                            
+                            // 削除したところに更新済みのデータを追加する
+                            self.postArrayBySearch.insert(postData, at: index)
+                            
+                            // TableViewを再表示する
+                            self.tableView.reloadData()
+                        }
                     }
                 })
                 
@@ -145,6 +169,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                 // ログアウトを検出したら、一旦テーブルをクリアしてオブザーバーを削除する。
                 // テーブルをクリアする
                 postArray = []
+                postArrayBySearch = []
                 tableView.reloadData()
                 // オブザーバーを削除する
                 Database.database().reference().removeAllObservers()
@@ -154,20 +179,19 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                 observing = false
             }
         }
-        
     }
     
     //検索バーでテキストが空白or全て消された時 / テキスト入力された時の呼び出しメソッド
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
      
         if textSearchBar.text == "" {
-            tableView.reloadData()
+            self.tableView.reloadData()
         }
         else {
             // 検索バーのテキストを一部でも含む
-            postArrayBySearch = postArrayAll.filter({ ($0.category?.contains(textSearchBar.text!))! || ($0.contents?.contains(textSearchBar.text!))! || ($0.relatedURL?.contains(textSearchBar.text!))! || ($0.secretpass?.contains(textSearchBar.text!))!})
+            postArrayBySearch = postArrayAll.filter({ ($0.category?.contains(textSearchBar.text!))! || ($0.contents?.contains(textSearchBar.text!))! || ($0.relatedURL?.contains(textSearchBar.text!))! || ($0.secretpass?.contains(textSearchBar.text!))! || ($0.id?.contains(textSearchBar.text!))!})
             
-            tableView.reloadData()
+            self.tableView.reloadData()
         }
     }
     
@@ -193,7 +217,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                 
                 // セル内のmyMapボタンを追加で管理
                 cell.myMapButton.addTarget(self, action:#selector(handleMyMapButton(_:forEvent:)), for: .touchUpInside)
-                
+            
                 return cell
             }
         else {
@@ -209,6 +233,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                 
                 return cell
             }
+        
         }
     
     
@@ -221,8 +246,20 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         let point = touch!.location(in: self.tableView)
         let indexPath = tableView.indexPathForRow(at: point)
         
-        // 配列からタップされたインデックスのデータを取り出す
-        let postData = postArray[indexPath!.row]
+        let postData : PostData
+        
+        // 検索バーのテキスト有無で場合分け
+        if textSearchBar.text == "" {
+            // 配列からタップされたインデックスのデータを取り出す
+            postData = postArray[indexPath!.row]
+        }
+        else {
+            // 検索バーのテキストを一部でも含む
+            self.postArrayBySearch = self.postArrayAll.filter({ ($0.category?.contains(self.textSearchBar.text!))! || ($0.contents?.contains(self.textSearchBar.text!))! || ($0.relatedURL?.contains(self.textSearchBar.text!))! || ($0.secretpass?.contains(self.textSearchBar.text!))! || ($0.id?.contains(self.textSearchBar.text!))!})
+            
+            // 配列からタップされたインデックスのデータを取り出す
+            postData = postArrayBySearch[indexPath!.row]
+        }
         
         // タップされたインデックスのデータを確認
         print("タップされたインデックスのデータ by likeボタン＝\(postData)")
@@ -262,8 +299,20 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         let point = touch!.location(in: self.tableView)
         let indexPath = tableView.indexPathForRow(at: point)
         
-        // 配列からタップされたインデックスのデータを取り出す
-        let postData = postArray[indexPath!.row]
+        let postData : PostData
+        
+        // 検索バーのテキスト有無で場合分け
+        if textSearchBar.text == "" {
+            // 配列からタップされたインデックスのデータを取り出す
+            postData = postArray[indexPath!.row]
+        }
+        else {
+            // 検索バーのテキストを一部でも含む
+            self.postArrayBySearch = self.postArrayAll.filter({ ($0.category?.contains(self.textSearchBar.text!))! || ($0.contents?.contains(self.textSearchBar.text!))! || ($0.relatedURL?.contains(self.textSearchBar.text!))! || ($0.secretpass?.contains(self.textSearchBar.text!))! || ($0.id?.contains(self.textSearchBar.text!))!})
+            
+            // 配列からタップされたインデックスのデータを取り出す
+            postData = postArrayBySearch[indexPath!.row]
+        }
         
         // タップされたインデックスのデータを確認
         print("タップされたインデックスのデータ by MyMapボタン＝\(postData)")
@@ -275,7 +324,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             for myMapId in postData.myMap {
                 if myMapId == uid {
                     postData.myMap.removeAll()
-                    SVProgressHUD.showSuccess(withStatus: "「自分専用」を解除しました\n※この投稿は他のユーザーにも表示されます")
+                    SVProgressHUD.showSuccess(withStatus: "「自分専用」を解除しました\n\n※この投稿は他のユーザーにも表示されます")
                     SVProgressHUD.dismiss(withDelay: 3.0)
                     break
                 }
@@ -288,7 +337,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             else {
                 if postData.userID == uid {
                     postData.myMap.append(uid)
-                    SVProgressHUD.showSuccess(withStatus: "「自分専用」に設定しました\n※この投稿は他のユーザーからは見えなくなります")
+                    SVProgressHUD.showSuccess(withStatus: "「自分専用」に設定しました\n\n※この投稿は他のユーザーからは見えなくなります")
                     SVProgressHUD.dismiss(withDelay: 3.0)
                     }
                     else {
@@ -300,7 +349,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             let postRef = Database.database().reference().child(Const.PostPath).child(postData.id!)
             let myMap = ["myMap": postData.myMap]
             postRef.updateChildValues(myMap)
-            
+
         }
         
     }
