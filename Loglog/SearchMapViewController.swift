@@ -19,7 +19,10 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, MKMapViewD
     @IBOutlet weak var postWithSearch: UIButton!
     @IBOutlet weak var searchButton: UIButton!
     
+    //投稿準備に移るためのpinを管理
     let pin = MKPointAnnotation()
+    //投稿済みのpinを管理
+    let postedPin = MKPointAnnotation()
     
     //user defaultsを使う準備
     let userDefaults:UserDefaults = UserDefaults.standard
@@ -136,6 +139,13 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, MKMapViewD
         self.displayMap.showsUserLocation = true
         self.displayMap.userTrackingMode = MKUserTrackingMode.followWithHeading
         displayMap.setCenter(displayMap.userLocation.coordinate, animated: true)
+    }
+    
+    
+    //投稿済みのpinを表示するためのカスタムクラス
+    class CustomAnnotation: MKPointAnnotation {
+        var datas: Dictionary<String, AnyObject>!
+        var flag: Bool! = false
     }
     
     

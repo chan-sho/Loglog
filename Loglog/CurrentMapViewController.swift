@@ -172,6 +172,7 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
     
     
     @IBAction func userLocationButton(_ sender: Any) {
+        self.currentMapView.userTrackingMode = MKUserTrackingMode.followWithHeading
         currentMapView.setCenter(currentMapView.userLocation.coordinate, animated: true)
     }
     
