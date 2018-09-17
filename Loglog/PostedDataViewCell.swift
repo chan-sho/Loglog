@@ -13,6 +13,7 @@ import SVProgressHUD
 class PostedDataViewCell: UITableViewCell {
     
     @IBOutlet weak var id: UILabel!
+    @IBOutlet weak var address: UILabel!
     @IBOutlet weak var category: UILabel!
     @IBOutlet weak var contents: UILabel!
     @IBOutlet weak var relatedURL: UILabel!
@@ -23,18 +24,26 @@ class PostedDataViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var myMapButton: UIButton!
+    @IBOutlet weak var reviseButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundColor = UIColor.lightGray.withAlphaComponent(0.05)
+        backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
         
+        id.isUserInteractionEnabled = true
+        address.isUserInteractionEnabled = true
+        category.isUserInteractionEnabled = true
         contents.isUserInteractionEnabled = true
         relatedURL.isUserInteractionEnabled = true
         secretPass.isUserInteractionEnabled = true
-        id.isUserInteractionEnabled = true
+        nameLabel.isUserInteractionEnabled = true
         
         // ↓各Labelをタップする事でコピーができるようにする（ここから）
-        let tgCategory = UILongPressGestureRecognizer(target: self, action: #selector(PostedDataViewCell.tappedContents(_:)))
+        let tgId = UILongPressGestureRecognizer(target: self, action: #selector(PostedDataViewCell.tappedid(_:)))
+        id.addGestureRecognizer(tgId)
+        let tgAddress = UILongPressGestureRecognizer(target: self, action: #selector(PostedDataViewCell.tappedAddress(_:)))
+        address.addGestureRecognizer(tgAddress)
+        let tgCategory = UILongPressGestureRecognizer(target: self, action: #selector(PostedDataViewCell.tappedCategory(_:)))
         category.addGestureRecognizer(tgCategory)
         
         let tgContents = UILongPressGestureRecognizer(target: self, action: #selector(PostedDataViewCell.tappedContents(_:)))
@@ -46,16 +55,18 @@ class PostedDataViewCell: UITableViewCell {
         let tgSecretPass = UILongPressGestureRecognizer(target: self, action: #selector(PostedDataViewCell.tappedsecretPass(_:)))
         secretPass.addGestureRecognizer(tgSecretPass)
         
-        let tgId = UILongPressGestureRecognizer(target: self, action: #selector(PostedDataViewCell.tappedid(_:)))
-        id.addGestureRecognizer(tgId)
+        let tgName = UILongPressGestureRecognizer(target: self, action: #selector(PostedDataViewCell.tappedName(_:)))
+        nameLabel.addGestureRecognizer(tgName)
         // ↑各Labelをタップする事でコピーができるようにする（ここまで）
         
+        tgId.cancelsTouchesInView = false
+        tgAddress.cancelsTouchesInView = false
         tgCategory.cancelsTouchesInView = false
         tgContents.cancelsTouchesInView = false
         tgRelatedURL.cancelsTouchesInView = false
         tgSecretPass.cancelsTouchesInView = false
         tgSecretPass.cancelsTouchesInView = false
-        tgId.cancelsTouchesInView = false
+        tgName.cancelsTouchesInView = false
     }
 
     
@@ -65,9 +76,21 @@ class PostedDataViewCell: UITableViewCell {
     
     
     // ↓各Labelをタップする事でコピーができるようにする（ここから）
+    @objc func tappedid(_ sender:UILongPressGestureRecognizer) {
+        UIPasteboard.general.string = id.text
+        print("clip board of id:\(UIPasteboard.general.string!)")
+        SVProgressHUD.showSuccess(withStatus: "テキストコピー完了：\n\n\(UIPasteboard.general.string!)")
+        SVProgressHUD.dismiss(withDelay: 2.0)
+    }
+    @objc func tappedAddress(_ sender:UILongPressGestureRecognizer) {
+        UIPasteboard.general.string = address.text
+        print("clip board of address:\(UIPasteboard.general.string!)")
+        SVProgressHUD.showSuccess(withStatus: "テキストコピー完了：\n\n\(UIPasteboard.general.string!)")
+        SVProgressHUD.dismiss(withDelay: 2.0)
+    }
     @objc func tappedCategory(_ sender:UILongPressGestureRecognizer) {
         UIPasteboard.general.string = category.text
-        print("clip board of contents:\(UIPasteboard.general.string!)")
+        print("clip board of category:\(UIPasteboard.general.string!)")
         SVProgressHUD.showSuccess(withStatus: "テキストコピー完了：\n\n\(UIPasteboard.general.string!)")
         SVProgressHUD.dismiss(withDelay: 2.0)
     }
@@ -89,9 +112,9 @@ class PostedDataViewCell: UITableViewCell {
         SVProgressHUD.showSuccess(withStatus: "テキストコピー完了：\n\n\(UIPasteboard.general.string!)")
         SVProgressHUD.dismiss(withDelay: 2.0)
     }
-    @objc func tappedid(_ sender:UILongPressGestureRecognizer) {
-        UIPasteboard.general.string = id.text
-        print("clip board of id:\(UIPasteboard.general.string!)")
+    @objc func tappedName(_ sender:UILongPressGestureRecognizer) {
+        UIPasteboard.general.string = nameLabel.text
+        print("clip board of name:\(UIPasteboard.general.string!)")
         SVProgressHUD.showSuccess(withStatus: "テキストコピー完了：\n\n\(UIPasteboard.general.string!)")
         SVProgressHUD.dismiss(withDelay: 2.0)
     }
@@ -101,6 +124,7 @@ class PostedDataViewCell: UITableViewCell {
     func setPostData(_ postData: PostData) {
         
         self.id.text = "\(postData.self.id!)"
+        self.address.text = "\(postData.self.pinAddress!)"
         self.category.text = "\(postData.category!)"
         self.contents.text = "\(postData.contents!)"
         self.relatedURL.text = "\(postData.relatedURL!)"

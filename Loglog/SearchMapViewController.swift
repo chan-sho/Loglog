@@ -148,8 +148,8 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
             if let placemarks = placemarks {
                 if let pm = placemarks.first {
                     
-                    //獲得した住所をuserDefaultsに入れる
-                    self.userDefaults.set("\(pm.country ?? "")\n\(pm.postalCode ?? "")\n\(pm.administrativeArea ?? "")\(pm.locality ?? "")\(pm.name ?? "")", forKey: "pinAddress")
+                    //獲得した住所をuserDefaultsに入れる：現時点ではcontoryは入れず
+                    self.userDefaults.set("\(pm.postalCode ?? "")\n\(pm.administrativeArea ?? "")\(pm.locality ?? "")\(pm.name ?? "")", forKey: "pinAddress")
                     
                     print("name: \(pm.name ?? "")")
                     print("isoCountryCode: \(pm.isoCountryCode ?? "")")

@@ -43,7 +43,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         tableView.separatorInset = .zero
         
         textSearchBar.delegate = self
-        textSearchBar.placeholder = "カテゴリー／内容などで検索"
+        textSearchBar.placeholder = "各項目は長押しでコピーできます"
         //何も入力されていなくてもReturnキーを押せるようにする。
         textSearchBar.enablesReturnKeyAutomatically = false
         //* tableView.tableHeaderView = textSearchBar
@@ -138,8 +138,15 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                         self.tableView.reloadData()
                         }
                     else {
-                        // 検索バーのテキストを一部でも含む
-                        self.postArrayBySearch = self.postArrayAll.filter({ ($0.category?.contains(self.textSearchBar.text!))! || ($0.contents?.contains(self.textSearchBar.text!))! || ($0.relatedURL?.contains(self.textSearchBar.text!))! || ($0.secretpass?.contains(self.textSearchBar.text!))! || ($0.id?.contains(self.textSearchBar.text!))!})
+                        // 検索バーに入力された単語をスペースで分けて配列に入れる
+                        let searchWords = self.textSearchBar.text!
+                        let array = searchWords.components(separatedBy: NSCharacterSet.whitespaces)
+                        // 検索バーのテキストを一部でも含むものをAND検索する！
+                        var tempFilteredArray = self.postArrayAll
+                        for n in array {
+                            tempFilteredArray = tempFilteredArray.filter({ ($0.category?.contains(n))! || ($0.contents?.contains(n))! || ($0.relatedURL?.contains(n))! || ($0.secretpass?.contains(n))! || ($0.id?.contains(n))! || ($0.pinAddress?.contains(n))! || ($0.name?.contains(n))!})
+                        }
+                        self.postArrayBySearch = tempFilteredArray
                         
                             // 保持している配列からidが同じものを探す
                             var index: Int = 0
@@ -191,13 +198,20 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             self.tableView.reloadData()
         }
         else {
-            // 検索バーのテキストを一部でも含む
-            postArrayBySearch = postArrayAll.filter({ ($0.category?.contains(textSearchBar.text!))! || ($0.contents?.contains(textSearchBar.text!))! || ($0.relatedURL?.contains(textSearchBar.text!))! || ($0.secretpass?.contains(textSearchBar.text!))! || ($0.id?.contains(textSearchBar.text!))!})
+            // 検索バーに入力された単語をスペースで分けて配列に入れる
+            let searchWords = textSearchBar.text!
+            let array = searchWords.components(separatedBy: NSCharacterSet.whitespaces)
+            // 検索バーのテキストを一部でも含むものをAND検索する！
+            var tempFilteredArray = postArrayAll
+            for n in array {
+                tempFilteredArray = tempFilteredArray.filter({ ($0.category?.contains(n))! || ($0.contents?.contains(n))! || ($0.relatedURL?.contains(n))! || ($0.secretpass?.contains(n))! || ($0.id?.contains(n))! || ($0.pinAddress?.contains(n))! || ($0.name?.contains(n))!})
+            }
+            postArrayBySearch = tempFilteredArray
             
             self.tableView.reloadData()
         }
     }
-    
+
     
     // tableviewの行数をカウント
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -259,8 +273,15 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             postData = postArray[indexPath!.row]
         }
         else {
-            // 検索バーのテキストを一部でも含む
-            self.postArrayBySearch = self.postArrayAll.filter({ ($0.category?.contains(self.textSearchBar.text!))! || ($0.contents?.contains(self.textSearchBar.text!))! || ($0.relatedURL?.contains(self.textSearchBar.text!))! || ($0.secretpass?.contains(self.textSearchBar.text!))! || ($0.id?.contains(self.textSearchBar.text!))!})
+            // 検索バーに入力された単語をスペースで分けて配列に入れる
+            let searchWords = textSearchBar.text!
+            let array = searchWords.components(separatedBy: NSCharacterSet.whitespaces)
+            // 検索バーのテキストを一部でも含むものをAND検索する！
+            var tempFilteredArray = postArrayAll
+            for n in array {
+                tempFilteredArray = tempFilteredArray.filter({ ($0.category?.contains(n))! || ($0.contents?.contains(n))! || ($0.relatedURL?.contains(n))! || ($0.secretpass?.contains(n))! || ($0.id?.contains(n))! || ($0.pinAddress?.contains(n))! || ($0.name?.contains(n))!})
+            }
+            postArrayBySearch = tempFilteredArray
             
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArrayBySearch[indexPath!.row]
@@ -312,8 +333,15 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             postData = postArray[indexPath!.row]
         }
         else {
-            // 検索バーのテキストを一部でも含む
-            self.postArrayBySearch = self.postArrayAll.filter({ ($0.category?.contains(self.textSearchBar.text!))! || ($0.contents?.contains(self.textSearchBar.text!))! || ($0.relatedURL?.contains(self.textSearchBar.text!))! || ($0.secretpass?.contains(self.textSearchBar.text!))! || ($0.id?.contains(self.textSearchBar.text!))!})
+            // 検索バーに入力された単語をスペースで分けて配列に入れる
+            let searchWords = textSearchBar.text!
+            let array = searchWords.components(separatedBy: NSCharacterSet.whitespaces)
+            // 検索バーのテキストを一部でも含むものをAND検索する！
+            var tempFilteredArray = postArrayAll
+            for n in array {
+                tempFilteredArray = tempFilteredArray.filter({ ($0.category?.contains(n))! || ($0.contents?.contains(n))! || ($0.relatedURL?.contains(n))! || ($0.secretpass?.contains(n))! || ($0.id?.contains(n))! || ($0.pinAddress?.contains(n))! || ($0.name?.contains(n))!})
+            }
+            postArrayBySearch = tempFilteredArray
             
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArrayBySearch[indexPath!.row]
