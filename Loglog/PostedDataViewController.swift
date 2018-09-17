@@ -43,7 +43,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         tableView.separatorInset = .zero
         
         textSearchBar.delegate = self
-        textSearchBar.placeholder = "各項目は長押しでコピーできます"
+        textSearchBar.placeholder = "※投稿内容は長押しタップでコピー可能"
         //何も入力されていなくてもReturnキーを押せるようにする。
         textSearchBar.enablesReturnKeyAutomatically = false
         //* tableView.tableHeaderView = textSearchBar
@@ -144,7 +144,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                         // 検索バーのテキストを一部でも含むものをAND検索する！
                         var tempFilteredArray = self.postArrayAll
                         for n in array {
-                            tempFilteredArray = tempFilteredArray.filter({ ($0.category?.contains(n))! || ($0.contents?.contains(n))! || ($0.relatedURL?.contains(n))! || ($0.secretpass?.contains(n))! || ($0.id?.contains(n))! || ($0.pinAddress?.contains(n))! || ($0.name?.contains(n))!})
+                            tempFilteredArray = tempFilteredArray.filter({ ($0.category?.localizedCaseInsensitiveContains(n))! || ($0.contents?.localizedCaseInsensitiveContains(n))! || ($0.relatedURL?.localizedCaseInsensitiveContains(n))! || ($0.secretpass?.localizedCaseInsensitiveContains(n))! || ($0.id?.localizedCaseInsensitiveContains(n))! || ($0.pinAddress?.localizedCaseInsensitiveContains(n))! || ($0.name?.localizedCaseInsensitiveContains(n))!})
                         }
                         self.postArrayBySearch = tempFilteredArray
                         
@@ -204,7 +204,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             // 検索バーのテキストを一部でも含むものをAND検索する！
             var tempFilteredArray = postArrayAll
             for n in array {
-                tempFilteredArray = tempFilteredArray.filter({ ($0.category?.contains(n))! || ($0.contents?.contains(n))! || ($0.relatedURL?.contains(n))! || ($0.secretpass?.contains(n))! || ($0.id?.contains(n))! || ($0.pinAddress?.contains(n))! || ($0.name?.contains(n))!})
+                tempFilteredArray = tempFilteredArray.filter({ ($0.category?.localizedCaseInsensitiveContains(n))! || ($0.contents?.localizedCaseInsensitiveContains(n))! || ($0.relatedURL?.localizedCaseInsensitiveContains(n))! || ($0.secretpass?.localizedCaseInsensitiveContains(n))! || ($0.id?.localizedCaseInsensitiveContains(n))! || ($0.pinAddress?.localizedCaseInsensitiveContains(n))! || ($0.name?.localizedCaseInsensitiveContains(n))!})
             }
             postArrayBySearch = tempFilteredArray
             
@@ -279,7 +279,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             // 検索バーのテキストを一部でも含むものをAND検索する！
             var tempFilteredArray = postArrayAll
             for n in array {
-                tempFilteredArray = tempFilteredArray.filter({ ($0.category?.contains(n))! || ($0.contents?.contains(n))! || ($0.relatedURL?.contains(n))! || ($0.secretpass?.contains(n))! || ($0.id?.contains(n))! || ($0.pinAddress?.contains(n))! || ($0.name?.contains(n))!})
+                tempFilteredArray = tempFilteredArray.filter({ ($0.category?.localizedCaseInsensitiveContains(n))! || ($0.contents?.localizedCaseInsensitiveContains(n))! || ($0.relatedURL?.localizedCaseInsensitiveContains(n))! || ($0.secretpass?.localizedCaseInsensitiveContains(n))! || ($0.id?.localizedCaseInsensitiveContains(n))! || ($0.pinAddress?.localizedCaseInsensitiveContains(n))! || ($0.name?.localizedCaseInsensitiveContains(n))!})
             }
             postArrayBySearch = tempFilteredArray
             
@@ -339,7 +339,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             // 検索バーのテキストを一部でも含むものをAND検索する！
             var tempFilteredArray = postArrayAll
             for n in array {
-                tempFilteredArray = tempFilteredArray.filter({ ($0.category?.contains(n))! || ($0.contents?.contains(n))! || ($0.relatedURL?.contains(n))! || ($0.secretpass?.contains(n))! || ($0.id?.contains(n))! || ($0.pinAddress?.contains(n))! || ($0.name?.contains(n))!})
+                tempFilteredArray = tempFilteredArray.filter({ ($0.category?.localizedCaseInsensitiveContains(n))! || ($0.contents?.localizedCaseInsensitiveContains(n))! || ($0.relatedURL?.localizedCaseInsensitiveContains(n))! || ($0.secretpass?.localizedCaseInsensitiveContains(n))! || ($0.id?.localizedCaseInsensitiveContains(n))! || ($0.pinAddress?.localizedCaseInsensitiveContains(n))! || ($0.name?.localizedCaseInsensitiveContains(n))!})
             }
             postArrayBySearch = tempFilteredArray
             
