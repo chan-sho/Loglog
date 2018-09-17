@@ -27,6 +27,7 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
     let userDefaults:UserDefaults = UserDefaults.standard
     var pincoordinateToPostLatitude : Double? = 0.0
     var pincoordinateToPostLongitude : Double? = 0.0
+    var pinAddress : String?
     
     // 投稿ボタンをタップしたときに呼ばれるメソッド
     @IBAction func handlePostButton(_ sender: UIButton) {
@@ -40,7 +41,7 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         
         // **重要** 辞書を作成してFirebaseに保存する 【※後でAnnotationの位置情報も正確に追加する！！】
         let postRef = Database.database().reference().child(Const.PostPath)
-        let postDic = ["userID": Auth.auth().currentUser!.uid, "category": categoryTextToPost.text!, "contents": contentsTextToPost.text!, "relatedURL": relatedURLToPost.text!, "secretpass": secretPassToPost.text!, "image": imageString, "time": String(time), "name": name!, "pincoodinateLatitude": Double(pincoordinateToPostLatitude!), "pincoodinateLongitude": Double(pincoordinateToPostLongitude!)] as [String : Any]
+        let postDic = ["userID": Auth.auth().currentUser!.uid, "category": categoryTextToPost.text!, "contents": contentsTextToPost.text!, "relatedURL": relatedURLToPost.text!, "secretpass": secretPassToPost.text!, "image": imageString, "time": String(time), "name": name!, "pincoodinateLatitude": Double(pincoordinateToPostLatitude!), "pincoodinateLongitude": Double(pincoordinateToPostLongitude!), "pinAddress": pinAddress!] as [String : Any]
         postRef.childByAutoId().setValue(postDic)
         
         // HUDで投稿完了を表示する
@@ -107,6 +108,7 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         secretPassToPost.text = userDefaults.string(forKey: "secretPass")
         pincoordinateToPostLatitude = userDefaults.double(forKey: "pincoodinateLatitude")
         pincoordinateToPostLongitude = userDefaults.double(forKey: "pincoodinateLongitude")
+        pinAddress = userDefaults.string(forKey: "pinAddress")
         
         // 受け取った画像をImageViewに設定する
         if image == nil {

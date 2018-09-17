@@ -12,7 +12,7 @@ import CoreLocation
 import SVProgressHUD
 
 
-class SearchMapViewController: UIViewController, UITextFieldDelegate, MKMapViewDelegate {
+class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var inputText: UITextField!
     @IBOutlet weak var displayMap: MKMapView!
@@ -22,7 +22,7 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, MKMapViewD
     //投稿準備に移るためのpinを管理
     let pin = MKPointAnnotation()
     //投稿済みのpinを管理
-    let postedPin = MKPointAnnotation()
+    var displayMapManager:CLLocationManager = CLLocationManager()
     
     //user defaultsを使う準備
     let userDefaults:UserDefaults = UserDefaults.standard
@@ -31,6 +31,9 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, MKMapViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         inputText.delegate = self
+        
+        //デリゲート先に自分を設定する。
+        displayMapManager.delegate = self
         
         postWithSearch.backgroundColor = UIColor.white.withAlphaComponent(0.8)
         postWithSearch.layer.borderColor = UIColor.darkGray.cgColor
@@ -132,20 +135,95 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, MKMapViewD
         //座標値の最終確認
         print("Lati座標確認＝\(pin.coordinate.latitude)")
         print("Long座標確認＝\(pin.coordinate.longitude)")
+        
+        //座標から住所を作成
+        let pinGeocoder = CLGeocoder()
+        let pinLocation = CLLocation(latitude: pin.coordinate.latitude, longitude: pin.coordinate.longitude )
+        
+        //座標確認
+        print("\(pinLocation)")
+        
+        // 逆ジオコーディング開始
+        pinGeocoder.reverseGeocodeLocation(pinLocation) { (placemarks, error) in
+            if let placemarks = placemarks {
+                if let pm = placemarks.first {
+                    
+                    //獲得した住所をuserDefaultsに入れる
+                    self.userDefaults.set("\(pm.country ?? "")\n\(pm.postalCode ?? "")\n\(pm.administrativeArea ?? "")\(pm.locality ?? "")\(pm.name ?? "")", forKey: "pinAddress")
+                    
+                    print("name: \(pm.name ?? "")")
+                    print("isoCountryCode: \(pm.isoCountryCode ?? "")")
+                    print("country: \(pm.country ?? "")")
+                    print("postalCode: \(pm.postalCode ?? "")")
+                    print("administrativeArea: \(pm.administrativeArea ?? "")")
+                    print("subAdministrativeArea: \(pm.subAdministrativeArea ?? "")")
+                    print("locality: \(pm.locality ?? "")")
+                    print("subLocality: \(pm.subLocality ?? "")")
+                    print("thoroughfare: \(pm.thoroughfare ?? "")")
+                    print("subThoroughfare: \(pm.subThoroughfare ?? "")")
+                    if let region = pm.region {
+                        print("region: \(region)")
+                    }
+                    if let timeZone = pm.timeZone {
+                        print("timeZone: \(timeZone)")
+                    }
+                    print("inlandWater: \(pm.inlandWater ?? "")")
+                    print("ocean: \(pm.ocean ?? "")")
+                    if let areasOfInterest = pm.areasOfInterest {
+                        print("areasOfInterest: \(areasOfInterest)")
+                    }
+                }
+            }
+        }
     }
     
     
     @IBAction func userLocationButton(_ sender: Any) {
+        //位置情報許可の確認
+        if(CLLocationManager.locationServicesEnabled() == true){
+            switch CLLocationManager.authorizationStatus() {
+                
+            //未設定の場合
+            case CLAuthorizationStatus.notDetermined:
+                displayMapManager.requestWhenInUseAuthorization()
+                
+            //機能制限されている場合
+            case CLAuthorizationStatus.restricted:
+                alertMessage(message: "位置情報サービスの利用が制限されている為、利用できません。\n\n「設定」⇒「一般」⇒「機能制限」で確認ください。")
+                
+            //「許可しない」に設定されている場合
+            case CLAuthorizationStatus.denied:
+                alertMessage(message: "位置情報の利用が許可されていない為、利用できません。\n\n「設定」⇒「プライバシー」⇒「位置情報サービス」⇒「アプリ名」で確認ください。")
+                
+            //「このAppの使用中のみ許可」に設定されている場合
+            case CLAuthorizationStatus.authorizedWhenInUse:
+                //位置情報の取得を開始する。
+                displayMapManager.startUpdatingLocation()
+                
+            //「常に許可」に設定されている場合
+            case CLAuthorizationStatus.authorizedAlways:
+                //位置情報の取得を開始する。
+                displayMapManager.startUpdatingLocation()
+            }
+            
+        } else {
+            //位置情報サービスがOFFの場合
+            alertMessage(message: "位置情報サービスがONになっていない為、利用できません。\n\n「設定」⇒「プライバシー」⇒「位置情報サービス」で確認ください。")
+        }
+        
         self.displayMap.showsUserLocation = true
         self.displayMap.userTrackingMode = MKUserTrackingMode.followWithHeading
         displayMap.setCenter(displayMap.userLocation.coordinate, animated: true)
     }
     
     
-    //投稿済みのpinを表示するためのカスタムクラス
-    class CustomAnnotation: MKPointAnnotation {
-        var datas: Dictionary<String, AnyObject>!
-        var flag: Bool! = false
+    //メッセージ出力メソッド
+    func alertMessage(message:String) {
+        let aleartController = UIAlertController(title: "【アラート】", message: message, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title:"【OK】", style: .default, handler:nil)
+        aleartController.addAction(defaultAction)
+        
+        present(aleartController, animated:true, completion:nil)
     }
     
     

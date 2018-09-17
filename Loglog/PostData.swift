@@ -23,6 +23,7 @@ class PostData: NSObject {
     var secretpass: String?
     var pincoodinateLatitude: Double?
     var pincoodinateLongitude: Double?
+    var pinAddress: String?
     var date: Date?
     var likes: [String] = []
     var isLiked: Bool = false
@@ -53,6 +54,7 @@ class PostData: NSObject {
         
         self.pincoodinateLatitude = valueDictionary["pincoodinateLatitude"] as? Double
         self.pincoodinateLongitude = valueDictionary["pincoodinateLongitude"] as? Double
+        self.pinAddress = valueDictionary["pinAddress"] as? String
         
         let time = valueDictionary["time"] as? String
         self.date = Date(timeIntervalSinceReferenceDate: TimeInterval(time!)!)

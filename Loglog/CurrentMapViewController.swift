@@ -69,11 +69,11 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
                 
             //機能制限されている場合
             case CLAuthorizationStatus.restricted:
-                alertMessage(message: "位置情報サービスの利用が制限されている利用できません。「設定」⇒「一般」⇒「機能制限」")
+                alertMessage(message: "位置情報サービスの利用が制限されている為、利用できません。\n\n「設定」⇒「一般」⇒「機能制限」で確認ください。")
                 
             //「許可しない」に設定されている場合
             case CLAuthorizationStatus.denied:
-                alertMessage(message: "位置情報の利用が許可されていないため利用できません。「設定」⇒「プライバシー」⇒「位置情報サービス」⇒「アプリ名」")
+                alertMessage(message: "位置情報の利用が許可されていない為、利用できません。\n\n「設定」⇒「プライバシー」⇒「位置情報サービス」⇒「アプリ名」で確認ください。")
                 
             //「このAppの使用中のみ許可」に設定されている場合
             case CLAuthorizationStatus.authorizedWhenInUse:
@@ -88,15 +88,15 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
             
         } else {
             //位置情報サービスがOFFの場合
-            alertMessage(message: "位置情報サービスがONになっていないため利用できません。「設定」⇒「プライバシー」⇒「位置情報サービス」")
+            alertMessage(message: "位置情報サービスがONになっていない為、利用できません。\n\n「設定」⇒「プライバシー」⇒「位置情報サービス」で確認ください。")
         }
     }
     
     
     //メッセージ出力メソッド
     func alertMessage(message:String) {
-        let aleartController = UIAlertController(title: "注意", message: message, preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title:"OK", style: .default, handler:nil)
+        let aleartController = UIAlertController(title: "【注意】", message: message, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title:"【成功】", style: .default, handler:nil)
         aleartController.addAction(defaultAction)
         
         present(aleartController, animated:true, completion:nil)
@@ -168,6 +168,46 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
         //座標値の最終確認
         print("Lati座標確認＝\(pin.coordinate.latitude)")
         print("Long座標確認＝\(pin.coordinate.longitude)")
+        
+        //座標から住所を作成
+        let pinGeocoder = CLGeocoder()
+        let pinLocation = CLLocation(latitude: pin.coordinate.latitude, longitude: pin.coordinate.longitude )
+        
+        //座標確認
+        print("\(pinLocation)")
+        
+        // 逆ジオコーディング開始
+        pinGeocoder.reverseGeocodeLocation(pinLocation) { (placemarks, error) in
+            if let placemarks = placemarks {
+                if let pm = placemarks.first {
+                    
+                    //獲得した住所をuserDefaultsに入れる
+                    self.userDefaults.set("\(pm.country ?? "")\n\(pm.postalCode ?? "")\n\(pm.administrativeArea ?? "")\(pm.locality ?? "")\(pm.name ?? "")", forKey: "pinAddress")
+                    
+                    print("name: \(pm.name ?? "")")
+                    print("isoCountryCode: \(pm.isoCountryCode ?? "")")
+                    print("country: \(pm.country ?? "")")
+                    print("postalCode: \(pm.postalCode ?? "")")
+                    print("administrativeArea: \(pm.administrativeArea ?? "")")
+                    print("subAdministrativeArea: \(pm.subAdministrativeArea ?? "")")
+                    print("locality: \(pm.locality ?? "")")
+                    print("subLocality: \(pm.subLocality ?? "")")
+                    print("thoroughfare: \(pm.thoroughfare ?? "")")
+                    print("subThoroughfare: \(pm.subThoroughfare ?? "")")
+                    if let region = pm.region {
+                        print("region: \(region)")
+                    }
+                    if let timeZone = pm.timeZone {
+                        print("timeZone: \(timeZone)")
+                    }
+                    print("inlandWater: \(pm.inlandWater ?? "")")
+                    print("ocean: \(pm.ocean ?? "")")
+                    if let areasOfInterest = pm.areasOfInterest {
+                        print("areasOfInterest: \(areasOfInterest)")
+                    }
+                }
+            }
+        }
     }
     
     
