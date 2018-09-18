@@ -54,7 +54,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         // テーブル行の高さをAutoLayoutで自動調整する
         tableView.rowHeight = UITableViewAutomaticDimension
         // テーブル行の高さの概算値を設定しておく
-        tableView.estimatedRowHeight = UIScreen.main.bounds.width + 400
+        tableView.estimatedRowHeight = 500
         
         // TableViewを再表示する
         self.tableView.reloadData()
@@ -237,6 +237,9 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                 // セル内のmyMapボタンを追加で管理
                 cell.myMapButton.addTarget(self, action:#selector(handleMyMapButton(_:forEvent:)), for: .touchUpInside)
             
+                // セル内のreviseボタンを追加で管理
+                cell.reviseButton.addTarget(self, action:#selector(handleReviseButton(_:forEvent:)), for: .touchUpInside)
+            
                 return cell
             }
         else {
@@ -249,6 +252,9 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                 
                 // セル内のmyMapボタンを追加で管理
                 cell.myMapButton.addTarget(self, action:#selector(handleMyMapButton(_:forEvent:)), for: .touchUpInside)
+            
+                // セル内のreviseボタンを追加で管理
+                cell.reviseButton.addTarget(self, action:#selector(handleReviseButton(_:forEvent:)), for: .touchUpInside)
                 
                 return cell
             }
@@ -383,6 +389,18 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             let myMap = ["myMap": postData.myMap]
             postRef.updateChildValues(myMap)
         }
+    }
+    
+    
+    @objc func handleReviseButton(_ sender: UIButton, forEvent event: UIEvent) {
+        // ReviseDataViewControllerに画面遷移
+        let reviseDataViewController = self.storyboard?.instantiateViewController(withIdentifier: "Revise")
+        self.present(reviseDataViewController!, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func unwind(_ segue: UIStoryboardSegue) {
+        // 他の画面から segue を使って戻ってきた時に呼ばれる
     }
     
 }
