@@ -13,8 +13,7 @@ import FirebaseDatabase
 import SVProgressHUD
 
 
-class ReviseDataViewController: UIViewController {
-    
+class ReviseDataViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var postCode: UITextField!
     @IBOutlet weak var postedReviseButton: UIButton!
@@ -29,10 +28,27 @@ class ReviseDataViewController: UIViewController {
         bg.image = UIImage(named: "背景11")
         bg.layer.zPosition = -1
         self.view.addSubview(bg)
+        
+        postCode.delegate = self
+        //何も入力されていなくてもReturnキーを押せるようにする。
+        postCode.enablesReturnKeyAutomatically = false
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    
+    // Returnボタンを押した際にキーボードを消す
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        postCode.resignFirstResponder()
+        return true
+    }
+    
+    
+    // テキスト以外の場所をタッチした際にキーボードを消す
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        postCode.resignFirstResponder()
     }
     
     
@@ -69,11 +85,16 @@ class ReviseDataViewController: UIViewController {
                     let refOfDelete = Database.database().reference().child("posts").child("\(self.postCode.text!)")
                     refOfDelete.removeValue()
                     
+                    //TableViewからも該当のCellを削除
+                    // xxxxxxxxxxxxx
+                    
                     SVProgressHUD.showSuccess(withStatus: "対象の投稿が削除されました")
                     
                     // 画面を閉じてViewControllerに戻る
-                    //self.dismiss(animated: true, completion: nil)
-                    return
+                    self.dismiss(animated: true, completion: nil)
+                    
+                    self.tableView.reloadData()
+                    
                 }
                 else {
                     SVProgressHUD.showError(withStatus: "投稿者ではない\nまたは\n「投稿ナンバー」が存在しない為、\n削除できません！\n\nもう一度確認して下さい")

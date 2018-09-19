@@ -392,10 +392,13 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     
+    //セル内のReviseボタンが押された時に呼ばれるメソッド
     @objc func handleReviseButton(_ sender: UIButton, forEvent event: UIEvent) {
+        
         // ReviseDataViewControllerに画面遷移
         let reviseDataViewController = self.storyboard?.instantiateViewController(withIdentifier: "Revise")
         self.present(reviseDataViewController!, animated: true, completion: nil)
+        
     }
     
     
