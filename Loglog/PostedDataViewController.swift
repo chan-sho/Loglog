@@ -232,19 +232,9 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                                 }
                             }
                             
-                            // 保持している配列からidが同じものを探す（※postArrayBySearch用）
-                            var indexBySearch: Int = 0
-                            for post in self.postArrayBySearch {
-                                if post.id == postData.id {
-                                    indexBySearch = self.postArrayBySearch.index(of: post)!
-                                    break
-                                }
-                            }
-                            
                             // 削除する
                             self.postArray.remove(at: index)
                             self.postArrayAll.remove(at: indexAll)
-                            self.postArrayBySearch.remove(at: indexBySearch)
                             
                             // TableViewを再表示する
                             self.tableView.reloadData()
