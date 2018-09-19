@@ -89,7 +89,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         
         if Auth.auth().currentUser != nil {
             if self.observing == false {
-                // 要素が追加されたらpostArrayに追加してTableViewを再表示する
+                // 要素が【追加】されたらpostArrayに追加してTableViewを再表示する
                 let postsRef = Database.database().reference().child(Const.PostPath)
                 postsRef.observe(.childAdded, with: { snapshot in
                     print("DEBUG_PRINT: .childAddedイベントが発生しました。")
@@ -109,7 +109,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                         self.tableView.reloadData()
                     }
                 })
-                // 要素が変更されたら該当のデータをpostArrayから一度削除した後に新しいデータを追加してTableViewを再表示する
+                // 要素が【変更】されたら該当のデータをpostArrayから一度削除した後に新しいデータを追加してTableViewを再表示する
                 postsRef.observe(.childChanged, with: { snapshot in
                     print("DEBUG_PRINT: .childChangedイベントが発生しました。")
                     
@@ -128,40 +128,160 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                             }
                         }
                         
+                        // 保持している配列からidが同じものを探す（※postArrayAll用）
+                        var indexAll: Int = 0
+                        for post in self.postArrayAll {
+                            if post.id == postData.id {
+                                indexAll = self.postArrayAll.index(of: post)!
+                                break
+                            }
+                        }
+                        
+                        // 保持している配列からidが同じものを探す（※postArrayBySearch用）
+                        var indexBySearch: Int = 0
+                        for post in self.postArrayBySearch {
+                            if post.id == postData.id {
+                                indexBySearch = self.postArrayBySearch.index(of: post)!
+                                break
+                            }
+                        }
+                        
                         // 差し替えるため一度削除する
                         self.postArray.remove(at: index)
+                        self.postArrayAll.remove(at: indexAll)
+                        self.postArrayBySearch.remove(at: indexBySearch)
                         
                         // 削除したところに更新済みのデータを追加する
                         self.postArray.insert(postData, at: index)
+                        self.postArrayAll.insert(postData, at: indexAll)
+                        self.postArrayBySearch.insert(postData, at: indexBySearch)
                         
                         // TableViewを再表示する
                         self.tableView.reloadData()
                         }
                     else {
-                        // 検索バーに入力された単語をスペースで分けて配列に入れる
-                        let searchWords = self.textSearchBar.text!
-                        let array = searchWords.components(separatedBy: NSCharacterSet.whitespaces)
-                        // 検索バーのテキストを一部でも含むものをAND検索する！
-                        var tempFilteredArray = self.postArrayAll
-                        for n in array {
-                            tempFilteredArray = tempFilteredArray.filter({ ($0.category?.localizedCaseInsensitiveContains(n))! || ($0.contents?.localizedCaseInsensitiveContains(n))! || ($0.relatedURL?.localizedCaseInsensitiveContains(n))! || ($0.secretpass?.localizedCaseInsensitiveContains(n))! || ($0.id?.localizedCaseInsensitiveContains(n))! || ($0.pinAddress?.localizedCaseInsensitiveContains(n))! || ($0.name?.localizedCaseInsensitiveContains(n))!})
-                        }
-                        self.postArrayBySearch = tempFilteredArray
                         
+                        // 保持している配列からidが同じものを探す
+                        var indexBySearch: Int = 0
+                        for post in self.postArrayBySearch {
+                            if post.id == postData.id {
+                                indexBySearch = self.postArrayBySearch.index(of: post)!
+                                break
+                            }
+                        }
+                        
+                        // 保持している配列からidが同じものを探す（※postArray用）
+                        var index: Int = 0
+                        for post in self.postArray {
+                            if post.id == postData.id {
+                                index = self.postArray.index(of: post)!
+                                break
+                            }
+                        }
+                        
+                        // 保持している配列からidが同じものを探す（※postArrayAll用）
+                        var indexAll: Int = 0
+                        for post in self.postArrayAll {
+                            if post.id == postData.id {
+                                indexAll = self.postArrayAll.index(of: post)!
+                                break
+                            }
+                        }
+                            
+                        // 差し替えるため一度削除する
+                        self.postArrayBySearch.remove(at: indexBySearch)
+                        self.postArray.remove(at: index)
+                        self.postArrayAll.remove(at: indexAll)
+                            
+                        // 削除したところに更新済みのデータを追加する
+                        self.postArrayBySearch.insert(postData, at: indexBySearch)
+                        self.postArray.insert(postData, at: index)
+                        self.postArrayAll.insert(postData, at: indexAll)
+                            
+                        // TableViewを再表示する
+                        self.tableView.reloadData()
+                        }
+                    }
+                })
+                
+                // 要素が【削除】されたら該当のデータをpostArrayから一度削除した後に新しいデータを追加してTableViewを再表示する
+                postsRef.observe(.childRemoved, with: { snapshot in
+                    print("DEBUG_PRINT: .childChangedイベントが発生しました。")
+                    
+                    if let uid = Auth.auth().currentUser?.uid {
+                        // PostDataクラスを生成して受け取ったデータを設定する
+                        let postData = PostData(snapshot: snapshot, myId: uid)
+                        
+                        // 検索バーのテキスト有無で場合分け
+                        if self.textSearchBar.text == "" {
                             // 保持している配列からidが同じものを探す
                             var index: Int = 0
-                            for post in self.postArrayBySearch {
+                            for post in self.postArray {
                                 if post.id == postData.id {
-                                    index = self.postArrayBySearch.index(of: post)!
+                                    index = self.postArray.index(of: post)!
                                     break
                                 }
                             }
                             
-                            // 差し替えるため一度削除する
-                            self.postArrayBySearch.remove(at: index)
+                            // 保持している配列からidが同じものを探す（※postArrayAll用）
+                            var indexAll: Int = 0
+                            for post in self.postArrayAll {
+                                if post.id == postData.id {
+                                    indexAll = self.postArrayAll.index(of: post)!
+                                    break
+                                }
+                            }
                             
-                            // 削除したところに更新済みのデータを追加する
-                            self.postArrayBySearch.insert(postData, at: index)
+                            // 保持している配列からidが同じものを探す（※postArrayBySearch用）
+                            var indexBySearch: Int = 0
+                            for post in self.postArrayBySearch {
+                                if post.id == postData.id {
+                                    indexBySearch = self.postArrayBySearch.index(of: post)!
+                                    break
+                                }
+                            }
+                            
+                            // 削除する
+                            self.postArray.remove(at: index)
+                            self.postArrayAll.remove(at: indexAll)
+                            self.postArrayBySearch.remove(at: indexBySearch)
+                            
+                            // TableViewを再表示する
+                            self.tableView.reloadData()
+                        }
+                        else {
+                          
+                            // 保持している配列からidが同じものを探す
+                            var indexBySearch: Int = 0
+                            for post in self.postArrayBySearch {
+                                if post.id == postData.id {
+                                    indexBySearch = self.postArrayBySearch.index(of: post)!
+                                    break
+                                }
+                            }
+                            
+                            // 保持している配列からidが同じものを探す（※postArray用）
+                            var index: Int = 0
+                            for post in self.postArray {
+                                if post.id == postData.id {
+                                    index = self.postArray.index(of: post)!
+                                    break
+                                }
+                            }
+                            
+                            // 保持している配列からidが同じものを探す（※postArrayAll用）
+                            var indexAll: Int = 0
+                            for post in self.postArrayAll {
+                                if post.id == postData.id {
+                                    indexAll = self.postArrayAll.index(of: post)!
+                                    break
+                                }
+                            }
+                            
+                            // 削除する
+                            self.postArrayBySearch.remove(at: indexBySearch)
+                            self.postArray.remove(at: index)
+                            self.postArrayAll.remove(at: indexAll)
                             
                             // TableViewを再表示する
                             self.tableView.reloadData()
@@ -178,6 +298,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                 // ログアウトを検出したら、一旦テーブルをクリアしてオブザーバーを削除する。
                 // テーブルをクリアする
                 postArray = []
+                postArrayAll = []
                 postArrayBySearch = []
                 tableView.reloadData()
                 // オブザーバーを削除する
@@ -190,6 +311,15 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        self.tableView.dataSource = self
+        // TableViewを再表示する
+        self.tableView.reloadData()
+        print("viewDidApperのcheck")
+    }
+        
     
     //検索バーでテキストが空白or全て消された時 / テキスト入力された時の呼び出しメソッド
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -273,10 +403,12 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         
         let postData : PostData
         
-        // 検索バーのテキスト有無で場合分け
         if textSearchBar.text == "" {
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArray[indexPath!.row]
+            
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by likeボタン＝\(postData)")
         }
         else {
             // 検索バーに入力された単語をスペースで分けて配列に入れる
@@ -288,13 +420,11 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                 tempFilteredArray = tempFilteredArray.filter({ ($0.category?.localizedCaseInsensitiveContains(n))! || ($0.contents?.localizedCaseInsensitiveContains(n))! || ($0.relatedURL?.localizedCaseInsensitiveContains(n))! || ($0.secretpass?.localizedCaseInsensitiveContains(n))! || ($0.id?.localizedCaseInsensitiveContains(n))! || ($0.pinAddress?.localizedCaseInsensitiveContains(n))! || ($0.name?.localizedCaseInsensitiveContains(n))!})
             }
             postArrayBySearch = tempFilteredArray
-            
-            // 配列からタップされたインデックスのデータを取り出す
             postData = postArrayBySearch[indexPath!.row]
+            
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by likeボタン＝\(postData)")
         }
-        
-        // タップされたインデックスのデータを確認
-        print("タップされたインデックスのデータ by likeボタン＝\(postData)")
         
         // Firebaseに保存するデータの準備
         if let uid = Auth.auth().currentUser?.uid {
@@ -312,12 +442,10 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             } else {
                 postData.likes.append(uid)
             }
-            
             // 増えたlikesをFirebaseに保存する
             let postRef = Database.database().reference().child(Const.PostPath).child(postData.id!)
             let likes = ["likes": postData.likes]
             postRef.updateChildValues(likes)
-            
         }
     }
     
@@ -332,11 +460,13 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         let indexPath = tableView.indexPathForRow(at: point)
         
         let postData : PostData
-        
-        // 検索バーのテキスト有無で場合分け
+
         if textSearchBar.text == "" {
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArray[indexPath!.row]
+            
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by likeボタン＝\(postData)")
         }
         else {
             // 検索バーに入力された単語をスペースで分けて配列に入れる
@@ -348,13 +478,11 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                 tempFilteredArray = tempFilteredArray.filter({ ($0.category?.localizedCaseInsensitiveContains(n))! || ($0.contents?.localizedCaseInsensitiveContains(n))! || ($0.relatedURL?.localizedCaseInsensitiveContains(n))! || ($0.secretpass?.localizedCaseInsensitiveContains(n))! || ($0.id?.localizedCaseInsensitiveContains(n))! || ($0.pinAddress?.localizedCaseInsensitiveContains(n))! || ($0.name?.localizedCaseInsensitiveContains(n))!})
             }
             postArrayBySearch = tempFilteredArray
-            
-            // 配列からタップされたインデックスのデータを取り出す
             postData = postArrayBySearch[indexPath!.row]
+            
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by likeボタン＝\(postData)")
         }
-        
-        // タップされたインデックスのデータを確認
-        print("タップされたインデックスのデータ by MyMapボタン＝\(postData)")
         
         // Firebaseに保存するデータの準備
         if let uid = Auth.auth().currentUser?.uid {

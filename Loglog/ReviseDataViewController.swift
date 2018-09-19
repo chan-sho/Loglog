@@ -85,15 +85,13 @@ class ReviseDataViewController: UIViewController, UITextFieldDelegate {
                     let refOfDelete = Database.database().reference().child("posts").child("\(self.postCode.text!)")
                     refOfDelete.removeValue()
                     
-                    //TableViewからも該当のCellを削除
-                    // xxxxxxxxxxxxx
-                    
                     SVProgressHUD.showSuccess(withStatus: "対象の投稿が削除されました")
                     
-                    // 画面を閉じてViewControllerに戻る
-                    self.dismiss(animated: true, completion: nil)
-                    
-                    self.tableView.reloadData()
+                    // 画面を閉じてPostedDataViewControllerに戻る&その画面先でTableViewをReload
+                    let postedDataViewController = self.presentingViewController as? PostedDataViewController
+                    self.dismiss(animated: true, completion: {
+                        postedDataViewController?.tableView.reloadData()
+                    })
                     
                 }
                 else {
