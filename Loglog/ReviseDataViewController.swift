@@ -76,7 +76,6 @@ class ReviseDataViewController: UIViewController, UITextFieldDelegate {
             //  FirebaseからobserveSingleEventで1回だけデータ検索
             ref.observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as? String
-                //中身の確認
                 
                 let uid = Auth.auth().currentUser?.uid
                 if uid == value {
