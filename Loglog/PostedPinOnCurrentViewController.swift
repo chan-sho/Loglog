@@ -11,14 +11,15 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import SVProgressHUD
-import MapKit
-import CoreLocation
+import ESTabBarController
+import Foundation
 
-protocol PinOfPostedInCurrentDelegate {
-    func pinOfPostedInCurrent()
+
+@objc protocol PinOfPostedInCurrentDelegate {
+    @objc func pinOfPostedInCurrent(pinOfPostedLatitude: Double, pinOfPostedLongitude: Double, pinTitle: String, pinSubTitle: String)
 }
 
-class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource, MKMapViewDelegate {
+class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
 
     @IBOutlet weak var category: UITextField!
@@ -32,7 +33,7 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
     let uid = Auth.auth().currentUser?.uid
     
     //Delegateを使う準備
-    var delegate:PinOfPostedInCurrentDelegate?
+    weak var delegate:PinOfPostedInCurrentDelegate?
     
     
     override func viewDidLoad() {
@@ -137,26 +138,46 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
                     if value != nil{
                         print(" valueの中身は：\(value!)")
                         
-                        // pinを立てる為に座標点を取得
-                        let postedLatitude = value!["pincoodinateLatitude"]
-                        let postedLongitude = value!["pincoodinateLongitude"]
-                        print(" valueの緯度は：\(postedLatitude!)")
-                        print(" valueの経度は：\(postedLongitude!)")
+                        //緯度と経度をvalue[]から取得
+                        let pinOfPostedLatitude = value!["pincoodinateLatitude"] as! Double
+                        let pinOfPostedLongitude = value!["pincoodinateLongitude"] as! Double
+                        let pinTitle = "\(value!["category"] ?? "カテゴリーなし" as AnyObject)(\(value!["name"] ?? "投稿者名なし" as AnyObject))"
+                        let pinSubTitle = "\(value!["pinAddress"] ?? "投稿場所情報なし" as AnyObject))"
                         
-                        // CurrentMapViewControllerにデータを引き継ぐ
-                        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-                            let currentMapViewController : CurrentMapViewController = segue.destination as! CurrentMapViewController
-                            
-                            //緯度と経度をvalue[]から取得
-                            currentMapViewController.pinOfPostedLatitude = value!["pincoodinateLatitude"] as! Double
-                            currentMapViewController.pinOfPostedLongitude = value!["pincoodinateLongitude"] as! Double
-                            currentMapViewController.pinTitle = "\(String(describing: value!["category"]))(\(String(describing: value!["name"])))"
-                            currentMapViewController.pinSubTitle = value!["pinAddress"] as? String
-                        }
+                        //データの確認
+                        print("緯度は：\(pinOfPostedLatitude)")
+                        print("経度は：\(pinOfPostedLongitude)")
+                        print("Titleは：\(pinTitle)")
+                        print("SubTitleは：\(pinSubTitle)")
                         
                         //Delegateされているfunc()を実行
-                        self.delegate?.pinOfPostedInCurrent()
-                            
+                        self.delegate?.pinOfPostedInCurrent(pinOfPostedLatitude: pinOfPostedLatitude, pinOfPostedLongitude: pinOfPostedLongitude, pinTitle: pinTitle, pinSubTitle: pinSubTitle)
+                        
+                        // 移動先ViewControllerのインスタンスを取得（ストーリーボードIDから）
+                        let currentMapViewController = self.storyboard?.instantiateViewController(withIdentifier: "CurrentMap")
+                        self.tabBarController?.navigationController?.present(currentMapViewController!, animated: true, completion: nil)
+
+                        //let viewController = self.storyboard?.instantiateViewController(withIdentifier: "View") as! ViewController
+                        //self.view.window?.rootViewController?.present(viewController, animated:true, completion: nil)
+                        
+                        
+                        // 画面遷移後にCurrentMap画面（index = 1）を選択している状態にしておく
+                        //let tabBarController = self.parent as! ESTabBarController
+                        //tabBarController.setSelectedIndex(1, animated: false)
+                        
+                        
+                        //let currentMapViewController = self.storyboard?.instantiateViewController(withIdentifier: "CurrentMap")
+                        //self.present(currentMapViewController!, animated: true, completion: nil)
+                        
+                        
+                        //self.presentingViewController?.dismiss(animated: true, completion: nil)
+                        
+                        
+                        // UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
+                        
+                        
+                        //self.navigationController!.popToRootViewController(animated: true)
+                        
                     }
                     else {
                     print("valueの中身は：nil")
@@ -164,11 +185,7 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
                     return
                     }
                     
-                }) { (error) in
-                    print(error.localizedDescription)
-                    SVProgressHUD.showError(withStatus: "検索条件をもう一度確認して下さい")
-                    return
-                }
+                })
             }
             
             

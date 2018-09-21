@@ -228,22 +228,20 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
     
     
     //Delegate管理したアクション
-    func pinOfPostedInCurrent() {
-        //一旦全てのpinを削除する
-        currentMapView.removeAnnotations(currentMapView.annotations)
+    func pinOfPostedInCurrent(pinOfPostedLatitude: Double, pinOfPostedLongitude: Double, pinTitle: String, pinSubTitle: String) {
         
         //pinを立てる
-        pinOfPosted.coordinate = CLLocationCoordinate2DMake(pinOfPostedLatitude, pinOfPostedLongitude)
-        pinOfPosted.title = "\(pinTitle!)"
-        pinOfPosted.subtitle = "\(pinSubTitle!)"
+        self.pinOfPosted.coordinate = CLLocationCoordinate2DMake(pinOfPostedLatitude, pinOfPostedLongitude)
+        self.pinOfPosted.title = pinTitle
+        self.pinOfPosted.subtitle = pinSubTitle
         
         //中身の確認
-        print("緯度＝\(pinOfPostedLatitude)")
-        print("経度＝\(pinOfPostedLongitude)")
-        print("Title＝\(pinTitle!)")
-        print("SubTitle＝\(pinSubTitle!)")
+        print("最終確認：　緯度＝\(pinOfPostedLatitude)")
+        print("最終確認：　経度＝\(pinOfPostedLongitude)")
+        print("最終確認：　Title＝\(pinTitle)")
+        print("最終確認：　SubTitle＝\(pinSubTitle)")
         
-        currentMapView.addAnnotation(pinOfPosted)
+        self.currentMapView.addAnnotation(pinOfPosted)
     }
     
     
