@@ -186,7 +186,7 @@
                                     <outletCollection property="gestureRecognizers" destination="W3k-W2-MlY" appends="YES" id="pz8-Mj-TlC"/>
                                 </connections>
                             </mapView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="住所、施設名を入れて検索" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="oBD-ec-M0y">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="住所、施設名などで投稿したい場所を探す" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="oBD-ec-M0y">
                                 <rect key="frame" x="0.0" y="20" width="375" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
@@ -215,7 +215,7 @@
                                     <constraint firstAttribute="width" secondItem="wVc-kL-bVS" secondAttribute="height" multiplier="1:1" id="lRZ-YV-db6"/>
                                     <constraint firstAttribute="height" constant="55" id="wiE-sm-7eC"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="検索"/>
+                                <state key="normal" backgroundImage="地図ピン"/>
                                 <connections>
                                     <segue destination="RYu-Ip-B7r" kind="show" id="DAX-a6-Wpd"/>
                                 </connections>
@@ -461,6 +461,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
                                 <state key="normal" title="上記条件でピンを検索＆表示" backgroundImage="Btn2"/>
+                                <connections>
+                                    <action selector="searchButton:" destination="RYu-Ip-B7r" eventType="touchUpInside" id="dJ8-49-h3s"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cGh-hR-3y8">
                                 <rect key="frame" x="37" y="527.5" width="300" height="40"/>
@@ -734,7 +737,7 @@
                                     <constraint firstAttribute="height" constant="55" id="mVq-si-bfz"/>
                                     <constraint firstAttribute="width" constant="55" id="nKV-Ao-Dc4"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="検索"/>
+                                <state key="normal" backgroundImage="地図ピン"/>
                                 <connections>
                                     <segue destination="WJg-nc-v0E" kind="show" id="Kd2-Bt-CDg"/>
                                 </connections>
@@ -866,6 +869,10 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
                                 <state key="normal" title="上記条件でピンを検索＆表示" backgroundImage="Btn2"/>
+                                <connections>
+                                    <action selector="searchButton:" destination="WJg-nc-v0E" eventType="touchUpInside" id="fcO-Vm-IKz"/>
+                                    <segue destination="N0m-aq-8Lq" kind="show" id="K89-ZM-cw9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gP-nq-SGA">
                                 <rect key="frame" x="37" y="528.5" width="300" height="40"/>
@@ -1333,11 +1340,12 @@
     <resources>
         <image name="Btn2" width="300" height="40"/>
         <image name="Btn3" width="300" height="40"/>
+        <image name="地図ピン" width="100" height="100"/>
         <image name="投稿準備" width="100" height="100"/>
-        <image name="検索" width="100" height="100"/>
         <image name="現在地" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="K89-ZM-cw9"/>
         <segue reference="WZW-Mr-Cpv"/>
     </inferredMetricsTieBreakers>
 </document>

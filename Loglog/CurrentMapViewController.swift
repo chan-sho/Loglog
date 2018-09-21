@@ -11,7 +11,8 @@ import MapKit
 import CoreLocation
 import SVProgressHUD
 
-class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+
+class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, PinOfPostedInCurrentDelegate {
     
     @IBOutlet weak var currentMapView: MKMapView!
     @IBOutlet weak var postFromCurrent: UIButton!
@@ -20,11 +21,19 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
     
     let pin = MKPointAnnotation()
     
+    //投稿一覧からのpin作成に使う準備
+    let pinOfPosted = MKPointAnnotation()
+    var pinOfPostedLatitude : Double = 0.0
+    var pinOfPostedLongitude : Double = 0.0
+    var pinTitle : String?
+    var pinSubTitle : String?
+    
+    
     //user defaultsを使う準備
     let userDefaults:UserDefaults = UserDefaults.standard
     
     var currentMapManager:CLLocationManager = CLLocationManager()
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +58,7 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
         searchButton.layer.borderColor = UIColor.darkGray.cgColor
         searchButton.layer.borderWidth = 1.0
         searchButton.layer.cornerRadius = 10.0 //丸みを数値で変更できる
+        
     }
 
     
@@ -214,6 +224,26 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
     @IBAction func userLocationButton(_ sender: Any) {
         self.currentMapView.userTrackingMode = MKUserTrackingMode.followWithHeading
         currentMapView.setCenter(currentMapView.userLocation.coordinate, animated: true)
+    }
+    
+    
+    //Delegate管理したアクション
+    func pinOfPostedInCurrent() {
+        //一旦全てのpinを削除する
+        currentMapView.removeAnnotations(currentMapView.annotations)
+        
+        //pinを立てる
+        pinOfPosted.coordinate = CLLocationCoordinate2DMake(pinOfPostedLatitude, pinOfPostedLongitude)
+        pinOfPosted.title = "\(pinTitle!)"
+        pinOfPosted.subtitle = "\(pinSubTitle!)"
+        
+        //中身の確認
+        print("緯度＝\(pinOfPostedLatitude)")
+        print("経度＝\(pinOfPostedLongitude)")
+        print("Title＝\(pinTitle!)")
+        print("SubTitle＝\(pinSubTitle!)")
+        
+        currentMapView.addAnnotation(pinOfPosted)
     }
     
     

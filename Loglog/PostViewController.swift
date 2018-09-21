@@ -25,7 +25,7 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     // categoryTextにPickerを実装する準備
     var pickerView: UIPickerView = UIPickerView()
-    let list = ["思い出", "伝えられなかったありがとう", "親切な貴方へありがとう", "ジョブマッチング", "秘密の場所", "観光スポット", "グルメ（ランチ）", "グルメ（ディナー）", "レジャー", "その他"]
+    let list = ["", "思い出", "伝えられなかったありがとう", "名前を知らない貴方へありがとう", "ジョブマッチング", "秘密の場所", "観光スポット", "グルメ（ランチ）", "グルメ（ディナー）", "レジャー", "その他"]
     
     //user defaultsを使う準備
     let userDefaults:UserDefaults = UserDefaults.standard
