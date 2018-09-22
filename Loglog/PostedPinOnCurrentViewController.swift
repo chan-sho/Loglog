@@ -198,7 +198,7 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
                         print("②のvalueの中身は：\(value)")
                         
                         //条件分岐（categoryが一致　且つ　myMapのIDがログインユーザーのIDと同じ）
-                        if ((value["category"]?.contains(self.category.text!))! && (value["myMap"]?.contains(self.uid!))!) {
+                        if ((value["category"]?.contains(self.category.text!))! && (value["myMap"]?.contains(self.uid!))!) || ((value["category"]?.contains(self.category.text!))! && value["MyMap"] as! String == "なし") {
                             print("条件分岐if後の②のvalueの中身は：\(value)")
                             
                             //緯度と経度をvalue[]から取得
@@ -220,29 +220,8 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
                             print("条件分岐if後の②のfunc postedPinOnCurrent()のDelegateを通過")
                             
                         }
-                            
-                        //条件分岐（categoryが一致　且つ　myMapのIDが"なし"）
-                        else if (value["category"]?.contains(self.category.text!))! && value["MyMap"] as! String == "なし" {
-                            print("条件分岐else if後の②のvalueの中身は：\(value)")
-                            
-                            //緯度と経度をvalue[]から取得
-                            let pinOfPostedLatitude = value["pincoodinateLatitude"] as! Double
-                            let pinOfPostedLongitude = value["pincoodinateLongitude"] as! Double
-                            let pinTitle = "\(value["category"] ?? "カテゴリーなし" as AnyObject)(\(value["name"] ?? "投稿者名なし" as AnyObject))"
-                            let pinSubTitle = "\(value["pinAddress"] ?? "投稿場所情報なし" as AnyObject))"
-                            
-                            //データの確認
-                            print("条件分岐else if後の②の緯度は：\(pinOfPostedLatitude)")
-                            print("条件分岐else if後の②の経度は：\(pinOfPostedLongitude)")
-                            print("条件分岐else if後の②のTitleは：\(pinTitle)")
-                            print("条件分岐else if後の②のSubTitleは：\(pinSubTitle)")
-                            
-                            //Delegateされているfunc()を実行
-                            self.delegate?.postedPinOnCurrent(pinOfPostedLatitude: pinOfPostedLatitude, pinOfPostedLongitude: pinOfPostedLongitude, pinTitle: pinTitle, pinSubTitle: pinSubTitle)
-                            
-                            //funcの通過確認
-                            print("条件分岐else if後の②のfunc postedPinOnCurrent()のDelegateを通過")
-                            
+                        else {
+                            return
                         }
                     }
                 })
