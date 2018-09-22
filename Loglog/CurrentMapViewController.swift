@@ -237,9 +237,9 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
         
         //pinを立てる準備
         let coordinate = CLLocationCoordinate2DMake(pinOfPostedLatitude, pinOfPostedLongitude)
-        //表示範囲
+        //表示範囲（※ここは複数のpinを生成する際には毎回画面が変わって見にくいので削除も検討）
         let span = MKCoordinateSpanMake(0.02, 0.02)
-        //中心座標と表示範囲をマップに登録する。
+        //中心座標と表示範囲をマップに登録（※ここは複数のpinを生成する際には毎回画面が変わって見にくいので削除も検討）
         let region = MKCoordinateRegionMake(coordinate, span)
         currentMapView.setRegion(region, animated:true)
         

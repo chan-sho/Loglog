@@ -135,7 +135,7 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
                     
                     //中身の確認
                     if value != nil{
-                        print(" valueの中身は：\(value!)")
+                        print("①のvalueの中身は：\(value!)")
                         
                         //緯度と経度をvalue[]から取得
                         let pinOfPostedLatitude = value!["pincoodinateLatitude"] as! Double
@@ -144,16 +144,16 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
                         let pinSubTitle = "\(value!["pinAddress"] ?? "投稿場所情報なし" as AnyObject))"
                         
                         //データの確認
-                        print("緯度は：\(pinOfPostedLatitude)")
-                        print("経度は：\(pinOfPostedLongitude)")
-                        print("Titleは：\(pinTitle)")
-                        print("SubTitleは：\(pinSubTitle)")
+                        print("①の緯度は：\(pinOfPostedLatitude)")
+                        print("①の経度は：\(pinOfPostedLongitude)")
+                        print("①のTitleは：\(pinTitle)")
+                        print("①のSubTitleは：\(pinSubTitle)")
                         
                         //Delegateされているfunc()を実行
                         self.delegate?.postedPinOnCurrent(pinOfPostedLatitude: pinOfPostedLatitude, pinOfPostedLongitude: pinOfPostedLongitude, pinTitle: pinTitle, pinSubTitle: pinSubTitle)
                         
                         //funcの通過確認
-                        print(" func postedPinOnCurrent()のDelegateを通過")
+                        print("①のfunc postedPinOnCurrent()のDelegateを通過")
                         
                         // 移動先ViewControllerのインスタンスを取得（ストーリーボードIDから）
                         let currentMapViewController = self.storyboard?.instantiateViewController(withIdentifier: "CurrentMap")
@@ -161,7 +161,7 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
                         
                     }
                     else {
-                    print("valueの中身は：nil")
+                    print("①のvalueの中身は：nil")
                     SVProgressHUD.showError(withStatus: "検索条件をもう一度確認して下さい")
                     return
                     }
@@ -186,29 +186,71 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
                         var value = snap.value as! [String: AnyObject]
                         //使わない画像データのkeyを配列から削除
                         _ = value.removeValue(forKey: "image")
-                        // データの中身を確認
-                        print("valueの中身は\(value)")
                         
-                        // pinを立てる為に座標点を取得
-                        let postedLatitude = value["pincoodinateLatitude"]
-                        let postedLongitude = value["pincoodinateLongitude"]
-                        print(" valueの緯度は：\(postedLatitude!)")
-                        print(" valueの経度は：\(postedLongitude!)")
+                        //"myMap"の要素を持たない配列に"なし"を入れる処理
+                        if value["myMap"] != nil {
+                            return
+                        } else {
+                            value["myMap"] = "なし" as AnyObject
+                        }
                         
-                        // 画面を閉じてCurrentMapViewControllerに戻る&その画面先でpinを立てる
-                        let currentMapViewController = self.presentingViewController as? CurrentMapViewController
-                        self.dismiss(animated: true, completion: {
+                        //中身の確認
+                        print("②のvalueの中身は：\(value)")
+                        
+                        //条件分岐（categoryが一致　且つ　myMapのIDがログインユーザーのIDと同じ）
+                        if ((value["category"]?.contains(self.category.text!))! && (value["myMap"]?.contains(self.uid!))!) {
+                            print("条件分岐if後の②のvalueの中身は：\(value)")
                             
-                            // pinを立てる処理
-                        
-                        })
+                            //緯度と経度をvalue[]から取得
+                            let pinOfPostedLatitude = value["pincoodinateLatitude"] as! Double
+                            let pinOfPostedLongitude = value["pincoodinateLongitude"] as! Double
+                            let pinTitle = "\(value["category"] ?? "カテゴリーなし" as AnyObject)(\(value["name"] ?? "投稿者名なし" as AnyObject))"
+                            let pinSubTitle = "\(value["pinAddress"] ?? "投稿場所情報なし" as AnyObject))"
+                            
+                            //データの確認
+                            print("条件分岐if後の②の緯度は：\(pinOfPostedLatitude)")
+                            print("条件分岐if後の②の経度は：\(pinOfPostedLongitude)")
+                            print("条件分岐if後の②のTitleは：\(pinTitle)")
+                            print("条件分岐if後の②のSubTitleは：\(pinSubTitle)")
+                            
+                            //Delegateされているfunc()を実行
+                            self.delegate?.postedPinOnCurrent(pinOfPostedLatitude: pinOfPostedLatitude, pinOfPostedLongitude: pinOfPostedLongitude, pinTitle: pinTitle, pinSubTitle: pinSubTitle)
+                            
+                            //funcの通過確認
+                            print("条件分岐if後の②のfunc postedPinOnCurrent()のDelegateを通過")
+                            
+                        }
+                            
+                        //条件分岐（categoryが一致　且つ　myMapのIDが"なし"）
+                        else if (value["category"]?.contains(self.category.text!))! && value["MyMap"] as! String == "なし" {
+                            print("条件分岐else if後の②のvalueの中身は：\(value)")
+                            
+                            //緯度と経度をvalue[]から取得
+                            let pinOfPostedLatitude = value["pincoodinateLatitude"] as! Double
+                            let pinOfPostedLongitude = value["pincoodinateLongitude"] as! Double
+                            let pinTitle = "\(value["category"] ?? "カテゴリーなし" as AnyObject)(\(value["name"] ?? "投稿者名なし" as AnyObject))"
+                            let pinSubTitle = "\(value["pinAddress"] ?? "投稿場所情報なし" as AnyObject))"
+                            
+                            //データの確認
+                            print("条件分岐else if後の②の緯度は：\(pinOfPostedLatitude)")
+                            print("条件分岐else if後の②の経度は：\(pinOfPostedLongitude)")
+                            print("条件分岐else if後の②のTitleは：\(pinTitle)")
+                            print("条件分岐else if後の②のSubTitleは：\(pinSubTitle)")
+                            
+                            //Delegateされているfunc()を実行
+                            self.delegate?.postedPinOnCurrent(pinOfPostedLatitude: pinOfPostedLatitude, pinOfPostedLongitude: pinOfPostedLongitude, pinTitle: pinTitle, pinSubTitle: pinSubTitle)
+                            
+                            //funcの通過確認
+                            print("条件分岐else if後の②のfunc postedPinOnCurrent()のDelegateを通過")
+                            
+                        }
                     }
-                }) { (error) in
-                    print(error.localizedDescription)
-                    SVProgressHUD.showError(withStatus: "検索条件をもう一度確認して下さい")
-                    return
+                })
+                // 移動先ViewControllerのインスタンスを取得（ストーリーボードIDから）
+                let currentMapViewController = self.storyboard?.instantiateViewController(withIdentifier: "CurrentMap")
+                self.tabBarController?.navigationController?.present(currentMapViewController!, animated: true, completion: nil)
+                
                 }
-            }
             
             
             //③postedNameが打ち込まれている場合　→ 対象の情報をobserveで抽出できる
