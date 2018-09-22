@@ -12,7 +12,7 @@ import CoreLocation
 import SVProgressHUD
 
 
-class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, PinOfPostedInCurrentDelegate {
+class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, PostedPinOnCurrentDelegate {
     
     @IBOutlet weak var currentMapView: MKMapView!
     @IBOutlet weak var postFromCurrent: UIButton!
@@ -58,6 +58,9 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
         searchButton.layer.borderColor = UIColor.darkGray.cgColor
         searchButton.layer.borderWidth = 1.0
         searchButton.layer.cornerRadius = 10.0 //丸みを数値で変更できる
+        
+        //PostedPinOnCurrentViewControllerクラスのインスタンスを作り、そのプロパティ（delegate）にselfを代入
+        PostedPinOnCurrentViewController().delegate = self
         
     }
 
@@ -228,12 +231,25 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
     
     
     //Delegate管理したアクション
-    func pinOfPostedInCurrent(pinOfPostedLatitude: Double, pinOfPostedLongitude: Double, pinTitle: String, pinSubTitle: String) {
+    func postedPinOnCurrent(pinOfPostedLatitude: Double, pinOfPostedLongitude: Double, pinTitle: String, pinSubTitle: String) {
         
-        //pinを立てる
-        self.pinOfPosted.coordinate = CLLocationCoordinate2DMake(pinOfPostedLatitude, pinOfPostedLongitude)
-        self.pinOfPosted.title = pinTitle
-        self.pinOfPosted.subtitle = pinSubTitle
+        //funcの通過確認
+        print(" func postedPinOnCurrent()を通過：　緯度＝\(pinOfPostedLatitude)")
+        
+        //一旦pinを全て消す
+        currentMapView.removeAnnotations(currentMapView.annotations)
+        
+        //pinを立てる準備
+        let coordinate = CLLocationCoordinate2DMake(pinOfPostedLatitude, pinOfPostedLongitude)
+        //表示範囲
+        let span = MKCoordinateSpanMake(0.02, 0.02)
+        //中心座標と表示範囲をマップに登録する。
+        let region = MKCoordinateRegionMake(coordinate, span)
+        currentMapView.setRegion(region, animated:true)
+        
+        pinOfPosted.coordinate = CLLocationCoordinate2DMake(pinOfPostedLatitude, pinOfPostedLongitude)
+        pinOfPosted.title = pinTitle
+        pinOfPosted.subtitle = pinSubTitle
         
         //中身の確認
         print("最終確認：　緯度＝\(pinOfPostedLatitude)")

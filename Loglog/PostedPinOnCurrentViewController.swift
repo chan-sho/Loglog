@@ -12,11 +12,10 @@ import FirebaseAuth
 import FirebaseDatabase
 import SVProgressHUD
 import ESTabBarController
-import Foundation
 
 
-@objc protocol PinOfPostedInCurrentDelegate {
-    @objc func pinOfPostedInCurrent(pinOfPostedLatitude: Double, pinOfPostedLongitude: Double, pinTitle: String, pinSubTitle: String)
+@objc protocol PostedPinOnCurrentDelegate {
+    func postedPinOnCurrent(pinOfPostedLatitude: Double, pinOfPostedLongitude: Double, pinTitle: String, pinSubTitle: String)
 }
 
 class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -33,7 +32,7 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
     let uid = Auth.auth().currentUser?.uid
     
     //Delegateを使う準備
-    weak var delegate:PinOfPostedInCurrentDelegate?
+    weak var delegate: PostedPinOnCurrentDelegate?
     
     
     override func viewDidLoad() {
@@ -151,32 +150,14 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
                         print("SubTitleは：\(pinSubTitle)")
                         
                         //Delegateされているfunc()を実行
-                        self.delegate?.pinOfPostedInCurrent(pinOfPostedLatitude: pinOfPostedLatitude, pinOfPostedLongitude: pinOfPostedLongitude, pinTitle: pinTitle, pinSubTitle: pinSubTitle)
+                        self.delegate?.postedPinOnCurrent(pinOfPostedLatitude: pinOfPostedLatitude, pinOfPostedLongitude: pinOfPostedLongitude, pinTitle: pinTitle, pinSubTitle: pinSubTitle)
+                        
+                        //funcの通過確認
+                        print(" func postedPinOnCurrent()のDelegateを通過：　緯度＝\(pinOfPostedLatitude)")
                         
                         // 移動先ViewControllerのインスタンスを取得（ストーリーボードIDから）
                         let currentMapViewController = self.storyboard?.instantiateViewController(withIdentifier: "CurrentMap")
                         self.tabBarController?.navigationController?.present(currentMapViewController!, animated: true, completion: nil)
-
-                        //let viewController = self.storyboard?.instantiateViewController(withIdentifier: "View") as! ViewController
-                        //self.view.window?.rootViewController?.present(viewController, animated:true, completion: nil)
-                        
-                        
-                        // 画面遷移後にCurrentMap画面（index = 1）を選択している状態にしておく
-                        //let tabBarController = self.parent as! ESTabBarController
-                        //tabBarController.setSelectedIndex(1, animated: false)
-                        
-                        
-                        //let currentMapViewController = self.storyboard?.instantiateViewController(withIdentifier: "CurrentMap")
-                        //self.present(currentMapViewController!, animated: true, completion: nil)
-                        
-                        
-                        //self.presentingViewController?.dismiss(animated: true, completion: nil)
-                        
-                        
-                        // UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
-                        
-                        
-                        //self.navigationController!.popToRootViewController(animated: true)
                         
                     }
                     else {
