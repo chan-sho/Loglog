@@ -203,7 +203,10 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
                         print("②のmyMapの要素を追加後のvalueの中身は：\(value)")
                         
                         //条件分岐（categoryが一致　且つ　myMapのIDがログインユーザーのIDと同じ）
+                        //       または（categoryが一致　且つ　myMapのIDが"なし"）
                         if ((value["category"]?.contains(self.category.text!))! && (value["myMap"]?.contains(self.uid!))!) || ((value["category"]?.contains(self.category.text!))! && (value["myMap"]?.contains("なし"))! ) {
+                            
+                            //中身の確認
                             print("条件分岐if後の②のvalueの中身は：\(value)")
                             
                             //緯度と経度をvalue[]から取得
@@ -240,86 +243,146 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
             //③postedNameが打ち込まれている場合　→ 対象の情報をobserveで抽出できる
             if category.text == "" && postedName.text != "" && postedNumber.text == "" {
                 var ref: DatabaseReference!
-                ref = Database.database().reference().child("posts").child("userID").child("\(self.postedName.text!)")
+                ref = Database.database().reference().child("posts")
                 
                 //中身の確認
-                print("refの中身は：\(ref!)")
+                print("category.textの中身は：\(postedName.text!)")
+                //中身の確認
+                print("uidの中身は：\(uid!)")
                 
                 //  FirebaseからobserveSingleEventで1回だけデータ検索
                 ref.observeSingleEvent(of: .value, with: { (snapshot) in
-                    let value = snapshot.value as? [String : AnyObject]
                     
-                    //中身の確認
-                    if value != nil{
-                        print("valueの中身は：\(value!)")
+                    for item in snapshot.children {
+                        let snap = item as! DataSnapshot
+                        var value = snap.value as! [String: AnyObject]
+                        //使わない画像データのkeyを配列から削除
+                        _ = value.removeValue(forKey: "image")
                         
-                        // 画面を閉じてPostedDataViewControllerに戻る&その画面先でTableViewをReload
-                        let currentMapViewController = self.presentingViewController as? CurrentMapViewController
-                        self.dismiss(animated: true, completion: {
+                        //中身の確認
+                        print("③のvalueの中身は：\(value)")
+                        
+                        //"myMap"の要素を持たない配列に"なし"を入れる処理
+                        if value["myMap"] != nil {
+                            continue
+                        } else {
+                            value["myMap"] = "なし" as AnyObject
+                        }
+                        
+                        //中身の確認
+                        print("③のmyMapの要素を追加後のvalueの中身は：\(value)")
+                        
+                        //条件分岐（postedNameが部分一致　且つ　myMapのIDがログインユーザーのIDと同じ）
+                        //       または（postedNameが部分一致　且つ　myMapのIDが"なし"）
+                        if ((value["name"]?.localizedCaseInsensitiveContains(self.postedName.text!))! && (value["myMap"]?.contains(self.uid!))!) || ((value["name"]?.localizedCaseInsensitiveContains(self.postedName.text!))! && (value["myMap"]?.contains("なし"))! ) {
                             
-                            // pinを立てる処理
+                            //中身の確認
+                            print("条件分岐if後の③のvalueの中身は：\(value)")
                             
-                        })
+                            //緯度と経度をvalue[]から取得
+                            let pinOfPostedLatitude = value["pincoodinateLatitude"] as! Double
+                            let pinOfPostedLongitude = value["pincoodinateLongitude"] as! Double
+                            let pinTitle = "\(value["category"] ?? "カテゴリーなし" as AnyObject)(\(value["name"] ?? "投稿者名なし" as AnyObject))"
+                            let pinSubTitle = "\(value["pinAddress"] ?? "投稿場所情報なし" as AnyObject)"
+                            
+                            //データの確認
+                            print("条件分岐if後の③の緯度は：\(pinOfPostedLatitude)")
+                            print("条件分岐if後の③の経度は：\(pinOfPostedLongitude)")
+                            print("条件分岐if後の③のTitleは：\(pinTitle)")
+                            print("条件分岐if後の③のSubTitleは：\(pinSubTitle)")
+                            
+                            //Delegateされているfunc()を実行
+                            self.delegate?.postedPinOnCurrent(pinOfPostedLatitude: pinOfPostedLatitude, pinOfPostedLongitude: pinOfPostedLongitude, pinTitle: pinTitle, pinSubTitle: pinSubTitle)
+                            
+                            //funcの通過確認
+                            print("条件分岐if後の③のfunc postedPinOnCurrent()のDelegateを通過")
+                            
+                        }
+                        else {
+                            continue
+                        }
                     }
-                    else {
-                        print("valueの中身は：nil")
-                        SVProgressHUD.showError(withStatus: "検索条件をもう一度確認して下さい")
-                        return
-                    }
-                    
-                }) { (error) in
-                    print(error.localizedDescription)
-                    SVProgressHUD.showError(withStatus: "検索条件をもう一度確認して下さい")
-                    return
-                }
+                })
+                // 移動先ViewControllerのインスタンスを取得（ストーリーボードIDから）
+                let currentMapViewController = self.storyboard?.instantiateViewController(withIdentifier: "CurrentMap")
+                self.tabBarController?.navigationController?.present(currentMapViewController!, animated: true, completion: nil)
+                
             }
             
             
             //④categoryとpostedNameが打ち込まれている場合　→ 対象の情報をobserveで抽出できる
-            if category.text != "" && postedName.text != "" && postedNumber.text == "" {
+            if category.text == "" && postedName.text != "" && postedNumber.text == "" {
                 var ref: DatabaseReference!
-                ref = Database.database().reference().child("posts").child("userID").child("\(self.category.text!)").child("\(self.postedNumber.text!)")
+                ref = Database.database().reference().child("posts")
                 
                 //中身の確認
-                print("refの中身は：\(ref!)")
+                print("category.textの中身は：\(postedName.text!)")
+                //中身の確認
+                print("uidの中身は：\(uid!)")
                 
                 //  FirebaseからobserveSingleEventで1回だけデータ検索
                 ref.observeSingleEvent(of: .value, with: { (snapshot) in
-                    let value = snapshot.value as? [String : AnyObject]
                     
-                    //中身の確認
-                    if value != nil{
-                        print("valueの中身は：\(value!)")
+                    for item in snapshot.children {
+                        let snap = item as! DataSnapshot
+                        var value = snap.value as! [String: AnyObject]
+                        //使わない画像データのkeyを配列から削除
+                        _ = value.removeValue(forKey: "image")
                         
-                        // 画面を閉じてPostedDataViewControllerに戻る&その画面先でTableViewをReload
-                        let currentMapViewController = self.presentingViewController as? CurrentMapViewController
-                        self.dismiss(animated: true, completion: {
+                        //中身の確認
+                        print("④のvalueの中身は：\(value)")
+                        
+                        //"myMap"の要素を持たない配列に"なし"を入れる処理
+                        if value["myMap"] != nil {
+                            continue
+                        } else {
+                            value["myMap"] = "なし" as AnyObject
+                        }
+                        
+                        //中身の確認
+                        print("④のmyMapの要素を追加後のvalueの中身は：\(value)")
+                        
+                        //条件分岐④（②と③の条件を両方満たす場合と同じ）
+                        if ((value["category"]?.contains(self.category.text!))! && (value["name"]?.localizedCaseInsensitiveContains(self.postedName.text!))! && (value["myMap"]?.contains(self.uid!))!) || ((value["category"]?.contains(self.category.text!))! && (value["name"]?.localizedCaseInsensitiveContains(self.postedName.text!))! && (value["myMap"]?.contains("なし"))! ) {
                             
-                            // pinを立てる処理
+                            //中身の確認
+                            print("条件分岐if後の③のvalueの中身は：\(value)")
                             
-                        })
+                            //緯度と経度をvalue[]から取得
+                            let pinOfPostedLatitude = value["pincoodinateLatitude"] as! Double
+                            let pinOfPostedLongitude = value["pincoodinateLongitude"] as! Double
+                            let pinTitle = "\(value["category"] ?? "カテゴリーなし" as AnyObject)(\(value["name"] ?? "投稿者名なし" as AnyObject))"
+                            let pinSubTitle = "\(value["pinAddress"] ?? "投稿場所情報なし" as AnyObject)"
+                            
+                            //データの確認
+                            print("条件分岐if後の④の緯度は：\(pinOfPostedLatitude)")
+                            print("条件分岐if後の④の経度は：\(pinOfPostedLongitude)")
+                            print("条件分岐if後の④のTitleは：\(pinTitle)")
+                            print("条件分岐if後の④のSubTitleは：\(pinSubTitle)")
+                            
+                            //Delegateされているfunc()を実行
+                            self.delegate?.postedPinOnCurrent(pinOfPostedLatitude: pinOfPostedLatitude, pinOfPostedLongitude: pinOfPostedLongitude, pinTitle: pinTitle, pinSubTitle: pinSubTitle)
+                            
+                            //funcの通過確認
+                            print("条件分岐if後の④のfunc postedPinOnCurrent()のDelegateを通過")
+                            
+                        }
+                        else {
+                            continue
+                        }
                     }
-                    else {
-                        print("valueの中身は：nil")
-                        SVProgressHUD.showError(withStatus: "検索条件をもう一度確認して下さい")
-                        return
-                    }
-                    
-                }) { (error) in
-                    print(error.localizedDescription)
-                    SVProgressHUD.showError(withStatus: "検索条件をもう一度確認して下さい")
-                    return
-                }
+                })
+                // 移動先ViewControllerのインスタンスを取得（ストーリーボードIDから）
+                let currentMapViewController = self.storyboard?.instantiateViewController(withIdentifier: "CurrentMap")
+                self.tabBarController?.navigationController?.present(currentMapViewController!, animated: true, completion: nil)
+                
             }
-            
-        }
         
         // 検索フィールドに何も打ち込まれていない場合：
         if category.text == "" && postedName.text == "" && postedNumber.text == ""  {
             SVProgressHUD.showError(withStatus: "検索条件を指定して下さい")
             return
         }
-        
     }
-    
+  }
 }
