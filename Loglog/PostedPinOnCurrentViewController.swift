@@ -177,6 +177,8 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
                 
                 //中身の確認
                 print("category.textの中身は：\(category.text!)")
+                //中身の確認
+                print("uidの中身は：\(uid!)")
                 
                 //  FirebaseからobserveSingleEventで1回だけデータ検索
                 ref.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -187,25 +189,28 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
                         //使わない画像データのkeyを配列から削除
                         _ = value.removeValue(forKey: "image")
                         
+                        //中身の確認
+                        print("②のvalueの中身は：\(value)")
+                        
                         //"myMap"の要素を持たない配列に"なし"を入れる処理
                         if value["myMap"] != nil {
-                            return
+                            continue
                         } else {
                             value["myMap"] = "なし" as AnyObject
                         }
                         
                         //中身の確認
-                        print("②のvalueの中身は：\(value)")
+                        print("②のmyMapの要素を追加後のvalueの中身は：\(value)")
                         
                         //条件分岐（categoryが一致　且つ　myMapのIDがログインユーザーのIDと同じ）
-                        if ((value["category"]?.contains(self.category.text!))! && (value["myMap"]?.contains(self.uid!))!) || ((value["category"]?.contains(self.category.text!))! && value["MyMap"] as! String == "なし") {
+                        if ((value["category"]?.contains(self.category.text!))! && (value["myMap"]?.contains(self.uid!))!) || ((value["category"]?.contains(self.category.text!))! && (value["myMap"]?.contains("なし"))! ) {
                             print("条件分岐if後の②のvalueの中身は：\(value)")
                             
                             //緯度と経度をvalue[]から取得
                             let pinOfPostedLatitude = value["pincoodinateLatitude"] as! Double
                             let pinOfPostedLongitude = value["pincoodinateLongitude"] as! Double
                             let pinTitle = "\(value["category"] ?? "カテゴリーなし" as AnyObject)(\(value["name"] ?? "投稿者名なし" as AnyObject))"
-                            let pinSubTitle = "\(value["pinAddress"] ?? "投稿場所情報なし" as AnyObject))"
+                            let pinSubTitle = "\(value["pinAddress"] ?? "投稿場所情報なし" as AnyObject)"
                             
                             //データの確認
                             print("条件分岐if後の②の緯度は：\(pinOfPostedLatitude)")
@@ -221,7 +226,7 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
                             
                         }
                         else {
-                            return
+                            continue
                         }
                     }
                 })

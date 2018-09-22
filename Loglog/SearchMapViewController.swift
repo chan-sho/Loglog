@@ -102,7 +102,7 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
         let tappedLocation = sender.location(in: displayMap)
         let tappedPoint = displayMap.convert(tappedLocation, toCoordinateFrom: displayMap)
         // update annotation
-        displayMap.removeAnnotations(displayMap.annotations)
+        self.displayMap.removeAnnotation(pin)
         //ピンを置く場所を指定
         pin.coordinate = tappedPoint
         //ピンのタイトルを設定

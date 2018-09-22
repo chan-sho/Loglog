@@ -144,7 +144,7 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
         let tappedLocation = sender.location(in: currentMapView)
         let tappedPoint = currentMapView.convert(tappedLocation, toCoordinateFrom: currentMapView)
         // update annotation
-        currentMapView.removeAnnotations(currentMapView.annotations)
+        self.currentMapView.removeAnnotation(pin)
         //ピンを置く場所を指定
         pin.coordinate = tappedPoint
         //ピンのタイトルを設定
@@ -233,7 +233,7 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
         print(" func postedPinOnCurrent()を通過")
         
         //一旦pinを全て消す
-        currentMapView.removeAnnotations(currentMapView.annotations)
+        // currentMapView.removeAnnotations(currentMapView.annotations)
         
         //pinを立てる準備
         let coordinate = CLLocationCoordinate2DMake(pinOfPostedLatitude, pinOfPostedLongitude)
