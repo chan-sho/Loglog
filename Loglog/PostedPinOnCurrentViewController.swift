@@ -153,7 +153,7 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
                         self.delegate?.postedPinOnCurrent(pinOfPostedLatitude: pinOfPostedLatitude, pinOfPostedLongitude: pinOfPostedLongitude, pinTitle: pinTitle, pinSubTitle: pinSubTitle)
                         
                         //funcの通過確認
-                        print(" func postedPinOnCurrent()のDelegateを通過：　緯度＝\(pinOfPostedLatitude)")
+                        print(" func postedPinOnCurrent()のDelegateを通過")
                         
                         // 移動先ViewControllerのインスタンスを取得（ストーリーボードIDから）
                         let currentMapViewController = self.storyboard?.instantiateViewController(withIdentifier: "CurrentMap")

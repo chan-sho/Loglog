@@ -58,10 +58,6 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
         searchButton.layer.borderColor = UIColor.darkGray.cgColor
         searchButton.layer.borderWidth = 1.0
         searchButton.layer.cornerRadius = 10.0 //丸みを数値で変更できる
-        
-        //PostedPinOnCurrentViewControllerクラスのインスタンスを作り、そのプロパティ（delegate）にselfを代入
-        PostedPinOnCurrentViewController().delegate = self
-        
     }
 
     
@@ -234,7 +230,7 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
     func postedPinOnCurrent(pinOfPostedLatitude: Double, pinOfPostedLongitude: Double, pinTitle: String, pinSubTitle: String) {
         
         //funcの通過確認
-        print(" func postedPinOnCurrent()を通過：　緯度＝\(pinOfPostedLatitude)")
+        print(" func postedPinOnCurrent()を通過")
         
         //一旦pinを全て消す
         currentMapView.removeAnnotations(currentMapView.annotations)
@@ -258,6 +254,14 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
         print("最終確認：　SubTitle＝\(pinSubTitle)")
         
         self.currentMapView.addAnnotation(pinOfPosted)
+    }
+    
+    //PostedPinOnCurrentViewControllerクラスのインスタンスを作り、そのプロパティ（delegate）にselfを代入
+    //※且つそれをSegueの中で定義するとうまくいった！（viewDidLoadに書くとうまくいかなかった）
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let postedPinOCVC = segue.destination as? PostedPinOnCurrentViewController {
+            postedPinOCVC.delegate = self
+        }
     }
     
     
