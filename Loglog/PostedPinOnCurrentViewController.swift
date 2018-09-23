@@ -192,10 +192,26 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
                         //中身の確認
                         print("②のvalueの中身は：\(value)")
                         
-                        //"myMap"の要素を持たない配列に"なし"を入れる処理
-                        if value["myMap"] != nil {
-                            continue
-                        } else {
+                        //"myMap"の要素確認＆要素を持たない配列に"なし"を入れる処理
+                        if value.keys.contains("myMap") {
+                            // myMapを変数に格納
+                            let checkArray = value["myMap"] as! NSArray
+                            // myMapに要素があれば0番目要素を変数に格納
+                            if checkArray.count > 0 {
+                                let checkValue = checkArray[0]
+                                //中身の確認
+                                print("checkValueの中身は：\(checkValue)")
+                                value["myMap"] = checkValue as AnyObject
+                            }
+                            else {
+                                // ifでOKだったが、myMapに要素が無いケース（※要確認）
+                                value["myMap"] = "なし" as AnyObject
+                                //念の為アラートのprint
+                                print("ifでOKだったが、myMapに要素が無いケース（※要確認）")
+                            }
+                        }
+                        else {
+                            //"myMap"というkey自体を持たない場合
                             value["myMap"] = "なし" as AnyObject
                         }
                         
@@ -262,10 +278,26 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
                         //中身の確認
                         print("③のvalueの中身は：\(value)")
                         
-                        //"myMap"の要素を持たない配列に"なし"を入れる処理
-                        if value["myMap"] != nil {
-                            continue
-                        } else {
+                        //"myMap"の要素確認＆要素を持たない配列に"なし"を入れる処理
+                        if value.keys.contains("myMap") {
+                            // myMapを変数に格納
+                            let checkArray = value["myMap"] as! NSArray
+                            // myMapに要素があれば0番目要素を変数に格納
+                            if checkArray.count > 0 {
+                                let checkValue = checkArray[0]
+                                //中身の確認
+                                print("checkValueの中身は：\(checkValue)")
+                                value["myMap"] = checkValue as AnyObject
+                            }
+                            else {
+                                // ifでOKだったが、myMapに要素が無いケース（※要確認）
+                                value["myMap"] = "なし" as AnyObject
+                                //念の為アラートのprint
+                                print("ifでOKだったが、myMapに要素が無いケース（※要確認）")
+                            }
+                        }
+                        else {
+                            //"myMap"というkey自体を持たない場合
                             value["myMap"] = "なし" as AnyObject
                         }
                         
@@ -311,7 +343,7 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
             
             
             //④categoryとpostedNameが打ち込まれている場合　→ 対象の情報をobserveで抽出できる
-            if category.text == "" && postedName.text != "" && postedNumber.text == "" {
+            if category.text != "" && postedName.text != "" && postedNumber.text == "" {
                 var ref: DatabaseReference!
                 ref = Database.database().reference().child("posts")
                 
@@ -332,10 +364,26 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
                         //中身の確認
                         print("④のvalueの中身は：\(value)")
                         
-                        //"myMap"の要素を持たない配列に"なし"を入れる処理
-                        if value["myMap"] != nil {
-                            continue
-                        } else {
+                        //"myMap"の要素確認＆要素を持たない配列に"なし"を入れる処理
+                        if value.keys.contains("myMap") {
+                            // myMapを変数に格納
+                            let checkArray = value["myMap"] as! NSArray
+                            // myMapに要素があれば0番目要素を変数に格納
+                            if checkArray.count > 0 {
+                                let checkValue = checkArray[0]
+                                //中身の確認
+                                print("checkValueの中身は：\(checkValue)")
+                                value["myMap"] = checkValue as AnyObject
+                            }
+                            else {
+                                // ifでOKだったが、myMapに要素が無いケース（※要確認）
+                                value["myMap"] = "なし" as AnyObject
+                                //念の為アラートのprint
+                                print("ifでOKだったが、myMapに要素が無いケース（※要確認）")
+                            }
+                        }
+                        else {
+                            //"myMap"というkey自体を持たない場合
                             value["myMap"] = "なし" as AnyObject
                         }
                         
@@ -346,7 +394,7 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
                         if ((value["category"]?.contains(self.category.text!))! && (value["name"]?.localizedCaseInsensitiveContains(self.postedName.text!))! && (value["myMap"]?.contains(self.uid!))!) || ((value["category"]?.contains(self.category.text!))! && (value["name"]?.localizedCaseInsensitiveContains(self.postedName.text!))! && (value["myMap"]?.contains("なし"))! ) {
                             
                             //中身の確認
-                            print("条件分岐if後の③のvalueの中身は：\(value)")
+                            print("条件分岐if後の④のvalueの中身は：\(value)")
                             
                             //緯度と経度をvalue[]から取得
                             let pinOfPostedLatitude = value["pincoodinateLatitude"] as! Double
