@@ -22,7 +22,7 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
     let pin = MKPointAnnotation()
     
     //投稿一覧からのpin作成に使う準備
-    let pinOfPosted = MKPointAnnotation()
+    var pinsOfPosted:Array<MKPointAnnotation> = []
     var pinOfPostedLatitude : Double = 0.0
     var pinOfPostedLongitude : Double = 0.0
     var pinTitle : String?
@@ -229,11 +229,15 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
     //Delegate管理したアクション
     func postedPinOnCurrent(pinOfPostedLatitude: Double, pinOfPostedLongitude: Double, pinTitle: String, pinSubTitle: String) {
         
+        let pinOfPosted = MKPointAnnotation()
+        
         //funcの通過確認
         print(" func postedPinOnCurrent()を通過")
+        //pinsOfPostedの中身を確認
+        print("配列pinsOfPostedの中身＠初回：　\(pinsOfPosted)")
         
-        //一旦pinを全て消す
-        // currentMapView.removeAnnotations(currentMapView.annotations)
+        //一旦古いpinを全て消す
+        self.currentMapView.removeAnnotation(pinOfPosted)
         
         //pinを立てる準備
         let coordinate = CLLocationCoordinate2DMake(pinOfPostedLatitude, pinOfPostedLongitude)
@@ -252,6 +256,11 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
         print("最終確認：　経度＝\(pinOfPostedLongitude)")
         print("最終確認：　Title＝\(pinTitle)")
         print("最終確認：　SubTitle＝\(pinSubTitle)")
+        
+        //pinsOfPostedの中身を確認
+        print("配列pinsOfPostedの中身＠最終チェツク：　\(pinsOfPosted)")
+        
+        pinsOfPosted.append(pinOfPosted)
         
         self.currentMapView.addAnnotation(pinOfPosted)
     }

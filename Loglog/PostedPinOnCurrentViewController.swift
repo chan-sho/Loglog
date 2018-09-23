@@ -140,7 +140,7 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
                         //緯度と経度をvalue[]から取得
                         let pinOfPostedLatitude = value!["pincoodinateLatitude"] as! Double
                         let pinOfPostedLongitude = value!["pincoodinateLongitude"] as! Double
-                        let pinTitle = "\(value!["category"] ?? "カテゴリーなし" as AnyObject)(\(value!["name"] ?? "投稿者名なし" as AnyObject))"
+                        let pinTitle = "\(value!["category"] ?? "カテゴリーなし" as AnyObject) (\(value!["name"] ?? "投稿者名なし" as AnyObject))"
                         let pinSubTitle = "\(value!["pinAddress"] ?? "投稿場所情報なし" as AnyObject))"
                         
                         //データの確認
@@ -228,7 +228,7 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
                             //緯度と経度をvalue[]から取得
                             let pinOfPostedLatitude = value["pincoodinateLatitude"] as! Double
                             let pinOfPostedLongitude = value["pincoodinateLongitude"] as! Double
-                            let pinTitle = "\(value["category"] ?? "カテゴリーなし" as AnyObject)(\(value["name"] ?? "投稿者名なし" as AnyObject))"
+                            let pinTitle = "\(value["category"] ?? "カテゴリーなし" as AnyObject) (\(value["name"] ?? "投稿者名なし" as AnyObject))"
                             let pinSubTitle = "\(value["pinAddress"] ?? "投稿場所情報なし" as AnyObject)"
                             
                             //データの確認
@@ -314,7 +314,7 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
                             //緯度と経度をvalue[]から取得
                             let pinOfPostedLatitude = value["pincoodinateLatitude"] as! Double
                             let pinOfPostedLongitude = value["pincoodinateLongitude"] as! Double
-                            let pinTitle = "\(value["category"] ?? "カテゴリーなし" as AnyObject)(\(value["name"] ?? "投稿者名なし" as AnyObject))"
+                            let pinTitle = "\(value["category"] ?? "カテゴリーなし" as AnyObject) (\(value["name"] ?? "投稿者名なし" as AnyObject))"
                             let pinSubTitle = "\(value["pinAddress"] ?? "投稿場所情報なし" as AnyObject)"
                             
                             //データの確認
@@ -399,7 +399,7 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
                             //緯度と経度をvalue[]から取得
                             let pinOfPostedLatitude = value["pincoodinateLatitude"] as! Double
                             let pinOfPostedLongitude = value["pincoodinateLongitude"] as! Double
-                            let pinTitle = "\(value["category"] ?? "カテゴリーなし" as AnyObject)(\(value["name"] ?? "投稿者名なし" as AnyObject))"
+                            let pinTitle = "\(value["category"] ?? "カテゴリーなし" as AnyObject) (\(value["name"] ?? "投稿者名なし" as AnyObject))"
                             let pinSubTitle = "\(value["pinAddress"] ?? "投稿場所情報なし" as AnyObject)"
                             
                             //データの確認
