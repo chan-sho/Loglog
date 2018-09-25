@@ -263,7 +263,9 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
         pinsOfPosted.append(pinOfPosted)
         
         self.currentMapView.addAnnotation(pinOfPosted)
+        
     }
+    
     
     //PostedPinOnCurrentViewControllerクラスのインスタンスを作り、そのプロパティ（delegate）にselfを代入
     //※且つそれをSegueの中で定義するとうまくいった！（viewDidLoadに書くとうまくいかなかった）
@@ -273,6 +275,34 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
         }
     }
     
+    
+    //PinAnnotationViewを使う
+    func currentMapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        //投稿者自身の場所を表す青い丸には適応しない。
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        //アノテーションビューをマップビューから取り出し、あれば再利用する。
+        var addPinView = currentMapView.dequeueReusableAnnotationView(withIdentifier: "addPinViewName") as? MKPinAnnotationView
+        if (addPinView != nil) {
+            
+            //アノテーションビューに座標、タイトル、サブタイトルを設定する。
+            addPinView!.annotation = annotation
+        }
+        else {
+            //アノテーションビューを生成する。
+            addPinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier:"addPinViewName")
+        }
+        //アノテーションビューに色を設定する。
+        addPinView!.pinTintColor = UIColor.blue
+        //吹き出しの表示をONにする。
+        addPinView!.canShowCallout = true
+        
+        return addPinView
+    }
+
     
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
         // 他の画面から segue を使って戻ってきた時に呼ばれる
