@@ -12,7 +12,7 @@ import CoreLocation
 import SVProgressHUD
 
 
-class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate, MKMapViewDelegate {
+class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate, MKMapViewDelegate, PostedPinOnSearchDelegate {
     
     @IBOutlet weak var inputText: UITextField!
     @IBOutlet weak var displayMap: MKMapView!
@@ -23,6 +23,13 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
     let pin = MKPointAnnotation()
     //投稿済みのpinを管理
     var displayMapManager:CLLocationManager = CLLocationManager()
+    
+    //投稿一覧からのpin作成に使う準備
+    var pinsOfPosted:Array<MKPointAnnotation> = []
+    var pinOfPostedLatitude : Double = 0.0
+    var pinOfPostedLongitude : Double = 0.0
+    var pinTitle : String?
+    var pinSubTitle : String?
     
     //user defaultsを使う準備
     let userDefaults:UserDefaults = UserDefaults.standard
@@ -225,6 +232,86 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
         
         present(aleartController, animated:true, completion:nil)
     }
+    
+    
+    //Delegate管理したアクション
+    func postedPinOnSearch(pinOfPostedLatitude: Double, pinOfPostedLongitude: Double, pinTitle: String, pinSubTitle: String) {
+        
+        let pinOfPosted = MKPointAnnotation()
+        
+        //funcの通過確認
+        print(" func postedPinOnCurrent()を通過")
+        //pinsOfPostedの中身を確認
+        print("配列pinsOfPostedの中身＠初回：　\(pinsOfPosted)")
+        
+        //一旦古いpinを全て消す
+        self.displayMap.removeAnnotation(pinOfPosted)
+        
+        //pinを立てる準備
+        let coordinate = CLLocationCoordinate2DMake(pinOfPostedLatitude, pinOfPostedLongitude)
+        //表示範囲（※ここは複数のpinを生成する際には毎回画面が変わって見にくいので削除も検討）
+        let span = MKCoordinateSpanMake(0.02, 0.02)
+        //中心座標と表示範囲をマップに登録（※ここは複数のpinを生成する際には毎回画面が変わって見にくいので削除も検討）
+        let region = MKCoordinateRegionMake(coordinate, span)
+        displayMap.setRegion(region, animated:true)
+        
+        pinOfPosted.coordinate = CLLocationCoordinate2DMake(pinOfPostedLatitude, pinOfPostedLongitude)
+        pinOfPosted.title = pinTitle
+        pinOfPosted.subtitle = pinSubTitle
+        
+        //中身の確認
+        print("最終確認：　緯度＝\(pinOfPostedLatitude)")
+        print("最終確認：　経度＝\(pinOfPostedLongitude)")
+        print("最終確認：　Title＝\(pinTitle)")
+        print("最終確認：　SubTitle＝\(pinSubTitle)")
+        
+        //pinsOfPostedの中身を確認
+        print("配列pinsOfPostedの中身＠最終チェツク：　\(pinsOfPosted)")
+        
+        pinsOfPosted.append(pinOfPosted)
+        
+        self.displayMap.addAnnotation(pinOfPosted)
+        
+        //PinAnnotationViewを使う
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            
+            print("MKPinAnnotationView Check")
+            
+            //投稿者自身の場所を表す青い丸には適応しない。
+            if annotation is MKUserLocation {
+                return nil
+            }
+            
+            //アノテーションビューをマップビューから取り出し、あれば再利用する。
+            var addPinView = displayMap.dequeueReusableAnnotationView(withIdentifier: "addPinViewName") as? MKPinAnnotationView
+            if (addPinView != nil) {
+                
+                //アノテーションビューに座標、タイトル、サブタイトルを設定する。
+                addPinView!.annotation = annotation
+            }
+            else {
+                //アノテーションビューを生成する。
+                addPinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier:"addPinViewName")
+                
+                //アノテーションビューに色を設定する。
+                addPinView!.pinTintColor = UIColor.blue
+                //吹き出しの表示をONにする。
+                addPinView!.canShowCallout = true
+            }
+            return addPinView
+        }
+        
+    }
+    
+    
+    //PostedPinOnCurrentViewControllerクラスのインスタンスを作り、そのプロパティ（delegate）にselfを代入
+    //※且つそれをSegueの中で定義するとうまくいった！（viewDidLoadに書くとうまくいかなかった）
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let postedPinOSVC = segue.destination as? PostedPinOnSearchViewController {
+            postedPinOSVC.delegate = self
+        }
+    }
+
     
     
     @IBAction func unwind(_ segue: UIStoryboardSegue) {

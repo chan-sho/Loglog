@@ -463,6 +463,7 @@
                                 <state key="normal" title="上記条件でピンを検索＆表示" backgroundImage="Btn2"/>
                                 <connections>
                                     <action selector="searchButton:" destination="RYu-Ip-B7r" eventType="touchUpInside" id="dJ8-49-h3s"/>
+                                    <segue destination="O6m-aa-jGd" kind="unwind" unwindAction="unwind:" id="Wj7-Fc-Fje"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cGh-hR-3y8">
@@ -711,6 +712,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <gestureRecognizers/>
                                 <connections>
+                                    <outlet property="delegate" destination="N0m-aq-8Lq" id="Vzb-s5-dDf"/>
                                     <outletCollection property="gestureRecognizers" destination="NgS-1a-LIg" appends="YES" id="rOg-SG-omU"/>
                                 </connections>
                             </mapView>
@@ -1345,6 +1347,6 @@
         <image name="現在地" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0gi-RD-ILx"/>
+        <segue reference="WZW-Mr-Cpv"/>
     </inferredMetricsTieBreakers>
 </document>

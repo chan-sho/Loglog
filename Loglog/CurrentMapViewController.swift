@@ -22,6 +22,7 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
     let pin = MKPointAnnotation()
     
     //投稿一覧からのpin作成に使う準備
+    let pinOfPosted = MKPointAnnotation()
     var pinsOfPosted:Array<MKPointAnnotation> = []
     var pinOfPostedLatitude : Double = 0.0
     var pinOfPostedLongitude : Double = 0.0
@@ -229,8 +230,6 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
     //Delegate管理したアクション
     func postedPinOnCurrent(pinOfPostedLatitude: Double, pinOfPostedLongitude: Double, pinTitle: String, pinSubTitle: String) {
         
-        let pinOfPosted = MKPointAnnotation()
-        
         //funcの通過確認
         print(" func postedPinOnCurrent()を通過")
         //pinsOfPostedの中身を確認
@@ -277,7 +276,9 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
     
     
     //PinAnnotationViewを使う
-    func currentMapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    func testmapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        print("MKPinAnnotationView Check")
         
         //投稿者自身の場所を表す青い丸には適応しない。
         if annotation is MKUserLocation {
@@ -294,12 +295,12 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
         else {
             //アノテーションビューを生成する。
             addPinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier:"addPinViewName")
+            
+            //アノテーションビューに色を設定する。
+            addPinView!.pinTintColor = UIColor.blue
+            //吹き出しの表示をONにする。
+            addPinView!.canShowCallout = true
         }
-        //アノテーションビューに色を設定する。
-        addPinView!.pinTintColor = UIColor.blue
-        //吹き出しの表示をONにする。
-        addPinView!.canShowCallout = true
-        
         return addPinView
     }
 
