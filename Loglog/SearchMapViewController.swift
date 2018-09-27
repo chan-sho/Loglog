@@ -237,12 +237,12 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
     //Delegate管理したアクション
     func postedPinOnSearch(pinOfPostedLatitude: Double, pinOfPostedLongitude: Double, pinTitle: String, pinSubTitle: String) {
         
-        let pinOfPosted = MKPointAnnotation()
-        
         //funcの通過確認
         print(" func postedPinOnCurrent()を通過")
         //pinsOfPostedの中身を確認
         print("配列pinsOfPostedの中身＠初回：　\(pinsOfPosted)")
+        
+         let pinOfPosted = ColorMKPointAnnotation()
         
         //一旦古いpinを全て消す
         self.displayMap.removeAnnotation(pinOfPosted)
@@ -268,39 +268,12 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
         //pinsOfPostedの中身を確認
         print("配列pinsOfPostedの中身＠最終チェツク：　\(pinsOfPosted)")
         
+        //pinの色を通常と異なる色に個別に設定
+        pinOfPosted.pinColor = UIColor.blue
+        
         pinsOfPosted.append(pinOfPosted)
         
         self.displayMap.addAnnotation(pinOfPosted)
-        
-        //PinAnnotationViewを使う
-        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-            
-            print("MKPinAnnotationView Check")
-            
-            //投稿者自身の場所を表す青い丸には適応しない。
-            if annotation is MKUserLocation {
-                return nil
-            }
-            
-            //アノテーションビューをマップビューから取り出し、あれば再利用する。
-            var addPinView = displayMap.dequeueReusableAnnotationView(withIdentifier: "addPinViewName") as? MKPinAnnotationView
-            if (addPinView != nil) {
-                
-                //アノテーションビューに座標、タイトル、サブタイトルを設定する。
-                addPinView!.annotation = annotation
-            }
-            else {
-                //アノテーションビューを生成する。
-                addPinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier:"addPinViewName")
-                
-                //アノテーションビューに色を設定する。
-                addPinView!.pinTintColor = UIColor.blue
-                //吹き出しの表示をONにする。
-                addPinView!.canShowCallout = true
-            }
-            return addPinView
-        }
-        
     }
     
     
@@ -312,6 +285,31 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
         }
     }
 
+    
+    //PinAnnotationViewを使う
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        //投稿者自身の場所を表す青い丸には適応しない。
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        let reuseId = "pin"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKMarkerAnnotationView
+        if pinView == nil {
+            pinView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            
+            //アノテーションビューに色を設定する。
+            if let color = annotation as? ColorMKPointAnnotation {
+                pinView?.markerTintColor = color.pinColor
+            }
+            
+        }
+        else {
+            pinView?.annotation = annotation
+        }
+        return pinView
+    }
     
     
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
