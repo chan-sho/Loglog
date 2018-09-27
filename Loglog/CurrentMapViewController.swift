@@ -14,6 +14,7 @@ import SVProgressHUD
 
 class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, PostedPinOnCurrentDelegate {
     
+    
     @IBOutlet weak var currentMapView: MKMapView!
     @IBOutlet weak var postFromCurrent: UIButton!
     @IBOutlet weak var searchButton: UIButton!
@@ -231,7 +232,7 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
     }
     
     
-    //Delegate管理したアクション
+    //Delegate管理したアクション（投稿ピンの表示）
     func postedPinOnCurrent(pinOfPostedLatitude: Double, pinOfPostedLongitude: Double, pinTitle: String, pinSubTitle: String) {
         
         //funcの通過確認
@@ -271,7 +272,12 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
         pinsOfPosted.append(pinOfPosted)
         
         self.currentMapView.addAnnotation(pinOfPosted)
-        
+    }
+    
+    
+     //Delegate管理したアクション（投稿ピンの削除）
+    func allPinRemove() {
+        self.currentMapView.removeAnnotations(pinsOfPosted)
     }
     
     

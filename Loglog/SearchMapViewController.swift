@@ -283,6 +283,11 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
     }
     
     
+    //Delegate管理したアクション（投稿ピンの削除）
+    func allPinRemove() {
+        self.displayMap.removeAnnotations(pinsOfPosted)
+    }
+    
     //PostedPinOnCurrentViewControllerクラスのインスタンスを作り、そのプロパティ（delegate）にselfを代入
     //※且つそれをSegueの中で定義するとうまくいった！（viewDidLoadに書くとうまくいかなかった）
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

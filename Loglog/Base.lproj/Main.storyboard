@@ -546,6 +546,7 @@
                                 <state key="normal" title="表示中のピンを全て削除" backgroundImage="Btn3"/>
                                 <connections>
                                     <action selector="removeAllPinButton:" destination="RYu-Ip-B7r" eventType="touchUpInside" id="B1z-Is-mjW"/>
+                                    <segue destination="O6m-aa-jGd" kind="unwind" unwindAction="unwind:" id="4P0-He-PdU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -918,6 +919,7 @@
                                 <state key="normal" title="表示中のピンを全て削除" backgroundImage="Btn3"/>
                                 <connections>
                                     <action selector="removeAllPinButton:" destination="WJg-nc-v0E" eventType="touchUpInside" id="TJ1-m3-LYv"/>
+                                    <segue destination="5wP-8R-QK8" kind="unwind" unwindAction="unwind:" id="wr7-c1-Shh"/>
                                 </connections>
                             </button>
                         </subviews>

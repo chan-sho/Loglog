@@ -15,6 +15,8 @@ import SVProgressHUD
 
 @objc protocol PostedPinOnSearchDelegate {
     func postedPinOnSearch(pinOfPostedLatitude: Double, pinOfPostedLongitude: Double, pinTitle: String, pinSubTitle: String)
+    
+    func allPinRemove()
 }
 
 
@@ -439,7 +441,13 @@ class PostedPinOnSearchViewController: UIViewController, UITextFieldDelegate, UI
     }
     
     
+    //表示中の投稿ピンを全て削除
     @IBAction func removeAllPinButton(_ sender: Any) {
+        self.delegate!.allPinRemove()
+        
+        // 移動先ViewControllerのインスタンスを取得（ストーリーボードIDから）
+        let searchMapViewController = self.storyboard?.instantiateViewController(withIdentifier: "SearchMap")
+        self.tabBarController?.navigationController?.present(searchMapViewController!, animated: true, completion: nil)
     }
     
 }

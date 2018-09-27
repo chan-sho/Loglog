@@ -16,6 +16,8 @@ import ESTabBarController
 
 @objc protocol PostedPinOnCurrentDelegate {
     func postedPinOnCurrent(pinOfPostedLatitude: Double, pinOfPostedLongitude: Double, pinTitle: String, pinSubTitle: String)
+    
+    func allPinRemove()
 }
 
 class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -441,7 +443,13 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
   }
     
     
+    //表示中の投稿ピンを全て削除
     @IBAction func removeAllPinButton(_ sender: Any) {
+        self.delegate!.allPinRemove()
+        
+        // 移動先ViewControllerのインスタンスを取得（ストーリーボードIDから）
+        let currentMapViewController = self.storyboard?.instantiateViewController(withIdentifier: "CurrentMap")
+        self.tabBarController?.navigationController?.present(currentMapViewController!, animated: true, completion: nil)
     }
     
 }
