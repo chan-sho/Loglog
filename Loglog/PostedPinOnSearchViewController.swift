@@ -26,6 +26,7 @@ class PostedPinOnSearchViewController: UIViewController, UITextFieldDelegate, UI
     
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var removeAllPinButton: UIButton!
     
     // 投稿データから「投稿者」限定のデータを判断する為の準備
     let uid = Auth.auth().currentUser?.uid
@@ -52,6 +53,11 @@ class PostedPinOnSearchViewController: UIViewController, UITextFieldDelegate, UI
         
         self.category.inputView = pickerView
         self.category.inputAccessoryView = toolbar
+        
+        //ボタン同時押しによるアプリクラッシュを防ぐ
+        searchButton.isExclusiveTouch = true
+        cancelButton.isExclusiveTouch = true
+        removeAllPinButton.isExclusiveTouch = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -431,5 +437,9 @@ class PostedPinOnSearchViewController: UIViewController, UITextFieldDelegate, UI
             }
         }
     }
-
+    
+    
+    @IBAction func removeAllPinButton(_ sender: Any) {
+    }
+    
 }

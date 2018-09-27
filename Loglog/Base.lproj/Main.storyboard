@@ -163,6 +163,10 @@
                     </view>
                     <connections>
                         <outlet property="displayNameTextField" destination="YKo-TV-ToD" id="fea-KS-VU3"/>
+                        <outlet property="handleLogoutButton" destination="hzR-EJ-ay9" id="8Eo-qQ-PCc"/>
+                        <outlet property="handleMailChangeButton" destination="NJM-BT-FWU" id="J1y-U6-iwv"/>
+                        <outlet property="handleNameChangeButton" destination="oMF-EW-vZA" id="BlD-iB-EtQ"/>
+                        <outlet property="handlePasswordChangeButton" destination="rtb-xA-gaj" id="K34-en-aEy"/>
                         <outlet property="mailAddressTextField" destination="9kV-Tg-kPN" id="n18-7y-EYJ"/>
                         <outlet property="passWordTextField" destination="CvD-Qq-6CL" id="CqZ-Vj-h4F"/>
                     </connections>
@@ -257,6 +261,7 @@
                         <outlet property="inputText" destination="oBD-ec-M0y" id="qCw-6O-5t1"/>
                         <outlet property="postWithSearch" destination="5Bd-uB-wiR" id="va4-lo-dFA"/>
                         <outlet property="searchButton" destination="wVc-kL-bVS" id="sQ2-JO-xFV"/>
+                        <outlet property="userLocationButton" destination="pzO-UP-LaC" id="0si-Et-IZa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LSg-tQ-UYc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -456,7 +461,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Rl-wd-UCu">
-                                <rect key="frame" x="37" y="407.5" width="300" height="40"/>
+                                <rect key="frame" x="37" y="397.5" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Fv1-Wb-kPq"/>
                                 </constraints>
@@ -468,7 +473,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cGh-hR-3y8">
-                                <rect key="frame" x="37" y="487.5" width="300" height="40"/>
+                                <rect key="frame" x="37" y="467.5" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="1bm-se-6wV"/>
                                 </constraints>
@@ -532,26 +537,39 @@
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5GL-zO-Kd2">
+                                <rect key="frame" x="37" y="537.5" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Kqe-37-wqN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <state key="normal" title="表示中のピンを全て削除" backgroundImage="Btn3"/>
+                                <connections>
+                                    <action selector="removeAllPinButton:" destination="RYu-Ip-B7r" eventType="touchUpInside" id="B1z-Is-mjW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="5GL-zO-Kd2" firstAttribute="top" secondItem="cGh-hR-3y8" secondAttribute="bottom" constant="30" id="3cX-4v-bJH"/>
                             <constraint firstItem="5yW-FV-FVT" firstAttribute="top" secondItem="r0n-43-gs9" secondAttribute="bottom" constant="20" id="4q3-n7-bUn"/>
                             <constraint firstItem="gtZ-Vk-UFG" firstAttribute="centerX" secondItem="1Gp-Vf-50L" secondAttribute="centerX" id="7je-XK-N77"/>
+                            <constraint firstItem="5GL-zO-Kd2" firstAttribute="centerX" secondItem="1Gp-Vf-50L" secondAttribute="centerX" id="ADs-4r-h6l"/>
                             <constraint firstItem="cGh-hR-3y8" firstAttribute="centerX" secondItem="1Gp-Vf-50L" secondAttribute="centerX" id="B00-B5-pbT"/>
                             <constraint firstItem="PVZ-Qo-lWS" firstAttribute="centerX" secondItem="1Gp-Vf-50L" secondAttribute="centerX" id="CAc-gg-vxV"/>
                             <constraint firstItem="Wob-o6-XDB" firstAttribute="top" secondItem="PVZ-Qo-lWS" secondAttribute="bottom" constant="20" id="Ch0-11-LSL"/>
+                            <constraint firstItem="6Rl-wd-UCu" firstAttribute="top" secondItem="6DL-Rr-LAd" secondAttribute="bottom" constant="40" id="GL6-XI-kRi"/>
                             <constraint firstItem="6Rl-wd-UCu" firstAttribute="centerX" secondItem="1Gp-Vf-50L" secondAttribute="centerX" id="Ovl-Ok-mpJ"/>
                             <constraint firstItem="r0n-43-gs9" firstAttribute="top" secondItem="Wob-o6-XDB" secondAttribute="bottom" constant="5" id="RoJ-D4-sh9"/>
                             <constraint firstItem="gtZ-Vk-UFG" firstAttribute="top" secondItem="5yW-FV-FVT" secondAttribute="bottom" constant="5" id="XGQ-ct-Tfz"/>
+                            <constraint firstItem="cGh-hR-3y8" firstAttribute="top" secondItem="6Rl-wd-UCu" secondAttribute="bottom" constant="30" id="YF3-q6-knv"/>
                             <constraint firstItem="nri-3p-73E" firstAttribute="centerX" secondItem="1Gp-Vf-50L" secondAttribute="centerX" id="aNK-Kj-Bix"/>
                             <constraint firstItem="6DL-Rr-LAd" firstAttribute="centerX" secondItem="1Gp-Vf-50L" secondAttribute="centerX" id="hzG-bS-tXf"/>
                             <constraint firstItem="5yW-FV-FVT" firstAttribute="centerX" secondItem="1Gp-Vf-50L" secondAttribute="centerX" id="jXd-dD-oet"/>
                             <constraint firstItem="Wob-o6-XDB" firstAttribute="centerX" secondItem="1Gp-Vf-50L" secondAttribute="centerX" id="lmp-bK-ywl"/>
                             <constraint firstItem="PVZ-Qo-lWS" firstAttribute="top" secondItem="ycj-IY-t97" secondAttribute="top" constant="20" id="md7-8A-vpg"/>
-                            <constraint firstItem="6Rl-wd-UCu" firstAttribute="top" secondItem="6DL-Rr-LAd" secondAttribute="bottom" constant="50" id="nqd-3x-9xE"/>
                             <constraint firstItem="r0n-43-gs9" firstAttribute="centerX" secondItem="1Gp-Vf-50L" secondAttribute="centerX" id="pTs-Kz-1eF"/>
                             <constraint firstItem="nri-3p-73E" firstAttribute="top" secondItem="gtZ-Vk-UFG" secondAttribute="bottom" constant="20" id="qgB-Jn-ada"/>
-                            <constraint firstItem="cGh-hR-3y8" firstAttribute="top" secondItem="6Rl-wd-UCu" secondAttribute="bottom" constant="40" id="wUl-K6-vD0"/>
                             <constraint firstItem="6DL-Rr-LAd" firstAttribute="top" secondItem="nri-3p-73E" secondAttribute="bottom" constant="5" id="xUF-IK-zOg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ycj-IY-t97"/>
@@ -561,6 +579,7 @@
                         <outlet property="category" destination="r0n-43-gs9" id="zhr-6P-npM"/>
                         <outlet property="postedName" destination="gtZ-Vk-UFG" id="gsg-ba-4Jb"/>
                         <outlet property="postedNumber" destination="6DL-Rr-LAd" id="sbT-qx-NdL"/>
+                        <outlet property="removeAllPinButton" destination="5GL-zO-Kd2" id="cT2-fQ-YJc"/>
                         <outlet property="searchButton" destination="6Rl-wd-UCu" id="v4h-dR-rsE"/>
                     </connections>
                 </viewController>
@@ -692,6 +711,8 @@
                     </view>
                     <connections>
                         <outlet property="displayNameTextField" destination="52s-Ac-sMd" id="BZM-a7-hvJ"/>
+                        <outlet property="handleCreateAccountButton" destination="pbC-jL-ZNn" id="z8h-xh-srg"/>
+                        <outlet property="handleLoginButton" destination="B0q-Lr-1c0" id="sLo-ch-XzG"/>
                         <outlet property="mailAddressTextField" destination="VM3-ul-I3e" id="s5B-wW-1Xk"/>
                         <outlet property="passwordTextField" destination="zLm-hA-uhg" id="WEQ-Na-BXy"/>
                         <outlet property="signInButton" destination="ZxV-Ea-vqR" id="CIu-pZ-H0l"/>
@@ -866,7 +887,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYg-3k-tQV">
-                                <rect key="frame" x="37" y="408.5" width="300" height="40"/>
+                                <rect key="frame" x="37" y="398.5" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="4WI-ZW-HPh"/>
                                 </constraints>
@@ -878,7 +899,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gP-nq-SGA">
-                                <rect key="frame" x="37" y="488.5" width="300" height="40"/>
+                                <rect key="frame" x="37" y="468.5" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Wxa-uc-KxI"/>
                                 </constraints>
@@ -888,25 +909,38 @@
                                     <segue destination="5wP-8R-QK8" kind="unwind" unwindAction="unwind:" id="dml-lc-6tK"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrN-Qg-5Vp">
+                                <rect key="frame" x="37" y="538.5" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="wgc-7w-n2d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <state key="normal" title="表示中のピンを全て削除" backgroundImage="Btn3"/>
+                                <connections>
+                                    <action selector="removeAllPinButton:" destination="WJg-nc-v0E" eventType="touchUpInside" id="TJ1-m3-LYv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="MR7-I0-ct3" firstAttribute="top" secondItem="BHc-ep-2ds" secondAttribute="bottom" constant="5" id="1GA-Mr-5rH"/>
                             <constraint firstItem="cK9-1B-3rg" firstAttribute="top" secondItem="MR7-I0-ct3" secondAttribute="bottom" constant="20" id="2IN-x7-llj"/>
-                            <constraint firstItem="aYg-3k-tQV" firstAttribute="top" secondItem="0AJ-NT-8qE" secondAttribute="bottom" constant="50" id="DWo-9J-JJ5"/>
+                            <constraint firstItem="yrN-Qg-5Vp" firstAttribute="centerX" secondItem="GQ8-K9-5E8" secondAttribute="centerX" id="6Hw-Vc-PZZ"/>
                             <constraint firstItem="aYg-3k-tQV" firstAttribute="centerX" secondItem="GQ8-K9-5E8" secondAttribute="centerX" id="Dvp-iE-MXN"/>
                             <constraint firstItem="0AJ-NT-8qE" firstAttribute="top" secondItem="YmT-Mz-uID" secondAttribute="bottom" constant="5" id="Eaa-FV-n4Z"/>
                             <constraint firstItem="LQE-4f-Esc" firstAttribute="top" secondItem="cK9-1B-3rg" secondAttribute="bottom" constant="5" id="LGc-WW-V5b"/>
                             <constraint firstItem="4gP-nq-SGA" firstAttribute="centerX" secondItem="GQ8-K9-5E8" secondAttribute="centerX" id="MAt-J1-LgZ"/>
                             <constraint firstItem="YmT-Mz-uID" firstAttribute="centerX" secondItem="GQ8-K9-5E8" secondAttribute="centerX" id="NCW-ig-i8X"/>
                             <constraint firstItem="LQE-4f-Esc" firstAttribute="centerX" secondItem="GQ8-K9-5E8" secondAttribute="centerX" id="NZQ-aZ-VnF"/>
+                            <constraint firstItem="4gP-nq-SGA" firstAttribute="top" secondItem="aYg-3k-tQV" secondAttribute="bottom" constant="30" id="TLo-MT-MIq"/>
                             <constraint firstItem="YmT-Mz-uID" firstAttribute="top" secondItem="LQE-4f-Esc" secondAttribute="bottom" constant="20" id="VPt-8t-PXz"/>
-                            <constraint firstItem="4gP-nq-SGA" firstAttribute="top" secondItem="aYg-3k-tQV" secondAttribute="bottom" constant="40" id="W2d-WE-ku1"/>
+                            <constraint firstItem="yrN-Qg-5Vp" firstAttribute="top" secondItem="4gP-nq-SGA" secondAttribute="bottom" constant="30" id="YMM-4m-Vpk"/>
                             <constraint firstItem="cK9-1B-3rg" firstAttribute="centerX" secondItem="GQ8-K9-5E8" secondAttribute="centerX" id="bND-eG-Fzn"/>
                             <constraint firstItem="BHc-ep-2ds" firstAttribute="centerX" secondItem="GQ8-K9-5E8" secondAttribute="centerX" id="elC-XQ-C5b"/>
                             <constraint firstItem="sGR-tL-4Q5" firstAttribute="centerX" secondItem="GQ8-K9-5E8" secondAttribute="centerX" id="lpr-Z4-HoB"/>
                             <constraint firstItem="MR7-I0-ct3" firstAttribute="centerX" secondItem="GQ8-K9-5E8" secondAttribute="centerX" id="mSy-U3-Txf"/>
                             <constraint firstItem="0AJ-NT-8qE" firstAttribute="centerX" secondItem="GQ8-K9-5E8" secondAttribute="centerX" id="qvV-5r-nLw"/>
+                            <constraint firstItem="aYg-3k-tQV" firstAttribute="top" secondItem="0AJ-NT-8qE" secondAttribute="bottom" constant="40" id="tpD-V2-zCt"/>
                             <constraint firstItem="sGR-tL-4Q5" firstAttribute="top" secondItem="qnn-bA-OnG" secondAttribute="top" constant="20" id="uH9-Iu-X7b"/>
                             <constraint firstItem="BHc-ep-2ds" firstAttribute="top" secondItem="sGR-tL-4Q5" secondAttribute="bottom" constant="20" id="v7y-RU-08A"/>
                         </constraints>
@@ -917,6 +951,7 @@
                         <outlet property="category" destination="MR7-I0-ct3" id="T1e-Ak-KUw"/>
                         <outlet property="postedName" destination="LQE-4f-Esc" id="ai0-2k-pbX"/>
                         <outlet property="postedNumber" destination="0AJ-NT-8qE" id="NSb-kr-2dY"/>
+                        <outlet property="removeAllPinButton" destination="yrN-Qg-5Vp" id="6fd-bb-1Py"/>
                         <outlet property="searchButton" destination="aYg-3k-tQV" id="8Oi-Ab-0Db"/>
                     </connections>
                 </viewController>
@@ -1161,6 +1196,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xs0-qf-Efk"/>
                     </view>
+                    <connections>
+                        <outlet property="handleCameraButton" destination="M4X-Hd-lRb" id="vjr-7h-IJT"/>
+                        <outlet property="handleCancelButton" destination="g03-Vy-xMQ" id="gLH-d0-N2x"/>
+                        <outlet property="handleLibraryButton" destination="fIj-fd-L9h" id="ZTM-7B-obZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rtx-ys-idk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="90t-Mk-fn4" userLabel="Exit" sceneMemberID="exit"/>
@@ -1311,6 +1351,8 @@
                     <connections>
                         <outlet property="categoryTextToPost" destination="UIw-GV-oeG" id="klM-Zj-ECf"/>
                         <outlet property="contentsTextToPost" destination="q1l-ua-2I6" id="nKH-yB-mYv"/>
+                        <outlet property="handleCancelButton" destination="j88-el-QwH" id="GDG-82-elY"/>
+                        <outlet property="handlePostButton" destination="NCf-Dd-b0l" id="bJ5-lY-orl"/>
                         <outlet property="imageView" destination="ieQ-JB-sS2" id="d5f-wE-SYZ"/>
                         <outlet property="relatedURLToPost" destination="chS-kY-uxm" id="996-6g-nUN"/>
                         <outlet property="secretPassToPost" destination="J5k-iG-GAP" id="p3p-Z4-3Mp"/>

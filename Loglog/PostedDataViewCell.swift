@@ -67,6 +67,11 @@ class PostedDataViewCell: UITableViewCell {
         tgSecretPass.cancelsTouchesInView = false
         tgSecretPass.cancelsTouchesInView = false
         tgName.cancelsTouchesInView = false
+        
+        //ボタン同時押しによるアプリクラッシュを防ぐ
+        likeButton.isExclusiveTouch = true
+        myMapButton.isExclusiveTouch = true
+        reviseButton.isExclusiveTouch = true
     }
 
     

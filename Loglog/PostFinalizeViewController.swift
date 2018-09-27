@@ -23,6 +23,9 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
     @IBOutlet weak var secretPassToPost: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var handlePostButton: UIButton!
+    @IBOutlet weak var handleCancelButton: UIButton!
+    
     //user defaultsを使う準備
     let userDefaults:UserDefaults = UserDefaults.standard
     var pincoordinateToPostLatitude : Double? = 0.0
@@ -143,6 +146,10 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         bg.image = UIImage(named: "背景3")
         bg.layer.zPosition = -1
         self.view.addSubview(bg)
+        
+        //ボタン同時押しによるアプリクラッシュを防ぐ
+        handlePostButton.isExclusiveTouch = true
+        handleCancelButton.isExclusiveTouch = true
     }
 
     

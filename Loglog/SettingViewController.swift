@@ -19,6 +19,11 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var mailAddressTextField: UITextField!
     @IBOutlet weak var passWordTextField: UITextField!
     
+    @IBOutlet weak var handleNameChangeButton: UIButton!
+    @IBOutlet weak var handleMailChangeButton: UIButton!
+    @IBOutlet weak var handlePasswordChangeButton: UIButton!
+    @IBOutlet weak var handleLogoutButton: UIButton!
+    
     
     @IBAction func handleNameChangeButton(_ sender: Any) {
         if let displayName = displayNameTextField.text {
@@ -135,6 +140,13 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
         bg.image = UIImage(named: "背景2")
         bg.layer.zPosition = -1
         self.view.addSubview(bg)
+        
+        //ボタン同時押しによるアプリクラッシュを防ぐ
+        handleNameChangeButton.isExclusiveTouch = true
+        handleMailChangeButton.isExclusiveTouch = true
+        handlePasswordChangeButton.isExclusiveTouch = true
+        handleLogoutButton.isExclusiveTouch = true
+        
     }
 
     

@@ -32,6 +32,11 @@ class ReviseDataViewController: UIViewController, UITextFieldDelegate {
         postCode.delegate = self
         //何も入力されていなくてもReturnキーを押せるようにする。
         postCode.enablesReturnKeyAutomatically = false
+        
+        //ボタン同時押しによるアプリクラッシュを防ぐ
+        postedReviseButton.isExclusiveTouch = true
+        postedDeleteButton.isExclusiveTouch = true
+        cancelButton.isExclusiveTouch = true
     }
 
     override func didReceiveMemoryWarning() {

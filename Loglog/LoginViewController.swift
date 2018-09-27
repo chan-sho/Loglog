@@ -22,6 +22,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     @IBOutlet weak var displayNameTextField: UITextField!
     @IBOutlet weak var signInButton: GIDSignInButton!
     
+    @IBOutlet weak var handleLoginButton: UIButton!
+    @IBOutlet weak var handleCreateAccountButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +49,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         bg.image = UIImage(named: "背景10")
         bg.layer.zPosition = -1
         self.view.addSubview(bg)
+        
+        //ボタン同時押しによるアプリクラッシュを防ぐ
+        handleLoginButton.isExclusiveTouch = true
+        handleCreateAccountButton.isExclusiveTouch = true
     }
     
     

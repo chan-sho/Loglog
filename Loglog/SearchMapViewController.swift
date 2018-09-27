@@ -18,6 +18,7 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
     @IBOutlet weak var displayMap: MKMapView!
     @IBOutlet weak var postWithSearch: UIButton!
     @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var userLocationButton: UIButton!
     
     //投稿準備に移るためのpinを管理
     let pin = MKPointAnnotation()
@@ -51,6 +52,11 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
         searchButton.layer.borderColor = UIColor.darkGray.cgColor
         searchButton.layer.borderWidth = 1.0
         searchButton.layer.cornerRadius = 10.0 //丸みを数値で変更できる
+        
+        //ボタン同時押しによるアプリクラッシュを防ぐ
+        postWithSearch.isExclusiveTouch = true
+        searchButton.isExclusiveTouch = true
+        userLocationButton.isExclusiveTouch = true
     }
     
     

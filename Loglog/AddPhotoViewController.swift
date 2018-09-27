@@ -12,6 +12,9 @@ import CLImageEditor
 
 class AddPhotoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLImageEditorDelegate {
 
+    @IBOutlet weak var handleLibraryButton: UIButton!
+    @IBOutlet weak var handleCameraButton: UIButton!
+    @IBOutlet weak var handleCancelButton: UIButton!
     
     @IBAction func handleLibraryButton(_ sender: Any) {
         // ライブラリ（カメラロール）を指定してピッカーを開く
@@ -80,6 +83,11 @@ class AddPhotoViewController: UIViewController, UIImagePickerControllerDelegate,
         bg.image = UIImage(named: "背景12")
         bg.layer.zPosition = -1
         self.view.addSubview(bg)
+        
+        //ボタン同時押しによるアプリクラッシュを防ぐ
+        handleLibraryButton.isExclusiveTouch = true
+        handleCameraButton.isExclusiveTouch = true
+        handleCancelButton.isExclusiveTouch = true
     }
 
     

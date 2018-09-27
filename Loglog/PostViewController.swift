@@ -93,6 +93,11 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         
         self.categoryText.inputView = pickerView
         self.categoryText.inputAccessoryView = toolbar
+        
+        //ボタン同時押しによるアプリクラッシュを防ぐ
+        postWithoutPhoto.isExclusiveTouch = true
+        postWithPhoto.isExclusiveTouch = true
+        cancelButton.isExclusiveTouch = true
     }
 
     

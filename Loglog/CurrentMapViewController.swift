@@ -58,6 +58,11 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
         searchButton.layer.borderColor = UIColor.darkGray.cgColor
         searchButton.layer.borderWidth = 1.0
         searchButton.layer.cornerRadius = 10.0 //丸みを数値で変更できる
+        
+        //ボタン同時押しによるアプリクラッシュを防ぐ
+        postFromCurrent.isExclusiveTouch = true
+        searchButton.isExclusiveTouch = true
+        userLocationButton.isExclusiveTouch = true
     }
 
     
