@@ -38,29 +38,45 @@
             <objects>
                 <viewController storyboardIdentifier="Home" id="Zth-vc-l65" customClass="HomeViewController" customModule="Loglog" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eos-Kx-b2Y">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YaQ-Zi-9i4">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xrZ-0o-OTu">
+                                <rect key="frame" x="0.0" y="20" width="375" height="980"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YaQ-Zi-9i4">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="980"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="980" id="2KS-AG-lvy"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="YaQ-Zi-9i4" secondAttribute="bottom" id="33D-Rh-Bcs"/>
+                                    <constraint firstItem="YaQ-Zi-9i4" firstAttribute="leading" secondItem="xrZ-0o-OTu" secondAttribute="leading" id="70p-i6-1YF"/>
+                                    <constraint firstAttribute="trailing" secondItem="YaQ-Zi-9i4" secondAttribute="trailing" id="GbR-39-kHL"/>
+                                    <constraint firstItem="YaQ-Zi-9i4" firstAttribute="top" secondItem="xrZ-0o-OTu" secondAttribute="top" id="gH7-UO-3yi"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="YaQ-Zi-9i4" firstAttribute="leading" secondItem="Vrz-Ay-IL6" secondAttribute="leading" id="8Y4-fM-fUx"/>
-                            <constraint firstItem="YaQ-Zi-9i4" firstAttribute="top" secondItem="Vrz-Ay-IL6" secondAttribute="top" id="9U6-Qw-LTv"/>
-                            <constraint firstItem="Vrz-Ay-IL6" firstAttribute="trailing" secondItem="YaQ-Zi-9i4" secondAttribute="trailing" id="Kai-vj-GnR"/>
-                            <constraint firstItem="Vrz-Ay-IL6" firstAttribute="bottom" secondItem="YaQ-Zi-9i4" secondAttribute="bottom" id="Q9i-Oz-0f9"/>
+                            <constraint firstItem="Vrz-Ay-IL6" firstAttribute="bottom" secondItem="xrZ-0o-OTu" secondAttribute="bottom" id="42W-ca-PSl"/>
+                            <constraint firstItem="xrZ-0o-OTu" firstAttribute="leading" secondItem="Vrz-Ay-IL6" secondAttribute="leading" id="FRG-ot-1mI"/>
+                            <constraint firstItem="xrZ-0o-OTu" firstAttribute="top" secondItem="Vrz-Ay-IL6" secondAttribute="top" id="HTI-G6-wAN"/>
+                            <constraint firstItem="YaQ-Zi-9i4" firstAttribute="width" secondItem="eos-Kx-b2Y" secondAttribute="width" id="KQE-8P-5Vx"/>
+                            <constraint firstItem="Vrz-Ay-IL6" firstAttribute="trailing" secondItem="xrZ-0o-OTu" secondAttribute="trailing" id="xhg-3t-3Da"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vrz-Ay-IL6"/>
                     </view>
+                    <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="HomeBackgroundView" destination="YaQ-Zi-9i4" id="UxV-mj-Yct"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Fk-36-fjK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3158" y="-1140"/>
+            <point key="canvasLocation" x="3158" y="-1453"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="glU-0p-eOW">

@@ -309,12 +309,13 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
         var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKMarkerAnnotationView
         if pinView == nil {
             pinView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView?.isSelected = true
             
             //アノテーションビューに色を設定する。
             if let color = annotation as? ColorMKPointAnnotation {
                 pinView?.markerTintColor = color.pinColor
+                pinView?.isSelected = true
             }
-            
         }
         else {
             pinView?.annotation = annotation
