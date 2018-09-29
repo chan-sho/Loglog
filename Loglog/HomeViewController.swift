@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        HomeBackgroundView.image = UIImage(named: "背景4")
+        HomeBackgroundView.image = UIImage(named: "背景new6")
     }
 
     

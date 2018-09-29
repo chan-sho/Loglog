@@ -24,7 +24,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     
     @IBOutlet weak var handleLoginButton: UIButton!
     @IBOutlet weak var handleCreateAccountButton: UIButton!
-    
+    @IBOutlet weak var passwordResetButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,13 +46,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         
         //背景の設定
         let bg = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-        bg.image = UIImage(named: "背景10")
+        bg.image = UIImage(named: "背景new2R")
         bg.layer.zPosition = -1
         self.view.addSubview(bg)
         
         //ボタン同時押しによるアプリクラッシュを防ぐ
         handleLoginButton.isExclusiveTouch = true
         handleCreateAccountButton.isExclusiveTouch = true
+        passwordResetButton.isExclusiveTouch = true
     }
     
     
@@ -219,7 +220,28 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         print("DEBUG_PRINT: Google Disconnectしました。")
     }
-
+    
+    
+    //PasswordResetボタンを押された際のアクション
+    @IBAction func passwordResetButton(_ sender: Any) {
+        
+        if mailAddressTextField.text == "" {
+            SVProgressHUD.showError(withStatus: "登録済みのメールアドレス\nを入力して下さい")
+            return
+        }
+        else {
+            Auth.auth().sendPasswordReset(withEmail: mailAddressTextField.text! ) { error in
+                if let error = error {
+                    print(error)
+                    SVProgressHUD.showError(withStatus: "登録済みのメールアドレス\nである事を再確認して下さい")
+                    return
+                }
+                SVProgressHUD.showSuccess(withStatus: "登録済みのメールアドレスに\nパスワード再設定のメール\nをお送りしました")
+                return
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -84,6 +84,15 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func handlePasswordChangeButton(_ sender: Any) {
+        Auth.auth().sendPasswordReset(withEmail: (Auth.auth().currentUser?.email)! ) { error in
+            if let error = error {
+                print(error)
+                SVProgressHUD.showError(withStatus: "登録済みのメールアドレス\nである事を再確認して下さい")
+                return
+            }
+            SVProgressHUD.showSuccess(withStatus: "登録済みのメールアドレスに\nパスワード再設定のメール\nをお送りしました")
+            return
+        }
     }
     
     
@@ -137,7 +146,7 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
         
         //背景の設定
         let bg = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-        bg.image = UIImage(named: "背景2")
+        bg.image = UIImage(named: "背景new8")
         bg.layer.zPosition = -1
         self.view.addSubview(bg)
         
