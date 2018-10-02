@@ -25,7 +25,7 @@ class ReviseDataViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         //背景の設定
         let bg = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-        bg.image = UIImage(named: "背景11")
+        bg.image = UIImage(named: "背景new5")
         bg.layer.zPosition = -1
         self.view.addSubview(bg)
         
@@ -59,6 +59,15 @@ class ReviseDataViewController: UIViewController, UITextFieldDelegate {
     
     // 修正ボタンを押した際のアクション
     @IBAction func postedReviseButton(_ sender: Any) {
+        
+        if self.postCode.text == "" {
+            SVProgressHUD.showError(withStatus: "「投稿ナンバー」を入力して下さい")
+            return
+        }
+        else {
+            SVProgressHUD.showError(withStatus: "現在、修正ボタンの機能を停止しています")
+            return
+        }
         
     }
     
