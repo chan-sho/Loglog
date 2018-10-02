@@ -18,6 +18,11 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var helloLabel: UILabel!
     @IBOutlet weak var userPostedSummary: UILabel!
     
+    @IBOutlet weak var view1: UIView!
+    @IBOutlet weak var view2: UIView!
+    @IBOutlet weak var view3: UIView!
+    @IBOutlet weak var view4: UIView!
+    
     @IBOutlet weak var allPostedSelectButton: UIButton!
     @IBOutlet weak var likeSelectButton: UIButton!
     @IBOutlet weak var myMapSelectButton: UIButton!
@@ -29,15 +34,44 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var loglogLogoImage: UIImageView!
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // ユーザー情報を取得して各Labelに設定する
+        let user = Auth.auth().currentUser
+        if let user = user {
+            let userName = user.displayName
+            helloLabel.text = "Let's enjoy Loglog ! \n\(userName!)さん"
+            userPostedSummary.text = "\(userName!)さんの全投稿"
+        }
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        HomeBackgroundView.image = UIImage(named: "背景new6")
         
-        let userName = Auth.auth().currentUser?.displayName
-        helloLabel.text = "Let's enjoy Loglog ! \n\(userName!)さん"
-        userPostedSummary.text = "\(userName!)さんの全投稿"
+        HomeBackgroundView.image = UIImage(named: "背景new10R")
+        
+        view1.layer.borderWidth = 1.0
+        view1.layer.borderColor = UIColor.red.cgColor
+        view1.layer.cornerRadius = 10.0 //丸みを数値で変更できる
+        
+        view2.layer.borderWidth = 1.0
+        view2.layer.borderColor = UIColor.orange.cgColor
+        view2.layer.cornerRadius = 10.0 //丸みを数値で変更できる
+        
+        view3.layer.borderWidth = 1.0
+        view3.layer.borderColor = UIColor.yellow.cgColor
+        view3.layer.cornerRadius = 10.0 //丸みを数値で変更できる
+        
+        view4.layer.borderWidth = 1.0
+        view4.layer.borderColor = UIColor.green.cgColor
+        view4.layer.cornerRadius = 10.0 //丸みを数値で変更できる
         
         loglogLogoImage.image = UIImage(named: "Loglogロゴ")
+        loglogLogoImage.layer.borderWidth = 1.0
+        loglogLogoImage.layer.borderColor = UIColor.white.cgColor
+        loglogLogoImage.layer.cornerRadius = 30.0 //丸みを数値で変更できる
     }
 
     

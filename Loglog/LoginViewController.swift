@@ -54,6 +54,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         handleLoginButton.isExclusiveTouch = true
         handleCreateAccountButton.isExclusiveTouch = true
         passwordResetButton.isExclusiveTouch = true
+        
+        passwordResetButton.layer.borderWidth = 1.0
+        passwordResetButton.layer.borderColor = UIColor.white.cgColor
+        passwordResetButton.layer.cornerRadius = 10.0 //丸みを数値で変更できる
     }
     
     

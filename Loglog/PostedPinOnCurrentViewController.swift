@@ -62,6 +62,12 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
         searchButton.isExclusiveTouch = true
         cancelButton.isExclusiveTouch = true
         removeAllPinButton.isExclusiveTouch = true
+        
+        //背景の設定
+        let bg = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        bg.image = UIImage(named: "背景new11")
+        bg.layer.zPosition = -1
+        self.view.addSubview(bg)
     }
 
     override func didReceiveMemoryWarning() {
