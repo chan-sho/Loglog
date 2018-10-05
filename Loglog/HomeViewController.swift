@@ -11,6 +11,13 @@ import Firebase
 import FirebaseAuth
 
 
+@objc protocol HomeViewDelegate {
+    func homeViewAllPosted()
+    func likeSelect()
+    func myMapSelect()
+}
+
+
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var HomeBackgroundView: UIImageView!
@@ -32,6 +39,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var matchingButton: UIButton!
     
     @IBOutlet weak var loglogLogoImage: UIImageView!
+    
+    //Delegateを使う準備
+    weak var delegate: HomeViewDelegate?
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,6 +82,15 @@ class HomeViewController: UIViewController {
         loglogLogoImage.layer.borderWidth = 1.0
         loglogLogoImage.layer.borderColor = UIColor.white.cgColor
         loglogLogoImage.layer.cornerRadius = 30.0 //丸みを数値で変更できる
+        
+        //ボタン同時押しによるアプリクラッシュを防ぐ
+        allPostedSelectButton.isExclusiveTouch = true
+        likeSelectButton.isExclusiveTouch = true
+        myMapSelectButton.isExclusiveTouch = true
+        newsSelectButton.isExclusiveTouch = true
+        shoppingButton.isExclusiveTouch = true
+        eventButton.isExclusiveTouch = true
+        matchingButton.isExclusiveTouch = true
     }
 
     
@@ -81,6 +100,14 @@ class HomeViewController: UIViewController {
     
     
     @IBAction func allPostedSelectButton(_ sender: Any) {
+        
+        self.tabBarController?.selectedIndex = 3
+        
+        //Delegateされているfunc()を実行
+        self.delegate?.homeViewAllPosted()
+        
+        print("Delegate Funcの通過@allPostedSelectButton")
+        
     }
     
     
