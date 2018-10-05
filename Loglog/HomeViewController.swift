@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ESTabBarController
 import Firebase
 import FirebaseAuth
 
@@ -101,13 +102,14 @@ class HomeViewController: UIViewController {
     
     @IBAction func allPostedSelectButton(_ sender: Any) {
         
-        self.tabBarController?.selectedIndex = 3
+        let tabBarController = parent as! ESTabBarController
+        tabBarController.setSelectedIndex(3, animated: false)
         
         //Delegateされているfunc()を実行
         self.delegate?.homeViewAllPosted()
         
         print("Delegate Funcの通過@allPostedSelectButton")
-        
+    
     }
     
     

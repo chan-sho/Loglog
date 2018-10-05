@@ -63,7 +63,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         // TableViewを再表示する
         self.tableView.reloadData()
         
-        homeViewController.delegate = self
+        self.homeViewController.delegate = self
     }
     
     
@@ -518,6 +518,14 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
         // 他の画面から segue を使って戻ってきた時に呼ばれる
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let homeViewController = segue.destination as? HomeViewController {
+            homeViewController.delegate = self
+        }
+    }
+    
     
     func homeViewAllPosted() {
         // ユーザー情報を取得してtextSearchBarに設定する
