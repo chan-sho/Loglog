@@ -13,7 +13,7 @@ import FirebaseDatabase
 import SVProgressHUD
 
 
-class PostedDataViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, HomeViewDelegate {
+class PostedDataViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
 
     @IBOutlet weak var tableView: UITableView!
@@ -26,8 +26,6 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     // DatabaseのobserveEventの登録状態を表す
     var observing = false
     
-    //HomeViewDelegateを使う準備
-    let homeViewController:HomeViewController = HomeViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,8 +60,6 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         
         // TableViewを再表示する
         self.tableView.reloadData()
-        
-        self.homeViewController.delegate = self
     }
     
     
@@ -515,34 +511,19 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     
-    @IBAction func unwind(_ segue: UIStoryboardSegue) {
-        // 他の画面から segue を使って戻ってきた時に呼ばれる
-    }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let homeViewController = segue.destination as? HomeViewController {
-            homeViewController.delegate = self
-        }
-    }
-    
-    
     func homeViewAllPosted() {
         // ユーザー情報を取得してtextSearchBarに設定する
         let user = Auth.auth().currentUser
         let userName = user?.displayName
         self.textSearchBar.text = "\(userName!)"
-            
+        
         print("\(userName!)")
         
     }
     
-    func likeSelect() {
-        return
-    }
     
-    func myMapSelect() {
-        return
+    @IBAction func unwind(_ segue: UIStoryboardSegue) {
+        // 他の画面から segue を使って戻ってきた時に呼ばれる
     }
     
 }

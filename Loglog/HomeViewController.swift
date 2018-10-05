@@ -12,13 +12,6 @@ import Firebase
 import FirebaseAuth
 
 
-@objc protocol HomeViewDelegate {
-    func homeViewAllPosted()
-    func likeSelect()
-    func myMapSelect()
-}
-
-
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var HomeBackgroundView: UIImageView!
@@ -40,9 +33,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var matchingButton: UIButton!
     
     @IBOutlet weak var loglogLogoImage: UIImageView!
-    
-    //Delegateを使う準備
-    weak var delegate: HomeViewDelegate?
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,13 +92,11 @@ class HomeViewController: UIViewController {
     
     @IBAction func allPostedSelectButton(_ sender: Any) {
         
+        print("ボタン押印確認　@allPostedSelectButton")
+        
         let tabBarController = parent as! ESTabBarController
-        tabBarController.setSelectedIndex(3, animated: false)
-        
-        //Delegateされているfunc()を実行
-        self.delegate?.homeViewAllPosted()
-        
-        print("Delegate Funcの通過@allPostedSelectButton")
+        let postedViewContoller = tabBarController.childViewControllers[3] as! PostedDataViewController
+        postedViewContoller.homeViewAllPosted()
     
     }
     
