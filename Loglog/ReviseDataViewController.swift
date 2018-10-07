@@ -25,7 +25,7 @@ class ReviseDataViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         //背景の設定
         let bg = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-        bg.image = UIImage(named: "背景new8")
+        bg.image = UIImage(named: "背景new13")
         bg.layer.zPosition = -1
         self.view.addSubview(bg)
         
