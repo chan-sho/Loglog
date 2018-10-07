@@ -22,6 +22,9 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     var postArray: [PostData] = []
     var postArrayBySearch: [PostData] = []
     var postArrayAll: [PostData] = []
+    var postArrayOnHome1: [PostData] = []
+    var postArrayOnHome2: [PostData] = []
+    var postArrayOnHome3: [PostData] = []
     
     // DatabaseのobserveEventの登録状態を表す
     var observing = false
@@ -114,6 +117,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                 // 要素が【変更】されたら該当のデータをpostArrayから一度削除した後に新しいデータを追加してTableViewを再表示する
                 postsRef.observe(.childChanged, with: { snapshot in
                     print("DEBUG_PRINT: .childChangedイベントが発生しました。")
+                    print("\(self.textSearchBar.text!)")
                     
                     if let uid = Auth.auth().currentUser?.uid {
                         // PostDataクラスを生成して受け取ったデータを設定する
@@ -150,8 +154,137 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                         // TableViewを再表示する
                         self.tableView.reloadData()
                         }
-                    else {
                         
+                    //HomeViewControllerで対象のボタンを押した場合①
+                    else if self.textSearchBar.text == "【※貴方の全投稿を抽出中】" {
+                        // 保持している配列からidが同じものを探す
+                        var indexOnHome1: Int = 0
+                        for post in self.postArrayOnHome1 {
+                            if post.id == postData.id {
+                                indexOnHome1 = self.postArrayOnHome1.index(of: post)!
+                                break
+                            }
+                        }
+                        
+                        // 保持している配列からidが同じものを探す（※postArray用）
+                        var index: Int = 0
+                        for post in self.postArray {
+                            if post.id == postData.id {
+                                index = self.postArray.index(of: post)!
+                                break
+                            }
+                        }
+                        
+                        // 保持している配列からidが同じものを探す（※postArrayAll用）
+                        var indexAll: Int = 0
+                        for post in self.postArrayAll {
+                            if post.id == postData.id {
+                                indexAll = self.postArrayAll.index(of: post)!
+                                break
+                            }
+                        }
+                        
+                        // 差し替えるため一度削除する
+                        self.postArrayOnHome1.remove(at: indexOnHome1)
+                        self.postArray.remove(at: index)
+                        self.postArrayAll.remove(at: indexAll)
+                        
+                        // 削除したところに更新済みのデータを追加する
+                        self.postArrayOnHome1.insert(postData, at: indexOnHome1)
+                        self.postArray.insert(postData, at: index)
+                        self.postArrayAll.insert(postData, at: indexAll)
+                        
+                        // TableViewを再表示する
+                        self.tableView.reloadData()
+                    }
+                        
+                    //HomeViewControllerで対象のボタンを押した場合②
+                    else if self.textSearchBar.text == "【※貴方が「いいね」した投稿を抽出中】" {
+                        // 保持している配列からidが同じものを探す
+                        var indexOnHome2: Int = 0
+                        for post in self.postArrayOnHome2 {
+                            if post.id == postData.id {
+                                indexOnHome2 = self.postArrayOnHome2.index(of: post)!
+                                break
+                            }
+                        }
+                        
+                        // 保持している配列からidが同じものを探す（※postArray用）
+                        var index: Int = 0
+                        for post in self.postArray {
+                            if post.id == postData.id {
+                                index = self.postArray.index(of: post)!
+                                break
+                            }
+                        }
+                        
+                        // 保持している配列からidが同じものを探す（※postArrayAll用）
+                        var indexAll: Int = 0
+                        for post in self.postArrayAll {
+                            if post.id == postData.id {
+                                indexAll = self.postArrayAll.index(of: post)!
+                                break
+                            }
+                        }
+                        
+                        // 差し替えるため一度削除する
+                        self.postArrayOnHome2.remove(at: indexOnHome2)
+                        self.postArray.remove(at: index)
+                        self.postArrayAll.remove(at: indexAll)
+                        
+                        // 削除したところに更新済みのデータを追加する
+                        self.postArrayOnHome2.insert(postData, at: indexOnHome2)
+                        self.postArray.insert(postData, at: index)
+                        self.postArrayAll.insert(postData, at: indexAll)
+                        
+                        // TableViewを再表示する
+                        self.tableView.reloadData()
+                    }
+                    
+                        //HomeViewControllerで対象のボタンを押した場合③
+                    else if self.textSearchBar.text == "【※貴方の「自分専用」を抽出中】" {
+                        // 保持している配列からidが同じものを探す
+                        var indexOnHome3: Int = 0
+                        for post in self.postArrayOnHome3 {
+                            if post.id == postData.id {
+                                indexOnHome3 = self.postArrayOnHome3.index(of: post)!
+                                break
+                            }
+                        }
+                        
+                        // 保持している配列からidが同じものを探す（※postArray用）
+                        var index: Int = 0
+                        for post in self.postArray {
+                            if post.id == postData.id {
+                                index = self.postArray.index(of: post)!
+                                break
+                            }
+                        }
+                        
+                        // 保持している配列からidが同じものを探す（※postArrayAll用）
+                        var indexAll: Int = 0
+                        for post in self.postArrayAll {
+                            if post.id == postData.id {
+                                indexAll = self.postArrayAll.index(of: post)!
+                                break
+                            }
+                        }
+                        
+                        // 差し替えるため一度削除する
+                        self.postArrayOnHome3.remove(at: indexOnHome3)
+                        self.postArray.remove(at: index)
+                        self.postArrayAll.remove(at: indexAll)
+                        
+                        // 削除したところに更新済みのデータを追加する
+                        self.postArrayOnHome3.insert(postData, at: indexOnHome3)
+                        self.postArray.insert(postData, at: index)
+                        self.postArrayAll.insert(postData, at: indexAll)
+                        
+                        // TableViewを再表示する
+                        self.tableView.reloadData()
+                    }
+                    
+                    else {
                         // 保持している配列からidが同じものを探す
                         var indexBySearch: Int = 0
                         for post in self.postArrayBySearch {
@@ -183,7 +316,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                         self.postArrayBySearch.remove(at: indexBySearch)
                         self.postArray.remove(at: index)
                         self.postArrayAll.remove(at: indexAll)
-                            
+                        
                         // 削除したところに更新済みのデータを追加する
                         self.postArrayBySearch.insert(postData, at: indexBySearch)
                         self.postArray.insert(postData, at: index)
@@ -224,6 +357,120 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                             }
                             
                             // 削除する
+                            self.postArray.remove(at: index)
+                            self.postArrayAll.remove(at: indexAll)
+                            
+                            // TableViewを再表示する
+                            self.tableView.reloadData()
+                        }
+                        
+                            //HomeViewControllerで対象のボタンを押した場合①
+                        else if self.textSearchBar.text == "【※貴方の全投稿を抽出中】" {
+                            // 保持している配列からidが同じものを探す
+                            var indexOnHome1: Int = 0
+                            for post in self.postArrayOnHome1 {
+                                if post.id == postData.id {
+                                    indexOnHome1 = self.postArrayOnHome1.index(of: post)!
+                                    break
+                                }
+                            }
+                            
+                            // 保持している配列からidが同じものを探す（※postArray用）
+                            var index: Int = 0
+                            for post in self.postArray {
+                                if post.id == postData.id {
+                                    index = self.postArray.index(of: post)!
+                                    break
+                                }
+                            }
+                            
+                            // 保持している配列からidが同じものを探す（※postArrayAll用）
+                            var indexAll: Int = 0
+                            for post in self.postArrayAll {
+                                if post.id == postData.id {
+                                    indexAll = self.postArrayAll.index(of: post)!
+                                    break
+                                }
+                            }
+                            
+                            // 削除する
+                            self.postArrayOnHome1.remove(at: indexOnHome1)
+                            self.postArray.remove(at: index)
+                            self.postArrayAll.remove(at: indexAll)
+                            
+                            // TableViewを再表示する
+                            self.tableView.reloadData()
+                        }
+                        
+                            //HomeViewControllerで対象のボタンを押した場合②
+                        else if self.textSearchBar.text == "【※貴方が「いいね」した投稿を抽出中】" {
+                            // 保持している配列からidが同じものを探す
+                            var indexOnHome2: Int = 0
+                            for post in self.postArrayOnHome2 {
+                                if post.id == postData.id {
+                                    indexOnHome2 = self.postArrayOnHome2.index(of: post)!
+                                    break
+                                }
+                            }
+                            
+                            // 保持している配列からidが同じものを探す（※postArray用）
+                            var index: Int = 0
+                            for post in self.postArray {
+                                if post.id == postData.id {
+                                    index = self.postArray.index(of: post)!
+                                    break
+                                }
+                            }
+                            
+                            // 保持している配列からidが同じものを探す（※postArrayAll用）
+                            var indexAll: Int = 0
+                            for post in self.postArrayAll {
+                                if post.id == postData.id {
+                                    indexAll = self.postArrayAll.index(of: post)!
+                                    break
+                                }
+                            }
+                            
+                            // 削除する
+                            self.postArrayOnHome2.remove(at: indexOnHome2)
+                            self.postArray.remove(at: index)
+                            self.postArrayAll.remove(at: indexAll)
+                            
+                            // TableViewを再表示する
+                            self.tableView.reloadData()
+                        }
+                            
+                            //HomeViewControllerで対象のボタンを押した場合③
+                        else if self.textSearchBar.text == "【※貴方の「自分専用」を抽出中】" {
+                            // 保持している配列からidが同じものを探す
+                            var indexOnHome3: Int = 0
+                            for post in self.postArrayOnHome3 {
+                                if post.id == postData.id {
+                                    indexOnHome3 = self.postArrayOnHome3.index(of: post)!
+                                    break
+                                }
+                            }
+                            
+                            // 保持している配列からidが同じものを探す（※postArray用）
+                            var index: Int = 0
+                            for post in self.postArray {
+                                if post.id == postData.id {
+                                    index = self.postArray.index(of: post)!
+                                    break
+                                }
+                            }
+                            
+                            // 保持している配列からidが同じものを探す（※postArrayAll用）
+                            var indexAll: Int = 0
+                            for post in self.postArrayAll {
+                                if post.id == postData.id {
+                                    indexAll = self.postArrayAll.index(of: post)!
+                                    break
+                                }
+                            }
+                            
+                            // 削除する
+                            self.postArrayOnHome3.remove(at: indexOnHome3)
                             self.postArray.remove(at: index)
                             self.postArrayAll.remove(at: indexAll)
                             
@@ -281,6 +528,9 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                 postArray = []
                 postArrayAll = []
                 postArrayBySearch = []
+                postArrayOnHome1 = []
+                postArrayOnHome2 = []
+                postArrayOnHome3 = []
                 tableView.reloadData()
                 // オブザーバーを削除する
                 Database.database().reference().removeAllObservers()
@@ -302,12 +552,67 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     }
         
     
-    //検索バーでテキストが空白or全て消された時 / テキスト入力された時の呼び出しメソッド
+    //検索バーでテキストが空白時 or HomeViewControllerで対象のボタンを押印 or テキスト入力時の呼び出しメソッド
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
      
         if textSearchBar.text == "" {
             self.tableView.reloadData()
         }
+        
+        //HomeViewControllerで対象のボタンを押印①
+        else if textSearchBar.text == "【※貴方の全投稿を抽出中】" {
+            let uid = Auth.auth().currentUser?.uid
+            
+            print("\(uid!)")
+            
+            let array = uid?.components(separatedBy: NSCharacterSet.whitespaces)
+            var tempFilteredArray = postArrayAll
+            for n in array! {
+                tempFilteredArray = tempFilteredArray.filter{($0.userID?.contains(n))!}
+            }
+            postArrayOnHome1 = tempFilteredArray
+            
+            print("\(postArrayOnHome1)")
+            
+            self.tableView.reloadData()
+        }
+        
+        //HomeViewControllerで対象のボタンを押印②
+        else if textSearchBar.text == "【※貴方が「いいね」した投稿を抽出中】" {
+            let uid = Auth.auth().currentUser?.uid
+            
+            print("\(uid!)")
+            
+            let array = uid?.components(separatedBy: NSCharacterSet.whitespaces)
+            var tempFilteredArray = postArrayAll
+            for n in array! {
+                tempFilteredArray = tempFilteredArray.filter{($0.likes.contains(n))}
+            }
+            postArrayOnHome2 = tempFilteredArray
+            
+            print("\(postArrayOnHome2)")
+            
+            self.tableView.reloadData()
+        }
+        
+        //HomeViewControllerで対象のボタンを押印③
+        else if textSearchBar.text == "【※貴方の「自分専用」を抽出中】" {
+            let uid = Auth.auth().currentUser?.uid
+            
+            print("\(uid!)")
+            
+            let array = uid?.components(separatedBy: NSCharacterSet.whitespaces)
+            var tempFilteredArray = postArrayAll
+            for n in array! {
+                tempFilteredArray = tempFilteredArray.filter{($0.myMap.contains(n))}
+            }
+            postArrayOnHome3 = tempFilteredArray
+            
+            print("\(postArrayOnHome3)")
+            
+            self.tableView.reloadData()
+        }
+            
         else {
             // 検索バーに入力された単語をスペースで分けて配列に入れる
             let searchWords = textSearchBar.text!
@@ -328,6 +633,18 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if textSearchBar.text == "" {
             return postArray.count
+        }
+        else if textSearchBar.text == "【※貴方の全投稿を抽出中】" {
+            
+            return postArrayOnHome1.count
+        }
+        else if textSearchBar.text == "【※貴方が「いいね」した投稿を抽出中】" {
+            
+            return postArrayOnHome2.count
+        }
+        else if textSearchBar.text == "【※貴方の「自分専用」を抽出中】" {
+            
+            return postArrayOnHome3.count
         }
         else {
             return postArrayBySearch.count
@@ -353,6 +670,60 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             
                 return cell
             }
+        
+        else if textSearchBar.text == "【※貴方の全投稿を抽出中】" {
+            
+            // セルを取得してデータを設定する
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostedDataViewCell
+            cell.setPostData(postArrayOnHome1[indexPath.row])
+            
+            // セル内のボタンのアクションをソースコードで設定する
+            cell.likeButton.addTarget(self, action:#selector(handleButton(_:forEvent:)), for: .touchUpInside)
+            
+            // セル内のmyMapボタンを追加で管理
+            cell.myMapButton.addTarget(self, action:#selector(handleMyMapButton(_:forEvent:)), for: .touchUpInside)
+            
+            // セル内のreviseボタンを追加で管理
+            cell.reviseButton.addTarget(self, action:#selector(handleReviseButton(_:forEvent:)), for: .touchUpInside)
+            
+            return cell
+            }
+        
+        else if textSearchBar.text == "【※貴方が「いいね」した投稿を抽出中】" {
+            
+            // セルを取得してデータを設定する
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostedDataViewCell
+            cell.setPostData(postArrayOnHome2[indexPath.row])
+            
+            // セル内のボタンのアクションをソースコードで設定する
+            cell.likeButton.addTarget(self, action:#selector(handleButton(_:forEvent:)), for: .touchUpInside)
+            
+            // セル内のmyMapボタンを追加で管理
+            cell.myMapButton.addTarget(self, action:#selector(handleMyMapButton(_:forEvent:)), for: .touchUpInside)
+            
+            // セル内のreviseボタンを追加で管理
+            cell.reviseButton.addTarget(self, action:#selector(handleReviseButton(_:forEvent:)), for: .touchUpInside)
+            
+            return cell
+        }
+        else if textSearchBar.text == "【※貴方の「自分専用」を抽出中】" {
+            
+            // セルを取得してデータを設定する
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostedDataViewCell
+            cell.setPostData(postArrayOnHome3[indexPath.row])
+            
+            // セル内のボタンのアクションをソースコードで設定する
+            cell.likeButton.addTarget(self, action:#selector(handleButton(_:forEvent:)), for: .touchUpInside)
+            
+            // セル内のmyMapボタンを追加で管理
+            cell.myMapButton.addTarget(self, action:#selector(handleMyMapButton(_:forEvent:)), for: .touchUpInside)
+            
+            // セル内のreviseボタンを追加で管理
+            cell.reviseButton.addTarget(self, action:#selector(handleReviseButton(_:forEvent:)), for: .touchUpInside)
+            
+            return cell
+        }
+        
         else {
                 // セルを取得してデータを設定する
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostedDataViewCell
@@ -391,6 +762,34 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             // タップされたインデックスのデータを確認
             print("タップされたインデックスのデータ by likeボタン＝\(postData)")
         }
+        
+        else if textSearchBar.text == "【※貴方の全投稿を抽出中】" {
+            
+            // 配列からタップされたインデックスのデータを取り出す
+            postData = postArrayOnHome1[indexPath!.row]
+            
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by likeボタン＝\(postData)")
+        }
+            
+        else if textSearchBar.text == "【※貴方が「いいね」した投稿を抽出中】" {
+            
+            // 配列からタップされたインデックスのデータを取り出す
+            postData = postArrayOnHome2[indexPath!.row]
+            
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by likeボタン＝\(postData)")
+        }
+            
+        else if textSearchBar.text == "【※貴方の「自分専用」を抽出中】" {
+            
+            // 配列からタップされたインデックスのデータを取り出す
+            postData = postArrayOnHome3[indexPath!.row]
+            
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by likeボタン＝\(postData)")
+        }
+        
         else {
             // 検索バーに入力された単語をスペースで分けて配列に入れる
             let searchWords = textSearchBar.text!
@@ -449,6 +848,34 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             // タップされたインデックスのデータを確認
             print("タップされたインデックスのデータ by likeボタン＝\(postData)")
         }
+        
+        else if textSearchBar.text == "【※貴方の全投稿を抽出中】" {
+            
+            // 配列からタップされたインデックスのデータを取り出す
+            postData = postArrayOnHome1[indexPath!.row]
+            
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by likeボタン＝\(postData)")
+        }
+            
+        else if textSearchBar.text == "【※貴方が「いいね」した投稿を抽出中】" {
+            
+            // 配列からタップされたインデックスのデータを取り出す
+            postData = postArrayOnHome2[indexPath!.row]
+            
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by likeボタン＝\(postData)")
+        }
+            
+        else if textSearchBar.text == "【※貴方の「自分専用」を抽出中】" {
+            
+            // 配列からタップされたインデックスのデータを取り出す
+            postData = postArrayOnHome3[indexPath!.row]
+            
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by likeボタン＝\(postData)")
+        }
+            
         else {
             // 検索バーに入力された単語をスペースで分けて配列に入れる
             let searchWords = textSearchBar.text!
@@ -511,14 +938,75 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     
-    func homeViewAllPosted() {
-        // ユーザー情報を取得してtextSearchBarに設定する
-        let user = Auth.auth().currentUser
-        let userName = user?.displayName
-        self.textSearchBar.text = "\(userName!)"
+    //HomeViewControllerで「allPostedSelectButton」を押された際の処理
+    func allPostedSelection() {
+        self.tableView.reloadData()
+        self.textSearchBar.text = "【※貴方の全投稿を抽出中】"
         
-        print("\(userName!)")
+        print("\(textSearchBar.text!)")
         
+        let uid = Auth.auth().currentUser?.uid
+        
+        print("\(uid!)")
+        
+        let array = uid?.components(separatedBy: NSCharacterSet.whitespaces)
+        var tempFilteredArray = postArrayAll
+        for n in array! {
+            tempFilteredArray = tempFilteredArray.filter{($0.userID?.contains(n))!}
+        }
+        postArrayOnHome1 = tempFilteredArray
+        
+        print("\(postArrayOnHome1)")
+        
+        self.tableView.reloadData()
+    }
+    
+    
+    //HomeViewControllerで「likeSelectButton」を押された際の処理
+    func likeSelection() {
+        self.tableView.reloadData()
+        self.textSearchBar.text = "【※貴方が「いいね」した投稿を抽出中】"
+        
+        print("\(textSearchBar.text!)")
+        
+        let uid = Auth.auth().currentUser?.uid
+        
+        print("\(uid!)")
+        
+        let array = uid?.components(separatedBy: NSCharacterSet.whitespaces)
+        var tempFilteredArray = postArrayAll
+        for n in array! {
+            tempFilteredArray = tempFilteredArray.filter{($0.likes.contains(n))}
+        }
+        postArrayOnHome2 = tempFilteredArray
+        
+        print("\(postArrayOnHome2)")
+        
+        self.tableView.reloadData()
+    }
+    
+    
+    //HomeViewControllerで「myMapSelectButton」を押された際の処理
+    func myMapSelection() {
+        self.tableView.reloadData()
+        self.textSearchBar.text = "【※貴方の「自分専用」を抽出中】"
+        
+        print("\(textSearchBar.text!)")
+        
+        let uid = Auth.auth().currentUser?.uid
+        
+        print("\(uid!)")
+        
+        let array = uid?.components(separatedBy: NSCharacterSet.whitespaces)
+        var tempFilteredArray = postArrayAll
+        for n in array! {
+            tempFilteredArray = tempFilteredArray.filter{($0.myMap.contains(n))}
+        }
+        postArrayOnHome3 = tempFilteredArray
+        
+        print("\(postArrayOnHome3)")
+        
+        self.tableView.reloadData()
     }
     
     

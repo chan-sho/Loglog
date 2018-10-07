@@ -62,6 +62,7 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iU-nd-mMo">
                                                 <rect key="frame" x="20" y="20" width="245" height="20"/>
+                                                <gestureRecognizers/>
                                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -72,13 +73,16 @@
                                                     <constraint firstAttribute="height" constant="40" id="YKl-GM-v8P"/>
                                                     <constraint firstAttribute="width" constant="40" id="w9K-io-0h5"/>
                                                 </constraints>
-                                                <state key="normal" backgroundImage="Posted"/>
+                                                <state key="normal" backgroundImage="Posted">
+                                                    <color key="titleShadowColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="allPostedSelectButton:" destination="Zth-vc-l65" eventType="touchUpInside" id="iPB-FX-kiH"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="0.89964148116438358" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="1Hv-Gf-YcE"/>
                                             <constraint firstItem="JLI-ld-q2n" firstAttribute="top" secondItem="sCK-jW-fNo" secondAttribute="top" constant="10" id="BvS-6U-nwK"/>
@@ -89,6 +93,9 @@
                                             <constraint firstAttribute="bottom" secondItem="JLI-ld-q2n" secondAttribute="bottom" constant="10" id="l4l-sg-5Xk"/>
                                             <constraint firstAttribute="trailing" secondItem="JLI-ld-q2n" secondAttribute="trailing" constant="20" id="xWt-Yu-zKz"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="6Zs-SE-P2A" appends="YES" id="dgj-Su-sKE"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWq-4D-VcV">
                                         <rect key="frame" x="20" y="155" width="335" height="60"/>
@@ -105,13 +112,16 @@
                                                     <constraint firstAttribute="height" constant="40" id="8BS-Rv-2RO"/>
                                                     <constraint firstAttribute="width" constant="40" id="J1F-UP-OnI"/>
                                                 </constraints>
-                                                <state key="normal" backgroundImage="like_none"/>
+                                                <state key="normal" backgroundImage="like_none">
+                                                    <color key="titleShadowColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="likeSelectButton:" destination="Zth-vc-l65" eventType="touchUpInside" id="q8k-a3-inr"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="0.89742080479452058" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="1Jh-yx-LZh"/>
                                             <constraint firstItem="QVo-fg-Ogh" firstAttribute="leading" secondItem="FWq-4D-VcV" secondAttribute="leading" constant="20" id="9Gd-Lh-3GW"/>
@@ -121,6 +131,9 @@
                                             <constraint firstAttribute="trailing" secondItem="HWq-pl-s9A" secondAttribute="trailing" constant="20" id="Yb1-QP-T3A"/>
                                             <constraint firstItem="QVo-fg-Ogh" firstAttribute="top" secondItem="FWq-4D-VcV" secondAttribute="top" constant="20" id="bPQ-zr-dt0"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="NtG-KH-yHx" appends="YES" id="pQN-vW-PCu"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nl1-KW-XUk">
                                         <rect key="frame" x="20" y="235" width="335" height="60"/>
@@ -137,13 +150,16 @@
                                                     <constraint firstAttribute="width" constant="40" id="9aE-NU-FT1"/>
                                                     <constraint firstAttribute="height" constant="40" id="HuH-61-eSG"/>
                                                 </constraints>
-                                                <state key="normal" backgroundImage="mymap_no(Home用)"/>
+                                                <state key="normal" backgroundImage="mymap_no(Home用)">
+                                                    <color key="titleShadowColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="myMapSelectButton:" destination="Zth-vc-l65" eventType="touchUpInside" id="QRV-B7-Y62"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="0.89501284246575341" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="8ni-h9-rce"/>
                                             <constraint firstAttribute="trailing" secondItem="TGN-Ee-tvr" secondAttribute="trailing" constant="20" id="DmS-fO-pI0"/>
@@ -153,6 +169,9 @@
                                             <constraint firstItem="TGN-Ee-tvr" firstAttribute="top" secondItem="nl1-KW-XUk" secondAttribute="top" constant="10" id="YHA-ML-fTp"/>
                                             <constraint firstAttribute="bottom" secondItem="TGN-Ee-tvr" secondAttribute="bottom" constant="10" id="utz-zg-J8u"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Yk8-Pc-Oyk" appends="YES" id="BC3-qc-Na2"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbY-GX-WQc">
                                         <rect key="frame" x="20" y="315" width="335" height="60"/>
@@ -169,13 +188,16 @@
                                                     <constraint firstAttribute="height" constant="40" id="FH5-rm-ijm"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="bBa-JV-dTL"/>
                                                 </constraints>
-                                                <state key="normal" backgroundImage="お得情報"/>
+                                                <state key="normal" backgroundImage="お得情報">
+                                                    <color key="titleShadowColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="newsSelectButton:" destination="Zth-vc-l65" eventType="touchUpInside" id="SFp-uV-zyn"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.45009386540000001" green="0.98132258650000004" blue="0.4743030667" alpha="0.9022902397260274" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="mBz-lE-tPJ" secondAttribute="bottom" constant="10" id="ATU-VV-S6y"/>
                                             <constraint firstAttribute="bottom" secondItem="fSc-wO-xB2" secondAttribute="bottom" constant="20" id="acA-20-iza"/>
@@ -185,6 +207,9 @@
                                             <constraint firstAttribute="trailing" secondItem="mBz-lE-tPJ" secondAttribute="trailing" constant="20" id="mn3-vD-aua"/>
                                             <constraint firstItem="fSc-wO-xB2" firstAttribute="top" secondItem="dbY-GX-WQc" secondAttribute="top" constant="20" id="ypv-KT-BN3"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="62l-lJ-bDG" appends="YES" id="qj9-Gb-dRC"/>
+                                        </connections>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DT2-mC-BCn">
                                         <rect key="frame" x="30" y="510" width="50" height="50"/>
@@ -379,6 +404,26 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Fk-36-fjK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="6Zs-SE-P2A">
+                    <connections>
+                        <action selector="tapOnView1:" destination="Zth-vc-l65" id="OS5-3I-NVh"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="NtG-KH-yHx">
+                    <connections>
+                        <action selector="tapOnView2:" destination="Zth-vc-l65" id="7d9-LR-eSg"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Yk8-Pc-Oyk">
+                    <connections>
+                        <action selector="tapOnView3:" destination="Zth-vc-l65" id="wwF-vS-Vrh"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="62l-lJ-bDG">
+                    <connections>
+                        <action selector="tapOnView4:" destination="Zth-vc-l65" id="DAd-Rr-E8M"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3157.5999999999999" y="-1453.6731634182909"/>
         </scene>

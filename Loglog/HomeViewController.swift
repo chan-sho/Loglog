@@ -91,21 +91,47 @@ class HomeViewController: UIViewController {
     
     
     @IBAction func allPostedSelectButton(_ sender: Any) {
-        
-        print("ボタン押印確認　@allPostedSelectButton")
+        print("ボタン押印確認　@ allPostedSelectButton")
         
         let tabBarController = parent as! ESTabBarController
-        let postedViewContoller = tabBarController.childViewControllers[3] as! PostedDataViewController
-        postedViewContoller.homeViewAllPosted()
-    
+        tabBarController.setSelectedIndex(3, animated: false)
+        for viewController in tabBarController.childViewControllers {
+            if viewController is PostedDataViewController {
+                let postedViewContoller = viewController as! PostedDataViewController
+                postedViewContoller.allPostedSelection()
+                break
+            }
+        }
     }
     
     
     @IBAction func likeSelectButton(_ sender: Any) {
+        print("ボタン押印確認　@ likeSelectButton")
+        
+        let tabBarController = parent as! ESTabBarController
+        tabBarController.setSelectedIndex(3, animated: false)
+        for viewController in tabBarController.childViewControllers {
+            if viewController is PostedDataViewController {
+                let postedViewContoller = viewController as! PostedDataViewController
+                postedViewContoller.likeSelection()
+                break
+            }
+        }
     }
     
     
     @IBAction func myMapSelectButton(_ sender: Any) {
+        print("ボタン押印確認　@ myMapSelectButton")
+        
+        let tabBarController = parent as! ESTabBarController
+        tabBarController.setSelectedIndex(3, animated: false)
+        for viewController in tabBarController.childViewControllers {
+            if viewController is PostedDataViewController {
+                let postedViewContoller = viewController as! PostedDataViewController
+                postedViewContoller.myMapSelection()
+                break
+            }
+        }
     }
     
     
@@ -124,4 +150,56 @@ class HomeViewController: UIViewController {
     @IBAction func matchingButton(_ sender: Any) {
     }
     
+    
+    //View1を押した際のアクション（今後View上のボタンを隠しボタンにして面白いアクションを設定するために）
+    @IBAction func tapOnView1(_ sender: Any) {
+        print("ボタン押印確認　@ tapOnView1")
+        
+        let tabBarController = parent as! ESTabBarController
+        tabBarController.setSelectedIndex(3, animated: false)
+        for viewController in tabBarController.childViewControllers {
+            if viewController is PostedDataViewController {
+                let postedViewContoller = viewController as! PostedDataViewController
+                postedViewContoller.allPostedSelection()
+                break
+            }
+        }
+    }
+    
+    
+    //View2を押した際のアクション（今後View上のボタンを隠しボタンにして面白いアクションを設定するために）
+    @IBAction func tapOnView2(_ sender: Any) {
+        print("ボタン押印確認　@ likeSelectButton")
+        
+        let tabBarController = parent as! ESTabBarController
+        tabBarController.setSelectedIndex(3, animated: false)
+        for viewController in tabBarController.childViewControllers {
+            if viewController is PostedDataViewController {
+                let postedViewContoller = viewController as! PostedDataViewController
+                postedViewContoller.likeSelection()
+                break
+            }
+        }
+    }
+    
+    
+    //View3を押した際のアクション（今後View上のボタンを隠しボタンにして面白いアクションを設定するために）
+    @IBAction func tapOnView3(_ sender: Any) {
+        print("ボタン押印確認　@ myMapSelectButton")
+        
+        let tabBarController = parent as! ESTabBarController
+        tabBarController.setSelectedIndex(3, animated: false)
+        for viewController in tabBarController.childViewControllers {
+            if viewController is PostedDataViewController {
+                let postedViewContoller = viewController as! PostedDataViewController
+                postedViewContoller.myMapSelection()
+                break
+            }
+        }
+    }
+    
+    
+    //View4を押した際のアクション（今後View上のボタンを隠しボタンにして面白いアクションを設定するために）
+    @IBAction func tapOnView4(_ sender: Any) {
+    }
 }
