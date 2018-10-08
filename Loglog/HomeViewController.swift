@@ -45,6 +45,7 @@ class HomeViewController: UIViewController {
             let userName = user.displayName
             helloLabel.text = "Let's enjoy Loglog ! \n\(userName!)さん"
             userPostedSummary.text = "\(userName!)さんの全投稿"
+            
         }
         
         //ログインユーザーのプロフィール画像をロード
@@ -69,7 +70,6 @@ class HomeViewController: UIViewController {
                 }
             }).resume()
         }
-        
     }
 
     
