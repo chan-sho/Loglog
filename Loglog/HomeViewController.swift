@@ -35,6 +35,9 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var loglogLogoImage: UIImageView!
     
+    //真っ白な背景のImageView
+    var whiteBackGround: UIImageView!
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -52,6 +55,8 @@ class HomeViewController: UIViewController {
         let currentUser = Auth.auth().currentUser
         
         if currentUser != nil {
+            whiteBackGround.removeFromSuperview()
+            
             let userProfileurl = Auth.auth().currentUser?.photoURL
             let url = URL(string: "\(userProfileurl!)")
             
@@ -70,11 +75,20 @@ class HomeViewController: UIViewController {
                 }
             }).resume()
         }
+        else {
+            self.view.addSubview(whiteBackGround)
+        }
     }
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //真っ白な背景のImageView
+        whiteBackGround = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.width))
+        whiteBackGround.backgroundColor = UIColor.white
+        whiteBackGround.layer.zPosition = +1
+        self.view.addSubview(whiteBackGround)
         
         HomeBackgroundView.image = UIImage(named: "背景new10R")
         
