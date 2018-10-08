@@ -35,7 +35,7 @@ class ViewController: UIViewController {
             
             // ログインしていないときの処理
             let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "Login")
-            self.present(loginViewController!, animated: true, completion: nil)
+            self.present(loginViewController!, animated: false, completion: nil)
         }
     }
     
