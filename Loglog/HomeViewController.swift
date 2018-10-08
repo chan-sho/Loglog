@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var HomeBackgroundView: UIImageView!
     
+    @IBOutlet weak var userProfilePhoto: UIImageView!
     @IBOutlet weak var helloLabel: UILabel!
     @IBOutlet weak var userPostedSummary: UILabel!
     
@@ -45,6 +46,30 @@ class HomeViewController: UIViewController {
             helloLabel.text = "Let's enjoy Loglog ! \n\(userName!)さん"
             userPostedSummary.text = "\(userName!)さんの全投稿"
         }
+        
+        //ログインユーザーのプロフィール画像をロード
+        let currentUser = Auth.auth().currentUser
+        
+        if currentUser != nil {
+            let userProfileurl = Auth.auth().currentUser?.photoURL
+            let url = URL(string: "\(userProfileurl!)")
+            
+            print("\(url!)")
+            
+            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                if error != nil {
+                    print(error!)
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self.userProfilePhoto.image = UIImage(data: data!)
+                    self.userProfilePhoto.clipsToBounds = true
+                    self.userProfilePhoto.layer.cornerRadius = 27.5
+                }
+            }).resume()
+        }
+        
     }
 
     
@@ -52,6 +77,29 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         HomeBackgroundView.image = UIImage(named: "背景new10R")
+        
+        //ログインユーザーのプロフィール画像をロード
+        let currentUser = Auth.auth().currentUser
+        
+        if currentUser != nil {
+        let userProfileurl = Auth.auth().currentUser?.photoURL
+        let url = URL(string: "\(userProfileurl!)")
+        
+        print("\(url!)")
+        
+        URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+            if error != nil {
+                print(error!)
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.userProfilePhoto.image = UIImage(data: data!)
+                self.userProfilePhoto.clipsToBounds = true
+                self.userProfilePhoto.layer.cornerRadius = 27.5
+            }
+         }).resume()
+        }
         
         view1.layer.borderWidth = 1.0
         view1.layer.borderColor = UIColor.red.cgColor
