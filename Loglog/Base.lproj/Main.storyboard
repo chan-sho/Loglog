@@ -1758,9 +1758,9 @@
         <image name="like_none" width="40" height="40"/>
         <image name="mymap_no(Home用)" width="40" height="40"/>
         <image name="お得情報" width="40" height="40"/>
-        <image name="イベント" width="40" height="40"/>
-        <image name="ショッピング" width="40" height="40"/>
-        <image name="マッチング" width="40" height="40"/>
+        <image name="イベント" width="50" height="50"/>
+        <image name="ショッピング" width="50" height="50"/>
+        <image name="マッチング" width="50" height="50"/>
         <image name="地図ピン" width="100" height="100"/>
         <image name="投稿準備" width="100" height="100"/>
         <image name="現在地" width="100" height="100"/>

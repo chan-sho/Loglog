@@ -27,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Googleサインイン
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()!.options.clientID
         
+        //起動時間延長
+        sleep(3)
+        
         return true
     }
     
