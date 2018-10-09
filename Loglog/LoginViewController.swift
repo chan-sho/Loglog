@@ -26,19 +26,22 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     @IBOutlet weak var handleCreateAccountButton: UIButton!
     @IBOutlet weak var passwordResetButton: UIButton!
     
+    //facebookサインインボタンの生成準備
+    let fbLoginBtn = FBSDKLoginButton()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Facebookサインイン
-        let fbLoginBtn = FBSDKLoginButton()
-        fbLoginBtn.readPermissions = ["public_profile", "email"]
-        fbLoginBtn.frame = CGRect(x: 40.0, y: (UIScreen.main.bounds.size.height-100.0), width: 100.0, height: 40.0)
-        fbLoginBtn.delegate = self
-        self.view.addSubview(fbLoginBtn)
-        
-        //Googleサインイン
+        //Googleサインインボタン
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
+        
+        //facebookサインインボタン
+        fbLoginBtn.readPermissions = ["public_profile", "email"]
+        fbLoginBtn.frame = CGRect(x: 40.0, y: self.view.frame.size.height - 105.0, width: 112.0, height: 40.0)
+        fbLoginBtn.delegate = self
+        self.view.addSubview(fbLoginBtn)
         
         mailAddressTextField.delegate = self
         passwordTextField.delegate = self
@@ -60,6 +63,20 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         passwordResetButton.layer.cornerRadius = 10.0 //丸みを数値で変更できる
     }
     
+    
+    //Facebookサインインボタンの生成
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        var bottomSafeArea: CGFloat = 0
+        
+        if #available(iOS 11.0, *) {
+            bottomSafeArea = view.safeAreaInsets.bottom
+        }
+        
+        fbLoginBtn.frame = CGRect(x: 40.0, y: self.view.frame.size.height - 105.0 - bottomSafeArea, width: 112.0, height: 40.0)
+    }
+
     
     // Returnボタンを押した際にキーボードを消す
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
