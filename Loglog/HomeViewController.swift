@@ -36,7 +36,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var loglogLogoImage: UIImageView!
     
     //真っ白な背景のImageView
-    var whiteBackGround: UIImageView!
+    var whiteBackGround: UIView!
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,7 +85,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         //真っ白な背景のImageView
-        whiteBackGround = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.width))
+        whiteBackGround = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.width))
         whiteBackGround.backgroundColor = UIColor.white
         whiteBackGround.layer.zPosition = +1
         self.view.addSubview(whiteBackGround)

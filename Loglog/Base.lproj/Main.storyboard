@@ -446,7 +446,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YKo-TV-ToD">
-                                <rect key="frame" x="37.5" y="104" width="300" height="30"/>
+                                <rect key="frame" x="37.5" y="163.5" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="DgN-RQ-IKX"/>
                                 </constraints>
@@ -455,7 +455,7 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9kV-Tg-kPN">
-                                <rect key="frame" x="37.5" y="214" width="300" height="30"/>
+                                <rect key="frame" x="37.5" y="273.5" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="dqO-nM-knn"/>
                                 </constraints>
@@ -464,7 +464,7 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMF-EW-vZA">
-                                <rect key="frame" x="37" y="144" width="300" height="40"/>
+                                <rect key="frame" x="37" y="203.5" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="udI-xf-hXK"/>
                                 </constraints>
@@ -475,7 +475,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJM-BT-FWU">
-                                <rect key="frame" x="37" y="254" width="300" height="40"/>
+                                <rect key="frame" x="37" y="313.5" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="EEu-mD-2tT"/>
                                 </constraints>
@@ -486,7 +486,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtb-xA-gaj">
-                                <rect key="frame" x="37" y="364" width="300" height="40"/>
+                                <rect key="frame" x="37" y="423.5" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="6bO-MZ-E6b"/>
                                 </constraints>
@@ -497,7 +497,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzR-EJ-ay9">
-                                <rect key="frame" x="37" y="454" width="300" height="40"/>
+                                <rect key="frame" x="37" y="513.5" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="ZAZ-u6-oHt"/>
                                 </constraints>
@@ -508,7 +508,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="xxxxxxxxxxxxxxx" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CvD-Qq-6CL">
-                                <rect key="frame" x="37.5" y="324" width="300" height="30"/>
+                                <rect key="frame" x="37.5" y="383.5" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="bpj-ib-eQQ"/>
                                 </constraints>
@@ -516,14 +516,29 @@
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5I-LW-DSq">
+                                <rect key="frame" x="34" y="84" width="306" height="59.5"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.85086686643835618" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="GrE-EM-4ON"/>
+                                </constraints>
+                                <string key="text">【修正を希望される場合】
+現在設定されている以下情報を修正し、
+ボタンを押して下さい</string>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="CvD-Qq-6CL" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="2SI-6C-8Yg"/>
                             <constraint firstItem="oMF-EW-vZA" firstAttribute="top" secondItem="YKo-TV-ToD" secondAttribute="bottom" constant="10" id="44M-5V-gpJ"/>
-                            <constraint firstItem="YKo-TV-ToD" firstAttribute="top" secondItem="tAJ-K0-dDZ" secondAttribute="top" constant="40" id="BaR-0S-aWi"/>
+                            <constraint firstItem="o5I-LW-DSq" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="Bra-Cw-sH9"/>
                             <constraint firstItem="rtb-xA-gaj" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="CR9-6C-38I"/>
+                            <constraint firstItem="YKo-TV-ToD" firstAttribute="top" secondItem="o5I-LW-DSq" secondAttribute="bottom" constant="20" id="Fyh-Nt-9sY"/>
                             <constraint firstItem="hzR-EJ-ay9" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="Mwh-42-VjS"/>
+                            <constraint firstItem="o5I-LW-DSq" firstAttribute="top" secondItem="tAJ-K0-dDZ" secondAttribute="top" constant="20" id="Xpz-vq-rJr"/>
                             <constraint firstItem="9kV-Tg-kPN" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="f03-vY-LjQ"/>
                             <constraint firstItem="oMF-EW-vZA" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="fgE-o2-zsc"/>
                             <constraint firstItem="NJM-BT-FWU" firstAttribute="top" secondItem="9kV-Tg-kPN" secondAttribute="bottom" constant="10" id="i4i-Ld-OzG"/>
@@ -821,7 +836,7 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PVZ-Qo-lWS">
                                 <rect key="frame" x="37" y="40" width="300" height="100"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="0.853515625" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="thO-PJ-nSA"/>
                                     <constraint firstAttribute="width" constant="300" id="xJu-Z8-1Gn"/>
@@ -1188,7 +1203,7 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sGR-tL-4Q5">
                                 <rect key="frame" x="37" y="40" width="300" height="100"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="0.84527504280821919" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="QEE-eJ-JJe"/>
                                     <constraint firstAttribute="width" constant="300" id="fYm-pu-q6E"/>
