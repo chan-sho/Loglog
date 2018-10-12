@@ -261,7 +261,7 @@ class HomeViewController: UIViewController {
     }
     
     
-    //View4を押した際のアクション（今後View上のボタンを隠しボタンにして面白いアクションを設定するために）
+    //*View4を押した際のアクション（今後View上のボタンを隠しボタンにして面白いアクションを設定するために）
     @IBAction func tapOnView4(_ sender: Any) {
     }
 }
