@@ -58,6 +58,8 @@ class HomeViewController: UIViewController {
             whiteBackGround.removeFromSuperview()
             
             let userProfileurl = Auth.auth().currentUser?.photoURL
+            
+            if userProfileurl != nil {
             let url = URL(string: "\(userProfileurl!)")
             
             print("\(url!)")
@@ -74,6 +76,7 @@ class HomeViewController: UIViewController {
                     self.userProfilePhoto.layer.cornerRadius = 27.5
                 }
             }).resume()
+            }
         }
         else {
             self.view.addSubview(whiteBackGround)
@@ -97,6 +100,8 @@ class HomeViewController: UIViewController {
         
         if currentUser != nil {
         let userProfileurl = Auth.auth().currentUser?.photoURL
+        
+        if userProfileurl != nil {
         let url = URL(string: "\(userProfileurl!)")
         
         print("\(url!)")
@@ -113,6 +118,7 @@ class HomeViewController: UIViewController {
                 self.userProfilePhoto.layer.cornerRadius = 27.5
             }
          }).resume()
+        }
         }
         
         view1.layer.borderWidth = 1.0
