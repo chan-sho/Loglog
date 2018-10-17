@@ -8,6 +8,8 @@
 
 import UIKit
 import Foundation
+import SVProgressHUD
+
 
 class AJAlertController: UIViewController {
     
@@ -54,6 +56,8 @@ class AJAlertController: UIViewController {
     //user defaultsを使う準備
     let userDefaults:UserDefaults = UserDefaults.standard
     
+    //プライバシーポリシー・利用規約のページをきちんと開いた事を確認するFlag
+    var CheckFlag :String = "NO"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -189,17 +193,21 @@ class AJAlertController: UIViewController {
         block!!(0,btnCancelTitle!)
         
         //プライバシーポリシー・利用規約のページをSafariで開くアクション
-        let url1 = URL(string: "https://www.google.co.jp/")!
-        let url2 = URL(string: "https://www.yahoo.co.jp/")!
-        if UIApplication.shared.canOpenURL(url1) {
-            UIApplication.shared.open(url1)
+        let url = URL(string: "https://www.google.co.jp/")!
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
         }
-        if UIApplication.shared.canOpenURL(url2) {
-            UIApplication.shared.open(url2)
-        }
+        
+        //プライバシーポリシー・利用規約のページをSafariで開くアクション
+        CheckFlag = "YES"
     }
     
     @IBAction func btnOtherTapped(sender: UIButton) {
+        if CheckFlag == "NO" {
+            SVProgressHUD.showError(withStatus: "【ご注意・お願い】\n\nリンクから内容を必ずご確認頂いた上で、同意するかどうかご判断ください。\n\nユーザー様の大切な個人情報を扱わせて頂くアプリですので、ご理解をお願い致します！")
+            return
+        }
+        
         block!!(1,btnOtherTitle!)
         hide()
         
