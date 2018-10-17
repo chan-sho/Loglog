@@ -170,7 +170,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
                 if let error = error {
                     // エラーがあったら原因をprintして、returnすることで以降の処理を実行せずに処理を終了する
                     print("DEBUG_PRINT: " + error.localizedDescription)
-                    SVProgressHUD.showError(withStatus: "ユーザー作成に失敗しました")
+                    SVProgressHUD.showError(withStatus: "ユーザー作成に失敗しました。\n※「メールアドレス」を間違えていないか念の為ご確認下さい\n（実際に使用可能なメールアドレスが必須です）")
                     return
                 }
                 print("DEBUG_PRINT: ユーザー作成に成功しました。")

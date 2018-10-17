@@ -224,6 +224,20 @@ class AJAlertController: UIViewController {
         if AccountDeleteFlag == "YES" {
             print("残念ながら、アカウント削除が完了・・・")
             hide()
+            let user = Auth.auth().currentUser
+            user?.delete { error in
+                if let error = error {
+                    SVProgressHUD.showError(withStatus: "【エラーが発生しました】\n\nアカウント削除を希望される場合は、お手数ですが再度お試し下さい。\n\n何度もエラーが発生する場合には、お手数ですがHome画面の最下部にあるリンクよりご連絡をお願いします。")
+                    return
+                } else {
+                    SVProgressHUD.showSuccess(withStatus: "【アカウントが削除されました】\n\nLoglogをご愛顧頂き本当にありがとうございました！\n\nご希望に添えなかった場合には、大変申し訣ありませんでした。\nまたご利用頂けるチャンスがございましたら、是非よろしくお願い致します。")
+                    
+                    // ログアウトする
+                    try! Auth.auth().signOut()
+                    self.navigationController?.popViewController(animated: true)
+                    print("アカウント削除後のログアウトCheck・・・")
+                }
+            }
             return
         }
         
