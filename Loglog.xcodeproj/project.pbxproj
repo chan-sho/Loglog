@@ -20,6 +20,8 @@
 		311D535F213A7BC80001DF77 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311D535E213A7BC80001DF77 /* HomeViewController.swift */; };
 		311D5361213A7BD60001DF77 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311D5360213A7BD60001DF77 /* SettingViewController.swift */; };
 		313310D72150B86B007DC1E1 /* ReviseDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313310D62150B86B007DC1E1 /* ReviseDataViewController.swift */; };
+		313551712176CA8500C6C360 /* AJAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313551702176CA8500C6C360 /* AJAlertController.swift */; };
+		313551732176CB4300C6C360 /* AJAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 313551722176CB4300C6C360 /* AJAlertController.xib */; };
 		316ADA6F215390F6005C0FDF /* PostedPinOnCurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316ADA6E215390F6005C0FDF /* PostedPinOnCurrentViewController.swift */; };
 		316ADA712153911C005C0FDF /* PostedPinOnSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316ADA702153911C005C0FDF /* PostedPinOnSearchViewController.swift */; };
 		316DF8F2213F6297000E1E11 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316DF8F1213F6297000E1E11 /* Const.swift */; };
@@ -51,6 +53,8 @@
 		311D535E213A7BC80001DF77 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		311D5360213A7BD60001DF77 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		313310D62150B86B007DC1E1 /* ReviseDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviseDataViewController.swift; sourceTree = "<group>"; };
+		313551702176CA8500C6C360 /* AJAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJAlertController.swift; sourceTree = "<group>"; };
+		313551722176CB4300C6C360 /* AJAlertController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJAlertController.xib; sourceTree = "<group>"; };
 		316ADA6E215390F6005C0FDF /* PostedPinOnCurrentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedPinOnCurrentViewController.swift; sourceTree = "<group>"; };
 		316ADA702153911C005C0FDF /* PostedPinOnSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedPinOnSearchViewController.swift; sourceTree = "<group>"; };
 		316DF8F1213F6297000E1E11 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 		311D5341213A65830001DF77 /* Loglog */ = {
 			isa = PBXGroup;
 			children = (
+				3135516F2176C9BD00C6C360 /* AJAlertController */,
 				311D5342213A65830001DF77 /* AppDelegate.swift */,
 				311D5344213A65830001DF77 /* ViewController.swift */,
 				311D5354213A7AD00001DF77 /* LoginViewController.swift */,
@@ -131,6 +136,15 @@
 				31AFC7ED213CD7380060DE76 /* Loglog.entitlements */,
 			);
 			path = Loglog;
+			sourceTree = "<group>";
+		};
+		3135516F2176C9BD00C6C360 /* AJAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				313551702176CA8500C6C360 /* AJAlertController.swift */,
+				313551722176CB4300C6C360 /* AJAlertController.xib */,
+			);
+			path = AJAlertController;
 			sourceTree = "<group>";
 		};
 		7A18189E433E6CBE29A99CBB /* Pods */ = {
@@ -219,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				311D534D213A65850001DF77 /* LaunchScreen.storyboard in Resources */,
+				313551732176CB4300C6C360 /* AJAlertController.xib in Resources */,
 				31D5C2A4213AD11A00E9E6A7 /* GoogleService-Info.plist in Resources */,
 				318F81092141023B00A8F17B /* PostedDataViewCell.xib in Resources */,
 				311D534A213A65850001DF77 /* Assets.xcassets in Resources */,
@@ -317,6 +332,7 @@
 				311D5357213A7B120001DF77 /* CurrentMapViewController.swift in Sources */,
 				31778FE8215C7973005FDD19 /* ColorMKPointAnnotation.swift in Sources */,
 				311D535F213A7BC80001DF77 /* HomeViewController.swift in Sources */,
+				313551712176CA8500C6C360 /* AJAlertController.swift in Sources */,
 				318F81052140FB8F00A8F17B /* PostData.swift in Sources */,
 				311D5345213A65830001DF77 /* ViewController.swift in Sources */,
 				316ADA6F215390F6005C0FDF /* PostedPinOnCurrentViewController.swift in Sources */,

@@ -48,7 +48,6 @@ class HomeViewController: UIViewController {
             let userName = user.displayName
             helloLabel.text = "Let's enjoy Loglog ! \n\(userName!)さん"
             userPostedSummary.text = "\(userName!)さんの全投稿"
-            
         }
         
         //ログインユーザーのプロフィール画像をロード
@@ -58,10 +57,8 @@ class HomeViewController: UIViewController {
             whiteBackGround.removeFromSuperview()
             
             let userProfileurl = Auth.auth().currentUser?.photoURL
-            
             if userProfileurl != nil {
             let url = URL(string: "\(userProfileurl!)")
-            
             print("\(url!)")
             
             URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
@@ -69,7 +66,6 @@ class HomeViewController: UIViewController {
                     print(error!)
                     return
                 }
-                
                 DispatchQueue.main.async {
                     self.userProfilePhoto.image = UIImage(data: data!)
                     self.userProfilePhoto.clipsToBounds = true
@@ -81,6 +77,7 @@ class HomeViewController: UIViewController {
         else {
             self.view.addSubview(whiteBackGround)
         }
+        
     }
 
     
@@ -119,6 +116,7 @@ class HomeViewController: UIViewController {
             }
          }).resume()
         }
+        
         }
         
         view1.layer.borderWidth = 1.0
@@ -270,4 +268,5 @@ class HomeViewController: UIViewController {
     //*View4を押した際のアクション（今後View上のボタンを隠しボタンにして面白いアクションを設定するために）
     @IBAction func tapOnView4(_ sender: Any) {
     }
+    
 }

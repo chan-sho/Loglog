@@ -29,6 +29,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     //facebookサインインボタンの生成準備
     let fbLoginBtn = FBSDKLoginButton()
     
+    //user defaultsを使う準備
+    let userDefaults:UserDefaults = UserDefaults.standard
+    var EULAagreement : String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +65,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         passwordResetButton.layer.borderWidth = 1.0
         passwordResetButton.layer.borderColor = UIColor.white.cgColor
         passwordResetButton.layer.cornerRadius = 10.0 //丸みを数値で変更できる
+        
+        //利用規約同意の判別要素
+        EULAagreement = userDefaults.string(forKey: "EULAagreement")
+        print("利用規約同意有無の確認＝\(String(describing: (EULAagreement)))")
+        
     }
     
     
@@ -75,6 +84,17 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         }
         
         fbLoginBtn.frame = CGRect(x: 40.0, y: self.view.frame.size.height - 105.0 - bottomSafeArea, width: 112.0, height: 40.0)
+    }
+    
+    
+    //利用規約同意確認ポップアップの生成
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //利用規約に同意していない場合：
+        if EULAagreement == nil {
+            showAlertWithVC()
+        }
     }
 
     
@@ -262,6 +282,15 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
             }
         }
     }
+    
+    
+    //EULA同意画面のポップアップページを出す
+    func showAlertWithVC(){
+        AJAlertController.initialization().showAlert(aStrMessage: "Loglogをダウンロード頂きありがとうございます！\n\nご利用頂くにあたり、必ず以下のリンクから「プライバシーポリシー」「利用規約」をご確認下さい。\n皆様の大切な個人情報に関する記載がございますのでどうかよろしくお願い致します。\n\n内容をご確認の上で、以下選択ください。", aCancelBtnTitle: "リンク", aOtherBtnTitle: "同意する") { (index, title) in
+            print(index,title)
+        }
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

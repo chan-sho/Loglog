@@ -27,6 +27,7 @@ class PostData: NSObject {
     var date: Date?
     var likes: [String] = []
     var isLiked: Bool = false
+    var EULAagreement: String?
     
     //自分だけの地図にするかどうかのボタン
     var myMap: [String] = []
@@ -55,6 +56,7 @@ class PostData: NSObject {
         self.pincoodinateLatitude = valueDictionary["pincoodinateLatitude"] as? Double
         self.pincoodinateLongitude = valueDictionary["pincoodinateLongitude"] as? Double
         self.pinAddress = valueDictionary["pinAddress"] as? String
+        self.EULAagreement = valueDictionary["EULAagreement"] as? String
         
         let time = valueDictionary["time"] as? String
         self.date = Date(timeIntervalSinceReferenceDate: TimeInterval(time!)!)
