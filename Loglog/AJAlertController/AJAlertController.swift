@@ -193,7 +193,7 @@ class AJAlertController: UIViewController {
         block!!(0,btnCancelTitle!)
         
         //プライバシーポリシー・利用規約のページをSafariで開くアクション
-        let url = URL(string: "https://www.google.co.jp/")!
+        let url = URL(string: "https://chan-sho.github.io/")!
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
         }
