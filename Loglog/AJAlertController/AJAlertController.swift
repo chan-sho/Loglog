@@ -9,6 +9,8 @@
 import UIKit
 import Foundation
 import SVProgressHUD
+import Firebase
+import FirebaseAuth
 
 
 class AJAlertController: UIViewController {
@@ -58,6 +60,7 @@ class AJAlertController: UIViewController {
     
     //プライバシーポリシー・利用規約のページをきちんと開いた事を確認するFlag
     var CheckFlag :String = "NO"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -192,27 +195,49 @@ class AJAlertController: UIViewController {
     @IBAction func btnCancelTapped(sender: UIButton) {
         block!!(0,btnCancelTitle!)
         
+        //アカウント削除ボタンを押された上で、「キャンセル」を選択した際のアクション
+        let AccountDeleteFlag :String = userDefaults.string(forKey: "AccountDeleteFlag")!
+        if AccountDeleteFlag == "YES" {
+            //アカウント削除の2重チェックに使うFlagの再初期化
+            userDefaults.set("NO", forKey: "AccountDeleteFlag")
+            userDefaults.synchronize()
+            print("再初期化：AccountDeleteFlag = 「NO」")
+            hide()
+            return
+        }
+        
         //プライバシーポリシー・利用規約のページをSafariで開くアクション
         let url = URL(string: "https://chan-sho.github.io/")!
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
         }
-        
-        //プライバシーポリシー・利用規約のページをSafariで開くアクション
+        //プライバシーポリシー・利用規約のページをSafariで開いた事をFlagに反映("No" → "YES")
         CheckFlag = "YES"
+        
     }
     
     @IBAction func btnOtherTapped(sender: UIButton) {
+        block!!(1,btnOtherTitle!)
+        
+        //アカウント削除ボタンを押された上で、「キャンセル」を選択した際のアクション
+        let AccountDeleteFlag :String = userDefaults.string(forKey: "AccountDeleteFlag")!
+        if AccountDeleteFlag == "YES" {
+            print("残念ながら、アカウント削除が完了・・・")
+            hide()
+            return
+        }
+        
         if CheckFlag == "NO" {
             SVProgressHUD.showError(withStatus: "【ご注意・お願い】\n\nリンクから内容を必ずご確認頂いた上で、同意するかどうかご判断ください。\n\nユーザー様の大切な個人情報を扱わせて頂くアプリですので、ご理解をお願い致します！")
             return
         }
-        
-        block!!(1,btnOtherTitle!)
-        hide()
-        
+        else {
         //利用規約同意済みのYESをUserDefaultsに保存する
         userDefaults.set("YES", forKey: "EULAagreement")
+        userDefaults.synchronize()
+        hide()
+        }
+        
     }
     
     @IBAction func btnOkTapped(sender: UIButton)

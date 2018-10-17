@@ -23,6 +23,10 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var handleMailChangeButton: UIButton!
     @IBOutlet weak var handlePasswordChangeButton: UIButton!
     @IBOutlet weak var handleLogoutButton: UIButton!
+    @IBOutlet weak var accountDeleteRequestButton: UIButton!
+    
+    //user defaultsを使う準備
+    let userDefaults:UserDefaults = UserDefaults.standard
     
     
     @IBAction func handleNameChangeButton(_ sender: Any) {
@@ -104,6 +108,23 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    @IBAction func accountDeleteRequestButton(_ sender: Any) {
+        //アカウント削除のボタンを押した事をFlagに反映("NO" → "YES")
+        userDefaults.set("YES", forKey: "AccountDeleteFlag")
+        userDefaults.synchronize()
+        print("アカウント削除ボタンが押された！：AccountDeleteFlag = 「YES」に変更")
+        
+        showAlertWithVC()
+    }
+    
+    
+    //アカウント削除確認画面のポップアップページを出す
+    func showAlertWithVC(){
+        AJAlertController.initialization().showAlert(aStrMessage: "Loglogをご愛顧頂きありがとうございます！\n\nアカウント削除が完了すると投稿データを含む全てのデータが削除されます。\n同一のアカウント名で再登録頂きましてもデータは復元致しません。\n\n上記内容をご確認の上で、以下選択ください。", aCancelBtnTitle: "キャンセル", aOtherBtnTitle: "アカウント削除") { (index, title) in
+            print(index,title)
+        }
+    }
+    
     // Returnボタンを押した際にキーボードを消す
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         mailAddressTextField.resignFirstResponder()
@@ -155,7 +176,7 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
         handleMailChangeButton.isExclusiveTouch = true
         handlePasswordChangeButton.isExclusiveTouch = true
         handleLogoutButton.isExclusiveTouch = true
-        
+        accountDeleteRequestButton.isExclusiveTouch = true
     }
 
     

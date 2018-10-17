@@ -446,27 +446,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YKo-TV-ToD">
-                                <rect key="frame" x="37.5" y="247" width="300" height="30"/>
+                                <rect key="frame" x="37.5" y="203.5" width="300" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="z4G-3p-iag"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="9vI-4k-hKt"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9kV-Tg-kPN">
-                                <rect key="frame" x="37.5" y="347" width="300" height="30"/>
+                                <rect key="frame" x="37.5" y="303.5" width="300" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="n1r-eC-AgS"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="l6l-70-g47"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMF-EW-vZA">
-                                <rect key="frame" x="37" y="287" width="300" height="40"/>
+                                <rect key="frame" x="37" y="243.5" width="300" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="yQb-u7-yoh"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="h6G-q4-jyV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
                                 <state key="normal" title="アカウント（表示名）を変更" backgroundImage="Btn2"/>
@@ -475,9 +475,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJM-BT-FWU">
-                                <rect key="frame" x="37" y="387" width="300" height="40"/>
+                                <rect key="frame" x="37" y="343.5" width="300" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="uRt-5o-xEx"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="ccJ-Wa-sqk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
                                 <state key="normal" title="メールアドレスを変更" backgroundImage="Btn2"/>
@@ -486,9 +486,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtb-xA-gaj">
-                                <rect key="frame" x="37" y="487" width="300" height="40"/>
+                                <rect key="frame" x="37" y="443.5" width="300" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="QgT-xt-ESo"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="KUc-ON-cKh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
                                 <state key="normal" title="パスワードを変更" backgroundImage="Btn2"/>
@@ -497,9 +497,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzR-EJ-ay9">
-                                <rect key="frame" x="37" y="557" width="300" height="40"/>
+                                <rect key="frame" x="37" y="508" width="300" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Lsm-iH-QyM"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="JP1-uj-FZY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
                                 <state key="normal" title="ログアウト" backgroundImage="Btn3"/>
@@ -508,19 +508,20 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="xxxxxxxxxxxxxxx" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CvD-Qq-6CL">
-                                <rect key="frame" x="37.5" y="447" width="300" height="30"/>
+                                <rect key="frame" x="37.5" y="403.5" width="300" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="iQ8-iV-qyj"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="ShC-bu-gOv"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5I-LW-DSq">
-                                <rect key="frame" x="37" y="167.5" width="300" height="59.5"/>
+                                <rect key="frame" x="37" y="123.5" width="300" height="70"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.85086686643835618" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="K9v-68-vvH"/>
+                                    <constraint firstAttribute="height" constant="70" id="aIO-XB-faN"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="b7i-SP-DES"/>
                                 </constraints>
                                 <string key="text">【修正を希望される場合】
 現在設定されている以下情報を修正し
@@ -529,29 +530,45 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBP-ro-mwf">
+                                <rect key="frame" x="37.5" y="607" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="4Jg-kQ-zOE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="※アカウント削除の申請はこちら" backgroundImage="btn">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="accountDeleteRequestButton:" destination="Y8O-m7-27C" eventType="touchUpInside" id="bSx-OS-Uwb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="NJM-BT-FWU" firstAttribute="top" secondItem="9kV-Tg-kPN" secondAttribute="bottom" constant="10" id="3ID-UP-Zl7"/>
-                            <constraint firstItem="CvD-Qq-6CL" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="5lc-7I-2D5"/>
-                            <constraint firstItem="YKo-TV-ToD" firstAttribute="top" secondItem="o5I-LW-DSq" secondAttribute="bottom" constant="20" id="6K0-ZF-tNQ"/>
-                            <constraint firstItem="NJM-BT-FWU" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="A9l-KT-cEY"/>
-                            <constraint firstItem="YKo-TV-ToD" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="Dnl-YT-lW6"/>
-                            <constraint firstItem="9kV-Tg-kPN" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="FTo-T1-qgQ"/>
-                            <constraint firstItem="tAJ-K0-dDZ" firstAttribute="bottom" secondItem="NJM-BT-FWU" secondAttribute="bottom" constant="240" id="NBc-Mj-kKf"/>
-                            <constraint firstItem="rtb-xA-gaj" firstAttribute="top" secondItem="CvD-Qq-6CL" secondAttribute="bottom" constant="10" id="bPN-we-eVN"/>
-                            <constraint firstItem="hzR-EJ-ay9" firstAttribute="top" secondItem="rtb-xA-gaj" secondAttribute="bottom" constant="30" id="c2a-67-oXa"/>
-                            <constraint firstItem="hzR-EJ-ay9" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="cOv-dJ-FWl"/>
-                            <constraint firstItem="9kV-Tg-kPN" firstAttribute="top" secondItem="oMF-EW-vZA" secondAttribute="bottom" constant="20" id="eJ9-oZ-6La"/>
-                            <constraint firstItem="oMF-EW-vZA" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="fc9-F2-hmK"/>
-                            <constraint firstItem="o5I-LW-DSq" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="gEh-Vz-AKa"/>
-                            <constraint firstItem="CvD-Qq-6CL" firstAttribute="top" secondItem="NJM-BT-FWU" secondAttribute="bottom" constant="20" id="glH-fI-HtR"/>
-                            <constraint firstItem="rtb-xA-gaj" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="i0m-Pg-uUu"/>
-                            <constraint firstItem="oMF-EW-vZA" firstAttribute="top" secondItem="YKo-TV-ToD" secondAttribute="bottom" constant="10" id="s7X-1s-u3q"/>
+                            <constraint firstItem="CvD-Qq-6CL" firstAttribute="top" secondItem="NJM-BT-FWU" secondAttribute="bottom" constant="20" id="6aH-sS-dWW"/>
+                            <constraint firstItem="oMF-EW-vZA" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="BKt-sp-N0f"/>
+                            <constraint firstItem="9kV-Tg-kPN" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="CfF-Nz-aoW"/>
+                            <constraint firstItem="NJM-BT-FWU" firstAttribute="centerY" secondItem="MDX-ga-64k" secondAttribute="centerY" constant="30" id="Cq8-oR-cLE"/>
+                            <constraint firstItem="oMF-EW-vZA" firstAttribute="top" secondItem="YKo-TV-ToD" secondAttribute="bottom" constant="10" id="DQf-A5-oW7"/>
+                            <constraint firstItem="NJM-BT-FWU" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="H4G-TG-utr"/>
+                            <constraint firstItem="YKo-TV-ToD" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="SvR-gK-nNb"/>
+                            <constraint firstItem="NJM-BT-FWU" firstAttribute="top" secondItem="9kV-Tg-kPN" secondAttribute="bottom" constant="10" id="VMr-bH-Srp"/>
+                            <constraint firstItem="9kV-Tg-kPN" firstAttribute="top" secondItem="oMF-EW-vZA" secondAttribute="bottom" constant="20" id="XSl-rM-T75"/>
+                            <constraint firstItem="rtb-xA-gaj" firstAttribute="top" secondItem="CvD-Qq-6CL" secondAttribute="bottom" constant="10" id="g9g-cq-iqB"/>
+                            <constraint firstItem="YKo-TV-ToD" firstAttribute="top" secondItem="o5I-LW-DSq" secondAttribute="bottom" constant="10" id="gH6-li-Zch"/>
+                            <constraint firstItem="hzR-EJ-ay9" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="glY-Yq-nAt"/>
+                            <constraint firstItem="o5I-LW-DSq" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="h2n-9i-8ef"/>
+                            <constraint firstItem="rtb-xA-gaj" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="hB6-g0-F4T"/>
+                            <constraint firstItem="tAJ-K0-dDZ" firstAttribute="bottom" secondItem="iBP-ro-mwf" secondAttribute="bottom" constant="20" id="hZX-Mf-ceJ"/>
+                            <constraint firstItem="CvD-Qq-6CL" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="wtv-i9-rJ8"/>
+                            <constraint firstItem="iBP-ro-mwf" firstAttribute="centerX" secondItem="MDX-ga-64k" secondAttribute="centerX" id="ww0-Lc-uGn"/>
+                            <constraint firstItem="hzR-EJ-ay9" firstAttribute="top" secondItem="rtb-xA-gaj" secondAttribute="bottom" constant="25" id="xPs-ot-vPL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tAJ-K0-dDZ"/>
                     </view>
                     <connections>
+                        <outlet property="accountDeleteRequestButton" destination="iBP-ro-mwf" id="jen-rv-q25"/>
                         <outlet property="displayNameTextField" destination="YKo-TV-ToD" id="fea-KS-VU3"/>
                         <outlet property="handleLogoutButton" destination="hzR-EJ-ay9" id="8Eo-qQ-PCc"/>
                         <outlet property="handleMailChangeButton" destination="NJM-BT-FWU" id="J1y-U6-iwv"/>
@@ -1769,6 +1786,7 @@
         <image name="Btn2" width="300" height="40"/>
         <image name="Btn3" width="300" height="40"/>
         <image name="Posted" width="40" height="40"/>
+        <image name="btn" width="300" height="40"/>
         <image name="like_none" width="40" height="40"/>
         <image name="mymap_no(Home用)" width="40" height="40"/>
         <image name="お得情報" width="40" height="40"/>

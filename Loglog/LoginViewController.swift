@@ -70,6 +70,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         EULAagreement = userDefaults.string(forKey: "EULAagreement")
         print("利用規約同意有無の確認＝\(String(describing: (EULAagreement)))")
         
+        //アカウント削除の2重チェックに使うFlagの初期設定
+        userDefaults.set("NO", forKey: "AccountDeleteFlag")
+        userDefaults.synchronize()
+        print("初期設定：AccountDeleteFlag = 「NO」")
+        
     }
     
     
