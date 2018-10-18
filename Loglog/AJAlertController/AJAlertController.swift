@@ -234,12 +234,12 @@ class AJAlertController: UIViewController {
                     
                     // ログアウトする
                     try! Auth.auth().signOut()
-                    self.navigationController?.popViewController(animated: true)
                     
                     print("アカウント削除後のログアウトCheck・・・")
                     
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5.0) {
-                    exit(1)
+                    //4秒後にアプリを閉じる
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4.0) {
+                        exit(0)
                     }
                 }
             }
