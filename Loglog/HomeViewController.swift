@@ -32,6 +32,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var shoppingButton: UIButton!
     @IBOutlet weak var eventButton: UIButton!
     @IBOutlet weak var matchingButton: UIButton!
+    @IBOutlet weak var termsOfServiceButton: UIButton!
     
     @IBOutlet weak var loglogLogoImage: UIImageView!
     
@@ -148,6 +149,7 @@ class HomeViewController: UIViewController {
         shoppingButton.isExclusiveTouch = true
         eventButton.isExclusiveTouch = true
         matchingButton.isExclusiveTouch = true
+        termsOfServiceButton.isExclusiveTouch = true
     }
 
     
@@ -267,6 +269,15 @@ class HomeViewController: UIViewController {
     
     //*View4を押した際のアクション（今後View上のボタンを隠しボタンにして面白いアクションを設定するために）
     @IBAction func tapOnView4(_ sender: Any) {
+    }
+    
+    
+    @IBAction func termsOfServiceButton(_ sender: Any) {
+        //プライバシーポリシー・利用規約のページをSafariで開くアクション
+        let url = URL(string: "https://chan-sho.github.io/")!
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
     }
     
 }

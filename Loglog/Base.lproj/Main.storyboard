@@ -331,6 +331,19 @@
                                             <constraint firstAttribute="width" constant="55" id="asL-Dc-GWH"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3F-QB-HJz">
+                                        <rect key="frame" x="55" y="382.5" width="300" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Jy9-TT-3ZY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="13"/>
+                                        <state key="normal" title="※プライバシーポリシー、利用規約の確認はこちら">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="termsOfServiceButton:" destination="Zth-vc-l65" eventType="touchUpInside" id="qQh-N5-kru"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="FWq-4D-VcV" secondAttribute="trailing" constant="20" id="0Ub-C5-Ro4"/>
@@ -372,11 +385,13 @@
                                     <constraint firstItem="YQ4-55-kvr" firstAttribute="centerX" secondItem="Opn-WD-rkc" secondAttribute="centerX" id="hG3-wL-Rnn"/>
                                     <constraint firstItem="iFf-L5-PGe" firstAttribute="leading" secondItem="xrZ-0o-OTu" secondAttribute="leading" constant="20" id="iFS-xq-SJa"/>
                                     <constraint firstAttribute="trailing" secondItem="Opn-WD-rkc" secondAttribute="trailing" constant="30" id="lPr-dD-C2l"/>
+                                    <constraint firstItem="B3F-QB-HJz" firstAttribute="trailing" secondItem="dbY-GX-WQc" secondAttribute="trailing" id="o8O-Qd-pLA"/>
                                     <constraint firstItem="WvY-Ia-LNt" firstAttribute="top" secondItem="UTH-T3-Pmh" secondAttribute="bottom" constant="5" id="pWV-KG-WTR"/>
                                     <constraint firstItem="dbY-GX-WQc" firstAttribute="top" secondItem="nl1-KW-XUk" secondAttribute="bottom" constant="20" id="ptc-K9-PCf"/>
                                     <constraint firstItem="Opn-WD-rkc" firstAttribute="top" secondItem="dbY-GX-WQc" secondAttribute="bottom" constant="135" id="rJK-Qc-QKN"/>
                                     <constraint firstItem="zqE-IU-8v1" firstAttribute="centerX" secondItem="xrZ-0o-OTu" secondAttribute="centerX" id="sB3-wp-D14"/>
                                     <constraint firstItem="zqE-IU-8v1" firstAttribute="top" secondItem="WvY-Ia-LNt" secondAttribute="bottom" constant="40" id="tcg-Hc-1gR"/>
+                                    <constraint firstItem="B3F-QB-HJz" firstAttribute="top" secondItem="dbY-GX-WQc" secondAttribute="bottom" constant="10" id="umH-mW-cbs"/>
                                     <constraint firstItem="FWq-4D-VcV" firstAttribute="top" secondItem="sCK-jW-fNo" secondAttribute="bottom" constant="20" id="vDU-Rf-gOe"/>
                                     <constraint firstItem="EMb-zz-FHG" firstAttribute="top" secondItem="DT2-mC-BCn" secondAttribute="bottom" constant="5" id="vqF-9P-LRp"/>
                                     <constraint firstAttribute="trailing" secondItem="Mml-Gk-6gK" secondAttribute="trailing" constant="30" id="xxZ-Ml-DDt"/>
@@ -405,6 +420,7 @@
                         <outlet property="myMapSelectButton" destination="TGN-Ee-tvr" id="dXx-Lr-BND"/>
                         <outlet property="newsSelectButton" destination="mBz-lE-tPJ" id="bhu-k6-w7T"/>
                         <outlet property="shoppingButton" destination="DT2-mC-BCn" id="1pF-G9-u4L"/>
+                        <outlet property="termsOfServiceButton" destination="B3F-QB-HJz" id="gcL-lb-v0e"/>
                         <outlet property="userPostedSummary" destination="9iU-nd-mMo" id="a1a-od-WIg"/>
                         <outlet property="userProfilePhoto" destination="iFf-L5-PGe" id="uhb-Lb-s1J"/>
                         <outlet property="view1" destination="sCK-jW-fNo" id="9Sj-y2-Diz"/>
