@@ -230,12 +230,17 @@ class AJAlertController: UIViewController {
                     SVProgressHUD.showError(withStatus: "【エラーが発生しました】\n\nアカウント削除を希望される場合は、お手数ですが再度お試し下さい。\n\n何度もエラーが発生する場合には、お手数ですがHome画面の最下部にあるリンクよりご連絡をお願いします。")
                     return
                 } else {
-                    SVProgressHUD.showSuccess(withStatus: "【アカウントが削除されました】\n\nLoglogをご愛顧頂き本当にありがとうございました！\n\nご希望に添えなかった場合には、大変申し訣ありませんでした。\nまたご利用頂けるチャンスがございましたら、是非よろしくお願い致します。")
+                    SVProgressHUD.showSuccess(withStatus: "【アカウント削除完了】\n\nLoglogをご愛顧頂き、\nありがとうございました！\n\nご希望・ご期待に添えず、\n大変申し訣ありませんでした。\n\nまたご利用頂ける際には、\n是非よろしくお願い致します。")
                     
                     // ログアウトする
                     try! Auth.auth().signOut()
                     self.navigationController?.popViewController(animated: true)
+                    
                     print("アカウント削除後のログアウトCheck・・・")
+                    
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5.0) {
+                    exit(1)
+                    }
                 }
             }
             return

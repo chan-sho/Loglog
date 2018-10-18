@@ -120,7 +120,7 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
     
     //アカウント削除確認画面のポップアップページを出す
     func showAlertWithVC(){
-        AJAlertController.initialization().showAlert(aStrMessage: "Loglogをご愛顧頂きありがとうございます！\n\nアカウント削除が完了すると投稿データを含む全てのデータが削除されます。\n同一のアカウント名で再登録頂きましてもデータは復元致しません。\n\n上記内容をご確認の上で、以下選択ください。", aCancelBtnTitle: "キャンセル", aOtherBtnTitle: "アカウント削除") { (index, title) in
+        AJAlertController.initialization().showAlert(aStrMessage: "Loglogをご愛顧頂き、\n本当にありがとうございます！\n\nアカウント削除が完了すると投稿データを含む全てのデータを変更できません。残したくない投稿データはご自身で必ず削除をお願い致します。\n\n（※同一のメールアドレス／アカウント名で再登録頂きましてもデータは復元致しません。）\n\n上記内容をご確認の上で、\n以下選択ください。", aCancelBtnTitle: "キャンセル", aOtherBtnTitle: "アカウント削除") { (index, title) in
             print(index,title)
         }
     }
