@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31097F7A217AA7D0009B5B3D /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31097F79217AA7D0009B5B3D /* GuideViewController.swift */; };
+		31097F7C217ABC2C009B5B3D /* Guide1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31097F7B217ABC2C009B5B3D /* Guide1ViewController.swift */; };
+		31097F7E217ABC3E009B5B3D /* Guide2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31097F7D217ABC3E009B5B3D /* Guide2ViewController.swift */; };
+		31097F80217ABC4C009B5B3D /* Guide3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31097F7F217ABC4C009B5B3D /* Guide3ViewController.swift */; };
+		31097F82217ABC63009B5B3D /* Guide4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31097F81217ABC63009B5B3D /* Guide4ViewController.swift */; };
+		31097F84217ABC72009B5B3D /* Guide5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31097F83217ABC72009B5B3D /* Guide5ViewController.swift */; };
+		31097F86217ABC83009B5B3D /* Guide6ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31097F85217ABC83009B5B3D /* Guide6ViewController.swift */; };
 		311D5343213A65830001DF77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311D5342213A65830001DF77 /* AppDelegate.swift */; };
 		311D5345213A65830001DF77 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311D5344213A65830001DF77 /* ViewController.swift */; };
 		311D5348213A65830001DF77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 311D5346213A65830001DF77 /* Main.storyboard */; };
@@ -38,6 +45,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31097F79217AA7D0009B5B3D /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
+		31097F7B217ABC2C009B5B3D /* Guide1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide1ViewController.swift; sourceTree = "<group>"; };
+		31097F7D217ABC3E009B5B3D /* Guide2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide2ViewController.swift; sourceTree = "<group>"; };
+		31097F7F217ABC4C009B5B3D /* Guide3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide3ViewController.swift; sourceTree = "<group>"; };
+		31097F81217ABC63009B5B3D /* Guide4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide4ViewController.swift; sourceTree = "<group>"; };
+		31097F83217ABC72009B5B3D /* Guide5ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide5ViewController.swift; sourceTree = "<group>"; };
+		31097F85217ABC83009B5B3D /* Guide6ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide6ViewController.swift; sourceTree = "<group>"; };
 		311D533F213A65830001DF77 /* Loglog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loglog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		311D5342213A65830001DF77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		311D5344213A65830001DF77 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -108,7 +122,8 @@
 		311D5341213A65830001DF77 /* Loglog */ = {
 			isa = PBXGroup;
 			children = (
-				3135516F2176C9BD00C6C360 /* AJAlertController */,
+				311D5346213A65830001DF77 /* Main.storyboard */,
+				311D534B213A65850001DF77 /* LaunchScreen.storyboard */,
 				311D5342213A65830001DF77 /* AppDelegate.swift */,
 				311D5344213A65830001DF77 /* ViewController.swift */,
 				311D5354213A7AD00001DF77 /* LoginViewController.swift */,
@@ -128,9 +143,15 @@
 				313310D62150B86B007DC1E1 /* ReviseDataViewController.swift */,
 				316DF8F1213F6297000E1E11 /* Const.swift */,
 				31778FE7215C7973005FDD19 /* ColorMKPointAnnotation.swift */,
-				311D5346213A65830001DF77 /* Main.storyboard */,
+				31097F79217AA7D0009B5B3D /* GuideViewController.swift */,
+				31097F7B217ABC2C009B5B3D /* Guide1ViewController.swift */,
+				31097F7D217ABC3E009B5B3D /* Guide2ViewController.swift */,
+				31097F7F217ABC4C009B5B3D /* Guide3ViewController.swift */,
+				31097F81217ABC63009B5B3D /* Guide4ViewController.swift */,
+				31097F83217ABC72009B5B3D /* Guide5ViewController.swift */,
+				31097F85217ABC83009B5B3D /* Guide6ViewController.swift */,
+				3135516F2176C9BD00C6C360 /* AJAlertController */,
 				311D5349213A65850001DF77 /* Assets.xcassets */,
-				311D534B213A65850001DF77 /* LaunchScreen.storyboard */,
 				311D534E213A65850001DF77 /* Info.plist */,
 				31D5C2A3213AD11A00E9E6A7 /* GoogleService-Info.plist */,
 				31AFC7ED213CD7380060DE76 /* Loglog.entitlements */,
@@ -332,19 +353,26 @@
 				311D5357213A7B120001DF77 /* CurrentMapViewController.swift in Sources */,
 				31778FE8215C7973005FDD19 /* ColorMKPointAnnotation.swift in Sources */,
 				311D535F213A7BC80001DF77 /* HomeViewController.swift in Sources */,
+				31097F7C217ABC2C009B5B3D /* Guide1ViewController.swift in Sources */,
 				313551712176CA8500C6C360 /* AJAlertController.swift in Sources */,
 				318F81052140FB8F00A8F17B /* PostData.swift in Sources */,
 				311D5345213A65830001DF77 /* ViewController.swift in Sources */,
 				316ADA6F215390F6005C0FDF /* PostedPinOnCurrentViewController.swift in Sources */,
+				31097F86217ABC83009B5B3D /* Guide6ViewController.swift in Sources */,
+				31097F84217ABC72009B5B3D /* Guide5ViewController.swift in Sources */,
 				313310D72150B86B007DC1E1 /* ReviseDataViewController.swift in Sources */,
 				316DF8F2213F6297000E1E11 /* Const.swift in Sources */,
 				311D5361213A7BD60001DF77 /* SettingViewController.swift in Sources */,
+				31097F80217ABC4C009B5B3D /* Guide3ViewController.swift in Sources */,
 				31C4581B213E3C7400591DCF /* AddPhotoViewController.swift in Sources */,
+				31097F7A217AA7D0009B5B3D /* GuideViewController.swift in Sources */,
 				316ADA712153911C005C0FDF /* PostedPinOnSearchViewController.swift in Sources */,
+				31097F7E217ABC3E009B5B3D /* Guide2ViewController.swift in Sources */,
 				311D5359213A7B360001DF77 /* SearchMapViewController.swift in Sources */,
 				311D535D213A7BAD0001DF77 /* PostedDataViewController.swift in Sources */,
 				318F81082141023B00A8F17B /* PostedDataViewCell.swift in Sources */,
 				31C45819213E3A1000591DCF /* PostFinalizeViewController.swift in Sources */,
+				31097F82217ABC63009B5B3D /* Guide4ViewController.swift in Sources */,
 				311D5343213A65830001DF77 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
