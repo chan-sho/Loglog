@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import SVProgressHUD
+import ESTabBarController
 
 
 class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate, MKMapViewDelegate, PostedPinOnSearchDelegate {
@@ -162,7 +163,7 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
                 if let pm = placemarks.first {
                     
                     //獲得した住所をuserDefaultsに入れる：現時点ではcontoryは入れず
-                    self.userDefaults.set("\(pm.postalCode ?? "")\n\(pm.administrativeArea ?? "")\(pm.locality ?? "")\(pm.name ?? "")", forKey: "pinAddress")
+                    self.userDefaults.set("\(pm.postalCode ?? "") \(pm.administrativeArea ?? "")\(pm.locality ?? "")\(pm.name ?? "")", forKey: "pinAddress")
                     
                     print("name: \(pm.name ?? "")")
                     print("isoCountryCode: \(pm.isoCountryCode ?? "")")
@@ -306,21 +307,49 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
         }
         
         let reuseId = "pin"
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKMarkerAnnotationView
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
         if pinView == nil {
-            pinView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView?.isSelected = true
             
             //アノテーションビューに色を設定する。
             if let color = annotation as? ColorMKPointAnnotation {
-                pinView?.markerTintColor = color.pinColor
+                pinView?.pinTintColor = color.pinColor
                 pinView?.isSelected = true
+                
+                //右ボタンをアノテーションビューに追加する。
+                let buttonRight = UIButton()
+                buttonRight.frame = CGRect(x:0, y:0, width:40, height:40)
+                buttonRight.setImage(UIImage(named: "投稿"), for: UIControlState.normal)
+                pinView?.rightCalloutAccessoryView = buttonRight
             }
         }
         else {
             pinView?.annotation = annotation
         }
         return pinView
+    }
+    
+    
+    //吹き出しアクササリー押下時の呼び出しメソッド
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        if(control == view.rightCalloutAccessoryView) {
+            //右のボタンが押された場合のアクション
+            if view is MKPinAnnotationView {
+                print("ボタン押印確認　@ 吹き出し内の右ボタン")
+                
+                let tabBarController = parent as! ESTabBarController
+                tabBarController.setSelectedIndex(3, animated: false)
+                for viewController in tabBarController.childViewControllers {
+                    if viewController is PostedDataViewController {
+                        let postedViewContoller = viewController as! PostedDataViewController
+                        postedViewContoller.buttonRightSelection()
+                        break
+                    }
+                }
+            }
+        }
     }
     
     

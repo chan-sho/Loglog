@@ -1010,6 +1010,30 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     
+    //地図上で「吹き出し内の右のボタン」を押された際の処理
+    func buttonRightSelection() {
+        self.tableView.reloadData()
+        self.textSearchBar.text = "【※貴方の全投稿を抽出中】"
+        
+        print("\(textSearchBar.text!)")
+        
+        let uid = Auth.auth().currentUser?.uid
+        
+        print("\(uid!)")
+        
+        let array = uid?.components(separatedBy: NSCharacterSet.whitespaces)
+        var tempFilteredArray = postArrayAll
+        for n in array! {
+            tempFilteredArray = tempFilteredArray.filter{($0.userID?.contains(n))!}
+        }
+        postArrayOnHome1 = tempFilteredArray
+        
+        print("\(postArrayOnHome1)")
+        
+        self.tableView.reloadData()
+    }
+    
+    
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
         // 他の画面から segue を使って戻ってきた時に呼ばれる
     }
