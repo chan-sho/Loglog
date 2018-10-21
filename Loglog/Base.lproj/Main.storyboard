@@ -72,7 +72,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iU-nd-mMo">
                                                 <rect key="frame" x="20" y="20" width="245" height="20"/>
                                                 <gestureRecognizers/>
-                                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -110,8 +110,8 @@
                                         <rect key="frame" x="20" y="152.5" width="335" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="「いいね」した投稿一覧" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVo-fg-Ogh">
-                                                <rect key="frame" x="20" y="20" width="187" height="20"/>
-                                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                                <rect key="frame" x="20" y="20" width="176" height="20"/>
+                                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -148,8 +148,8 @@
                                         <rect key="frame" x="20" y="232.5" width="335" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="「自分専用」の投稿一覧" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9y-IY-F5w">
-                                                <rect key="frame" x="20" y="20" width="187" height="20"/>
-                                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                                <rect key="frame" x="20" y="20" width="176" height="20"/>
+                                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -476,7 +476,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="9vI-4k-hKt"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9kV-Tg-kPN">
@@ -485,7 +485,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="l6l-70-g47"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMF-EW-vZA">
@@ -493,7 +493,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="h6G-q4-jyV"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="アカウント（表示名）を変更" backgroundImage="Btn2"/>
                                 <connections>
                                     <action selector="handleNameChangeButton:" destination="Y8O-m7-27C" eventType="touchUpInside" id="hzt-W4-Vda"/>
@@ -504,7 +504,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="ccJ-Wa-sqk"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="メールアドレスを変更" backgroundImage="Btn2"/>
                                 <connections>
                                     <action selector="handleMailChangeButton:" destination="Y8O-m7-27C" eventType="touchUpInside" id="YwQ-hh-W2I"/>
@@ -515,7 +515,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="KUc-ON-cKh"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="パスワードを変更" backgroundImage="Btn2"/>
                                 <connections>
                                     <action selector="handlePasswordChangeButton:" destination="Y8O-m7-27C" eventType="touchUpInside" id="XM2-cD-tK9"/>
@@ -526,7 +526,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="JP1-uj-FZY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="ログアウト" backgroundImage="Btn3"/>
                                 <connections>
                                     <action selector="handleLogoutButton:" destination="Y8O-m7-27C" eventType="touchUpInside" id="aAK-vP-7F1"/>
@@ -538,20 +538,20 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="ShC-bu-gOv"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5I-LW-DSq">
                                 <rect key="frame" x="37" y="123.5" width="300" height="70"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.85086686643835618" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.90167487157534243" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="aIO-XB-faN"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="b7i-SP-DES"/>
                                 </constraints>
                                 <string key="text">【修正を希望される場合】
-現在設定されている以下情報を修正し
-ボタンを押して下さい</string>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+現在設定されている以下情報を修正し、
+変更ボタンを押して下さい</string>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -560,7 +560,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="4Jg-kQ-zOE"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="※アカウント削除の申請はこちら" backgroundImage="btn">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -626,15 +626,15 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="住所、施設名などで投稿したい場所を探す" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="oBD-ec-M0y">
                                 <rect key="frame" x="0.0" y="20" width="375" height="30"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Bd-uB-wiR">
-                                <rect key="frame" x="260" y="55" width="55" height="55"/>
+                                <rect key="frame" x="265" y="55" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="BDb-xM-Vld"/>
+                                    <constraint firstAttribute="height" constant="50" id="Grm-bc-dGl"/>
                                     <constraint firstAttribute="width" secondItem="5Bd-uB-wiR" secondAttribute="height" multiplier="1:1" id="cmA-nJ-Yqg"/>
-                                    <constraint firstAttribute="width" constant="55" id="jYf-QL-1Da"/>
+                                    <constraint firstAttribute="width" constant="50" id="rhP-gb-hTu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                 <state key="normal" backgroundImage="投稿準備">
@@ -646,11 +646,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVc-kL-bVS">
-                                <rect key="frame" x="60" y="55" width="55" height="55"/>
+                                <rect key="frame" x="60" y="55" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="55" id="gWh-Fg-s38"/>
+                                    <constraint firstAttribute="width" constant="50" id="FYc-bp-qch"/>
                                     <constraint firstAttribute="width" secondItem="wVc-kL-bVS" secondAttribute="height" multiplier="1:1" id="lRZ-YV-db6"/>
-                                    <constraint firstAttribute="height" constant="55" id="wiE-sm-7eC"/>
+                                    <constraint firstAttribute="height" constant="50" id="rzf-qM-BwW"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="地図ピン"/>
                                 <connections>
@@ -1008,29 +1008,28 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGb-hP-O7y" userLabel="【投稿を管理】 上3つのボタンで投稿を管理＆表示できます。  【お得情報】 一定の投稿実績に応じてアクティブになります！ 是非楽しみにお待ちください！">
-                                <rect key="frame" x="20" y="214" width="335" height="81.5"/>
+                                <rect key="frame" x="20" y="214" width="335" height="87.5"/>
                                 <string key="text">【投稿を管理】
-上3つのボタンで投稿を管理＆表示できます。
+上3つのボタンで管理＆表示できます。
 【お得情報】
 一定の投稿実績に応じてアクティブになります！是非楽しみにお待ちください！</string>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Guide(Home)-2" translatesAutoresizingMaskIntoConstraints="NO" id="Uhe-aI-d2z">
-                                <rect key="frame" x="122.5" y="325.5" width="130" height="130"/>
+                                <rect key="frame" x="122.5" y="331.5" width="130" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="dRm-la-c26"/>
                                     <constraint firstAttribute="height" constant="130" id="tXB-Vz-TEj"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rbe-47-1Yk">
-                                <rect key="frame" x="20" y="465.5" width="335" height="81.5"/>
+                                <rect key="frame" x="20" y="471.5" width="335" height="70"/>
                                 <string key="text">【様々な体験を提供】
 一定のユーザーの皆様が集まり次第アクティブになります！
-（例：地図上で「お宝探しイベント」）
-（例：地図上で「ジョブマッチング」）</string>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="14"/>
+（例：地図上で「お宝探しイベント」）</string>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1075,28 +1074,28 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUl-ge-bHb">
-                                <rect key="frame" x="20" y="244" width="335" height="49"/>
+                                <rect key="frame" x="20" y="244" width="335" height="52.5"/>
                                 <string key="text">【是非、覚えておいて下さい！】
-投稿一覧の全ての項目は、「長押しタップ」で自動的にコピー可能です</string>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="14"/>
+投稿一覧の全ての項目は「長押しタップでコピー」が可能です</string>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Guide(Posted)-2" translatesAutoresizingMaskIntoConstraints="NO" id="HCF-gQ-Uyw">
-                                <rect key="frame" x="62" y="313" width="250" height="100"/>
+                                <rect key="frame" x="62" y="316.5" width="250" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="JVh-1t-BfD"/>
                                     <constraint firstAttribute="width" constant="250" id="l9x-Kv-vRZ"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxe-ov-ZeE">
-                                <rect key="frame" x="20" y="423" width="335" height="98"/>
+                                <rect key="frame" x="20" y="426.5" width="335" height="105"/>
                                 <string key="text">【自分専用ボタン】
-投稿した内容を他のユーザーに後悔したくない場合に押して下さい。
+投稿した内容を他のユーザーに公開したくない場合に押して下さい。
 【編集ボタン】
 投稿した内容を編集＆削除するボタン
 （投稿者ご本人のみ編集＆削除可能）</string>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1141,29 +1140,29 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Guide(Setting)-2" translatesAutoresizingMaskIntoConstraints="NO" id="1zS-TB-Bib">
-                                <rect key="frame" x="47" y="423.5" width="280" height="60"/>
+                                <rect key="frame" x="47" y="431.5" width="280" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="BPD-Ip-QkM"/>
                                     <constraint firstAttribute="height" constant="60" id="Vz6-UA-tUV"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mgG-Gu-uDL">
-                                <rect key="frame" x="20" y="284" width="335" height="65.5"/>
+                                <rect key="frame" x="20" y="284" width="335" height="70"/>
                                 <string key="text">【各種情報変更】
-「メールアドレス」「パスワード」を変更する際には、現在登録されているメールアドレスに確認のメールが送信されます！</string>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="14"/>
+「メールアドレス」「パスワード」を変更する際には、現在ご登録のメールアドレスに確認メールが送信されます！</string>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="※ソーシャルアカウントでログインされている場合には、情報修正はFacebookまたはGoogle上で実施して下さい" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g88-bh-4R1">
-                                <rect key="frame" x="20" y="354.5" width="335" height="49"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="※ソーシャルアカウントでログインされている場合には、FacebookまたはGoogle上で修正して下さい" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g88-bh-4R1">
+                                <rect key="frame" x="20" y="359" width="335" height="52.5"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="※アカウントの削除は慎重に実施下さい。　一旦削除した後には同一アカウント情報であっても全く新規のユーザー扱いになります。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ixy-UA-UCb">
-                                <rect key="frame" x="20" y="493.5" width="335" height="49"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="※削除後は、全く同一のアカウント情報であっても新規ユーザー扱いになります。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ixy-UA-UCb">
+                                <rect key="frame" x="20" y="501.5" width="335" height="35"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1204,33 +1203,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="221-b7-xb9">
-                                <rect key="frame" x="20" y="74" width="335" height="66.5"/>
+                                <rect key="frame" x="20" y="74" width="335" height="59.5"/>
                                 <string key="text">絶賛、開発中です！！
-ユーザーの皆様に末長く使って頂けるように頑張って実装していきます！！</string>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="19"/>
+ユーザーの皆様に末長く使って頂けるように頑張って実装していきます！</string>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jBZ-cw-E2n">
-                                <rect key="frame" x="20" y="160.5" width="335" height="205"/>
-                                <string key="text">【考察中のアイデア】
+                                <rect key="frame" x="20" y="153.5" width="335" height="192.5"/>
+                                <string key="text">【考察中のアイデア案】
 ・特定のエリアでイベントを実施したい企業/ユーザーさんとコラボして、地図上でオリジナルイベントを開催
-→対象エリアでよく投稿されているユーザーの皆様を個別にご招待
+→対象エリアでよく投稿されているユーザーの皆様を個別にご招待 など
 
-・海外の地図上でも仮想のイベントやマッチング機会を提供
-→すぐに現地にはいけないような場所で仮想イベントに参加頂ける</string>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+・海外の地図上でイベントやマッチング機会を提供
+→すぐに現地にはいけないような場所でオンラインイベントに参加頂ける</string>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enjoy Loglog !!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kRJ-AO-GKV">
-                                <rect key="frame" x="77.5" y="415.5" width="221.5" height="28"/>
+                                <rect key="frame" x="77.5" y="396" width="221.5" height="28"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="24"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loglogロゴ" translatesAutoresizingMaskIntoConstraints="NO" id="g5D-X4-Ge5">
-                                <rect key="frame" x="153" y="453.5" width="70" height="70"/>
+                                <rect key="frame" x="153" y="434" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="Oev-rr-lov"/>
                                     <constraint firstAttribute="height" constant="70" id="PtW-It-7LG"/>
@@ -1273,23 +1272,23 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehm-tg-Ogj">
-                                <rect key="frame" x="20" y="214" width="335" height="130.5"/>
+                                <rect key="frame" x="20" y="214" width="335" height="122.5"/>
                                 <string key="text">【①】
 ご希望の検索条件で、投稿一覧の情報を地図にピンで再表示できます。
 【②】
 貴方の現在地を表示します。
 【③】
-地図上に「長押しタップ」でピンを指定すると、場所の情報と共に新規に投稿できます。</string>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="14"/>
+場所の情報と共に新規に投稿できます。</string>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFJ-IV-hVe">
-                                <rect key="frame" x="20" y="364.5" width="335" height="81.5"/>
+                                <rect key="frame" x="20" y="356.5" width="335" height="87.5"/>
                                 <string key="text">【Loglogの特徴】
 地図ページを2つ持つ事がLoglogの特徴です！
-「現在地」⇆「場所検索」で2つのページを見比べるなどが出来ます。 是非皆様のアイデアで便利な使い方を見つけてください！</string>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="14"/>
+「現在地」⇆「場所検索」で2ページを見比べるなどが出来ます。 是非皆様のアイデアで自由にご活用下さい！</string>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1345,23 +1344,23 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HcM-mG-XPd">
-                                <rect key="frame" x="20" y="264" width="335" height="130.5"/>
+                                <rect key="frame" x="20" y="264" width="335" height="122.5"/>
                                 <string key="text">【①】
 ご希望の検索条件で、投稿一覧の情報を地図にピンで再表示できます。
 【②】
 貴方の現在地を表示します。
 【③】
-地図上に「長押しタップ」でピンを指定すると、場所の情報と共に新規に投稿できます。</string>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="14"/>
+場所の情報と共に新規に投稿できます。</string>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kCr-zK-mQU">
-                                <rect key="frame" x="20" y="414.5" width="335" height="81.5"/>
+                                <rect key="frame" x="20" y="406.5" width="335" height="87.5"/>
                                 <string key="text">【Loglogの特徴】
 地図ページを2つ持つ事がLoglogの特徴です！
-「現在地」⇆「場所検索」で2つのページを見比べるなどが出来ます。 是非皆様のアイデアで便利な使い方を見つけてください！</string>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="14"/>
+「現在地」⇆「場所検索」で2つのページを見比べるなどが出来ます。 是非皆様のアイデアで自由にご活用下さい！</string>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1411,7 +1410,7 @@
                                 <rect key="frame" x="0.0" y="76" width="375" height="591"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="wNZ-2g-rK0">
+                            <searchBar contentMode="redraw" text="" translatesAutoresizingMaskIntoConstraints="NO" id="wNZ-2g-rK0">
                                 <rect key="frame" x="0.0" y="20" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
                             </searchBar>
@@ -1463,70 +1462,70 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnb-Zb-OAW">
-                                <rect key="frame" x="37.5" y="117" width="300" height="100"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.85228488869863017" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="37.5" y="91" width="300" height="60"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.89977525684931503" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="771-xN-atj"/>
-                                    <constraint firstAttribute="height" constant="100" id="jTS-im-Btp"/>
+                                    <constraint firstAttribute="height" constant="60" id="9sr-4l-CKV"/>
+                                    <constraint firstAttribute="width" constant="300" id="XKW-dw-ERo"/>
                                 </constraints>
                                 <string key="text">【ご注意ください】
-　以下のボタンより投稿の「修正」「削除」が可能ですが、一度修正・削除した内容は元に戻せません。</string>
+修正・削除した内容は元に戻せません。</string>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K05-87-yMc">
-                                <rect key="frame" x="37" y="237" width="300" height="130"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.84864619006849318" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="37" y="171" width="300" height="120"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.9003371147260274" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="F11-2B-1P0"/>
-                                    <constraint firstAttribute="width" constant="300" id="bcW-Cu-adV"/>
+                                    <constraint firstAttribute="height" constant="120" id="7if-cv-Lfu"/>
+                                    <constraint firstAttribute="width" constant="300" id="WKU-fJ-sWS"/>
                                 </constraints>
                                 <string key="text">【修正・削除の手順】
-　お手数ですが、投稿画面の
-「投稿ナンバー」を長押しタップでコピーして以下のボタンより作業を進めて下さい。
+投稿画面の「投稿ナンバー」を長押しタップでコピーして以下のボタンより作業を進めて下さい。
 (※投稿者ご本人のみ作業に進めます)</string>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1I-7u-3dm">
-                                <rect key="frame" x="37" y="447" width="300" height="40"/>
+                                <rect key="frame" x="37" y="376" width="300" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="jIu-x3-Pfj"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="CfS-uX-gGx"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="投稿を【修正】" backgroundImage="Btn2"/>
                                 <connections>
                                     <action selector="postedReviseButton:" destination="qfw-wT-qRF" eventType="touchUpInside" id="Dtt-Vr-Bqk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Px9-14-WMa">
-                                <rect key="frame" x="37" y="512" width="300" height="40"/>
+                                <rect key="frame" x="37" y="436" width="300" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="qRn-CH-SBS"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="ofT-jB-Ug9"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="投稿を【削除】" backgroundImage="Btn2"/>
                                 <connections>
                                     <action selector="postedDeleteButton:" destination="qfw-wT-qRF" eventType="touchUpInside" id="dzW-2t-9R7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YdC-7N-q4Z">
-                                <rect key="frame" x="37" y="577" width="300" height="40"/>
+                                <rect key="frame" x="37" y="496" width="300" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="449-nR-VKb"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="RNY-Sw-q16"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="キャンセルして戻る" backgroundImage="Btn3"/>
                                 <connections>
                                     <segue destination="YkH-AA-rPB" kind="unwind" unwindAction="unwind:" id="P87-mX-lio"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="「投稿ナンバー」を貼り付け" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="bgA-6z-oET">
-                                <rect key="frame" x="37.5" y="387" width="300" height="30"/>
+                                <rect key="frame" x="37.5" y="321" width="300" height="25"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="SJe-fv-j1C"/>
+                                    <constraint firstAttribute="height" constant="25" id="6e9-og-FqG"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Ido-7e-Bmf"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
@@ -1535,18 +1534,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="K05-87-yMc" firstAttribute="top" secondItem="pnb-Zb-OAW" secondAttribute="bottom" constant="20" id="0h0-1b-viK"/>
-                            <constraint firstItem="H1I-7u-3dm" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="261-P1-laj"/>
-                            <constraint firstItem="Px9-14-WMa" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="2PQ-Gf-FQJ"/>
-                            <constraint firstItem="bgA-6z-oET" firstAttribute="top" secondItem="K05-87-yMc" secondAttribute="bottom" constant="20" id="OjN-h4-hPQ"/>
-                            <constraint firstItem="YdC-7N-q4Z" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="SYt-mJ-fiN"/>
-                            <constraint firstItem="bgA-6z-oET" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="bbN-L2-xWq"/>
-                            <constraint firstItem="Px9-14-WMa" firstAttribute="top" secondItem="H1I-7u-3dm" secondAttribute="bottom" constant="25" id="jC8-qP-WKw"/>
-                            <constraint firstItem="H1I-7u-3dm" firstAttribute="top" secondItem="bgA-6z-oET" secondAttribute="bottom" constant="30" id="jkd-7j-b6R"/>
-                            <constraint firstItem="NiN-ly-ORH" firstAttribute="bottom" secondItem="bgA-6z-oET" secondAttribute="bottom" constant="250" id="qiS-n2-hXk"/>
-                            <constraint firstItem="YdC-7N-q4Z" firstAttribute="top" secondItem="Px9-14-WMa" secondAttribute="bottom" constant="25" id="rLG-PF-G53"/>
-                            <constraint firstItem="K05-87-yMc" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="sNU-Lf-ZxA"/>
-                            <constraint firstItem="pnb-Zb-OAW" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="uyp-BB-IjK"/>
+                            <constraint firstItem="YdC-7N-q4Z" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="6I2-ed-Opd"/>
+                            <constraint firstItem="H1I-7u-3dm" firstAttribute="top" secondItem="bgA-6z-oET" secondAttribute="bottom" constant="30" id="7vV-Dl-oha"/>
+                            <constraint firstItem="H1I-7u-3dm" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="BM1-Tq-XBU"/>
+                            <constraint firstItem="K05-87-yMc" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="F5d-Yq-Gc3"/>
+                            <constraint firstItem="K05-87-yMc" firstAttribute="top" secondItem="pnb-Zb-OAW" secondAttribute="bottom" constant="20" id="JXo-QI-xZ9"/>
+                            <constraint firstItem="YdC-7N-q4Z" firstAttribute="top" secondItem="Px9-14-WMa" secondAttribute="bottom" constant="20" id="Sdm-tA-eKa"/>
+                            <constraint firstItem="Px9-14-WMa" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="Z15-7P-Zow"/>
+                            <constraint firstItem="Px9-14-WMa" firstAttribute="top" secondItem="H1I-7u-3dm" secondAttribute="bottom" constant="20" id="bHl-hL-JjD"/>
+                            <constraint firstItem="bgA-6z-oET" firstAttribute="centerY" secondItem="fDn-n5-xup" secondAttribute="centerY" id="bXG-cz-PC3"/>
+                            <constraint firstItem="bgA-6z-oET" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="dAu-Bw-5Sf"/>
+                            <constraint firstItem="pnb-Zb-OAW" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="dbU-fN-hJ4"/>
+                            <constraint firstItem="bgA-6z-oET" firstAttribute="top" secondItem="K05-87-yMc" secondAttribute="bottom" constant="30" id="pZU-sC-z1t"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NiN-ly-ORH"/>
                     </view>
@@ -1571,25 +1570,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PVZ-Qo-lWS">
-                                <rect key="frame" x="37" y="40" width="300" height="100"/>
-                                <color key="backgroundColor" white="1" alpha="0.853515625" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="37" y="40" width="300" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="0.90488548801369861" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="thO-PJ-nSA"/>
+                                    <constraint firstAttribute="height" constant="60" id="iLA-JY-iD1"/>
                                     <constraint firstAttribute="width" constant="300" id="xJu-Z8-1Gn"/>
                                 </constraints>
-                                <string key="text">「カテゴリー」
-「投稿者名」
-「投稿ナンバー」
-で検索して地図上にピンを表示します</string>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <string key="text">※「投稿者名」「投稿ナンバー」
+は投稿一覧からコピーがお勧めです</string>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Rl-wd-UCu">
-                                <rect key="frame" x="37" y="397.5" width="300" height="40"/>
+                                <rect key="frame" x="37" y="357.5" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Fv1-Wb-kPq"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="上記条件でピンを検索＆表示" backgroundImage="Btn2"/>
                                 <connections>
                                     <action selector="searchButton:" destination="RYu-Ip-B7r" eventType="touchUpInside" id="dJ8-49-h3s"/>
@@ -1597,18 +1594,18 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cGh-hR-3y8">
-                                <rect key="frame" x="37" y="467.5" width="300" height="40"/>
+                                <rect key="frame" x="37" y="427.5" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="1bm-se-6wV"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="キャンセルして戻る" backgroundImage="Btn3"/>
                                 <connections>
                                     <segue destination="O6m-aa-jGd" kind="unwind" unwindAction="unwind:" id="dTs-uw-VL7"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カテゴリー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wob-o6-XDB">
-                                <rect key="frame" x="37.5" y="160" width="300" height="17.5"/>
+                                <rect key="frame" x="37.5" y="120" width="300" height="17.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="ZFZ-hf-0VS"/>
                                 </constraints>
@@ -1617,7 +1614,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投稿者名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yW-FV-FVT">
-                                <rect key="frame" x="37.5" y="232.5" width="300" height="17.5"/>
+                                <rect key="frame" x="37.5" y="192.5" width="300" height="17.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="PFR-B3-IIo"/>
                                 </constraints>
@@ -1626,7 +1623,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投稿ナンバー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nri-3p-73E">
-                                <rect key="frame" x="37.5" y="305" width="300" height="17.5"/>
+                                <rect key="frame" x="37.5" y="265" width="300" height="17.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="QeE-8e-f9l"/>
                                 </constraints>
@@ -1635,38 +1632,38 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="r0n-43-gs9">
-                                <rect key="frame" x="37.5" y="182.5" width="300" height="30"/>
+                                <rect key="frame" x="37.5" y="142.5" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="kTX-Lb-qbe"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="gtZ-Vk-UFG">
-                                <rect key="frame" x="37.5" y="255" width="300" height="30"/>
+                                <rect key="frame" x="37.5" y="215" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Tfy-m0-Ld1"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="6DL-Rr-LAd">
-                                <rect key="frame" x="37.5" y="327.5" width="300" height="30"/>
+                                <rect key="frame" x="37.5" y="287.5" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="NYc-m5-KpC"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5GL-zO-Kd2">
-                                <rect key="frame" x="37" y="537.5" width="300" height="40"/>
+                                <rect key="frame" x="37" y="497.5" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Kqe-37-wqN"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="表示中のピンを全て削除" backgroundImage="Btn3"/>
                                 <connections>
                                     <action selector="removeAllPinButton:" destination="RYu-Ip-B7r" eventType="touchUpInside" id="B1z-Is-mjW"/>
@@ -1727,7 +1724,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="TQ6-Bz-zdM"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワードを入力（※6文字以上）" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="zLm-hA-uhg">
@@ -1736,16 +1733,16 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Ace-Ec-nfO"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="アカウント名（※新規作成時のみ）" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="52s-Ac-sMd">
-                                <rect key="frame" x="35.5" y="198.5" width="304" height="30"/>
+                                <rect key="frame" x="37.5" y="198.5" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="hMg-Sg-Nua"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0q-Lr-1c0">
@@ -1753,7 +1750,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Qpj-Yf-LPh"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="ログイン" backgroundImage="Btn2"/>
                                 <connections>
                                     <action selector="handleLoginButton:" destination="E2a-WC-cde" eventType="touchUpInside" id="37B-li-aSi"/>
@@ -1764,27 +1761,27 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="k05-GP-hIt"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="新規アカウント作成" backgroundImage="Btn2"/>
                                 <connections>
                                     <action selector="handleCreateAccountButton:" destination="E2a-WC-cde" eventType="touchUpInside" id="8rV-TP-V08"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dxy-WW-jUx">
-                                <rect key="frame" x="38" y="518" width="300" height="34"/>
+                                <rect key="frame" x="38" y="516" width="300" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="dhd-2R-apr"/>
                                 </constraints>
                                 <string key="text">ソーシャルアカウントで
 ログイン/新規登録</string>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7a-x0-0ge">
                                 <rect key="frame" x="61" y="380" width="252" height="29"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.60124143835616439" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.79596532534246578" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="14"/>
                                 <state key="normal" title="　※パスワードを忘れた場合はこちら　">
                                     <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1857,11 +1854,11 @@
                                 </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHE-bK-Uqj">
-                                <rect key="frame" x="260" y="25" width="55" height="55"/>
+                                <rect key="frame" x="265" y="25" width="50" height="50"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3Cu-8U-yj7"/>
                                     <constraint firstAttribute="width" secondItem="wHE-bK-Uqj" secondAttribute="height" multiplier="1:1" id="mHQ-6M-GSg"/>
-                                    <constraint firstAttribute="height" constant="55" id="rzL-UC-14z"/>
-                                    <constraint firstAttribute="width" constant="55" id="xt3-i3-X19"/>
+                                    <constraint firstAttribute="width" constant="50" id="xHV-bS-FXX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                 <state key="normal" backgroundImage="投稿準備">
@@ -1873,11 +1870,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiC-1U-diE">
-                                <rect key="frame" x="60" y="25" width="55" height="55"/>
+                                <rect key="frame" x="60" y="25" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="eiC-1U-diE" secondAttribute="height" multiplier="1:1" id="idB-uT-DsI"/>
-                                    <constraint firstAttribute="height" constant="55" id="mVq-si-bfz"/>
-                                    <constraint firstAttribute="width" constant="55" id="nKV-Ao-Dc4"/>
+                                    <constraint firstAttribute="width" constant="50" id="lhF-Wc-vhg"/>
+                                    <constraint firstAttribute="height" constant="50" id="nLH-Of-slW"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="地図ピン"/>
                                 <connections>
@@ -1937,48 +1934,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sGR-tL-4Q5">
-                                <rect key="frame" x="37" y="40" width="300" height="100"/>
-                                <color key="backgroundColor" white="1" alpha="0.84527504280821919" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="37" y="40" width="300" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="0.8985445205479452" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="QEE-eJ-JJe"/>
+                                    <constraint firstAttribute="height" constant="60" id="ZNG-LT-uij"/>
                                     <constraint firstAttribute="width" constant="300" id="fYm-pu-q6E"/>
                                 </constraints>
-                                <string key="text">「カテゴリー」
-「投稿者名」
-「投稿ナンバー」
-で検索して地図上にピンを表示します</string>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <string key="text">※「投稿者名」「投稿ナンバー」
+は投稿一覧からコピーがお勧めです</string>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="MR7-I0-ct3">
-                                <rect key="frame" x="37.5" y="183" width="300" height="30"/>
+                                <rect key="frame" x="37.5" y="143" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="6XC-t4-MQQ"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="LQE-4f-Esc">
-                                <rect key="frame" x="37.5" y="255.5" width="300" height="30"/>
+                                <rect key="frame" x="37.5" y="215.5" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="HsO-IY-IE6"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="0AJ-NT-8qE">
-                                <rect key="frame" x="37.5" y="328.5" width="300" height="30"/>
+                                <rect key="frame" x="37.5" y="288.5" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="7bj-PP-5Sa"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カテゴリー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHc-ep-2ds">
-                                <rect key="frame" x="37.5" y="160" width="300" height="18"/>
+                                <rect key="frame" x="37.5" y="120" width="300" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Ofl-eN-9cV"/>
                                 </constraints>
@@ -1987,7 +1982,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投稿者名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cK9-1B-3rg">
-                                <rect key="frame" x="37.5" y="233" width="300" height="17.5"/>
+                                <rect key="frame" x="37.5" y="193" width="300" height="17.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="4fw-76-HTQ"/>
                                 </constraints>
@@ -1996,7 +1991,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投稿ナンバー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YmT-Mz-uID">
-                                <rect key="frame" x="37.5" y="305.5" width="300" height="18"/>
+                                <rect key="frame" x="37.5" y="265.5" width="300" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="cxU-1B-e6J"/>
                                 </constraints>
@@ -2005,11 +2000,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYg-3k-tQV">
-                                <rect key="frame" x="37" y="398.5" width="300" height="40"/>
+                                <rect key="frame" x="37" y="358.5" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="4WI-ZW-HPh"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="上記条件でピンを検索＆表示" backgroundImage="Btn2"/>
                                 <connections>
                                     <action selector="searchButton:" destination="WJg-nc-v0E" eventType="touchUpInside" id="fcO-Vm-IKz"/>
@@ -2017,22 +2012,22 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gP-nq-SGA">
-                                <rect key="frame" x="37" y="468.5" width="300" height="40"/>
+                                <rect key="frame" x="37" y="428.5" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Wxa-uc-KxI"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="キャンセルして戻る" backgroundImage="Btn3"/>
                                 <connections>
                                     <segue destination="5wP-8R-QK8" kind="unwind" unwindAction="unwind:" id="dml-lc-6tK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrN-Qg-5Vp">
-                                <rect key="frame" x="37" y="538.5" width="300" height="40"/>
+                                <rect key="frame" x="37" y="498.5" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="wgc-7w-n2d"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="表示中のピンを全て削除" backgroundImage="Btn3"/>
                                 <connections>
                                     <action selector="removeAllPinButton:" destination="WJg-nc-v0E" eventType="touchUpInside" id="TJ1-m3-LYv"/>
@@ -2120,7 +2115,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Rbk-cq-FiU"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qjd-Oh-CeH">
@@ -2130,7 +2125,7 @@
                                     <constraint firstAttribute="width" constant="300" id="3fO-1h-2EV"/>
                                     <constraint firstAttribute="height" constant="120" id="UKs-Nc-QsL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="szb-lR-jLe">
@@ -2140,7 +2135,7 @@
                                     <constraint firstAttribute="height" constant="30" id="ITt-IA-Pcr"/>
                                     <constraint firstAttribute="width" constant="300" id="xZd-xr-4Rc"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="URL" returnKeyType="done"/>
                             </textView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="※特定の相手への投稿などで使用" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="tnh-3o-SoN">
@@ -2149,7 +2144,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Mm2-qq-2aP"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="秘密のパスワード" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJU-rN-nfh">
@@ -2166,7 +2161,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="bIl-8r-Gqy"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="画像をつけずに投稿" backgroundImage="Btn2"/>
                                 <connections>
                                     <action selector="postWithoutPhoto:" destination="W2d-iz-8yz" eventType="touchUpInside" id="VNv-zE-enD"/>
@@ -2178,7 +2173,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="2sB-Gk-h4Q"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="画像をつけて投稿" backgroundImage="Btn2"/>
                                 <connections>
                                     <action selector="postWithPhoto:" destination="W2d-iz-8yz" eventType="touchUpInside" id="Zic-4J-ddK"/>
@@ -2190,7 +2185,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="wn8-qB-OGc"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="キャンセルして戻る" backgroundImage="Btn3"/>
                                 <connections>
                                     <segue destination="rdc-2k-kfV" kind="unwind" unwindAction="unwind:" id="B0p-Th-fa5"/>
@@ -2252,7 +2247,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="byo-zK-ddx"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="ライブラリから画像を追加" backgroundImage="Btn2"/>
                                 <connections>
                                     <action selector="handleLibraryButton:" destination="oAy-KL-H3R" eventType="touchUpInside" id="3h4-JY-AZr"/>
@@ -2263,7 +2258,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="exh-GJ-yyP"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="カメラを起動" backgroundImage="Btn2"/>
                                 <connections>
                                     <action selector="handleCameraButton:" destination="oAy-KL-H3R" eventType="touchUpInside" id="fb9-Qi-t5S"/>
@@ -2274,7 +2269,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="snn-sK-9B5"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="キャンセルして戻る" backgroundImage="Btn3"/>
                                 <connections>
                                     <action selector="handleCancelButton:" destination="oAy-KL-H3R" eventType="touchUpInside" id="hH1-rj-U6v"/>
@@ -2376,7 +2371,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="6vf-N3-Mks"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J5k-iG-GAP">
@@ -2385,7 +2380,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="aJj-35-fH2"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q1l-ua-2I6">
@@ -2395,7 +2390,7 @@
                                     <constraint firstAttribute="height" constant="80" id="T7D-Oy-g11"/>
                                     <constraint firstAttribute="width" constant="300" id="gTO-UN-w1W"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="chS-kY-uxm">
@@ -2405,7 +2400,7 @@
                                     <constraint firstAttribute="width" constant="300" id="BlM-xV-l7V"/>
                                     <constraint firstAttribute="height" constant="30" id="Tgr-1D-9dp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NCf-Dd-b0l">
@@ -2413,7 +2408,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Bio-8K-Csi"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="投稿する" backgroundImage="Btn2"/>
                                 <connections>
                                     <action selector="handlePostButton:" destination="xsQ-S4-hef" eventType="touchUpInside" id="DxR-Ia-odl"/>
@@ -2424,7 +2419,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="yhD-Gu-fY6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="キャンセルして戻る" backgroundImage="Btn3"/>
                                 <connections>
                                     <action selector="handleCancelButton:" destination="xsQ-S4-hef" eventType="touchUpInside" id="9LW-vA-6wf"/>

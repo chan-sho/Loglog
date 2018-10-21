@@ -29,6 +29,9 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     // DatabaseのobserveEventの登録状態を表す
     var observing = false
     
+    //user defaultsを使う準備
+    let userDefaults:UserDefaults = UserDefaults.standard
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +51,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         tableView.separatorInset = .zero
         
         textSearchBar.delegate = self
-        textSearchBar.placeholder = "※投稿内容は長押しタップでコピー可能"
+        textSearchBar.placeholder = "※投稿内容は長押しでコピー可能"
         //何も入力されていなくてもReturnキーを押せるようにする。
         textSearchBar.enablesReturnKeyAutomatically = false
         //* tableView.tableHeaderView = textSearchBar
@@ -1012,23 +1015,22 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     
     //地図上で「吹き出し内の右のボタン」を押された際の処理
     func buttonRightSelection() {
-        self.tableView.reloadData()
-        self.textSearchBar.text = "【※貴方の全投稿を抽出中】"
         
+        var buttonRightTitle = userDefaults.string(forKey: "buttonRightTitle")!
+        var buttonRightSubtitle = userDefaults.string(forKey: "buttonRightSubtitle")!
+        
+        self.textSearchBar.text = "\(buttonRightTitle) \(buttonRightSubtitle)"
         print("\(textSearchBar.text!)")
         
-        let uid = Auth.auth().currentUser?.uid
-        
-        print("\(uid!)")
-        
-        let array = uid?.components(separatedBy: NSCharacterSet.whitespaces)
+        // 検索バーに入力された単語をスペースで分けて配列に入れる
+        let searchWords = textSearchBar.text!
+        let array = searchWords.components(separatedBy: NSCharacterSet.whitespaces)
+        // 検索バーのテキストを一部でも含むものをAND検索する！
         var tempFilteredArray = postArrayAll
-        for n in array! {
-            tempFilteredArray = tempFilteredArray.filter{($0.userID?.contains(n))!}
+        for n in array {
+            tempFilteredArray = tempFilteredArray.filter({ ($0.category?.localizedCaseInsensitiveContains(n))! || ($0.contents?.localizedCaseInsensitiveContains(n))! || ($0.relatedURL?.localizedCaseInsensitiveContains(n))! || ($0.secretpass?.localizedCaseInsensitiveContains(n))! || ($0.id?.localizedCaseInsensitiveContains(n))! || ($0.pinAddress?.localizedCaseInsensitiveContains(n))! || ($0.name?.localizedCaseInsensitiveContains(n))!})
         }
-        postArrayOnHome1 = tempFilteredArray
-        
-        print("\(postArrayOnHome1)")
+        postArrayBySearch = tempFilteredArray
         
         self.tableView.reloadData()
     }

@@ -162,11 +162,21 @@
                         <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Few-Xm-hqY">
+                        <rect key="frame" x="301" y="419" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="BE6-xS-qJB"/>
+                            <constraint firstAttribute="width" secondItem="Few-Xm-hqY" secondAttribute="height" multiplier="1:1" id="qZh-DN-NTY"/>
+                            <constraint firstAttribute="height" constant="40" id="xPp-lU-p3v"/>
+                        </constraints>
+                        <state key="normal" image="地図ピンR1"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="RDj-jL-TUq" secondAttribute="trailing" constant="10" id="0ql-t1-m7O"/>
                     <constraint firstItem="eaC-Zp-3wU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="1gu-Dd-VCa"/>
                     <constraint firstItem="9Oi-wj-dMF" firstAttribute="bottom" secondItem="U14-Pu-R4n" secondAttribute="bottom" id="2Kt-ll-hqg"/>
+                    <constraint firstItem="Few-Xm-hqY" firstAttribute="bottom" secondItem="2tM-62-OWY" secondAttribute="bottom" id="2Ql-cz-3qd"/>
                     <constraint firstItem="Bsx-Gj-eJX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="2dr-y9-ElR"/>
                     <constraint firstItem="2oO-97-dyf" firstAttribute="top" secondItem="yFt-jG-ejy" secondAttribute="top" id="3dD-wD-LI8"/>
                     <constraint firstItem="ebO-fP-Rp9" firstAttribute="top" secondItem="621-Wi-aXx" secondAttribute="bottom" constant="10" id="5Q5-M1-dUx"/>
@@ -194,6 +204,7 @@
                     <constraint firstItem="DWZ-xk-y73" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Tuc-7X-Nit"/>
                     <constraint firstItem="c2S-5Q-Xkj" firstAttribute="leading" secondItem="3HW-ey-cDv" secondAttribute="trailing" constant="20" id="X0B-CL-3dH"/>
                     <constraint firstAttribute="trailing" secondItem="EmG-i8-xJJ" secondAttribute="trailing" constant="10" id="XPZ-Aa-2V7"/>
+                    <constraint firstAttribute="trailing" secondItem="Few-Xm-hqY" secondAttribute="trailing" constant="10" id="bFS-iI-Y0q"/>
                     <constraint firstItem="RDj-jL-TUq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="blO-ic-bkF"/>
                     <constraint firstAttribute="trailing" secondItem="ebO-fP-Rp9" secondAttribute="trailing" constant="10" id="c8F-tc-OT9"/>
                     <constraint firstItem="yFt-jG-ejy" firstAttribute="top" secondItem="3HW-ey-cDv" secondAttribute="bottom" constant="10" id="duF-wK-5yA"/>
@@ -243,5 +254,6 @@
         <image name="like_none" width="40" height="40"/>
         <image name="mymap_no" width="40" height="40"/>
         <image name="setting" width="40" height="40"/>
+        <image name="地図ピンR1" width="100" height="100"/>
     </resources>
 </document>

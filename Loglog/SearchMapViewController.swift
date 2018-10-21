@@ -336,6 +336,12 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
             //右のボタンが押された場合のアクション
             if view is MKPinAnnotationView {
                 print("ボタン押印確認　@ 吹き出し内の右ボタン")
+                print("\(String(describing: view.annotation?.title))")
+                print("\(String(describing: view.annotation?.subtitle))")
+                
+                userDefaults.set(view.annotation?.title!, forKey: "buttonRightTitle")
+                userDefaults.set(view.annotation?.subtitle!, forKey: "buttonRightSubtitle")
+                userDefaults.synchronize()
                 
                 let tabBarController = parent as! ESTabBarController
                 tabBarController.setSelectedIndex(3, animated: false)
