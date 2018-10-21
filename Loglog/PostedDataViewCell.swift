@@ -25,6 +25,8 @@ class PostedDataViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var myMapButton: UIButton!
     @IBOutlet weak var reviseButton: UIButton!
+    @IBOutlet weak var createMapPinButton: UIButton!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -72,6 +74,7 @@ class PostedDataViewCell: UITableViewCell {
         likeButton.isExclusiveTouch = true
         myMapButton.isExclusiveTouch = true
         reviseButton.isExclusiveTouch = true
+        createMapPinButton.isExclusiveTouch = true
     }
 
     

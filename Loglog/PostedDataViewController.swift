@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import SVProgressHUD
+import ESTabBarController
 
 
 class PostedDataViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
@@ -671,6 +672,9 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                 // セル内のreviseボタンを追加で管理
                 cell.reviseButton.addTarget(self, action:#selector(handleReviseButton(_:forEvent:)), for: .touchUpInside)
             
+                // セル内のcreateMapPinボタンを追加で管理
+                cell.createMapPinButton.addTarget(self, action:#selector(handleCreateMapPinButton(_:forEvent:)), for: .touchUpInside)
+            
                 return cell
             }
         
@@ -688,6 +692,9 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             
             // セル内のreviseボタンを追加で管理
             cell.reviseButton.addTarget(self, action:#selector(handleReviseButton(_:forEvent:)), for: .touchUpInside)
+            
+            // セル内のcreateMapPinボタンを追加で管理
+            cell.createMapPinButton.addTarget(self, action:#selector(handleCreateMapPinButton(_:forEvent:)), for: .touchUpInside)
             
             return cell
             }
@@ -707,6 +714,9 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             // セル内のreviseボタンを追加で管理
             cell.reviseButton.addTarget(self, action:#selector(handleReviseButton(_:forEvent:)), for: .touchUpInside)
             
+            // セル内のcreateMapPinボタンを追加で管理
+            cell.createMapPinButton.addTarget(self, action:#selector(handleCreateMapPinButton(_:forEvent:)), for: .touchUpInside)
+            
             return cell
         }
         else if textSearchBar.text == "【※貴方の「自分専用」を抽出中】" {
@@ -724,6 +734,9 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             // セル内のreviseボタンを追加で管理
             cell.reviseButton.addTarget(self, action:#selector(handleReviseButton(_:forEvent:)), for: .touchUpInside)
             
+            // セル内のcreateMapPinボタンを追加で管理
+            cell.createMapPinButton.addTarget(self, action:#selector(handleCreateMapPinButton(_:forEvent:)), for: .touchUpInside)
+            
             return cell
         }
         
@@ -740,6 +753,9 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             
                 // セル内のreviseボタンを追加で管理
                 cell.reviseButton.addTarget(self, action:#selector(handleReviseButton(_:forEvent:)), for: .touchUpInside)
+            
+                // セル内のcreateMapPinボタンを追加で管理
+                cell.createMapPinButton.addTarget(self, action:#selector(handleCreateMapPinButton(_:forEvent:)), for: .touchUpInside)
                 
                 return cell
             }
@@ -934,9 +950,29 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     //セル内のReviseボタンが押された時に呼ばれるメソッド
     @objc func handleReviseButton(_ sender: UIButton, forEvent event: UIEvent) {
         
-        // ReviseDataViewControllerに画面遷移
+        //ReviseDataViewControllerに画面遷移
         let reviseDataViewController = self.storyboard?.instantiateViewController(withIdentifier: "Revise")
         self.present(reviseDataViewController!, animated: true, completion: nil)
+        
+    }
+    
+    
+    //セル内のcreateMapPinボタンが押された時に呼ばれるメソッド
+    @objc func handleCreateMapPinButton(_ sender: UIButton, forEvent event: UIEvent) {
+        
+        //tabBarControllerと共にPostedPinOnSearchViewControllerに画面遷移
+        //*let tabBarController = parent as! ESTabBarController
+        //*tabBarController.setSelectedIndex(2, animated: false)
+        //*for viewController in tabBarController.childViewControllers {
+            //*if viewController is SearchMapViewController {
+                //*let searchMapViewContoller = viewController as! SearchMapViewController
+                //*searchMapViewContoller.searchButton.addTarget(self, action: Selector(("tapped")), for: .touchUpInside)
+                //*break
+            //*}
+        //*}
+        
+        SVProgressHUD.show(withStatus: "「投稿情報を地図にピンで再表示するボタン」です。\n\n鋭意実装中ですのでもう少しお待ち下さいませ！")
+        SVProgressHUD.dismiss(withDelay: 4.0)
         
     }
     

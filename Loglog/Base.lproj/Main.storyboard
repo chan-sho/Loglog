@@ -1564,7 +1564,7 @@
         <!--Posted Pin On Search View Controller-->
         <scene sceneID="Ok0-7S-3PL">
             <objects>
-                <viewController id="RYu-Ip-B7r" customClass="PostedPinOnSearchViewController" customModule="Loglog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostedPinOnSearch" id="RYu-Ip-B7r" customClass="PostedPinOnSearchViewController" customModule="Loglog" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Gp-Vf-50L">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

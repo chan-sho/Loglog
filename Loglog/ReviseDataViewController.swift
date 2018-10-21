@@ -61,7 +61,7 @@ class ReviseDataViewController: UIViewController, UITextFieldDelegate {
     @IBAction func postedReviseButton(_ sender: Any) {
         
         if self.postCode.text == "" {
-            SVProgressHUD.showError(withStatus: "「投稿ナンバー」を入力して下さい")
+            SVProgressHUD.showError(withStatus: "現在、修正ボタンの機能を停止しています")
             return
         }
         else {

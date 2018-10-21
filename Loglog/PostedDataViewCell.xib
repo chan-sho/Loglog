@@ -236,6 +236,7 @@
                 <outlet property="address" destination="mKN-wH-w21" id="Zxa-Wj-GGi"/>
                 <outlet property="category" destination="Bsx-Gj-eJX" id="xTx-Xy-tR6"/>
                 <outlet property="contents" destination="dIg-KE-Voh" id="crj-PJ-w4j"/>
+                <outlet property="createMapPinButton" destination="Few-Xm-hqY" id="GNa-mO-gw9"/>
                 <outlet property="dateLabel" destination="c2S-5Q-Xkj" id="Mim-V0-fFn"/>
                 <outlet property="id" destination="Rg8-GA-MIJ" id="PrW-zg-dcP"/>
                 <outlet property="likeButton" destination="U14-Pu-R4n" id="8EX-s2-Mr8"/>
