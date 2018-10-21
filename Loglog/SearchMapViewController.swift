@@ -281,6 +281,8 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
         pinsOfPosted.append(pinOfPosted)
         
         self.displayMap.addAnnotation(pinOfPosted)
+        //吹き出しを出したままにする
+        self.displayMap.selectAnnotation(pinOfPosted, animated: true)
     }
     
     
@@ -306,26 +308,22 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
             return nil
         }
         
-        let reuseId = "pin"
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
-        if pinView == nil {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pinView?.isSelected = true
+        let pinView = MKPinAnnotationView()
+            pinView.canShowCallout = true
             
             //アノテーションビューに色を設定する。
             if let color = annotation as? ColorMKPointAnnotation {
-                pinView?.pinTintColor = color.pinColor
-                pinView?.isSelected = true
+                pinView.pinTintColor = color.pinColor
+                pinView.canShowCallout = true
                 
                 //右ボタンをアノテーションビューに追加する。
                 let buttonRight = UIButton()
                 buttonRight.frame = CGRect(x:0, y:0, width:40, height:40)
                 buttonRight.setImage(UIImage(named: "投稿"), for: UIControlState.normal)
-                pinView?.rightCalloutAccessoryView = buttonRight
+                pinView.rightCalloutAccessoryView = buttonRight
             }
-        }
         else {
-            pinView?.annotation = annotation
+            pinView.annotation = annotation
         }
         return pinView
     }
