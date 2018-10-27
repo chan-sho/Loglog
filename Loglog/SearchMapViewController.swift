@@ -14,6 +14,7 @@ import ESTabBarController
 
 
 class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate, MKMapViewDelegate, PostedPinOnSearchDelegate {
+
     
     @IBOutlet weak var inputText: UITextField!
     @IBOutlet weak var displayMap: MKMapView!

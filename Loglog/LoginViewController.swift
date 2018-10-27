@@ -74,7 +74,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         userDefaults.set("NO", forKey: "AccountDeleteFlag")
         userDefaults.synchronize()
         print("初期設定：AccountDeleteFlag = 「NO」")
-        
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     
@@ -294,12 +299,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         AJAlertController.initialization().showAlert(aStrMessage: "Loglogをダウンロード頂き、\n本当にありがとうございます！\n\nご利用頂くにあたり必ず以下リンクから「プライバシーポリシー」「利用規約」をご確認下さい。\n皆様の大切な個人情報に関する記載がございますのでどうかよろしくお願い致します。\n\n内容をご確認の上で、\n以下選択ください。", aCancelBtnTitle: "リンク", aOtherBtnTitle: "同意する") { (index, title) in
             print(index,title)
         }
-    }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }

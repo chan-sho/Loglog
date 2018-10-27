@@ -29,6 +29,33 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
     let userDefaults:UserDefaults = UserDefaults.standard
     
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        mailAddressTextField.delegate = self
+        passWordTextField.delegate = self
+        displayNameTextField.delegate = self
+        
+        //背景の設定
+        let bg = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        bg.image = UIImage(named: "背景new12")
+        bg.layer.zPosition = -1
+        self.view.addSubview(bg)
+        
+        //ボタン同時押しによるアプリクラッシュを防ぐ
+        handleNameChangeButton.isExclusiveTouch = true
+        handleMailChangeButton.isExclusiveTouch = true
+        handlePasswordChangeButton.isExclusiveTouch = true
+        handleLogoutButton.isExclusiveTouch = true
+        accountDeleteRequestButton.isExclusiveTouch = true
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    
     @IBAction func handleNameChangeButton(_ sender: Any) {
         if let displayName = displayNameTextField.text {
             
@@ -155,33 +182,6 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
             mailAddressTextField.text = userAddress
         }
 
-    }
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        mailAddressTextField.delegate = self
-        passWordTextField.delegate = self
-        displayNameTextField.delegate = self
-        
-        //背景の設定
-        let bg = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-        bg.image = UIImage(named: "背景new12")
-        bg.layer.zPosition = -1
-        self.view.addSubview(bg)
-        
-        //ボタン同時押しによるアプリクラッシュを防ぐ
-        handleNameChangeButton.isExclusiveTouch = true
-        handleMailChangeButton.isExclusiveTouch = true
-        handlePasswordChangeButton.isExclusiveTouch = true
-        handleLogoutButton.isExclusiveTouch = true
-        accountDeleteRequestButton.isExclusiveTouch = true
-    }
-
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 
 }

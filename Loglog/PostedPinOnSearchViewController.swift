@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import SVProgressHUD
+import ESTabBarController
 
 
 @objc protocol PostedPinOnSearchDelegate {
@@ -21,6 +22,7 @@ import SVProgressHUD
 
 
 class PostedPinOnSearchViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+
 
     @IBOutlet weak var category: UITextField!
     @IBOutlet weak var postedName: UITextField!
@@ -35,6 +37,11 @@ class PostedPinOnSearchViewController: UIViewController, UITextFieldDelegate, UI
     
     //Delegateを使う準備
     weak var delegate: PostedPinOnSearchDelegate?
+    
+    //user defaultsを使う準備
+    let userDefaults:UserDefaults = UserDefaults.standard
+    var createMapPinCheckFlag2: String? = "NO"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,11 +73,38 @@ class PostedPinOnSearchViewController: UIViewController, UITextFieldDelegate, UI
         bg.image = UIImage(named: "背景new11")
         bg.layer.zPosition = -1
         self.view.addSubview(bg)
+        
+        //userDefauktsの初期値設定
+        userDefaults.register(defaults: ["createMapPinCheckFlag" : "Initial",
+                                         "createMapPinId" : "Initial",
+                                         "createMapPinId-2" : "Initial"])
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+
+        let createMapPinCheckFlag = userDefaults.string(forKey: "createMapPinCheckFlag")!
+        let createMapPinId = userDefaults.string(forKey: "createMapPinId")!
+        
+        print("createMapPinCheckFlag = \(createMapPinCheckFlag)")
+        print("createMapPinId = \(createMapPinId)")
+        
+        //画面遷移元のPostedDataViewControllerでcreateMapPinボタンが押された事のCheckFlag
+        if createMapPinCheckFlag == "YES" {
+            postedNumber.text = "\(createMapPinId)"
+            
+            createMapPinCheckFlag2 = userDefaults.string(forKey: "createMapPinCheckFlag-2")!
+            print("createMapPinCheckFlag2 = \(createMapPinCheckFlag2!)")
+            
+            //CheckFlagを初期値のnilに変えておく
+            userDefaults.removeObject(forKey: "createMapPinCheckFlag")
+            userDefaults.synchronize()
+        }
+        
     }
     
     // Returnボタンを押した際にキーボードを消す（※TextViewには設定できない。改行できなくなる為＾＾）
@@ -130,7 +164,6 @@ class PostedPinOnSearchViewController: UIViewController, UITextFieldDelegate, UI
         // 検索フィールドの少なくとも１箇所にテキストが打ち込まれている場合：
         if category.text != "" || postedName.text != "" || postedNumber.text != "" {
             
-            
             //①postedNumberが打ち込まれている場合　→ 対象の情報は1つに絞られる為すぐにobserveで抽出できる
             if postedNumber.text != "" {
                 var ref: DatabaseReference!
@@ -165,7 +198,13 @@ class PostedPinOnSearchViewController: UIViewController, UITextFieldDelegate, UI
                         self.delegate?.postedPinOnSearch(pinOfPostedLatitude: pinOfPostedLatitude, pinOfPostedLongitude: pinOfPostedLongitude, pinTitle: pinTitle, pinSubTitle: pinSubTitle)
                         
                         //funcの通過確認
-                        print("①のfunc postedPinOnSurrent()のDelegateを通過")
+                        print("①のfunc postedPinOnSearch()のDelegateを通過")
+                        
+                        //※投稿一覧でピン表示ボタンを押された際だけの遷移設定
+                        if self.createMapPinCheckFlag2 == "YES-2" {
+                            print("createMapPinId-2の通過")
+                        self.presentingViewController?.dismiss(animated: true, completion: nil)
+                        }
                         
                         // 移動先ViewControllerのインスタンスを取得（ストーリーボードIDから）
                         let searchMapViewController = self.storyboard?.instantiateViewController(withIdentifier: "SearchMap")

@@ -950,9 +950,11 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     //セル内のReviseボタンが押された時に呼ばれるメソッド
     @objc func handleReviseButton(_ sender: UIButton, forEvent event: UIEvent) {
         
-        //ReviseDataViewControllerに画面遷移
-        let reviseDataViewController = self.storyboard?.instantiateViewController(withIdentifier: "Revise")
-        self.present(reviseDataViewController!, animated: true, completion: nil)
+        self.performSegue(withIdentifier: "toRevised", sender: nil)
+        
+        //ReviseDataViewControllerに画面遷移（→新しい画面を毎回作っていそうなので一旦やめる）
+        //*let reviseDataViewController = self.storyboard?.instantiateViewController(withIdentifier: "Revise")
+        //*self.present(reviseDataViewController!, animated: true, completion: nil)
         
     }
     
@@ -960,20 +962,84 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     //セル内のcreateMapPinボタンが押された時に呼ばれるメソッド
     @objc func handleCreateMapPinButton(_ sender: UIButton, forEvent event: UIEvent) {
         
-        //tabBarControllerと共にPostedPinOnSearchViewControllerに画面遷移
-        //*let tabBarController = parent as! ESTabBarController
-        //*tabBarController.setSelectedIndex(2, animated: false)
-        //*for viewController in tabBarController.childViewControllers {
-            //*if viewController is SearchMapViewController {
-                //*let searchMapViewContoller = viewController as! SearchMapViewController
-                //*searchMapViewContoller.searchButton.addTarget(self, action: Selector(("tapped")), for: .touchUpInside)
-                //*break
-            //*}
-        //*}
+        // タップされたセルのインデックスを求める
+        let touch = event.allTouches?.first
+        let point = touch!.location(in: self.tableView)
+        let indexPath = tableView.indexPathForRow(at: point)
         
-        SVProgressHUD.show(withStatus: "「投稿情報を地図にピンで再表示するボタン」です。\n\n鋭意実装中ですのでもう少しお待ち下さいませ！")
-        SVProgressHUD.dismiss(withDelay: 4.0)
+        let postData : PostData
         
+        if textSearchBar.text == "" {
+            // 配列からタップされたインデックスのデータを取り出す
+            postData = postArray[indexPath!.row]
+            
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by createMapPinボタン＝\(postData)")
+        }
+            
+        else if textSearchBar.text == "【※貴方の全投稿を抽出中】" {
+            
+            // 配列からタップされたインデックスのデータを取り出す
+            postData = postArrayOnHome1[indexPath!.row]
+            
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by createMapPinボタン＝\(postData)")
+        }
+            
+        else if textSearchBar.text == "【※貴方が「いいね」した投稿を抽出中】" {
+            
+            // 配列からタップされたインデックスのデータを取り出す
+            postData = postArrayOnHome2[indexPath!.row]
+            
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by createMapPinボタン＝\(postData)")
+        }
+            
+        else if textSearchBar.text == "【※貴方の「自分専用」を抽出中】" {
+            
+            // 配列からタップされたインデックスのデータを取り出す
+            postData = postArrayOnHome3[indexPath!.row]
+            
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by createMapPinボタン＝\(postData)")
+        }
+            
+        else {
+            // 検索バーに入力された単語をスペースで分けて配列に入れる
+            let searchWords = textSearchBar.text!
+            let array = searchWords.components(separatedBy: NSCharacterSet.whitespaces)
+            // 検索バーのテキストを一部でも含むものをAND検索する！
+            var tempFilteredArray = postArrayAll
+            for n in array {
+                tempFilteredArray = tempFilteredArray.filter({ ($0.category?.localizedCaseInsensitiveContains(n))! || ($0.contents?.localizedCaseInsensitiveContains(n))! || ($0.relatedURL?.localizedCaseInsensitiveContains(n))! || ($0.secretpass?.localizedCaseInsensitiveContains(n))! || ($0.id?.localizedCaseInsensitiveContains(n))! || ($0.pinAddress?.localizedCaseInsensitiveContains(n))! || ($0.name?.localizedCaseInsensitiveContains(n))!})
+            }
+            postArrayBySearch = tempFilteredArray
+            postData = postArrayBySearch[indexPath!.row]
+            
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by createMapPinボタン＝\(postData)")
+        }
+        
+        //タップを検知されたpostDataから投稿ナンバーを抽出する
+        let createMapPinId = postData.id
+        print("タップされたインデックスのid by createMapPinボタン＝\(createMapPinId!)")
+        
+        userDefaults.set(createMapPinId, forKey: "createMapPinId")
+        userDefaults.set("YES", forKey: "createMapPinCheckFlag")
+        userDefaults.set("YES-2", forKey: "createMapPinCheckFlag-2")
+        userDefaults.synchronize()
+        
+        let tabBarController = self.parent as! ESTabBarController
+        tabBarController.setSelectedIndex(2, animated: false)
+        for viewController in tabBarController.childViewControllers {
+            if viewController is SearchMapViewController {
+                let postedPinOnSearchViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostedPinOnSearch") as! PostedPinOnSearchViewController
+                self.navigationController?.present(postedPinOnSearchViewController, animated: false, completion: nil)
+            }
+        }
+        
+        //*SVProgressHUD.show(withStatus: "「投稿情報を地図にピンで再表示するボタン」です。\n\n鋭意実装中ですのでもう少しお待ち下さいませ！")
+        //*SVProgressHUD.dismiss(withDelay: 4.0)
     }
     
     
@@ -1052,8 +1118,8 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     //地図上で「吹き出し内の右のボタン」を押された際の処理
     func buttonRightSelection() {
         
-        var buttonRightTitle = userDefaults.string(forKey: "buttonRightTitle")!
-        var buttonRightSubtitle = userDefaults.string(forKey: "buttonRightSubtitle")!
+        let buttonRightTitle = userDefaults.string(forKey: "buttonRightTitle")!
+        let buttonRightSubtitle = userDefaults.string(forKey: "buttonRightSubtitle")!
         
         self.textSearchBar.text = "\(buttonRightTitle) \(buttonRightSubtitle)"
         print("\(textSearchBar.text!)")
