@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     func setupTab() {
         
         // 画像のファイル名を指定してESTabBarControllerを作成する
-        let tabBarController: ESTabBarController! = ESTabBarController(tabIconNames: ["Home-1", "Current-1","Search-1", "Posted"])
+        let tabBarController: ESTabBarController! = ESTabBarController(tabIconNames: ["Home-1", "Current-1","Search-1", "Posted", "Special"])
         
         // 背景色、選択時の色を設定する
         tabBarController.selectedColor = UIColor(red: 0.0, green: 0.0, blue: 1.0, alpha:1.0)
@@ -69,11 +69,13 @@ class ViewController: UIViewController {
         let currentViewController = storyboard?.instantiateViewController(withIdentifier: "CurrentMap")
         let searchViewController = storyboard?.instantiateViewController(withIdentifier: "SearchMap")
         let postedDataViewController = storyboard?.instantiateViewController(withIdentifier: "PostedData")
+        let specialViewController = storyboard?.instantiateViewController(withIdentifier: "Special")
         
         tabBarController.setView(homeViewController, at: 0)
         tabBarController.setView(currentViewController, at: 1)
         tabBarController.setView(searchViewController, at: 2)
         tabBarController.setView(postedDataViewController, at: 3)
+        tabBarController.setView(specialViewController, at: 4)
     }
     
 }
