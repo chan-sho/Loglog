@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseDatabase
 import SVProgressHUD
 
 
@@ -90,11 +91,23 @@ class SpecialToSendViewController: UIViewController, UITextViewDelegate, UITextF
             return
         }
         else {
-            let userName = Auth.auth().currentUser!.displayName
-            SVProgressHUD.showSuccess(withStatus: "\(userName!)さん\n\n貴重なご意見、本当にありがとうございました！\nこれからも頑張ってより良いLoglogにしていきますので、どうか宜しくお願い致します！")
-            
             //FireBase上に辞書型データで残す処理
+            //postDataに必要な情報を取得しておく
+            let time = Date.timeIntervalSinceReferenceDate
+            let name = Auth.auth().currentUser?.displayName
+
+            //メールアドレスが空白だった際のデータ準備
+            if userEmailAddress.text == "" {
+                let email = "e-mail記載なし"
+                userEmailAddress.text = email
+            }
             
+            //**重要** 辞書を作成してFirebaseに保存する 【※後でAnnotationの位置情報も正確に追加する！！】
+            let postRef = Database.database().reference().child(Const2.PostPath2)
+            let postDic = ["userID": Auth.auth().currentUser!.uid, "time": String(time), "name": name!, "requestTextField": String(textField.text!), "requestUserEmail": userEmailAddress.text!] as [String : Any]
+            postRef.childByAutoId().setValue(postDic)
+            
+            SVProgressHUD.showSuccess(withStatus: "\(name!)さん\n\n貴重なご意見、本当にありがとうございました！\nこれからも頑張ってより良いLoglogにしていきますので、どうか宜しくお願い致します！")
             
             //送信完了した事をfinalFlagで判別し、画面遷移させる
             userDefaults.set("YES", forKey: "finalFlag")

@@ -28,6 +28,9 @@ class PostData: NSObject {
     var likes: [String] = []
     var isLiked: Bool = false
     var EULAagreement: String?
+    var requestTextField: String?
+    var requestUserEmail: String?
+    
     
     //自分だけの地図にするかどうかのボタン
     var myMap: [String] = []
@@ -57,6 +60,8 @@ class PostData: NSObject {
         self.pincoodinateLongitude = valueDictionary["pincoodinateLongitude"] as? Double
         self.pinAddress = valueDictionary["pinAddress"] as? String
         self.EULAagreement = valueDictionary["EULAagreement"] as? String
+        self.requestTextField = valueDictionary["requestTextField"] as? String
+        self.requestUserEmail = valueDictionary["requestUserEmail"] as? String
         
         let time = valueDictionary["time"] as? String
         self.date = Date(timeIntervalSinceReferenceDate: TimeInterval(time!)!)
