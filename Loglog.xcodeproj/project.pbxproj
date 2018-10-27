@@ -30,6 +30,7 @@
 		313551712176CA8500C6C360 /* AJAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313551702176CA8500C6C360 /* AJAlertController.swift */; };
 		313551732176CB4300C6C360 /* AJAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 313551722176CB4300C6C360 /* AJAlertController.xib */; };
 		313B0B98218415E5005734F7 /* SpecialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313B0B97218415E5005734F7 /* SpecialViewController.swift */; };
+		313B0B9A21847FC5005734F7 /* SpecialToSendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313B0B9921847FC5005734F7 /* SpecialToSendViewController.swift */; };
 		316ADA6F215390F6005C0FDF /* PostedPinOnCurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316ADA6E215390F6005C0FDF /* PostedPinOnCurrentViewController.swift */; };
 		316ADA712153911C005C0FDF /* PostedPinOnSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316ADA702153911C005C0FDF /* PostedPinOnSearchViewController.swift */; };
 		316DF8F2213F6297000E1E11 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316DF8F1213F6297000E1E11 /* Const.swift */; };
@@ -71,6 +72,7 @@
 		313551702176CA8500C6C360 /* AJAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AJAlertController.swift; sourceTree = "<group>"; };
 		313551722176CB4300C6C360 /* AJAlertController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AJAlertController.xib; sourceTree = "<group>"; };
 		313B0B97218415E5005734F7 /* SpecialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialViewController.swift; sourceTree = "<group>"; };
+		313B0B9921847FC5005734F7 /* SpecialToSendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialToSendViewController.swift; sourceTree = "<group>"; };
 		316ADA6E215390F6005C0FDF /* PostedPinOnCurrentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedPinOnCurrentViewController.swift; sourceTree = "<group>"; };
 		316ADA702153911C005C0FDF /* PostedPinOnSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedPinOnSearchViewController.swift; sourceTree = "<group>"; };
 		316DF8F1213F6297000E1E11 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				311D535C213A7BAD0001DF77 /* PostedDataViewController.swift */,
 				318F81062141023B00A8F17B /* PostedDataViewCell.swift */,
 				313B0B97218415E5005734F7 /* SpecialViewController.swift */,
+				313B0B9921847FC5005734F7 /* SpecialToSendViewController.swift */,
 				318F81072141023B00A8F17B /* PostedDataViewCell.xib */,
 				318F81042140FB8F00A8F17B /* PostData.swift */,
 				316ADA6E215390F6005C0FDF /* PostedPinOnCurrentViewController.swift */,
@@ -354,6 +357,7 @@
 				311D535B213A7B500001DF77 /* PostViewController.swift in Sources */,
 				311D5355213A7AD00001DF77 /* LoginViewController.swift in Sources */,
 				311D5357213A7B120001DF77 /* CurrentMapViewController.swift in Sources */,
+				313B0B9A21847FC5005734F7 /* SpecialToSendViewController.swift in Sources */,
 				31778FE8215C7973005FDD19 /* ColorMKPointAnnotation.swift in Sources */,
 				311D535F213A7BC80001DF77 /* HomeViewController.swift in Sources */,
 				31097F7C217ABC2C009B5B3D /* Guide1ViewController.swift in Sources */,

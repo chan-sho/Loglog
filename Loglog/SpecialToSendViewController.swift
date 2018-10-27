@@ -1,5 +1,5 @@
 //
-//  SpecialViewController.swift
+//  SpecialToSendViewController.swift
 //  Loglog
 //
 //  Created by 高野翔 on 2018/10/27.
@@ -7,18 +7,19 @@
 //
 
 import UIKit
-import ESTabBarController
 import Firebase
 import FirebaseAuth
 import SVProgressHUD
 
 
-class SpecialViewController: UIViewController, UITextViewDelegate {
-
+class SpecialToSendViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
+    
     
     @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var userEmailAddress: UITextField!
     @IBOutlet weak var textField: UITextView!
-    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var finalSendButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
     
     //user defaultsを使う準備
     let userDefaults:UserDefaults = UserDefaults.standard
@@ -27,6 +28,7 @@ class SpecialViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        userEmailAddress.delegate = self
         textField.delegate = self
         
         // 枠のカラー
@@ -37,8 +39,9 @@ class SpecialViewController: UIViewController, UITextViewDelegate {
         textField.layer.cornerRadius = 10.0
         textField.layer.masksToBounds = true
         
-        //userDefauktsの初期値設定
-        userDefaults.register(defaults: ["textField" : "※記載なし", "finalFlag" : "NO"])
+        //ボタン同時押しによるアプリクラッシュを防ぐ
+        finalSendButton.isExclusiveTouch = true
+        cancelButton.isExclusiveTouch = true
     }
     
     
@@ -51,13 +54,13 @@ class SpecialViewController: UIViewController, UITextViewDelegate {
             let userName = user.displayName
             userNameLabel.text = "\(userName!)さん"
         }
-        
-        let finalFlag = userDefaults.string(forKey: "finalFlag")!
-        if finalFlag == "YES" {
-            textField.text = ""
-            userDefaults.set("NO", forKey: "finalFlag")
-            userDefaults.synchronize()
+        let userAddress = Auth.auth().currentUser!.email
+        if let userAddress = userAddress {
+            userEmailAddress.text = userAddress
         }
+        
+        textField.text = userDefaults.string(forKey: "textField")!
+        
     }
 
     
@@ -67,25 +70,37 @@ class SpecialViewController: UIViewController, UITextViewDelegate {
     }
     
     
+    // Returnボタンを押した際にキーボードを消す
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        userEmailAddress.resignFirstResponder()
+        return true
+    }
+    
+    
     // テキスト以外の場所をタッチした際にキーボードを消す
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        userEmailAddress.resignFirstResponder()
         textField.resignFirstResponder()
     }
     
     
-    @IBAction func sendButton(_ sender: Any) {
-        if textField.text == "" {
+    @IBAction func finalSendButton(_ sender: Any) {
+        if textField.text == "※記載なし" {
             SVProgressHUD.showError(withStatus: "ご意見・ご要望の記載が空白の様です。ご確認下さい。")
-            userDefaults.set("※記載なし", forKey: "textField")
+            return
         }
         else {
-            userDefaults.set(textField.text, forKey: "textField")
+            let userName = Auth.auth().currentUser!.displayName
+            SVProgressHUD.showSuccess(withStatus: "\(userName!)さん\n\n貴重なご意見、本当にありがとうございました！\nこれからも頑張ってより良いLoglogにしていきますので、どうか宜しくお願い致します！")
+            
+            //FireBase上に辞書型データで残す処理
+            
+            
+            //送信完了した事をfinalFlagで判別し、画面遷移させる
+            userDefaults.set("YES", forKey: "finalFlag")
             userDefaults.synchronize()
+            self.navigationController!.popToRootViewController(animated: true)
         }
     }
     
-    
-    @IBAction func unwind(_ segue: UIStoryboardSegue) {
-        // 他の画面から segue を使って戻ってきた時に呼ばれる
-    }
 }
