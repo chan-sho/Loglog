@@ -949,13 +949,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     
     //セル内のReviseボタンが押された時に呼ばれるメソッド
     @objc func handleReviseButton(_ sender: UIButton, forEvent event: UIEvent) {
-        
         self.performSegue(withIdentifier: "toRevised", sender: nil)
-        
-        //ReviseDataViewControllerに画面遷移（→新しい画面を毎回作っていそうなので一旦やめる）
-        //*let reviseDataViewController = self.storyboard?.instantiateViewController(withIdentifier: "Revise")
-        //*self.present(reviseDataViewController!, animated: true, completion: nil)
-        
     }
     
     
@@ -1025,8 +1019,6 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         print("タップされたインデックスのid by createMapPinボタン＝\(createMapPinId!)")
         
         userDefaults.set(createMapPinId, forKey: "createMapPinId")
-        userDefaults.set("YES", forKey: "createMapPinCheckFlag")
-        userDefaults.set("YES-2", forKey: "createMapPinCheckFlag-2")
         userDefaults.synchronize()
         
         let tabBarController = self.parent as! ESTabBarController
@@ -1034,7 +1026,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         for viewController in tabBarController.childViewControllers {
             if viewController is SearchMapViewController {
                 let searchMapViewController = viewController as! SearchMapViewController
-                searchMapViewController.forceSegue()
+                searchMapViewController.createMapPin()
             }
         }
     }

@@ -38,10 +38,6 @@ class PostedPinOnSearchViewController: UIViewController, UITextFieldDelegate, UI
     //Delegateを使う準備
     weak var delegate: PostedPinOnSearchDelegate?
     
-    //user defaultsを使う準備
-    let userDefaults:UserDefaults = UserDefaults.standard
-    var createMapPinCheckFlag2: String? = "NO"
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,40 +69,11 @@ class PostedPinOnSearchViewController: UIViewController, UITextFieldDelegate, UI
         bg.image = UIImage(named: "背景new11")
         bg.layer.zPosition = -1
         self.view.addSubview(bg)
-        
-        //userDefauktsの初期値設定
-        userDefaults.register(defaults: ["createMapPinCheckFlag" : "Initial",
-                                         "createMapPinId" : "Initial",
-                                         "createMapPinId-2" : "Initial"])
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-
-        let createMapPinCheckFlag = userDefaults.string(forKey: "createMapPinCheckFlag")!
-        let createMapPinId = userDefaults.string(forKey: "createMapPinId")!
-        
-        print("createMapPinCheckFlag = \(createMapPinCheckFlag)")
-        print("createMapPinId = \(createMapPinId)")
-        print("createMapPinCheckFlag2 = \(createMapPinCheckFlag2!)")
-        
-        //画面遷移元のPostedDataViewControllerでcreateMapPinボタンが押された事のCheckFlag
-        if createMapPinCheckFlag == "YES" {
-            postedNumber.text = "\(createMapPinId)"
-            
-            //※現時点では能力不足で使用していないFlag。。。今後のスムーズな画面遷移の際に活用したい！！
-            createMapPinCheckFlag2 = userDefaults.string(forKey: "createMapPinCheckFlag-2")!
-            print("createMapPinCheckFlag2 = \(createMapPinCheckFlag2!)")
-            
-            //CheckFlagを初期値のnilに変えておく
-            userDefaults.removeObject(forKey: "createMapPinCheckFlag")
-            userDefaults.synchronize()
-        }
-        
     }
     
     

@@ -11,6 +11,9 @@ import MapKit
 import CoreLocation
 import SVProgressHUD
 import ESTabBarController
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 
 class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate, MKMapViewDelegate, PostedPinOnSearchDelegate {
@@ -36,6 +39,9 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
     
     //user defaultsを使う準備
     let userDefaults:UserDefaults = UserDefaults.standard
+    
+    // 投稿データから「投稿者」限定のデータを判断する為の準備
+    let uid = Auth.auth().currentUser?.uid
     
     
     override func viewDidLoad() {
@@ -359,9 +365,54 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
     }
     
     
-    //強制画面遷移のアクション（from PostedDataViewController）
-    func forceSegue() {
-        self.performSegue(withIdentifier: "Detail", sender: nil)
+    //投稿情報をピン際表示するアクション（from PostedDataViewController）
+    func createMapPin() {
+        //*self.performSegue(withIdentifier: "Detail", sender: nil)
+        
+        let createMapPinId = userDefaults.string(forKey: "createMapPinId")!
+        print("createMapPinId = \(createMapPinId)")
+        
+        var ref: DatabaseReference!
+        ref = Database.database().reference().child("posts").child("\(createMapPinId)")
+            
+        //中身の確認
+        print("refの中身は：\(ref!)")
+            
+        //  FirebaseからobserveSingleEventで1回だけデータ検索
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            var value = snapshot.value as? [String : AnyObject]
+            //使わない画像データのkeyを配列から削除
+            _ = value?.removeValue(forKey: "image")
+                
+            //中身の確認
+            if value != nil{
+                print("valueの中身は：\(value!)")
+                    
+                //緯度と経度をvalue[]から取得
+                let pinOfPostedLatitude = value!["pincoodinateLatitude"] as! Double
+                let pinOfPostedLongitude = value!["pincoodinateLongitude"] as! Double
+                let pinTitle = "\(value!["category"] ?? "カテゴリーなし" as AnyObject) \(value!["name"] ?? "投稿者名なし" as AnyObject)"
+                let pinSubTitle = "\(value!["pinAddress"] ?? "投稿場所情報なし" as AnyObject)"
+                    
+                //データの確認
+                print("緯度は：\(pinOfPostedLatitude)")
+                print("経度は：\(pinOfPostedLongitude)")
+                print("Titleは：\(pinTitle)")
+                print("SubTitleは：\(pinSubTitle)")
+                    
+                //Delegateされているfunc()を実行
+                self.postedPinOnSearch(pinOfPostedLatitude: pinOfPostedLatitude, pinOfPostedLongitude: pinOfPostedLongitude, pinTitle: pinTitle, pinSubTitle: pinSubTitle)
+                    
+                //funcの通過確認
+                print("func postedPinOnSearch()を通過")
+                
+            }
+            else {
+                print("valueの中身は：nil")
+                SVProgressHUD.showError(withStatus: "投稿情報をもう一度確認して下さい。\n投稿がすでに削除されている可能性があります。")
+                return
+            }
+        })
     }
     
     
