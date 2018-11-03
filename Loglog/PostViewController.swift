@@ -107,7 +107,13 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     
     @IBAction func postWithoutPhoto(_ sender: Any) {
+        if categoryText.text == "" {
+            userDefaults.set("(カテゴリーなし)", forKey: "categoryText")
+        }
+        else {
         userDefaults.set(categoryText.text, forKey: "categoryText")
+        }
+        
         userDefaults.set(contentsText.text, forKey: "contentsText")
         userDefaults.set(relatedURL.text, forKey: "relatedURL")
         userDefaults.set(secretPass.text, forKey: "secretPass")
@@ -115,7 +121,13 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     
     @IBAction func postWithPhoto(_ sender: Any) {
-        userDefaults.set(categoryText.text, forKey: "categoryText")
+        if categoryText.text == "" {
+            userDefaults.set("(カテゴリーなし)", forKey: "categoryText")
+        }
+        else {
+            userDefaults.set(categoryText.text, forKey: "categoryText")
+        }
+        
         userDefaults.set(contentsText.text, forKey: "contentsText")
         userDefaults.set(relatedURL.text, forKey: "relatedURL")
         userDefaults.set(secretPass.text, forKey: "secretPass")

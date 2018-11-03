@@ -93,7 +93,7 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
 
     // categoryTextにPickerを実装する準備
     var pickerView: UIPickerView = UIPickerView()
-    let list = ["", "思い出", "伝えられなかったありがとう", "名前を知らない貴方へありがとう", "ジョブマッチング", "秘密の場所", "観光スポット", "グルメ（ランチ）", "グルメ（ディナー）", "レジャー", "その他"]
+    let list = ["(カテゴリーなし)", "思い出", "伝えられなかったありがとう", "名前を知らない貴方へありがとう", "ジョブマッチング", "秘密の場所", "観光スポット", "グルメ（ランチ）", "グルメ（ディナー）", "レジャー", "その他"]
     
     // categoryにPickerを実装する
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

@@ -1309,7 +1309,7 @@
                                 <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Guide(Posted)-2" translatesAutoresizingMaskIntoConstraints="NO" id="HCF-gQ-Uyw">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Guide(Posted)-2_R" translatesAutoresizingMaskIntoConstraints="NO" id="HCF-gQ-Uyw">
                                 <rect key="frame" x="62" y="316.5" width="250" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="JVh-1t-BfD"/>
@@ -1317,12 +1317,14 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxe-ov-ZeE">
-                                <rect key="frame" x="20" y="426.5" width="335" height="105"/>
+                                <rect key="frame" x="20" y="426.5" width="335" height="140"/>
                                 <string key="text">【自分専用ボタン】
 投稿した内容を他のユーザーに公開したくない場合に押して下さい。
 【編集ボタン】
 投稿した内容を編集＆削除するボタン
-（投稿者ご本人のみ編集＆削除可能）</string>
+（投稿者ご本人のみ編集＆削除可能）
+【ピン表示ボタン】
+投稿を地図上に表示するボタン</string>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2733,7 +2735,7 @@
         <image name="Guide(Home)-1" width="302" height="281"/>
         <image name="Guide(Home)-2" width="320" height="337"/>
         <image name="Guide(Posted)-1" width="318" height="193"/>
-        <image name="Guide(Posted)-2" width="309" height="122"/>
+        <image name="Guide(Posted)-2_R" width="296" height="107"/>
         <image name="Guide(Search)-1" width="330" height="34"/>
         <image name="Guide(Setting)-1" width="272" height="325"/>
         <image name="Guide(Setting)-2" width="280" height="55"/>
