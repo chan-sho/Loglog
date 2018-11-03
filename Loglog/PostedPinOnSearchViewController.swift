@@ -92,6 +92,7 @@ class PostedPinOnSearchViewController: UIViewController, UITextFieldDelegate, UI
         
         print("createMapPinCheckFlag = \(createMapPinCheckFlag)")
         print("createMapPinId = \(createMapPinId)")
+        print("createMapPinCheckFlag2 = \(createMapPinCheckFlag2!)")
         
         //画面遷移元のPostedDataViewControllerでcreateMapPinボタンが押された事のCheckFlag
         if createMapPinCheckFlag == "YES" {
@@ -194,16 +195,38 @@ class PostedPinOnSearchViewController: UIViewController, UITextFieldDelegate, UI
                         print("①のTitleは：\(pinTitle)")
                         print("①のSubTitleは：\(pinSubTitle)")
                         
+                        //※投稿一覧でピン表示ボタンを押された際だけの遷移設定
+                        if self.createMapPinCheckFlag2 == "YES-2" {
+                            print("createMapCheckFlag2の通過")
+                            print("delegate = \(String(describing: self.delegate))")
+                            
+                            //Delegateされているfunc()を実行
+                            self.delegate?.postedPinOnSearch(pinOfPostedLatitude: pinOfPostedLatitude, pinOfPostedLongitude: pinOfPostedLongitude, pinTitle: pinTitle, pinSubTitle: pinSubTitle)
+                            
+                            // 移動先ViewControllerのインスタンスを取得（ストーリーボードIDから）
+                            let searchMapViewController = self.storyboard?.instantiateViewController(withIdentifier: "SearchMap")
+                            self.tabBarController?.navigationController?.present(searchMapViewController!, animated: true, completion: nil)
+                        }
+                        
                         //Delegateされているfunc()を実行
                         self.delegate?.postedPinOnSearch(pinOfPostedLatitude: pinOfPostedLatitude, pinOfPostedLongitude: pinOfPostedLongitude, pinTitle: pinTitle, pinSubTitle: pinSubTitle)
                         
                         //funcの通過確認
                         print("①のfunc postedPinOnSearch()のDelegateを通過")
+                        print("delegate = \(String(describing: self.delegate))")
                         
                         //※投稿一覧でピン表示ボタンを押された際だけの遷移設定
                         if self.createMapPinCheckFlag2 == "YES-2" {
-                            print("createMapPinId-2の通過")
-                        self.presentingViewController?.dismiss(animated: true, completion: nil)
+                            print("createMapCheckFlag2の通過")
+                            
+                            self.delegate = "<Loglog.SearchMapViewController>" as? PostedPinOnSearchDelegate
+                            
+                            //Delegateされているfunc()を実行
+                            self.delegate?.postedPinOnSearch(pinOfPostedLatitude: pinOfPostedLatitude, pinOfPostedLongitude: pinOfPostedLongitude, pinTitle: pinTitle, pinSubTitle: pinSubTitle)
+                            
+                            // 移動先ViewControllerのインスタンスを取得（ストーリーボードIDから）
+                            let searchMapViewController = self.storyboard?.instantiateViewController(withIdentifier: "SearchMap")
+                            self.tabBarController?.navigationController?.present(searchMapViewController!, animated: true, completion: nil)
                         }
                         
                         // 移動先ViewControllerのインスタンスを取得（ストーリーボードIDから）

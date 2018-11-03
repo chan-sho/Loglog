@@ -14,7 +14,7 @@ import ESTabBarController
 
 
 class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate, MKMapViewDelegate, PostedPinOnSearchDelegate {
-
+    
     
     @IBOutlet weak var inputText: UITextField!
     @IBOutlet weak var displayMap: MKMapView!
@@ -59,6 +59,7 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
         postWithSearch.isExclusiveTouch = true
         searchButton.isExclusiveTouch = true
         userLocationButton.isExclusiveTouch = true
+        
     }
     
     
@@ -292,7 +293,7 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
         self.displayMap.removeAnnotations(pinsOfPosted)
     }
     
-    //PostedPinOnCurrentViewControllerクラスのインスタンスを作り、そのプロパティ（delegate）にselfを代入
+    //PostedPinOnSearchViewControllerクラスのインスタンスを作り、そのプロパティ（delegate）にselfを代入
     //※且つそれをSegueの中で定義するとうまくいった！（viewDidLoadに書くとうまくいかなかった）
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let postedPinOSVC = segue.destination as? PostedPinOnSearchViewController {
@@ -355,6 +356,12 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
                 }
             }
         }
+    }
+    
+    
+    //強制画面遷移のアクション（from PostedDataViewController）
+    func forceSegue() {
+        self.performSegue(withIdentifier: "Detail", sender: nil)
     }
     
     

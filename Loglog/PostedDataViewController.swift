@@ -1029,18 +1029,14 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         userDefaults.set("YES-2", forKey: "createMapPinCheckFlag-2")
         userDefaults.synchronize()
         
-        //この画面遷移がうまくいかずにいるので現時点ではこのまま諦める・・・
-        //*let tabBarController = self.parent as! ESTabBarController
-        //*tabBarController.setSelectedIndex(2, animated: false)
-        //*for viewController in tabBarController.childViewControllers {
-            //*if viewController is SearchMapViewController {
-                //let postedPinOnSearchViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostedPinOnSearch") as! PostedPinOnSearchViewController
-                //self.navigationController?.present(postedPinOnSearchViewController, animated: false, completion: nil)
-            //*}
-        //*}
-        
-        SVProgressHUD.show(withStatus: "「投稿情報を地図にピンで再表示するボタン」です。\n\n鋭意実装中ですのでもう少しお待ち下さいませ！")
-        SVProgressHUD.dismiss(withDelay: 4.0)
+        let tabBarController = self.parent as! ESTabBarController
+        tabBarController.setSelectedIndex(2, animated: false)
+        for viewController in tabBarController.childViewControllers {
+            if viewController is SearchMapViewController {
+                let searchMapViewController = viewController as! SearchMapViewController
+                searchMapViewController.forceSegue()
+            }
+        }
     }
     
     
