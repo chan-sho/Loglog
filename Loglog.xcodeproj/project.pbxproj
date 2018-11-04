@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31014EBA218E4F44006FB4A6 /* ReviseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31014EB9218E4F44006FB4A6 /* ReviseDetailViewController.swift */; };
 		31097F7A217AA7D0009B5B3D /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31097F79217AA7D0009B5B3D /* GuideViewController.swift */; };
 		31097F7C217ABC2C009B5B3D /* Guide1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31097F7B217ABC2C009B5B3D /* Guide1ViewController.swift */; };
 		31097F7E217ABC3E009B5B3D /* Guide2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31097F7D217ABC3E009B5B3D /* Guide2ViewController.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31014EB9218E4F44006FB4A6 /* ReviseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviseDetailViewController.swift; sourceTree = "<group>"; };
 		31097F79217AA7D0009B5B3D /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		31097F7B217ABC2C009B5B3D /* Guide1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide1ViewController.swift; sourceTree = "<group>"; };
 		31097F7D217ABC3E009B5B3D /* Guide2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide2ViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				31C45818213E3A1000591DCF /* PostFinalizeViewController.swift */,
 				311D535C213A7BAD0001DF77 /* PostedDataViewController.swift */,
 				313310D62150B86B007DC1E1 /* ReviseDataViewController.swift */,
+				31014EB9218E4F44006FB4A6 /* ReviseDetailViewController.swift */,
 				316ADA6E215390F6005C0FDF /* PostedPinOnCurrentViewController.swift */,
 				316ADA702153911C005C0FDF /* PostedPinOnSearchViewController.swift */,
 				318F81072141023B00A8F17B /* PostedDataViewCell.xib */,
@@ -359,6 +362,7 @@
 			files = (
 				311D535B213A7B500001DF77 /* PostViewController.swift in Sources */,
 				311D5355213A7AD00001DF77 /* LoginViewController.swift in Sources */,
+				31014EBA218E4F44006FB4A6 /* ReviseDetailViewController.swift in Sources */,
 				311D5357213A7B120001DF77 /* CurrentMapViewController.swift in Sources */,
 				313B0B9A21847FC5005734F7 /* SpecialToSendViewController.swift in Sources */,
 				31778FE8215C7973005FDD19 /* ColorMKPointAnnotation.swift in Sources */,

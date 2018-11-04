@@ -949,6 +949,60 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     
     //セル内のReviseボタンが押された時に呼ばれるメソッド
     @objc func handleReviseButton(_ sender: UIButton, forEvent event: UIEvent) {
+        
+        // タップされたセルのインデックスを求める
+        let touch = event.allTouches?.first
+        let point = touch!.location(in: self.tableView)
+        let indexPath = tableView.indexPathForRow(at: point)
+        
+        let postData : PostData
+        
+        if textSearchBar.text == "" {
+            // 配列からタップされたインデックスのデータを取り出す
+            postData = postArray[indexPath!.row]
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by Reviseボタン＝\(postData)")
+        }
+        else if textSearchBar.text == "【※貴方の全投稿を抽出中】" {
+            // 配列からタップされたインデックスのデータを取り出す
+            postData = postArrayOnHome1[indexPath!.row]
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by Reviseボタン＝\(postData)")
+        }
+        else if textSearchBar.text == "【※貴方が「いいね」した投稿を抽出中】" {
+            // 配列からタップされたインデックスのデータを取り出す
+            postData = postArrayOnHome2[indexPath!.row]
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by Reviseボタン＝\(postData)")
+        }
+        else if textSearchBar.text == "【※貴方の「自分専用」を抽出中】" {
+            // 配列からタップされたインデックスのデータを取り出す
+            postData = postArrayOnHome3[indexPath!.row]
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by Reviseボタン＝\(postData)")
+        }
+        else {
+            // 検索バーに入力された単語をスペースで分けて配列に入れる
+            let searchWords = textSearchBar.text!
+            let array = searchWords.components(separatedBy: NSCharacterSet.whitespaces)
+            // 検索バーのテキストを一部でも含むものをAND検索する！
+            var tempFilteredArray = postArrayAll
+            for n in array {
+                tempFilteredArray = tempFilteredArray.filter({ ($0.category?.localizedCaseInsensitiveContains(n))! || ($0.contents?.localizedCaseInsensitiveContains(n))! || ($0.relatedURL?.localizedCaseInsensitiveContains(n))! || ($0.secretpass?.localizedCaseInsensitiveContains(n))! || ($0.id?.localizedCaseInsensitiveContains(n))! || ($0.pinAddress?.localizedCaseInsensitiveContains(n))! || ($0.name?.localizedCaseInsensitiveContains(n))!})
+            }
+            postArrayBySearch = tempFilteredArray
+            postData = postArrayBySearch[indexPath!.row]
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by Reviseボタン＝\(postData)")
+        }
+        
+        //タップを検知されたpostDataから投稿ナンバーを抽出する
+        let reviseDataId = postData.id
+        print("タップされたインデックスのid by Reviseボタン＝\(reviseDataId!)")
+        
+        userDefaults.set(reviseDataId, forKey: "reviseDataId")
+        userDefaults.synchronize()
+        
         self.performSegue(withIdentifier: "toRevised", sender: nil)
     }
     
@@ -966,38 +1020,27 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         if textSearchBar.text == "" {
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArray[indexPath!.row]
-            
             // タップされたインデックスのデータを確認
             print("タップされたインデックスのデータ by createMapPinボタン＝\(postData)")
         }
-            
         else if textSearchBar.text == "【※貴方の全投稿を抽出中】" {
-            
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArrayOnHome1[indexPath!.row]
-            
             // タップされたインデックスのデータを確認
             print("タップされたインデックスのデータ by createMapPinボタン＝\(postData)")
         }
-            
         else if textSearchBar.text == "【※貴方が「いいね」した投稿を抽出中】" {
-            
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArrayOnHome2[indexPath!.row]
-            
             // タップされたインデックスのデータを確認
             print("タップされたインデックスのデータ by createMapPinボタン＝\(postData)")
         }
-            
         else if textSearchBar.text == "【※貴方の「自分専用」を抽出中】" {
-            
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArrayOnHome3[indexPath!.row]
-            
             // タップされたインデックスのデータを確認
             print("タップされたインデックスのデータ by createMapPinボタン＝\(postData)")
         }
-            
         else {
             // 検索バーに入力された単語をスペースで分けて配列に入れる
             let searchWords = textSearchBar.text!
@@ -1009,7 +1052,6 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             }
             postArrayBySearch = tempFilteredArray
             postData = postArrayBySearch[indexPath!.row]
-            
             // タップされたインデックスのデータを確認
             print("タップされたインデックスのデータ by createMapPinボタン＝\(postData)")
         }
