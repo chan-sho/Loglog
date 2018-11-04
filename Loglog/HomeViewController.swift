@@ -70,7 +70,7 @@ class HomeViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.userProfilePhoto.image = UIImage(data: data!)
                     self.userProfilePhoto.clipsToBounds = true
-                    self.userProfilePhoto.layer.cornerRadius = 27.5
+                    self.userProfilePhoto.layer.cornerRadius = 25
                 }
             }).resume()
             }
