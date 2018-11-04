@@ -1061,6 +1061,9 @@
                                 <state key="normal" title="※今までに頂戴しているご意見" backgroundImage="Btn2">
                                     <color key="titleColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="w5o-Ha-zJs" kind="show" id="JAK-nS-BxZ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1231,6 +1234,44 @@
                 <exit id="HAN-e4-CCg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4001" y="2012"/>
+        </scene>
+        <!--Request And Answer View Controller-->
+        <scene sceneID="YQS-kO-biV">
+            <objects>
+                <viewController id="w5o-Ha-zJs" customClass="RequestAndAnswerViewController" customModule="Loglog" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hO5-ra-qap">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="iEQ-73-M5N">
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CJB-zn-u8e">
+                                <rect key="frame" x="0.0" y="76" width="375" height="591"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iEQ-73-M5N" firstAttribute="trailing" secondItem="wSU-SZ-3w6" secondAttribute="trailing" id="1FR-eR-X3O"/>
+                            <constraint firstItem="CJB-zn-u8e" firstAttribute="top" secondItem="iEQ-73-M5N" secondAttribute="bottom" id="2dn-4k-m3a"/>
+                            <constraint firstItem="CJB-zn-u8e" firstAttribute="leading" secondItem="wSU-SZ-3w6" secondAttribute="leading" id="5BD-7K-eVI"/>
+                            <constraint firstItem="wSU-SZ-3w6" firstAttribute="bottom" secondItem="CJB-zn-u8e" secondAttribute="bottom" id="8OK-kx-aX1"/>
+                            <constraint firstItem="iEQ-73-M5N" firstAttribute="leading" secondItem="wSU-SZ-3w6" secondAttribute="leading" id="OsR-ia-gkf"/>
+                            <constraint firstItem="wSU-SZ-3w6" firstAttribute="trailing" secondItem="CJB-zn-u8e" secondAttribute="trailing" id="Vg5-g3-L8S"/>
+                            <constraint firstItem="iEQ-73-M5N" firstAttribute="top" secondItem="wSU-SZ-3w6" secondAttribute="top" id="dht-Kc-PiE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wSU-SZ-3w6"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="iEQ-73-M5N" id="xGV-eB-AvH"/>
+                        <outlet property="tableView" destination="CJB-zn-u8e" id="ytv-g4-dM0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fqu-ju-1NF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4804" y="2012"/>
         </scene>
         <!--Guide1 View Controller-->
         <scene sceneID="9zZ-cx-cZq">

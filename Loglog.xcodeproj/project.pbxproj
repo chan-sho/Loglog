@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		31014EBA218E4F44006FB4A6 /* ReviseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31014EB9218E4F44006FB4A6 /* ReviseDetailViewController.swift */; };
+		31014EBD218EFB82006FB4A6 /* RequestAndAnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31014EBB218EFB81006FB4A6 /* RequestAndAnswerTableViewCell.swift */; };
+		31014EBE218EFB82006FB4A6 /* RequestAndAnswerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31014EBC218EFB81006FB4A6 /* RequestAndAnswerTableViewCell.xib */; };
+		31014EC0218F07DA006FB4A6 /* RequestAndAnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31014EBF218F07DA006FB4A6 /* RequestAndAnswerViewController.swift */; };
 		31097F7A217AA7D0009B5B3D /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31097F79217AA7D0009B5B3D /* GuideViewController.swift */; };
 		31097F7C217ABC2C009B5B3D /* Guide1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31097F7B217ABC2C009B5B3D /* Guide1ViewController.swift */; };
 		31097F7E217ABC3E009B5B3D /* Guide2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31097F7D217ABC3E009B5B3D /* Guide2ViewController.swift */; };
@@ -50,6 +53,9 @@
 
 /* Begin PBXFileReference section */
 		31014EB9218E4F44006FB4A6 /* ReviseDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviseDetailViewController.swift; sourceTree = "<group>"; };
+		31014EBB218EFB81006FB4A6 /* RequestAndAnswerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAndAnswerTableViewCell.swift; sourceTree = "<group>"; };
+		31014EBC218EFB81006FB4A6 /* RequestAndAnswerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestAndAnswerTableViewCell.xib; sourceTree = "<group>"; };
+		31014EBF218F07DA006FB4A6 /* RequestAndAnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAndAnswerViewController.swift; sourceTree = "<group>"; };
 		31097F79217AA7D0009B5B3D /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		31097F7B217ABC2C009B5B3D /* Guide1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide1ViewController.swift; sourceTree = "<group>"; };
 		31097F7D217ABC3E009B5B3D /* Guide2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guide2ViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +160,9 @@
 				318F81042140FB8F00A8F17B /* PostData.swift */,
 				316DF8F1213F6297000E1E11 /* Const.swift */,
 				313B0B9B218522DC005734F7 /* Const2.swift */,
+				31014EBC218EFB81006FB4A6 /* RequestAndAnswerTableViewCell.xib */,
+				31014EBB218EFB81006FB4A6 /* RequestAndAnswerTableViewCell.swift */,
+				31014EBF218F07DA006FB4A6 /* RequestAndAnswerViewController.swift */,
 				31778FE7215C7973005FDD19 /* ColorMKPointAnnotation.swift */,
 				31097F79217AA7D0009B5B3D /* GuideViewController.swift */,
 				31097F7B217ABC2C009B5B3D /* Guide1ViewController.swift */,
@@ -271,6 +280,7 @@
 				318F81092141023B00A8F17B /* PostedDataViewCell.xib in Resources */,
 				311D534A213A65850001DF77 /* Assets.xcassets in Resources */,
 				311D5348213A65830001DF77 /* Main.storyboard in Resources */,
+				31014EBE218EFB82006FB4A6 /* RequestAndAnswerTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +380,7 @@
 				31097F7C217ABC2C009B5B3D /* Guide1ViewController.swift in Sources */,
 				313551712176CA8500C6C360 /* AJAlertController.swift in Sources */,
 				318F81052140FB8F00A8F17B /* PostData.swift in Sources */,
+				31014EC0218F07DA006FB4A6 /* RequestAndAnswerViewController.swift in Sources */,
 				311D5345213A65830001DF77 /* ViewController.swift in Sources */,
 				316ADA6F215390F6005C0FDF /* PostedPinOnCurrentViewController.swift in Sources */,
 				31097F86217ABC83009B5B3D /* Guide6ViewController.swift in Sources */,
@@ -386,6 +397,7 @@
 				311D535D213A7BAD0001DF77 /* PostedDataViewController.swift in Sources */,
 				318F81082141023B00A8F17B /* PostedDataViewCell.swift in Sources */,
 				31C45819213E3A1000591DCF /* PostFinalizeViewController.swift in Sources */,
+				31014EBD218EFB82006FB4A6 /* RequestAndAnswerTableViewCell.swift in Sources */,
 				31097F82217ABC63009B5B3D /* Guide4ViewController.swift in Sources */,
 				311D5343213A65830001DF77 /* AppDelegate.swift in Sources */,
 				313B0B9C218522DC005734F7 /* Const2.swift in Sources */,

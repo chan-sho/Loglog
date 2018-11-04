@@ -30,6 +30,8 @@ class PostData: NSObject {
     var EULAagreement: String?
     var requestTextField: String?
     var requestUserEmail: String?
+    var answerTextField: String?
+    var answerCategory: String?
     
     
     //自分だけの地図にするかどうかのボタン
@@ -47,7 +49,9 @@ class PostData: NSObject {
         let valueDictionary = snapshot.value as! [String: Any]
         
         imageString = valueDictionary["image"] as? String
+        if imageString != nil {
         image = UIImage(data: Data(base64Encoded: imageString!, options: .ignoreUnknownCharacters)!)
+        }
         
         self.name = valueDictionary["name"] as? String
         self.category = valueDictionary["category"] as? String
@@ -62,6 +66,8 @@ class PostData: NSObject {
         self.EULAagreement = valueDictionary["EULAagreement"] as? String
         self.requestTextField = valueDictionary["requestTextField"] as? String
         self.requestUserEmail = valueDictionary["requestUserEmail"] as? String
+        self.answerTextField = valueDictionary["answerTextField"] as? String
+        self.answerCategory = valueDictionary["answerCategory"] as? String
         
         let time = valueDictionary["time"] as? String
         self.date = Date(timeIntervalSinceReferenceDate: TimeInterval(time!)!)
