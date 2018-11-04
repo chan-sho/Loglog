@@ -103,7 +103,14 @@ class ReviseDetailViewController: UIViewController, UITextFieldDelegate, UITextV
         contents.text = userDefaults.string(forKey: "reviseContents")
         relatedURL.text = userDefaults.string(forKey: "reviseRelatedURL")
         password.text = userDefaults.string(forKey: "reviseSecretpass")
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // userdefaultsで受け取ったデータを各TextView, TextFieldに設定する
+        category.text = userDefaults.string(forKey: "reviseCategory")
+        contents.text = userDefaults.string(forKey: "reviseContents")
+        relatedURL.text = userDefaults.string(forKey: "reviseRelatedURL")
+        password.text = userDefaults.string(forKey: "reviseSecretpass")
     }
 
     override func didReceiveMemoryWarning() {
@@ -139,6 +146,27 @@ class ReviseDetailViewController: UIViewController, UITextFieldDelegate, UITextV
 
     //「上記内容で修正」ボタンを押された際のアクション
     @IBAction func reviseFinalizeButton(_ sender: Any) {
+        let reviseDataId = userDefaults.string(forKey: "reviseDataId")
+        print("\(reviseDataId!)")
+        
+        if category.text == ""{
+            let Data = ["category": "(カテゴリーなし)", "contents": "\(contents.text ?? "")", "relatedURL": "\(relatedURL.text ?? "")", "secretpass": "\(password.text ?? "")"]
+            
+            //Firebaseから該当データを選択し、データの各項目をアップデート
+            let refToReviseData = Database.database().reference().child("posts").child("\(reviseDataId!)")
+            print("refToReviseDataの中身は：\(refToReviseData)")
+            refToReviseData.updateChildValues(Data)
+        }
+        else{
+            let Data = ["category": "\(category.text!)", "contents": "\(contents.text ?? "")", "relatedURL": "\(relatedURL.text ?? "")", "secretpass": "\(password.text ?? "")"]
+            
+            //Firebaseから該当データを選択し、データの各項目をアップデート
+            let refToReviseData = Database.database().reference().child("posts").child("\(reviseDataId!)")
+            print("refToReviseDataの中身は：\(refToReviseData)")
+            refToReviseData.updateChildValues(Data)
+        }
+        
+        self.navigationController!.popToRootViewController(animated: true)
     }
     
 }

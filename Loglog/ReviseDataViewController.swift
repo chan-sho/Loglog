@@ -42,6 +42,11 @@ class ReviseDataViewController: UIViewController, UITextFieldDelegate {
         postedDeleteButton.isExclusiveTouch = true
         cancelButton.isExclusiveTouch = true
     }
+    
+    //念のため（※userDefaultsの更新タイミングが遅かった場合のために）
+    override func viewWillAppear(_ animated: Bool) {
+        postCode.text = userDefaults.string(forKey: "reviseDataId")
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -147,10 +152,7 @@ class ReviseDataViewController: UIViewController, UITextFieldDelegate {
                     SVProgressHUD.showSuccess(withStatus: "対象の投稿が削除されました")
                     
                     // 画面を閉じてPostedDataViewControllerに戻る&その画面先でTableViewをReload
-                    let postedDataViewController = self.presentingViewController as? PostedDataViewController
-                    self.dismiss(animated: true, completion: {
-                        postedDataViewController?.tableView.reloadData()
-                    })
+                    self.navigationController!.popToRootViewController(animated: true)
                     
                 }
                 else {
