@@ -30,9 +30,9 @@ class RequestAndAnswerTableViewCell: UITableViewCell {
     
     func setPostData2(_ postData: PostData) {
         
-        self.answerCategory.text = "\(postData.answerCategory!)"
-        self.requestTextField.text = "\(postData.requestTextField!)"
-        self.answerTextField.text = "\(postData.answerTextField!)"
+        self.answerCategory.text = "\(postData.answerCategory ?? "")"
+        self.requestTextField.text = "\(postData.requestTextField ?? "")"
+        self.answerTextField.text = "\(postData.answerTextField ?? "")"
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
