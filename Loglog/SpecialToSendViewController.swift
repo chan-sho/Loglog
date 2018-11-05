@@ -102,9 +102,9 @@ class SpecialToSendViewController: UIViewController, UITextViewDelegate, UITextF
                 userEmailAddress.text = email
             }
             
-            //**重要** 辞書を作成してFirebaseに保存する 【※後でAnnotationの位置情報も正確に追加する！！】
+            //**重要** 辞書を作成してFirebaseに保存する
             let postRef = Database.database().reference().child(Const2.PostPath2)
-            let postDic = ["userID": Auth.auth().currentUser!.uid, "time": String(time), "name": name!, "requestTextField": String(textField.text!), "requestUserEmail": userEmailAddress.text!, "answerTextField": "", "answerCategory": ""] as [String : Any]
+            let postDic = ["userID": Auth.auth().currentUser!.uid, "time": String(time), "name": name!, "requestTextField": String(textField.text!), "requestUserEmail": userEmailAddress.text!, "answerTextField": "", "answerCategory": "", "answerFlag": ""] as [String : Any]
             postRef.childByAutoId().setValue(postDic)
             
             SVProgressHUD.showSuccess(withStatus: "\(name!)さん\n\n貴重なご意見、本当にありがとうございました！\nこれからも頑張ってより良いLoglogにしていきますので、どうか宜しくお願い致します！")

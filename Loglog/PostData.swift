@@ -32,6 +32,7 @@ class PostData: NSObject {
     var requestUserEmail: String?
     var answerTextField: String?
     var answerCategory: String?
+    var answerFlag: String?
     
     
     //自分だけの地図にするかどうかのボタン
@@ -68,6 +69,7 @@ class PostData: NSObject {
         self.requestUserEmail = valueDictionary["requestUserEmail"] as? String
         self.answerTextField = valueDictionary["answerTextField"] as? String
         self.answerCategory = valueDictionary["answerCategory"] as? String
+        self.answerFlag = valueDictionary["answerFlag"] as? String
         
         let time = valueDictionary["time"] as? String
         self.date = Date(timeIntervalSinceReferenceDate: TimeInterval(time!)!)

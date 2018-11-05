@@ -97,9 +97,14 @@ class RequestAndAnswerViewController: UIViewController, UITableViewDataSource, U
                     // PostDataクラスを生成して受け取ったデータを設定する
                     if let uid = Auth.auth().currentUser?.uid {
                         let postData = PostData(snapshot: snapshot, myId: uid)
+                        
+                        // 始めのinsertの段階でanswerFlagで投稿しないデータを除いておく
+                        if postData.answerFlag != "" {
                         self.postArray.insert(postData, at: 0)
                         // 念のため同じデータをpostArrayAllに入れておく
                         self.postArrayAll.insert(postData, at: 0)
+                        }
+                        
                         // TableViewを再表示する
                         self.tableView.reloadData()
                     }
