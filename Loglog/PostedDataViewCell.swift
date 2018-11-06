@@ -26,6 +26,7 @@ class PostedDataViewCell: UITableViewCell {
     @IBOutlet weak var myMapButton: UIButton!
     @IBOutlet weak var reviseButton: UIButton!
     @IBOutlet weak var createMapPinButton: UIButton!
+    @IBOutlet weak var imageViewButton: UIButton!
     
     
     override func awakeFromNib() {

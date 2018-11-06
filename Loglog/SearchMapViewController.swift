@@ -365,7 +365,7 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
     }
     
     
-    //投稿情報をピン際表示するアクション（from PostedDataViewController）
+    //投稿情報をピン再表示するアクション（from PostedDataViewController）
     func createMapPin() {
         //*self.performSegue(withIdentifier: "Detail", sender: nil)
         

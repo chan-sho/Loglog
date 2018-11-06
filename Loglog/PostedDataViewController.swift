@@ -33,6 +33,12 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     //user defaultsを使う準備
     let userDefaults:UserDefaults = UserDefaults.standard
     
+    //投稿画像の拡大Viewの初期設定
+    var backImage: UIImageView? = nil
+    var setImage: UIImageView? = nil
+    //「CLOSEボタン」の初期設定
+    var closeButton = UIButton()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +73,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         
         // TableViewを再表示する
         self.tableView.reloadData()
+        
     }
     
     
@@ -675,6 +682,9 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                 // セル内のcreateMapPinボタンを追加で管理
                 cell.createMapPinButton.addTarget(self, action:#selector(handleCreateMapPinButton(_:forEvent:)), for: .touchUpInside)
             
+                // セル内のimageViewボタンを追加で管理
+                cell.imageViewButton.addTarget(self, action:#selector(handleImageViewButton(_:forEvent:)), for: .touchUpInside)
+            
                 return cell
             }
         
@@ -695,6 +705,9 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             
             // セル内のcreateMapPinボタンを追加で管理
             cell.createMapPinButton.addTarget(self, action:#selector(handleCreateMapPinButton(_:forEvent:)), for: .touchUpInside)
+            
+            // セル内のimageViewボタンを追加で管理
+            cell.imageViewButton.addTarget(self, action:#selector(handleImageViewButton(_:forEvent:)), for: .touchUpInside)
             
             return cell
             }
@@ -717,6 +730,9 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             // セル内のcreateMapPinボタンを追加で管理
             cell.createMapPinButton.addTarget(self, action:#selector(handleCreateMapPinButton(_:forEvent:)), for: .touchUpInside)
             
+            // セル内のimageViewボタンを追加で管理
+            cell.imageViewButton.addTarget(self, action:#selector(handleImageViewButton(_:forEvent:)), for: .touchUpInside)
+            
             return cell
         }
         else if textSearchBar.text == "【※貴方の「自分専用」を抽出中】" {
@@ -737,6 +753,9 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             // セル内のcreateMapPinボタンを追加で管理
             cell.createMapPinButton.addTarget(self, action:#selector(handleCreateMapPinButton(_:forEvent:)), for: .touchUpInside)
             
+            // セル内のimageViewボタンを追加で管理
+            cell.imageViewButton.addTarget(self, action:#selector(handleImageViewButton(_:forEvent:)), for: .touchUpInside)
+            
             return cell
         }
         
@@ -756,6 +775,9 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             
                 // セル内のcreateMapPinボタンを追加で管理
                 cell.createMapPinButton.addTarget(self, action:#selector(handleCreateMapPinButton(_:forEvent:)), for: .touchUpInside)
+            
+                // セル内のimageViewボタンを追加で管理
+                cell.imageViewButton.addTarget(self, action:#selector(handleImageViewButton(_:forEvent:)), for: .touchUpInside)
                 
                 return cell
             }
@@ -1073,6 +1095,92 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
+    
+    //セル内のimageViewボタンが押された時に呼ばれるメソッド
+    @objc func handleImageViewButton(_ sender: UIButton, forEvent event: UIEvent) {
+        // タップされたセルのインデックスを求める
+        let touch = event.allTouches?.first
+        let point = touch!.location(in: self.tableView)
+        let indexPath = tableView.indexPathForRow(at: point)
+        
+        let postData : PostData
+        
+        if textSearchBar.text == "" {
+            // 配列からタップされたインデックスのデータを取り出す
+            postData = postArray[indexPath!.row]
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by imageViewボタン＝\(postData)")
+        }
+        else if textSearchBar.text == "【※貴方の全投稿を抽出中】" {
+            // 配列からタップされたインデックスのデータを取り出す
+            postData = postArrayOnHome1[indexPath!.row]
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by imageViewボタン＝\(postData)")
+        }
+        else if textSearchBar.text == "【※貴方が「いいね」した投稿を抽出中】" {
+            // 配列からタップされたインデックスのデータを取り出す
+            postData = postArrayOnHome2[indexPath!.row]
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by imageViewボタン＝\(postData)")
+        }
+        else if textSearchBar.text == "【※貴方の「自分専用」を抽出中】" {
+            // 配列からタップされたインデックスのデータを取り出す
+            postData = postArrayOnHome3[indexPath!.row]
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by imageViewボタン＝\(postData)")
+        }
+        else {
+            // 検索バーに入力された単語をスペースで分けて配列に入れる
+            let searchWords = textSearchBar.text!
+            let array = searchWords.components(separatedBy: NSCharacterSet.whitespaces)
+            // 検索バーのテキストを一部でも含むものをAND検索する！
+            var tempFilteredArray = postArrayAll
+            for n in array {
+                tempFilteredArray = tempFilteredArray.filter({ ($0.category?.localizedCaseInsensitiveContains(n))! || ($0.contents?.localizedCaseInsensitiveContains(n))! || ($0.relatedURL?.localizedCaseInsensitiveContains(n))! || ($0.secretpass?.localizedCaseInsensitiveContains(n))! || ($0.id?.localizedCaseInsensitiveContains(n))! || ($0.pinAddress?.localizedCaseInsensitiveContains(n))! || ($0.name?.localizedCaseInsensitiveContains(n))!})
+            }
+            postArrayBySearch = tempFilteredArray
+            postData = postArrayBySearch[indexPath!.row]
+            // タップされたインデックスのデータを確認
+            print("タップされたインデックスのデータ by imageViewボタン＝\(postData)")
+        }
+        
+        //タップを検知されたpostDataから投稿ナンバー／写真コードを抽出する
+        let imageViewId = postData.id
+        print("タップされたインデックスのid by imageViewボタン＝\(imageViewId!)")
+        let imageCode = postData.image
+        print("タップされたインデックスのid by imageViewボタン＝\(imageCode!)")
+        
+        //投稿写真をタップされた際の拡大画像の設定
+        backImage = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        backImage?.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        self.view.addSubview(backImage!)
+        
+        setImage = UIImageView(frame: CGRect(x: 20, y: 90, width: self.view.frame.size.width - 40, height: self.view.frame.size.height - 130))
+        setImage?.image = postData.image
+        setImage?.contentMode = UIViewContentMode.scaleAspectFit
+        self.view.addSubview(setImage!)
+        
+        //「CLOSEボタン」のインスタンス生成＆各種設定
+        closeButton.frame = CGRect(x: 20, y: 70, width: 80, height: 20)
+        // ボタンのタイトルを設定
+        closeButton.setTitle("CLOSE", for:UIControlState.normal)
+        // タイトルの色
+        closeButton.setTitleColor(UIColor.white, for: .normal)
+        // ボタンのフォントサイズ
+        closeButton.titleLabel?.font =  UIFont.systemFont(ofSize: 20)
+        // タップされたときのaction
+        closeButton.addTarget(self, action:#selector(handleCloseButton(_:forEvent:)), for: .touchUpInside)
+        // Viewにボタンを追加
+        self.view.addSubview(closeButton)
+    }
+    
+    
+    //「CLOSEボタン」が押された時に呼ばれるメソッド
+    @objc func handleCloseButton(_ sender: UIButton, forEvent event: UIEvent) {
+        backImage?.removeFromSuperview()
+        setImage?.removeFromSuperview()
+        closeButton.removeFromSuperview()
+    }
     
     //HomeViewControllerで「allPostedSelectButton」を押された際の処理
     func allPostedSelection() {

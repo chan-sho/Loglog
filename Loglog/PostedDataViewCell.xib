@@ -171,6 +171,14 @@
                         </constraints>
                         <state key="normal" image="地図ピンR1"/>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1m-e7-msc">
+                        <rect key="frame" x="30" y="329.5" width="130" height="130"/>
+                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="130" id="ShN-wl-HNZ"/>
+                            <constraint firstAttribute="width" constant="130" id="icb-7Y-1JJ"/>
+                        </constraints>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="RDj-jL-TUq" secondAttribute="trailing" constant="10" id="0ql-t1-m7O"/>
@@ -178,6 +186,7 @@
                     <constraint firstItem="9Oi-wj-dMF" firstAttribute="bottom" secondItem="U14-Pu-R4n" secondAttribute="bottom" id="2Kt-ll-hqg"/>
                     <constraint firstItem="Few-Xm-hqY" firstAttribute="bottom" secondItem="2tM-62-OWY" secondAttribute="bottom" id="2Ql-cz-3qd"/>
                     <constraint firstItem="Bsx-Gj-eJX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="2dr-y9-ElR"/>
+                    <constraint firstItem="T1m-e7-msc" firstAttribute="centerY" secondItem="yFt-jG-ejy" secondAttribute="centerY" id="37O-JN-ogU"/>
                     <constraint firstItem="2oO-97-dyf" firstAttribute="top" secondItem="yFt-jG-ejy" secondAttribute="top" id="3dD-wD-LI8"/>
                     <constraint firstItem="ebO-fP-Rp9" firstAttribute="top" secondItem="621-Wi-aXx" secondAttribute="bottom" constant="10" id="5Q5-M1-dUx"/>
                     <constraint firstItem="9Oi-wj-dMF" firstAttribute="leading" secondItem="U14-Pu-R4n" secondAttribute="trailing" constant="5" id="5lY-7h-6uo"/>
@@ -219,6 +228,7 @@
                     <constraint firstItem="mES-9C-0Kk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="mG5-mb-r5i"/>
                     <constraint firstItem="U14-Pu-R4n" firstAttribute="top" secondItem="yFt-jG-ejy" secondAttribute="top" id="nql-LC-Iz8"/>
                     <constraint firstItem="DWZ-xk-y73" firstAttribute="top" secondItem="RDj-jL-TUq" secondAttribute="bottom" constant="3" id="oON-ON-irF"/>
+                    <constraint firstItem="T1m-e7-msc" firstAttribute="centerX" secondItem="yFt-jG-ejy" secondAttribute="centerX" id="p1M-Q3-BwF"/>
                     <constraint firstAttribute="trailing" secondItem="Rg8-GA-MIJ" secondAttribute="trailing" constant="10" id="rKX-WA-d6Q"/>
                     <constraint firstItem="Rg8-GA-MIJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="rtw-ge-9kJ"/>
                     <constraint firstItem="U14-Pu-R4n" firstAttribute="leading" secondItem="yFt-jG-ejy" secondAttribute="trailing" constant="10" id="s4Q-z2-Wwy"/>
@@ -239,6 +249,7 @@
                 <outlet property="createMapPinButton" destination="Few-Xm-hqY" id="GNa-mO-gw9"/>
                 <outlet property="dateLabel" destination="c2S-5Q-Xkj" id="Mim-V0-fFn"/>
                 <outlet property="id" destination="Rg8-GA-MIJ" id="PrW-zg-dcP"/>
+                <outlet property="imageViewButton" destination="T1m-e7-msc" id="Xkv-93-03g"/>
                 <outlet property="likeButton" destination="U14-Pu-R4n" id="8EX-s2-Mr8"/>
                 <outlet property="likeLabel" destination="9Oi-wj-dMF" id="kFE-RY-pYY"/>
                 <outlet property="myMapButton" destination="L86-PH-i0u" id="shT-MX-FRW"/>
