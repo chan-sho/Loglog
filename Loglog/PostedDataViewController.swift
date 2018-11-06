@@ -16,7 +16,6 @@ import ESTabBarController
 
 class PostedDataViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
-
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textSearchBar: UISearchBar!
     
@@ -36,6 +35,8 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     //投稿画像の拡大Viewの初期設定
     var backImage: UIImageView? = nil
     var setImage: UIImageView? = nil
+    // 画像の拡大率
+    var currentScale:CGFloat = 1.0
     //「CLOSEボタン」の初期設定
     var closeButton = UIButton()
     //投稿画像のタップ判別Flag
@@ -76,6 +77,12 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         // TableViewを再表示する
         self.tableView.reloadData()
         
+        // imageViewにジェスチャーレコグナイザを設定する(ピンチイン・ピンチアウト)
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(pinchAction(sender:)))
+        setImage?.addGestureRecognizer(pinchGesture)
+        
+        //setImageのタップを有効にする
+        self.setImage?.isUserInteractionEnabled = true
     }
     
     
@@ -1191,6 +1198,41 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         closeButton.removeFromSuperview()
         //投稿画像タップFlagの初期化
         imageTappedFlag = 0
+    }
+    
+
+    //投稿画像拡大時のピンチアウト・インの実装（※うまく機能していない。。。）
+    @objc func pinchAction(sender: UIPinchGestureRecognizer) {
+        print("pinchActionの通過")
+        // imageViewを拡大縮小する
+        // ピンチ中の拡大率は0.3〜2.5倍、指を離した時の拡大率は0.5〜2.0倍とする
+        switch sender.state {
+        case .began, .changed:
+            // senderのscaleは、指を動かしていない状態が1.0となる
+            // 現在の拡大率に、(scaleから1を引いたもの) / 10(補正率)を加算する
+            currentScale = currentScale + (sender.scale - 1) / 10
+            // 拡大率が基準から外れる場合は、補正する
+            if currentScale < 0.3 {
+                currentScale = 0.3
+            } else if currentScale > 2.5 {
+                currentScale = 2.5
+            }
+            // 計算後の拡大率で、imageViewを拡大縮小する
+            setImage?.transform = CGAffineTransform(scaleX: currentScale, y: currentScale)
+        default:
+            // ピンチ中と同様だが、拡大率の範囲が異なる
+            if currentScale < 0.5 {
+                currentScale = 0.5
+            } else if currentScale > 2.0 {
+                currentScale = 2.0
+            }
+            
+            // 拡大率が基準から外れている場合、指を離したときにアニメーションで拡大率を補正する
+            // 例えば指を離す前に拡大率が0.3だった場合、0.2秒かけて拡大率が0.5に変化する
+            UIView.animate(withDuration: 0.2, animations: {
+                self.setImage?.transform = CGAffineTransform(scaleX: self.currentScale, y: self.currentScale)
+            }, completion: nil)
+        }
     }
     
     //HomeViewControllerで「allPostedSelectButton」を押された際の処理
