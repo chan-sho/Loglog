@@ -38,6 +38,8 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     var setImage: UIImageView? = nil
     //「CLOSEボタン」の初期設定
     var closeButton = UIButton()
+    //投稿画像のタップ判別Flag
+    var imageTappedFlag = 0
     
     
     override func viewDidLoad() {
@@ -1150,6 +1152,11 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         let imageCode = postData.image
         print("タップされたインデックスのid by imageViewボタン＝\(imageCode!)")
         
+        //投稿画像のタップを検知
+        imageTappedFlag = imageTappedFlag + 1
+        print("imageTappedFlag = \(imageTappedFlag)")
+        
+        if imageTappedFlag == 1 {
         //投稿写真をタップされた際の拡大画像の設定
         backImage = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
         backImage?.backgroundColor = UIColor.black.withAlphaComponent(0.8)
@@ -1172,6 +1179,8 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         closeButton.addTarget(self, action:#selector(handleCloseButton(_:forEvent:)), for: .touchUpInside)
         // Viewにボタンを追加
         self.view.addSubview(closeButton)
+        }
+        
     }
     
     
@@ -1180,6 +1189,8 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         backImage?.removeFromSuperview()
         setImage?.removeFromSuperview()
         closeButton.removeFromSuperview()
+        //投稿画像タップFlagの初期化
+        imageTappedFlag = 0
     }
     
     //HomeViewControllerで「allPostedSelectButton」を押された際の処理
