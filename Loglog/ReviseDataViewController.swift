@@ -28,7 +28,7 @@ class ReviseDataViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         //背景の設定
         let bg = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-        bg.image = UIImage(named: "背景new13")
+        bg.image = UIImage(named: "背景new13_R2")
         bg.layer.zPosition = -1
         self.view.addSubview(bg)
         
@@ -70,7 +70,7 @@ class ReviseDataViewController: UIViewController, UITextFieldDelegate {
     @IBAction func postedReviseButton(_ sender: Any) {
         
         if self.postCode.text == "" {
-            SVProgressHUD.showError(withStatus: "「投稿ナンバー」を入力して下さい")
+            SVProgressHUD.showError(withStatus: "「投稿ナンバー」が判別できませんでした。\nもう一度戻ってお試し下さい。")
             return
         }
         // postCodeに対象の投稿ナンバーが入っている場合
@@ -93,11 +93,6 @@ class ReviseDataViewController: UIViewController, UITextFieldDelegate {
                     
                     refToRevise.observeSingleEvent(of: .value, with: { (snapshot) in
                         var valueToRevise = snapshot.value as! [String: AnyObject]
-                        //使わない画像データのkeyを配列から削除
-                        //*_ = valueToRevise.removeValue(forKey: "image")
-                            
-                        //中身の確認
-                        //*print("valueToReviseの中身は：\(valueToRevise)")
                         
                         //userDefaultsに保存
                         self.userDefaults.set(valueToRevise["category"], forKey: "reviseCategory")
@@ -111,13 +106,13 @@ class ReviseDataViewController: UIViewController, UITextFieldDelegate {
                     self.performSegue(withIdentifier: "toReviseDetail", sender: nil)
                 }
                 else {
-                    SVProgressHUD.showError(withStatus: "投稿者ではない\nまたは\n「投稿ナンバー」が存在しない為、\n削除できません！\n\nもう一度確認して下さい")
+                    SVProgressHUD.showError(withStatus: "投稿内容の修正でエラーが発生しました！\nお手数ですが、再度最初から手続きをお願いします。")
                     return
                 }
                 
             }) { (error) in
                 print(error.localizedDescription)
-                SVProgressHUD.showError(withStatus: "「投稿ナンバー」をもう一度確認して下さい")
+                SVProgressHUD.showError(withStatus: "投稿内容の修正でエラーが発生しました！\nお手数ですが、再度最初から手続きをお願いします。")
                 return
             }
         }
@@ -128,7 +123,7 @@ class ReviseDataViewController: UIViewController, UITextFieldDelegate {
     @IBAction func postedDeleteButton(_ sender: Any) {
         
         if self.postCode.text == "" {
-            SVProgressHUD.showError(withStatus: "「投稿ナンバー」を入力して下さい")
+            SVProgressHUD.showError(withStatus: "「投稿ナンバー」が判別できませんでした。\nもう一度戻ってお試し下さい。")
             return
         }
         // postCodeに対象の投稿ナンバーが入っている場合
@@ -157,13 +152,13 @@ class ReviseDataViewController: UIViewController, UITextFieldDelegate {
                     
                 }
                 else {
-                    SVProgressHUD.showError(withStatus: "投稿者ではない\nまたは\n「投稿ナンバー」が存在しない為、\n削除できません！\n\nもう一度確認して下さい")
+                    SVProgressHUD.showError(withStatus: "投稿内容の削除作業でエラーが発生しました！\nお手数ですが、再度最初から手続きをお願いします。")
                     return
                 }
                 
             }) { (error) in
                 print(error.localizedDescription)
-                SVProgressHUD.showError(withStatus: "「投稿ナンバー」をもう一度確認して下さい")
+                SVProgressHUD.showError(withStatus: "投稿内容の削除作業でエラーが発生しました！\nお手数ですが、再度最初から手続きをお願いします。")
                 return
             }
         }

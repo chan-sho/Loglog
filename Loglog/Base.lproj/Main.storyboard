@@ -1745,36 +1745,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnb-Zb-OAW">
-                                <rect key="frame" x="37.5" y="126" width="300" height="60"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.89977525684931503" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="9sr-4l-CKV"/>
-                                    <constraint firstAttribute="width" constant="300" id="XKW-dw-ERo"/>
-                                </constraints>
-                                <string key="text">【ご注意ください】
-修正・削除した内容は元に戻せません。</string>
-                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K05-87-yMc">
-                                <rect key="frame" x="37" y="196" width="300" height="95"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.9003371147260274" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="95" id="1Jc-U2-fJT"/>
-                                    <constraint firstAttribute="width" constant="300" id="WKU-fJ-sWS"/>
-                                </constraints>
-                                <string key="text">【修正・削除の手順】
-投稿画面の「投稿ナンバーを長押しタップでコピー」→貼り付けでも作業可能です。
-(※投稿者ご本人のみ作業に進めます)</string>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1I-7u-3dm">
-                                <rect key="frame" x="37" y="376" width="300" height="40"/>
+                                <rect key="frame" x="37" y="244.5" width="300" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="CfS-uX-gGx"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="8d6-Ff-aUS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="投稿を【修正】" backgroundImage="Btn2"/>
@@ -1783,9 +1757,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Px9-14-WMa">
-                                <rect key="frame" x="37" y="436" width="300" height="40"/>
+                                <rect key="frame" x="37" y="344.5" width="300" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="ofT-jB-Ug9"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="bcM-2h-29z"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="投稿を【削除】" backgroundImage="btn"/>
@@ -1794,9 +1768,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YdC-7N-q4Z">
-                                <rect key="frame" x="37" y="496" width="300" height="40"/>
+                                <rect key="frame" x="37" y="424.5" width="300" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="RNY-Sw-q16"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="MI8-dk-5BP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="キャンセルして戻る" backgroundImage="Btn3"/>
@@ -1804,32 +1778,50 @@
                                     <segue destination="YkH-AA-rPB" kind="unwind" unwindAction="unwind:" id="P87-mX-lio"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="「投稿ナンバー」を貼り付け" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="bgA-6z-oET">
-                                <rect key="frame" x="37.5" y="321" width="300" height="25"/>
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bgA-6z-oET">
+                                <rect key="frame" x="37.5" y="199.5" width="300" height="30"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="6e9-og-FqG"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Ido-7e-Bmf"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="c2Y-RU-raN"/>
                                 </constraints>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="投稿ナンバー：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oo8-5v-FAs">
+                                <rect key="frame" x="37.5" y="171.5" width="300" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="wkp-G8-Jpb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="※削除した投稿は元に戻せません" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iID-zL-rqr">
+                                <rect key="frame" x="38" y="324.5" width="300" height="18"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.60482662671232879" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="PVd-XU-9Yh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="YdC-7N-q4Z" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="6I2-ed-Opd"/>
-                            <constraint firstItem="H1I-7u-3dm" firstAttribute="top" secondItem="bgA-6z-oET" secondAttribute="bottom" constant="30" id="7vV-Dl-oha"/>
-                            <constraint firstItem="H1I-7u-3dm" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="BM1-Tq-XBU"/>
-                            <constraint firstItem="K05-87-yMc" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="F5d-Yq-Gc3"/>
-                            <constraint firstItem="YdC-7N-q4Z" firstAttribute="top" secondItem="Px9-14-WMa" secondAttribute="bottom" constant="20" id="Sdm-tA-eKa"/>
-                            <constraint firstItem="Px9-14-WMa" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="Z15-7P-Zow"/>
-                            <constraint firstItem="Px9-14-WMa" firstAttribute="top" secondItem="H1I-7u-3dm" secondAttribute="bottom" constant="20" id="bHl-hL-JjD"/>
-                            <constraint firstItem="bgA-6z-oET" firstAttribute="centerY" secondItem="fDn-n5-xup" secondAttribute="centerY" id="bXG-cz-PC3"/>
-                            <constraint firstItem="bgA-6z-oET" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="dAu-Bw-5Sf"/>
-                            <constraint firstItem="pnb-Zb-OAW" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="dbU-fN-hJ4"/>
-                            <constraint firstItem="bgA-6z-oET" firstAttribute="top" secondItem="K05-87-yMc" secondAttribute="bottom" constant="30" id="pZU-sC-z1t"/>
-                            <constraint firstItem="K05-87-yMc" firstAttribute="top" secondItem="pnb-Zb-OAW" secondAttribute="bottom" constant="10" id="vck-QR-9p3"/>
+                            <constraint firstItem="H1I-7u-3dm" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="5gW-Uu-P6o"/>
+                            <constraint firstItem="Px9-14-WMa" firstAttribute="top" secondItem="iID-zL-rqr" secondAttribute="bottom" constant="2" id="Haa-nm-v70"/>
+                            <constraint firstItem="YdC-7N-q4Z" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="JEF-ZG-BBI"/>
+                            <constraint firstItem="iID-zL-rqr" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="TSG-G6-uys"/>
+                            <constraint firstItem="H1I-7u-3dm" firstAttribute="top" secondItem="bgA-6z-oET" secondAttribute="bottom" constant="15" id="Uff-au-rig"/>
+                            <constraint firstItem="Px9-14-WMa" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="XJR-WO-2pf"/>
+                            <constraint firstItem="iID-zL-rqr" firstAttribute="centerY" secondItem="fDn-n5-xup" secondAttribute="centerY" id="fik-eq-21O"/>
+                            <constraint firstItem="YdC-7N-q4Z" firstAttribute="top" secondItem="Px9-14-WMa" secondAttribute="bottom" constant="40" id="gUy-Vk-eFS"/>
+                            <constraint firstItem="bgA-6z-oET" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="gkd-hV-pEX"/>
+                            <constraint firstItem="bgA-6z-oET" firstAttribute="top" secondItem="Oo8-5v-FAs" secondAttribute="bottom" constant="10" id="n3V-mn-zTx"/>
+                            <constraint firstItem="Oo8-5v-FAs" firstAttribute="centerX" secondItem="fDn-n5-xup" secondAttribute="centerX" id="o0z-Rd-1Tq"/>
+                            <constraint firstItem="iID-zL-rqr" firstAttribute="top" secondItem="H1I-7u-3dm" secondAttribute="bottom" constant="40" id="odo-R0-S7J"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NiN-ly-ORH"/>
                     </view>
@@ -1844,7 +1836,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Ga-Kd-ZbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="YkH-AA-rPB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4001" y="1245"/>
+            <point key="canvasLocation" x="4000.8000000000002" y="1244.527736131934"/>
         </scene>
         <!--Posted Pin On Search View Controller-->
         <scene sceneID="Ok0-7S-3PL">
@@ -1998,78 +1990,78 @@
         <!--Revise Detail View Controller-->
         <scene sceneID="vNm-zF-Q94">
             <objects>
-                <viewController id="fO8-KA-gVw" customClass="ReviseDetailViewController" customModule="Loglog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReviseDetail" id="fO8-KA-gVw" customClass="ReviseDetailViewController" customModule="Loglog" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fyT-xo-0DJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カテゴリー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QG3-BC-os8">
-                                <rect key="frame" x="37.5" y="25" width="300" height="18"/>
+                                <rect key="frame" x="37.5" y="112" width="300" height="17.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="ikQ-dr-n8l"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Px3-iw-1UW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
-                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ULp-QA-ZgH">
-                                <rect key="frame" x="37.5" y="86" width="300" height="18"/>
+                                <rect key="frame" x="37.5" y="172.5" width="300" height="17.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="UHY-bO-XU6"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Ck8-ya-k5t"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="関連URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6j-2P-5cX">
-                                <rect key="frame" x="37.5" y="227" width="300" height="18"/>
+                                <rect key="frame" x="37.5" y="313" width="300" height="17.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="5al-qn-5C8"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="6bU-DG-g8r"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="秘密のパスワード" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNc-t4-iQ0">
-                                <rect key="frame" x="37.5" y="288" width="300" height="18"/>
+                                <rect key="frame" x="37.5" y="373.5" width="300" height="17.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="uma-Z3-yUK"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="6f6-hc-Zxm"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="0vM-Gy-58o">
-                                <rect key="frame" x="37.5" y="46" width="300" height="30"/>
+                                <rect key="frame" x="37.5" y="132.5" width="300" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="S3v-wv-5d2"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="x6I-B8-5fL"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Yie-Ic-N9k">
-                                <rect key="frame" x="37.5" y="248" width="300" height="30"/>
+                                <rect key="frame" x="37.5" y="333.5" width="300" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="bPD-gL-o30"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="x4m-La-4OK"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="gPt-hq-zb0">
-                                <rect key="frame" x="37.5" y="309" width="300" height="30"/>
+                                <rect key="frame" x="37.5" y="394" width="300" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="KuC-l8-xpc"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="cll-TQ-tLI"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Q5-jo-eb1">
-                                <rect key="frame" x="37" y="424" width="300" height="40"/>
+                                <rect key="frame" x="37" y="504" width="300" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="SVt-2K-6Wr"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="aCk-my-N3o"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="投稿を上記内容に【修正】" backgroundImage="Btn2"/>
@@ -2078,9 +2070,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDb-qz-fo8">
-                                <rect key="frame" x="37" y="484" width="300" height="40"/>
+                                <rect key="frame" x="37" y="564" width="300" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="JK6-Vq-d00"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="lVg-w3-FEV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                                 <state key="normal" title="キャンセルして戻る" backgroundImage="Btn3"/>
@@ -2089,47 +2081,66 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xNz-4o-MMz">
-                                <rect key="frame" x="37.5" y="107" width="300" height="110"/>
+                                <rect key="frame" x="37.5" y="193" width="300" height="110"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="DhC-fW-Udh"/>
-                                    <constraint firstAttribute="height" constant="110" id="lwJ-AH-BXy"/>
+                                    <constraint firstAttribute="width" constant="300" id="pZa-0i-DDL"/>
+                                    <constraint firstAttribute="height" constant="110" id="r8A-ia-fWo"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="26q-RG-aSN">
-                                <rect key="frame" x="37.5" y="344" width="70" height="70"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="khj-xf-bKd">
+                                <rect key="frame" x="48" y="429" width="278" height="70"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="26q-RG-aSN">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="46k-tb-XbB"/>
+                                            <constraint firstAttribute="height" constant="70" id="IRT-cx-UwQ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vPf-xq-iSq">
+                                        <rect key="frame" x="70" y="19.5" width="208" height="31"/>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.60180329623287676" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                        <state key="normal" title="【投稿写真の修正はこちら】">
+                                            <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="ZIO-jD-ek8" kind="show" id="b0J-WF-U8n"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="j4i-Yj-4GJ"/>
-                                    <constraint firstAttribute="height" constant="70" id="ziY-JV-Tdn"/>
+                                    <constraint firstItem="vPf-xq-iSq" firstAttribute="centerY" secondItem="26q-RG-aSN" secondAttribute="centerY" id="sei-0W-e6c"/>
                                 </constraints>
-                            </imageView>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="xNz-4o-MMz" firstAttribute="top" secondItem="ULp-QA-ZgH" secondAttribute="bottom" constant="3" id="2Bd-Pi-jAo"/>
-                            <constraint firstItem="gPt-hq-zb0" firstAttribute="top" secondItem="bNc-t4-iQ0" secondAttribute="bottom" constant="3" id="5Hq-a9-1sR"/>
-                            <constraint firstItem="0vM-Gy-58o" firstAttribute="centerX" secondItem="fyT-xo-0DJ" secondAttribute="centerX" id="5JN-3D-5My"/>
-                            <constraint firstItem="ULp-QA-ZgH" firstAttribute="top" secondItem="0vM-Gy-58o" secondAttribute="bottom" constant="10" id="6Kf-wx-LX4"/>
-                            <constraint firstItem="gPt-hq-zb0" firstAttribute="centerX" secondItem="fyT-xo-0DJ" secondAttribute="centerX" id="72t-Yr-Jz3"/>
-                            <constraint firstItem="26q-RG-aSN" firstAttribute="top" secondItem="gPt-hq-zb0" secondAttribute="bottom" constant="5" id="D8K-bR-plV"/>
-                            <constraint firstItem="ULp-QA-ZgH" firstAttribute="centerX" secondItem="fyT-xo-0DJ" secondAttribute="centerX" id="E2D-1q-7bP"/>
-                            <constraint firstItem="Z6j-2P-5cX" firstAttribute="centerX" secondItem="fyT-xo-0DJ" secondAttribute="centerX" id="Kyj-LC-3f0"/>
-                            <constraint firstItem="QG3-BC-os8" firstAttribute="centerX" secondItem="fyT-xo-0DJ" secondAttribute="centerX" id="RoK-7M-4Ty"/>
-                            <constraint firstItem="QG3-BC-os8" firstAttribute="top" secondItem="c0G-Eu-DTP" secondAttribute="top" constant="5" id="SvS-ic-7T2"/>
-                            <constraint firstItem="0vM-Gy-58o" firstAttribute="top" secondItem="QG3-BC-os8" secondAttribute="bottom" constant="3" id="YAj-hY-n0c"/>
-                            <constraint firstItem="Z6j-2P-5cX" firstAttribute="top" secondItem="xNz-4o-MMz" secondAttribute="bottom" constant="10" id="Zxx-CR-io9"/>
-                            <constraint firstItem="Yie-Ic-N9k" firstAttribute="centerX" secondItem="fyT-xo-0DJ" secondAttribute="centerX" id="bD5-v0-IqZ"/>
-                            <constraint firstItem="6Q5-jo-eb1" firstAttribute="centerX" secondItem="fyT-xo-0DJ" secondAttribute="centerX" id="gJa-ey-ZLH"/>
-                            <constraint firstItem="bNc-t4-iQ0" firstAttribute="centerX" secondItem="fyT-xo-0DJ" secondAttribute="centerX" id="ggf-ad-sT2"/>
-                            <constraint firstItem="Yie-Ic-N9k" firstAttribute="top" secondItem="Z6j-2P-5cX" secondAttribute="bottom" constant="3" id="iQL-cL-C4a"/>
-                            <constraint firstItem="bNc-t4-iQ0" firstAttribute="top" secondItem="Yie-Ic-N9k" secondAttribute="bottom" constant="10" id="jy4-dm-zGh"/>
-                            <constraint firstItem="6Q5-jo-eb1" firstAttribute="top" secondItem="26q-RG-aSN" secondAttribute="bottom" constant="10" id="mNP-HV-Coa"/>
-                            <constraint firstItem="tDb-qz-fo8" firstAttribute="top" secondItem="6Q5-jo-eb1" secondAttribute="bottom" constant="20" id="oxW-74-v4C"/>
-                            <constraint firstItem="tDb-qz-fo8" firstAttribute="centerX" secondItem="fyT-xo-0DJ" secondAttribute="centerX" id="qoJ-uQ-3Ts"/>
-                            <constraint firstItem="26q-RG-aSN" firstAttribute="leading" secondItem="gPt-hq-zb0" secondAttribute="leading" id="qzp-XA-XcK"/>
-                            <constraint firstItem="xNz-4o-MMz" firstAttribute="centerX" secondItem="fyT-xo-0DJ" secondAttribute="centerX" id="wR7-fx-Drg"/>
+                            <constraint firstItem="Yie-Ic-N9k" firstAttribute="centerX" secondItem="fyT-xo-0DJ" secondAttribute="centerX" id="7v3-gs-HSG"/>
+                            <constraint firstItem="Z6j-2P-5cX" firstAttribute="centerX" secondItem="fyT-xo-0DJ" secondAttribute="centerX" id="AIC-xA-XR0"/>
+                            <constraint firstItem="khj-xf-bKd" firstAttribute="top" secondItem="gPt-hq-zb0" secondAttribute="bottom" constant="5" id="Bny-vx-Jzy"/>
+                            <constraint firstItem="0vM-Gy-58o" firstAttribute="centerX" secondItem="fyT-xo-0DJ" secondAttribute="centerX" id="Eb5-C0-DtT"/>
+                            <constraint firstItem="Yie-Ic-N9k" firstAttribute="top" secondItem="Z6j-2P-5cX" secondAttribute="bottom" constant="3" id="F8Q-b5-Vrv"/>
+                            <constraint firstItem="Yie-Ic-N9k" firstAttribute="centerY" secondItem="fyT-xo-0DJ" secondAttribute="centerY" constant="15" id="Js8-gn-8b1"/>
+                            <constraint firstItem="ULp-QA-ZgH" firstAttribute="centerX" secondItem="fyT-xo-0DJ" secondAttribute="centerX" id="QNr-GF-g41"/>
+                            <constraint firstItem="tDb-qz-fo8" firstAttribute="top" secondItem="6Q5-jo-eb1" secondAttribute="bottom" constant="20" id="SSN-Cg-BkU"/>
+                            <constraint firstItem="khj-xf-bKd" firstAttribute="centerX" secondItem="fyT-xo-0DJ" secondAttribute="centerX" id="a7y-T9-fMW"/>
+                            <constraint firstItem="6Q5-jo-eb1" firstAttribute="top" secondItem="khj-xf-bKd" secondAttribute="bottom" constant="5" id="aDU-lw-n1f"/>
+                            <constraint firstItem="6Q5-jo-eb1" firstAttribute="centerX" secondItem="fyT-xo-0DJ" secondAttribute="centerX" id="bHy-D0-cbx"/>
+                            <constraint firstItem="bNc-t4-iQ0" firstAttribute="centerX" secondItem="fyT-xo-0DJ" secondAttribute="centerX" id="bfH-kY-gGF"/>
+                            <constraint firstItem="gPt-hq-zb0" firstAttribute="top" secondItem="bNc-t4-iQ0" secondAttribute="bottom" constant="3" id="de0-ge-vDz"/>
+                            <constraint firstItem="bNc-t4-iQ0" firstAttribute="top" secondItem="Yie-Ic-N9k" secondAttribute="bottom" constant="10" id="fED-p1-47p"/>
+                            <constraint firstItem="xNz-4o-MMz" firstAttribute="top" secondItem="ULp-QA-ZgH" secondAttribute="bottom" constant="3" id="fG6-3V-J1J"/>
+                            <constraint firstItem="QG3-BC-os8" firstAttribute="centerX" secondItem="fyT-xo-0DJ" secondAttribute="centerX" id="fgD-w3-QUh"/>
+                            <constraint firstItem="xNz-4o-MMz" firstAttribute="centerX" secondItem="fyT-xo-0DJ" secondAttribute="centerX" id="h1U-9n-Pg6"/>
+                            <constraint firstItem="gPt-hq-zb0" firstAttribute="centerX" secondItem="fyT-xo-0DJ" secondAttribute="centerX" id="o1u-AG-Ock"/>
+                            <constraint firstItem="tDb-qz-fo8" firstAttribute="centerX" secondItem="fyT-xo-0DJ" secondAttribute="centerX" id="r2M-W4-xQF"/>
+                            <constraint firstItem="ULp-QA-ZgH" firstAttribute="top" secondItem="0vM-Gy-58o" secondAttribute="bottom" constant="10" id="x4K-so-E5M"/>
+                            <constraint firstItem="Z6j-2P-5cX" firstAttribute="top" secondItem="xNz-4o-MMz" secondAttribute="bottom" constant="10" id="yOl-Rt-Z7l"/>
+                            <constraint firstItem="0vM-Gy-58o" firstAttribute="top" secondItem="QG3-BC-os8" secondAttribute="bottom" constant="3" id="zs8-Rj-WrI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="c0G-Eu-DTP"/>
                     </view>
@@ -2141,12 +2152,77 @@
                         <outlet property="password" destination="gPt-hq-zb0" id="Pib-Op-IFQ"/>
                         <outlet property="relatedURL" destination="Yie-Ic-N9k" id="8v4-Qi-Xnp"/>
                         <outlet property="reviseFinalizeButton" destination="6Q5-jo-eb1" id="wvb-dB-IcA"/>
+                        <outlet property="reviseImageButton" destination="vPf-xq-iSq" id="rYe-YY-1c5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z1l-XZ-yjR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="DjT-nU-ZoK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5424.8000000000002" y="1244.527736131934"/>
+        </scene>
+        <!--Revise Photo View Controller-->
+        <scene sceneID="2BR-5k-Cd5">
+            <objects>
+                <viewController id="ZIO-jD-ek8" customClass="RevisePhotoViewController" customModule="Loglog" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TGQ-Od-gqA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L61-N9-2av">
+                                <rect key="frame" x="37.5" y="313" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="FTH-KS-Zvw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <state key="normal" title="カメラを起動" backgroundImage="Btn2"/>
+                                <connections>
+                                    <action selector="cameraButton:" destination="ZIO-jD-ek8" eventType="touchUpInside" id="zif-xZ-H9E"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikd-A3-aXW">
+                                <rect key="frame" x="37.5" y="453" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="UIf-6G-TzI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <state key="normal" title="キャンセルして戻る" backgroundImage="Btn3"/>
+                                <connections>
+                                    <segue destination="GKm-VK-tO6" kind="unwind" unwindAction="unwind:" id="Bag-FA-UEd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDF-vg-Rc5">
+                                <rect key="frame" x="37.5" y="173" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Inp-3H-bcc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                                <state key="normal" title="ライブラリから画像を選択" backgroundImage="Btn2"/>
+                                <connections>
+                                    <action selector="libraryButton:" destination="ZIO-jD-ek8" eventType="touchUpInside" id="eb6-NM-8YI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="L61-N9-2av" firstAttribute="centerX" secondItem="TGQ-Od-gqA" secondAttribute="centerX" id="8NQ-Rc-aVc"/>
+                            <constraint firstItem="vDF-vg-Rc5" firstAttribute="centerX" secondItem="TGQ-Od-gqA" secondAttribute="centerX" id="Xox-IF-Toz"/>
+                            <constraint firstItem="L61-N9-2av" firstAttribute="top" secondItem="vDF-vg-Rc5" secondAttribute="bottom" constant="100" id="aLN-eq-Vdd"/>
+                            <constraint firstItem="ikd-A3-aXW" firstAttribute="centerX" secondItem="TGQ-Od-gqA" secondAttribute="centerX" id="jIh-HD-6Ja"/>
+                            <constraint firstItem="L61-N9-2av" firstAttribute="centerY" secondItem="TGQ-Od-gqA" secondAttribute="centerY" id="l4V-Lr-O3B"/>
+                            <constraint firstItem="ikd-A3-aXW" firstAttribute="top" secondItem="L61-N9-2av" secondAttribute="bottom" constant="100" id="uNF-dt-DQv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZYY-HQ-Qls"/>
+                    </view>
+                    <connections>
+                        <outlet property="cameraButton" destination="L61-N9-2av" id="gIe-U5-IPY"/>
+                        <outlet property="cancelButton" destination="ikd-A3-aXW" id="MFZ-pv-aVL"/>
+                        <outlet property="libraryButton" destination="vDF-vg-Rc5" id="umu-Sn-EnN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H9g-M0-ysH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="GKm-VK-tO6" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="6214" y="1245"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="AJa-jS-5R6">

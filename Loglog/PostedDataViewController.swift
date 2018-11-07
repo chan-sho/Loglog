@@ -1031,10 +1031,18 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         let reviseDataId = postData.id
         print("タップされたインデックスのid by Reviseボタン＝\(reviseDataId!)")
         
-        userDefaults.set(reviseDataId, forKey: "reviseDataId")
-        userDefaults.synchronize()
-        
-        self.performSegue(withIdentifier: "toRevised", sender: nil)
+        //Reviseボタンを押したユーザーが投稿者本人かどうかの判断
+        let uid = Auth.auth().currentUser?.uid
+        let userID = postData.userID
+        if userID == uid {
+            userDefaults.set(reviseDataId, forKey: "reviseDataId")
+            userDefaults.synchronize()
+            self.performSegue(withIdentifier: "toRevised", sender: nil)
+        }
+        else {
+            SVProgressHUD.showError(withStatus: "投稿者ご本人ではない為、投稿内容の修正・削除はできません")
+            return
+        }
     }
     
     

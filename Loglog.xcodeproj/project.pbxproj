@@ -40,6 +40,7 @@
 		316ADA712153911C005C0FDF /* PostedPinOnSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316ADA702153911C005C0FDF /* PostedPinOnSearchViewController.swift */; };
 		316DF8F2213F6297000E1E11 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316DF8F1213F6297000E1E11 /* Const.swift */; };
 		31778FE8215C7973005FDD19 /* ColorMKPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31778FE7215C7973005FDD19 /* ColorMKPointAnnotation.swift */; };
+		317F3DC7219324AC00FF9CD7 /* RevisePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317F3DC6219324AC00FF9CD7 /* RevisePhotoViewController.swift */; };
 		318F81052140FB8F00A8F17B /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318F81042140FB8F00A8F17B /* PostData.swift */; };
 		318F81082141023B00A8F17B /* PostedDataViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318F81062141023B00A8F17B /* PostedDataViewCell.swift */; };
 		318F81092141023B00A8F17B /* PostedDataViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 318F81072141023B00A8F17B /* PostedDataViewCell.xib */; };
@@ -87,6 +88,7 @@
 		316ADA702153911C005C0FDF /* PostedPinOnSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedPinOnSearchViewController.swift; sourceTree = "<group>"; };
 		316DF8F1213F6297000E1E11 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		31778FE7215C7973005FDD19 /* ColorMKPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorMKPointAnnotation.swift; sourceTree = "<group>"; };
+		317F3DC6219324AC00FF9CD7 /* RevisePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevisePhotoViewController.swift; sourceTree = "<group>"; };
 		318F81042140FB8F00A8F17B /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		318F81062141023B00A8F17B /* PostedDataViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedDataViewCell.swift; sourceTree = "<group>"; };
 		318F81072141023B00A8F17B /* PostedDataViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostedDataViewCell.xib; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				311D535C213A7BAD0001DF77 /* PostedDataViewController.swift */,
 				313310D62150B86B007DC1E1 /* ReviseDataViewController.swift */,
 				31014EB9218E4F44006FB4A6 /* ReviseDetailViewController.swift */,
+				317F3DC6219324AC00FF9CD7 /* RevisePhotoViewController.swift */,
 				316ADA6E215390F6005C0FDF /* PostedPinOnCurrentViewController.swift */,
 				316ADA702153911C005C0FDF /* PostedPinOnSearchViewController.swift */,
 				318F81072141023B00A8F17B /* PostedDataViewCell.xib */,
@@ -373,6 +376,7 @@
 				311D535B213A7B500001DF77 /* PostViewController.swift in Sources */,
 				311D5355213A7AD00001DF77 /* LoginViewController.swift in Sources */,
 				31014EBA218E4F44006FB4A6 /* ReviseDetailViewController.swift in Sources */,
+				317F3DC7219324AC00FF9CD7 /* RevisePhotoViewController.swift in Sources */,
 				311D5357213A7B120001DF77 /* CurrentMapViewController.swift in Sources */,
 				313B0B9A21847FC5005734F7 /* SpecialToSendViewController.swift in Sources */,
 				31778FE8215C7973005FDD19 /* ColorMKPointAnnotation.swift in Sources */,

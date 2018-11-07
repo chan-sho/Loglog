@@ -21,6 +21,7 @@ class ReviseDetailViewController: UIViewController, UITextFieldDelegate, UITextV
     @IBOutlet weak var relatedURL: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var reviseImageButton: UIButton!
     @IBOutlet weak var reviseFinalizeButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
@@ -98,7 +99,7 @@ class ReviseDetailViewController: UIViewController, UITextFieldDelegate, UITextV
 
         //背景の設定
         let bg = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-        bg.image = UIImage(named: "背景new13")
+        bg.image = UIImage(named: "背景new13_R2")
         bg.layer.zPosition = -1
         self.view.addSubview(bg)
         
@@ -113,8 +114,14 @@ class ReviseDetailViewController: UIViewController, UITextFieldDelegate, UITextV
         if imageString != nil {
             UIimage = UIImage(data: Data(base64Encoded: imageString!, options: .ignoreUnknownCharacters)!)
             image.image = UIimage
+            image?.contentMode = UIViewContentMode.scaleAspectFit
         }
+        
+        //初期値設定
+        userDefaults.register(defaults: ["reviseImageButtonFlag" : "NO"])
+        
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         // userdefaultsで受け取ったデータを各TextView, TextFieldに設定する
@@ -128,9 +135,15 @@ class ReviseDetailViewController: UIViewController, UITextFieldDelegate, UITextV
         if imageString != nil {
             UIimage = UIImage(data: Data(base64Encoded: imageString!, options: .ignoreUnknownCharacters)!)
             image.image = UIimage
+            image?.contentMode = UIViewContentMode.scaleAspectFit
         }
+        
+        //初期値設定
+        userDefaults.register(defaults: ["reviseImageButtonFlag" : "NO"])
+        
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -165,10 +178,11 @@ class ReviseDetailViewController: UIViewController, UITextFieldDelegate, UITextV
     //「上記内容で修正」ボタンを押された際のアクション
     @IBAction func reviseFinalizeButton(_ sender: Any) {
         let reviseDataId = userDefaults.string(forKey: "reviseDataId")
+        let reviseImageString = userDefaults.string(forKey: "reviseImage")
         print("\(reviseDataId!)")
         
         if category.text == ""{
-            let Data = ["category": "(カテゴリーなし)", "contents": "\(contents.text ?? "")", "relatedURL": "\(relatedURL.text ?? "")", "secretpass": "\(password.text ?? "")"]
+            let Data = ["category": "(カテゴリーなし)", "contents": "\(contents.text ?? "")", "relatedURL": "\(relatedURL.text ?? "")", "secretpass": "\(password.text ?? "")", "image": "\(reviseImageString!)"]
             
             //Firebaseから該当データを選択し、データの各項目をアップデート
             let refToReviseData = Database.database().reference().child("posts").child("\(reviseDataId!)")
@@ -176,7 +190,7 @@ class ReviseDetailViewController: UIViewController, UITextFieldDelegate, UITextV
             refToReviseData.updateChildValues(Data)
         }
         else{
-            let Data = ["category": "\(category.text!)", "contents": "\(contents.text ?? "")", "relatedURL": "\(relatedURL.text ?? "")", "secretpass": "\(password.text ?? "")"]
+            let Data = ["category": "\(category.text!)", "contents": "\(contents.text ?? "")", "relatedURL": "\(relatedURL.text ?? "")", "secretpass": "\(password.text ?? "")", "image": "\(reviseImageString!)"]
             
             //Firebaseから該当データを選択し、データの各項目をアップデート
             let refToReviseData = Database.database().reference().child("posts").child("\(reviseDataId!)")
@@ -184,7 +198,24 @@ class ReviseDetailViewController: UIViewController, UITextFieldDelegate, UITextV
             refToReviseData.updateChildValues(Data)
         }
         
-        self.navigationController!.popToRootViewController(animated: true)
+        let reviseImageButtonFlag = userDefaults.string(forKey: "reviseImageButtonFlag")
+        print("reviseImageButtonFlag① = \(reviseImageButtonFlag!)")
+        
+        //投稿画像を修正したかどうかの条件分岐
+        if reviseImageButtonFlag == "YES" {
+            
+            //Flagの初期化
+            self.userDefaults.set("NO", forKey: "reviseImageButtonFlag")
+            self.userDefaults.synchronize()
+            print("reviseImageButtonFlag② = \(reviseImageButtonFlag!)")
+            
+            let navigationController = self.presentingViewController!.presentingViewController as! UINavigationController
+            navigationController.popToRootViewController(animated: true)
+            navigationController.dismiss(animated: false, completion: nil)
+        }
+        else{
+            self.navigationController!.popToRootViewController(animated: true)
+        }
     }
     
 }
