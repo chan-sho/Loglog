@@ -94,7 +94,7 @@ class ReviseDataViewController: UIViewController, UITextFieldDelegate {
                     refToRevise.observeSingleEvent(of: .value, with: { (snapshot) in
                         var valueToRevise = snapshot.value as! [String: AnyObject]
                         //使わない画像データのkeyを配列から削除
-                        _ = valueToRevise.removeValue(forKey: "image")
+                        //*_ = valueToRevise.removeValue(forKey: "image")
                             
                         //中身の確認
                         print("valueToReviseの中身は：\(valueToRevise)")
@@ -104,6 +104,7 @@ class ReviseDataViewController: UIViewController, UITextFieldDelegate {
                         self.userDefaults.set(valueToRevise["contents"], forKey: "reviseContents")
                         self.userDefaults.set(valueToRevise["relatedURL"], forKey: "reviseRelatedURL")
                         self.userDefaults.set(valueToRevise["secretpass"], forKey: "reviseSecretpass")
+                        self.userDefaults.set(valueToRevise["image"], forKey: "reviseImage")
                         self.userDefaults.synchronize()
                     })
                     

@@ -20,8 +20,12 @@ class ReviseDetailViewController: UIViewController, UITextFieldDelegate, UITextV
     @IBOutlet weak var contents: UITextView!
     @IBOutlet weak var relatedURL: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var reviseFinalizeButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
+    
+    var imageString: String?
+    var UIimage: UIImage?
     
     //user defaultsを使う準備
     let userDefaults:UserDefaults = UserDefaults.standard
@@ -103,6 +107,13 @@ class ReviseDetailViewController: UIViewController, UITextFieldDelegate, UITextV
         contents.text = userDefaults.string(forKey: "reviseContents")
         relatedURL.text = userDefaults.string(forKey: "reviseRelatedURL")
         password.text = userDefaults.string(forKey: "reviseSecretpass")
+        
+        // userdefaultsで受け取ったデータをImageに設定する
+        imageString = userDefaults.string(forKey: "reviseImage")
+        if imageString != nil {
+            UIimage = UIImage(data: Data(base64Encoded: imageString!, options: .ignoreUnknownCharacters)!)
+            image.image = UIimage
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -111,6 +122,13 @@ class ReviseDetailViewController: UIViewController, UITextFieldDelegate, UITextV
         contents.text = userDefaults.string(forKey: "reviseContents")
         relatedURL.text = userDefaults.string(forKey: "reviseRelatedURL")
         password.text = userDefaults.string(forKey: "reviseSecretpass")
+        
+        // userdefaultsで受け取ったデータをImageに設定する
+        imageString = userDefaults.string(forKey: "reviseImage")
+        if imageString != nil {
+            UIimage = UIImage(data: Data(base64Encoded: imageString!, options: .ignoreUnknownCharacters)!)
+            image.image = UIimage
+        }
     }
 
     override func didReceiveMemoryWarning() {
