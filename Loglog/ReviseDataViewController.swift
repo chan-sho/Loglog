@@ -97,7 +97,7 @@ class ReviseDataViewController: UIViewController, UITextFieldDelegate {
                         //*_ = valueToRevise.removeValue(forKey: "image")
                             
                         //中身の確認
-                        print("valueToReviseの中身は：\(valueToRevise)")
+                        //*print("valueToReviseの中身は：\(valueToRevise)")
                         
                         //userDefaultsに保存
                         self.userDefaults.set(valueToRevise["category"], forKey: "reviseCategory")
