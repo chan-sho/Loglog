@@ -77,7 +77,7 @@ class PostViewController: UIViewController, UITextFieldDelegate, UITextViewDeleg
         
         //背景の設定
         let bg = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-        bg.image = UIImage(named: "背景new3R")
+        bg.image = UIImage(named: "背景(ver1.10)_5")
         bg.layer.zPosition = -1
         self.view.addSubview(bg)
         

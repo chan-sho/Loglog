@@ -41,6 +41,15 @@ class ReviseDataViewController: UIViewController, UITextFieldDelegate {
         postedReviseButton.isExclusiveTouch = true
         postedDeleteButton.isExclusiveTouch = true
         cancelButton.isExclusiveTouch = true
+        
+        //Flagの初期化
+        self.userDefaults.set("NO", forKey: "reviseImageButtonFlag")
+        self.userDefaults.synchronize()
+        
+        //Flagのチェック
+        let checkReviseImageButtonFlag = userDefaults.string(forKey: "reviseImageButtonFlag")
+        self.userDefaults.synchronize()
+        print("*Check of reviseImageButtonFlag = \(checkReviseImageButtonFlag!)")
     }
     
     //念のため（※userDefaultsの更新タイミングが遅かった場合のために）

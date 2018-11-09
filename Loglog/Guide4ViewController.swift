@@ -16,14 +16,12 @@ class Guide4ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view1.layer.borderWidth = 1.0
-        view1.layer.borderColor = UIColor.gray.cgColor
-        
-        view2.layer.borderWidth = 1.0
-        view2.layer.borderColor = UIColor.gray.cgColor
 
-        // Do any additional setup after loading the view.
+        //背景の設定
+        let bg = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        bg.image = UIImage(named: "背景(ver1.10)_8")
+        bg.layer.zPosition = -1
+        self.view.addSubview(bg)
     }
 
     override func didReceiveMemoryWarning() {

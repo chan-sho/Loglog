@@ -20,6 +20,7 @@ class SpecialViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var textField: UITextView!
     @IBOutlet weak var sendButton: UIButton!
     
+    
     //user defaultsを使う準備
     let userDefaults:UserDefaults = UserDefaults.standard
     
@@ -30,7 +31,7 @@ class SpecialViewController: UIViewController, UITextViewDelegate {
         textField.delegate = self
         
         // 枠のカラー
-        textField.layer.borderColor = UIColor.black.cgColor
+        textField.layer.borderColor = UIColor.white.cgColor
         // 枠の幅
         textField.layer.borderWidth = 1.0
         // 枠を角丸にする場合

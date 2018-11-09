@@ -199,6 +199,7 @@ class ReviseDetailViewController: UIViewController, UITextFieldDelegate, UITextV
         }
         
         let reviseImageButtonFlag = userDefaults.string(forKey: "reviseImageButtonFlag")
+        self.userDefaults.synchronize()
         print("reviseImageButtonFlag① = \(reviseImageButtonFlag!)")
         
         //投稿画像を修正したかどうかの条件分岐
@@ -206,8 +207,10 @@ class ReviseDetailViewController: UIViewController, UITextFieldDelegate, UITextV
             
             //Flagの初期化
             self.userDefaults.set("NO", forKey: "reviseImageButtonFlag")
+            //Flagのチェック
+            let checkReviseImageButtonFlag = userDefaults.string(forKey: "reviseImageButtonFlag")
             self.userDefaults.synchronize()
-            print("reviseImageButtonFlag② = \(reviseImageButtonFlag!)")
+            print("*Check of reviseImageButtonFlag = \(checkReviseImageButtonFlag!)")
             
             let navigationController = self.presentingViewController!.presentingViewController as! UINavigationController
             navigationController.popToRootViewController(animated: true)

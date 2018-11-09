@@ -65,7 +65,7 @@ class PostedPinOnCurrentViewController: UIViewController, UITextFieldDelegate, U
         
         //背景の設定
         let bg = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-        bg.image = UIImage(named: "背景new11")
+        bg.image = UIImage(named: "背景(ver1.10)_4")
         bg.layer.zPosition = -1
         self.view.addSubview(bg)
     }
