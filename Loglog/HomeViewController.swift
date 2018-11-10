@@ -91,7 +91,7 @@ class HomeViewController: UIViewController {
         whiteBackGround.layer.zPosition = +1
         self.view.addSubview(whiteBackGround)
         
-        HomeBackgroundView.image = UIImage(named: "背景(ver1.10)_6")
+        HomeBackgroundView.image = UIImage(named: "背景(ver1.10)_1")
         
         //ログインユーザーのプロフィール画像をロード
         let currentUser = Auth.auth().currentUser
@@ -120,26 +120,26 @@ class HomeViewController: UIViewController {
         
         }
         
-        view1.layer.borderWidth = 1.0
+        view1.layer.borderWidth = 0.5
         view1.layer.borderColor = UIColor.red.cgColor
         view1.layer.cornerRadius = 10.0 //丸みを数値で変更できる
         
-        view2.layer.borderWidth = 1.0
+        view2.layer.borderWidth = 0.5
         view2.layer.borderColor = UIColor.orange.cgColor
         view2.layer.cornerRadius = 10.0 //丸みを数値で変更できる
         
-        view3.layer.borderWidth = 1.0
+        view3.layer.borderWidth = 0.5
         view3.layer.borderColor = UIColor.yellow.cgColor
         view3.layer.cornerRadius = 10.0 //丸みを数値で変更できる
         
-        view4.layer.borderWidth = 1.0
+        view4.layer.borderWidth = 0.5
         view4.layer.borderColor = UIColor.green.cgColor
         view4.layer.cornerRadius = 10.0 //丸みを数値で変更できる
         
-        loglogLogoImage.image = UIImage(named: "Loglogロゴ")
-        loglogLogoImage.layer.borderWidth = 1.0
-        loglogLogoImage.layer.borderColor = UIColor.white.cgColor
-        loglogLogoImage.layer.cornerRadius = 30.0 //丸みを数値で変更できる
+        //*loglogLogoImage.image = UIImage(named: "Loglogロゴ")
+        //*loglogLogoImage.layer.borderWidth = 1.0
+        //*loglogLogoImage.layer.borderColor = UIColor.white.cgColor
+        //*loglogLogoImage.layer.cornerRadius = 30.0 //丸みを数値で変更できる
         
         //ボタン同時押しによるアプリクラッシュを防ぐ
         allPostedSelectButton.isExclusiveTouch = true

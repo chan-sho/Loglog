@@ -46,6 +46,21 @@ class PostedPinOnSearchViewController: UIViewController, UITextFieldDelegate, UI
         postedName.delegate = self
         postedNumber.delegate = self
         
+        category.layer.borderColor = UIColor.black.cgColor
+        postedName.layer.borderColor = UIColor.black.cgColor
+        postedNumber.layer.borderColor = UIColor.black.cgColor
+        // 枠の幅
+        category.layer.borderWidth = 0.5
+        postedName.layer.borderWidth = 0.5
+        postedNumber.layer.borderWidth = 0.5
+        // 枠を角丸にする場合
+        category.layer.cornerRadius = 10.0
+        category.layer.masksToBounds = true
+        postedName.layer.cornerRadius = 10.0
+        postedName.layer.masksToBounds = true
+        postedNumber.layer.cornerRadius = 10.0
+        postedNumber.layer.masksToBounds = true
+        
         // categoryにPickerを実装する準備
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -66,7 +81,9 @@ class PostedPinOnSearchViewController: UIViewController, UITextFieldDelegate, UI
         
         //背景の設定
         let bg = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-        bg.image = UIImage(named: "背景(ver1.10)_4")
+        bg.image = UIImage(named: "背景(ver1.10)_10")
+        bg.contentMode = UIViewContentMode.scaleAspectFill
+        bg.clipsToBounds = true
         bg.layer.zPosition = -1
         self.view.addSubview(bg)
     }

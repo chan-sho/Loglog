@@ -129,10 +129,10 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         relatedURLToPost.layer.borderColor = UIColor.black.cgColor
         secretPassToPost.layer.borderColor = UIColor.black.cgColor
         // 枠の幅
-        categoryTextToPost.layer.borderWidth = 1.0
-        contentsTextToPost.layer.borderWidth = 1.0
-        relatedURLToPost.layer.borderWidth = 1.0
-        secretPassToPost.layer.borderWidth = 1.0
+        categoryTextToPost.layer.borderWidth = 0.5
+        contentsTextToPost.layer.borderWidth = 0.5
+        relatedURLToPost.layer.borderWidth = 0.5
+        secretPassToPost.layer.borderWidth = 0.5
         // 枠を角丸にする場合
         categoryTextToPost.layer.cornerRadius = 10.0
         categoryTextToPost.layer.masksToBounds = true
@@ -145,7 +145,9 @@ class PostFinalizeViewController: UIViewController, UITextFieldDelegate, UITextV
         
         //背景の設定
         let bg = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-        bg.image = UIImage(named: "背景(ver1.10)_4")
+        bg.image = UIImage(named: "背景(ver1.10)_5")
+        bg.contentMode = UIViewContentMode.scaleAspectFill
+        bg.clipsToBounds = true
         bg.layer.zPosition = -1
         self.view.addSubview(bg)
         

@@ -51,9 +51,26 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         passwordTextField.delegate = self
         displayNameTextField.delegate = self
         
+        mailAddressTextField.layer.borderColor = UIColor.black.cgColor
+        passwordTextField.layer.borderColor = UIColor.black.cgColor
+        displayNameTextField.layer.borderColor = UIColor.black.cgColor
+        // 枠の幅
+        mailAddressTextField.layer.borderWidth = 0.5
+        passwordTextField.layer.borderWidth = 0.5
+        displayNameTextField.layer.borderWidth = 0.5
+        // 枠を角丸にする場合
+        mailAddressTextField.layer.cornerRadius = 10.0
+        mailAddressTextField.layer.masksToBounds = true
+        passwordTextField.layer.cornerRadius = 10.0
+        passwordTextField.layer.masksToBounds = true
+        displayNameTextField.layer.cornerRadius = 10.0
+        displayNameTextField.layer.masksToBounds = true
+        
         //背景の設定
         let bg = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-        bg.image = UIImage(named: "背景new2R")
+        bg.image = UIImage(named: "背景new2R-2")
+        bg.contentMode = UIViewContentMode.scaleAspectFill
+        bg.clipsToBounds = true
         bg.layer.zPosition = -1
         self.view.addSubview(bg)
         
@@ -62,7 +79,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         handleCreateAccountButton.isExclusiveTouch = true
         passwordResetButton.isExclusiveTouch = true
         
-        passwordResetButton.layer.borderWidth = 1.0
+        passwordResetButton.layer.borderWidth = 0.5
         passwordResetButton.layer.borderColor = UIColor.white.cgColor
         passwordResetButton.layer.cornerRadius = 10.0 //丸みを数値で変更できる
         

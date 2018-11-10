@@ -33,10 +33,14 @@ class SpecialToSendViewController: UIViewController, UITextViewDelegate, UITextF
         textField.delegate = self
         
         // 枠のカラー
-        textField.layer.borderColor = UIColor.white.cgColor
+        userEmailAddress.layer.borderColor = UIColor.black.cgColor
+        textField.layer.borderColor = UIColor.black.cgColor
         // 枠の幅
-        textField.layer.borderWidth = 1.0
+        userEmailAddress.layer.borderWidth = 0.5
+        textField.layer.borderWidth = 0.5
         // 枠を角丸にする場合
+        userEmailAddress.layer.cornerRadius = 10.0
+        userEmailAddress.layer.masksToBounds = true
         textField.layer.cornerRadius = 10.0
         textField.layer.masksToBounds = true
         

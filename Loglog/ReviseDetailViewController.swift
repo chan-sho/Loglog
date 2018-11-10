@@ -66,10 +66,10 @@ class ReviseDetailViewController: UIViewController, UITextFieldDelegate, UITextV
         relatedURL.layer.borderColor = UIColor.black.cgColor
         password.layer.borderColor = UIColor.black.cgColor
         // 枠の幅
-        category.layer.borderWidth = 1.0
-        contents.layer.borderWidth = 1.0
-        relatedURL.layer.borderWidth = 1.0
-        password.layer.borderWidth = 1.0
+        category.layer.borderWidth = 0.5
+        contents.layer.borderWidth = 0.5
+        relatedURL.layer.borderWidth = 0.5
+        password.layer.borderWidth = 0.5
         // 枠を角丸にする場合
         category.layer.cornerRadius = 10.0
         category.layer.masksToBounds = true
@@ -79,6 +79,13 @@ class ReviseDetailViewController: UIViewController, UITextFieldDelegate, UITextV
         relatedURL.layer.masksToBounds = true
         password.layer.cornerRadius = 10.0
         password.layer.masksToBounds = true
+        
+        reviseImageButton.layer.borderColor = UIColor.red.cgColor
+        // 枠の幅
+        reviseImageButton.layer.borderWidth = 0.5
+        // 枠を角丸にする場合
+        reviseImageButton.layer.cornerRadius = 10.0
+        reviseImageButton.layer.masksToBounds = true
         
         // categoryTextにPickerを実装する準備
         pickerView.delegate = self
@@ -95,11 +102,14 @@ class ReviseDetailViewController: UIViewController, UITextFieldDelegate, UITextV
         
         //ボタン同時押しによるアプリクラッシュを防ぐ
         reviseFinalizeButton.isExclusiveTouch = true
+        reviseImageButton.isExclusiveTouch = true
         cancelButton.isExclusiveTouch = true
 
         //背景の設定
         let bg = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
-        bg.image = UIImage(named: "背景new13_R2")
+        bg.image = UIImage(named: "背景(ver1.10)_11")
+        bg.contentMode = UIViewContentMode.scaleAspectFill
+        bg.clipsToBounds = true
         bg.layer.zPosition = -1
         self.view.addSubview(bg)
         

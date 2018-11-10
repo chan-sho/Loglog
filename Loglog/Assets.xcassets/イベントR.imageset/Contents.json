@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "背景(ver1.10)_4.png",
+      "filename" : "イベントR.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "背景(ver1.10)_4@2x.png",
+      "filename" : "イベントR@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "背景(ver1.10)_4@3x.png",
+      "filename" : "イベントR@3x.png",
       "scale" : "3x"
     }
   ],

@@ -31,9 +31,9 @@ class SpecialViewController: UIViewController, UITextViewDelegate {
         textField.delegate = self
         
         // 枠のカラー
-        textField.layer.borderColor = UIColor.white.cgColor
+        textField.layer.borderColor = UIColor.black.cgColor
         // 枠の幅
-        textField.layer.borderWidth = 1.0
+        textField.layer.borderWidth = 0.5
         // 枠を角丸にする場合
         textField.layer.cornerRadius = 10.0
         textField.layer.masksToBounds = true
