@@ -91,7 +91,7 @@ class HomeViewController: UIViewController {
         whiteBackGround.layer.zPosition = +1
         self.view.addSubview(whiteBackGround)
         
-        HomeBackgroundView.image = UIImage(named: "背景(ver1.10)_1")
+        HomeBackgroundView.image = UIImage(named: "背景(ver1.10)_1R-3")
         
         //ログインユーザーのプロフィール画像をロード
         let currentUser = Auth.auth().currentUser
