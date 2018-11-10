@@ -342,6 +342,17 @@
                                             <action selector="termsOfServiceButton:" destination="Zth-vc-l65" eventType="touchUpInside" id="qQh-N5-kru"/>
                                         </connections>
                                     </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GvM-H6-PIM">
+                                        <rect key="frame" x="37" y="833" width="300" height="90"/>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.29968428938356162" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="90" id="GtI-2b-rBv"/>
+                                            <constraint firstAttribute="width" constant="300" id="hhq-GV-c2g"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="13"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="FWq-4D-VcV" secondAttribute="trailing" constant="20" id="0Ub-C5-Ro4"/>
@@ -378,6 +389,7 @@
                                     <constraint firstItem="1JJ-Jf-hQW" firstAttribute="top" secondItem="oli-xx-Cn6" secondAttribute="bottom" constant="5" id="aAA-Ut-CHN"/>
                                     <constraint firstItem="sCK-jW-fNo" firstAttribute="centerX" secondItem="xrZ-0o-OTu" secondAttribute="centerX" id="asZ-M4-onq"/>
                                     <constraint firstItem="UTH-T3-Pmh" firstAttribute="top" secondItem="dbY-GX-WQc" secondAttribute="bottom" constant="90" id="dIA-0a-hgB"/>
+                                    <constraint firstItem="GvM-H6-PIM" firstAttribute="top" secondItem="tk1-YO-9Rn" secondAttribute="bottom" constant="90" id="dz0-RK-8rH"/>
                                     <constraint firstItem="OTZ-b0-uaj" firstAttribute="centerX" secondItem="xrZ-0o-OTu" secondAttribute="centerX" id="e99-Q3-NSM"/>
                                     <constraint firstAttribute="trailing" secondItem="Mml-Gk-6gK" secondAttribute="trailing" constant="50" id="faV-rc-NfH"/>
                                     <constraint firstItem="tk1-YO-9Rn" firstAttribute="centerX" secondItem="6Dt-eu-1fu" secondAttribute="centerX" id="fpq-5E-q8z"/>
@@ -387,6 +399,7 @@
                                     <constraint firstItem="iFf-L5-PGe" firstAttribute="leading" secondItem="xrZ-0o-OTu" secondAttribute="leading" constant="20" id="iFS-xq-SJa"/>
                                     <constraint firstItem="DT2-mC-BCn" firstAttribute="leading" secondItem="xrZ-0o-OTu" secondAttribute="leading" constant="50" id="nv5-3A-PCm"/>
                                     <constraint firstItem="B3F-QB-HJz" firstAttribute="trailing" secondItem="dbY-GX-WQc" secondAttribute="trailing" id="o8O-Qd-pLA"/>
+                                    <constraint firstItem="GvM-H6-PIM" firstAttribute="centerX" secondItem="xrZ-0o-OTu" secondAttribute="centerX" id="p3C-aY-rnP"/>
                                     <constraint firstItem="WvY-Ia-LNt" firstAttribute="top" secondItem="UTH-T3-Pmh" secondAttribute="bottom" constant="5" id="pWV-KG-WTR"/>
                                     <constraint firstItem="dbY-GX-WQc" firstAttribute="top" secondItem="nl1-KW-XUk" secondAttribute="bottom" constant="20" id="ptc-K9-PCf"/>
                                     <constraint firstItem="zqE-IU-8v1" firstAttribute="centerX" secondItem="xrZ-0o-OTu" secondAttribute="centerX" id="sB3-wp-D14"/>
@@ -410,6 +423,7 @@
                     <connections>
                         <outlet property="HomeBackgroundView" destination="YaQ-Zi-9i4" id="UxV-mj-Yct"/>
                         <outlet property="allPostedSelectButton" destination="JLI-ld-q2n" id="XPf-8U-1Ik"/>
+                        <outlet property="commentFromLoglog" destination="GvM-H6-PIM" id="rki-8e-YJo"/>
                         <outlet property="eventButton" destination="UTH-T3-Pmh" id="ocz-P2-mf7"/>
                         <outlet property="helloLabel" destination="OTZ-b0-uaj" id="DrT-Ji-h5M"/>
                         <outlet property="likeSelectButton" destination="HWq-pl-s9A" id="b5c-it-e3h"/>

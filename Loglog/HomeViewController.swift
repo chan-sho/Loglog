@@ -12,7 +12,7 @@ import Firebase
 import FirebaseAuth
 
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITextViewDelegate  {
 
     @IBOutlet weak var HomeBackgroundView: UIImageView!
     
@@ -33,8 +33,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var eventButton: UIButton!
     @IBOutlet weak var matchingButton: UIButton!
     @IBOutlet weak var termsOfServiceButton: UIButton!
-    
     @IBOutlet weak var loglogLogoImage: UIImageView!
+    @IBOutlet weak var commentFromLoglog: UITextView!
     
     //真っ白な背景のImageView
     var whiteBackGround: UIView!
@@ -78,6 +78,16 @@ class HomeViewController: UIViewController {
         else {
             self.view.addSubview(whiteBackGround)
         }
+        
+        //↓「Loglog管理者からのご連絡」を設定
+        var ref: DatabaseReference!
+        ref = Database.database().reference().child("posts_3")
+        //  FirebaseからobserveSingleEventで1回だけデータ検索
+        ref.observe(DataEventType.value, with: { (snapshot) in
+            let value = snapshot.value as? String
+            print("valueの中身＠Loglog管理者からのご連絡 は：\(value!)")
+            self.commentFromLoglog.text = value
+        })
         
     }
 
@@ -150,6 +160,30 @@ class HomeViewController: UIViewController {
         eventButton.isExclusiveTouch = true
         matchingButton.isExclusiveTouch = true
         termsOfServiceButton.isExclusiveTouch = true
+        
+        //↓「Loglog管理者からのご連絡」を設定
+        commentFromLoglog.delegate = self
+        commentFromLoglog.layer.borderColor = UIColor.white.cgColor
+        // 枠の幅
+        commentFromLoglog.layer.borderWidth = 0.5
+        // 枠を角丸にする場合
+        commentFromLoglog.layer.cornerRadius = 10.0
+        commentFromLoglog.layer.masksToBounds = true
+        
+        var ref: DatabaseReference!
+        ref = Database.database().reference().child("posts_3")
+        //  FirebaseからobserveSingleEventで1回だけデータ検索
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? String
+            print("valueの中身＠Loglog管理者からのご連絡 は：\(value!)")
+            self.commentFromLoglog.text = value
+        })
+        ref.observe(DataEventType.value, with: { (snapshot) in
+            let value = snapshot.value as? String
+            print("valueの中身＠Loglog管理者からのご連絡 は：\(value!)")
+            self.commentFromLoglog.text = value
+        })
+        
     }
 
     
