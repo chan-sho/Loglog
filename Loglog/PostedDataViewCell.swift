@@ -28,10 +28,13 @@ class PostedDataViewCell: UITableViewCell {
     @IBOutlet weak var createMapPinButton: UIButton!
     @IBOutlet weak var imageViewButton: UIButton!
     
+    //投稿ナンバー、関連URL、秘密Passの左側ラベル部分
+    @IBOutlet weak var postNumber: UILabel!
+    @IBOutlet weak var URL: UILabel!
+    @IBOutlet weak var Pass: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
         
         id.isUserInteractionEnabled = true
         address.isUserInteractionEnabled = true
@@ -134,10 +137,10 @@ class PostedDataViewCell: UITableViewCell {
         
         self.id.text = "\(postData.self.id!)"
         self.address.text = "\(postData.self.pinAddress!)"
-        self.category.text = "\(postData.category!)"
-        self.contents.text = "\(postData.contents!)"
-        self.relatedURL.text = "\(postData.relatedURL!)"
-        self.secretPass.text = "\(postData.secretpass!)"
+        self.category.text = "【\(postData.category!)】"
+        self.contents.text = "\(postData.contents ?? "")"
+        self.relatedURL.text = "\(postData.relatedURL ?? "")"
+        self.secretPass.text = "\(postData.secretpass ?? "")"
         self.nameLabel.text = "\(postData.name!)"
         
         self.postImageView.image = postData.image
@@ -146,7 +149,7 @@ class PostedDataViewCell: UITableViewCell {
         likeLabel.text = "\(likeNumber)"
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = "yyyy/MM/dd"
         let dateString = formatter.string(from: postData.date!)
         self.dateLabel.text = dateString
         
@@ -165,6 +168,22 @@ class PostedDataViewCell: UITableViewCell {
             let buttonImage = UIImage(named:"mymap_no")
             self.myMapButton.setImage(buttonImage, for: .normal)
         }
+        
+        
+        if postData.relatedURL != "" {
+            URL.backgroundColor = UIColor.lightGray
+        }
+        else {
+            URL.backgroundColor = UIColor.white
+        }
+        
+        if postData.secretpass != "" {
+            Pass.backgroundColor = UIColor.lightGray
+        }
+        else {
+            Pass.backgroundColor = UIColor.white
+        }
+        
     }
     
 }

@@ -72,7 +72,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         // テーブル行の高さをAutoLayoutで自動調整する
         tableView.rowHeight = UITableViewAutomaticDimension
         // テーブル行の高さの概算値を設定しておく
-        tableView.estimatedRowHeight = 500
+        tableView.estimatedRowHeight = 400
         
         // TableViewを再表示する
         self.tableView.reloadData()

@@ -19,7 +19,6 @@ class RequestAndAnswerTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
     }
 
     
@@ -30,12 +29,12 @@ class RequestAndAnswerTableViewCell: UITableViewCell {
     
     func setPostData2(_ postData: PostData) {
         
-        self.answerCategory.text = "\(postData.answerCategory ?? "")"
+        self.answerCategory.text = "【\(postData.answerCategory ?? "")】"
         self.requestTextField.text = "\(postData.requestTextField ?? "")"
         self.answerTextField.text = "\(postData.answerTextField ?? "")"
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = "yyyy/MM/dd"
         let dateString = formatter.string(from: postData.date!)
         self.time.text = dateString
     }

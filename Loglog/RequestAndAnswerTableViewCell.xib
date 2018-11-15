@@ -12,60 +12,54 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="207" id="KGk-i7-Jjw" customClass="RequestAndAnswerTableViewCell" customModule="Loglog" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="207"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="216" id="KGk-i7-Jjw" customClass="RequestAndAnswerTableViewCell" customModule="Loglog" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="206.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="215.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カテゴリー：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pcg-R7-FOQ">
-                        <rect key="frame" x="10" y="10" width="300" height="17"/>
-                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="14"/>
-                        <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ご意見・ご要望の内容：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BaA-sY-MpG">
-                        <rect key="frame" x="10" y="59" width="300" height="17"/>
-                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="14"/>
-                        <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ご意見・ご要望：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BaA-sY-MpG">
+                        <rect key="frame" x="10" y="46" width="300" height="15.5"/>
+                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="13"/>
+                        <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loglog管理者からの回答：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5X-Kd-vyG">
-                        <rect key="frame" x="10" y="108" width="300" height="17"/>
-                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="14"/>
-                        <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <rect key="frame" x="10" y="102.5" width="300" height="15.5"/>
+                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="13"/>
+                        <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ご意見を頂戴した日付：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pF0-8Q-yBB">
-                        <rect key="frame" x="10" y="157" width="300" height="17"/>
-                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="14"/>
-                        <color key="textColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <rect key="frame" x="10" y="159" width="300" height="15.5"/>
+                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="13"/>
+                        <color key="textColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gy1-YD-9Cq">
-                        <rect key="frame" x="10" y="30" width="300" height="19"/>
+                        <rect key="frame" x="10" y="10" width="300" height="21"/>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
+                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXC-Ux-6lV">
-                        <rect key="frame" x="10" y="79" width="300" height="19"/>
+                        <rect key="frame" x="10" y="68.5" width="300" height="19"/>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="285-kT-KWj">
-                        <rect key="frame" x="10" y="128" width="300" height="19"/>
+                        <rect key="frame" x="10" y="125" width="300" height="19"/>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
-                        <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jWd-hX-hXZ">
-                        <rect key="frame" x="10" y="177" width="300" height="19"/>
+                        <rect key="frame" x="10" y="182" width="300" height="19"/>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="16"/>
                         <nil key="textColor"/>
@@ -73,31 +67,28 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="ZXC-Ux-6lV" secondAttribute="trailing" constant="10" id="2KG-Vu-JxD"/>
-                    <constraint firstItem="Pcg-R7-FOQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="2Y9-JM-BNM"/>
-                    <constraint firstAttribute="trailing" secondItem="jWd-hX-hXZ" secondAttribute="trailing" constant="10" id="8Qm-TF-Rcw"/>
-                    <constraint firstAttribute="bottom" secondItem="jWd-hX-hXZ" secondAttribute="bottom" constant="10" id="GFw-Xn-DKB"/>
-                    <constraint firstItem="BaA-sY-MpG" firstAttribute="top" secondItem="gy1-YD-9Cq" secondAttribute="bottom" constant="10" id="KBQ-8e-cEV"/>
-                    <constraint firstItem="gy1-YD-9Cq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="PD7-5N-mcM"/>
-                    <constraint firstItem="ZXC-Ux-6lV" firstAttribute="top" secondItem="BaA-sY-MpG" secondAttribute="bottom" constant="3" id="PaC-dI-boV"/>
-                    <constraint firstItem="jWd-hX-hXZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="TEd-2g-AxM"/>
-                    <constraint firstItem="pF0-8Q-yBB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="TSf-Am-kcz"/>
-                    <constraint firstItem="jWd-hX-hXZ" firstAttribute="top" secondItem="pF0-8Q-yBB" secondAttribute="bottom" constant="3" id="Xg1-Cs-vuU"/>
-                    <constraint firstItem="Pcg-R7-FOQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="b2z-mP-dhl"/>
-                    <constraint firstAttribute="trailing" secondItem="c5X-Kd-vyG" secondAttribute="trailing" constant="10" id="eDg-Zc-emP"/>
-                    <constraint firstItem="BaA-sY-MpG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="fAq-KS-Ino"/>
-                    <constraint firstItem="ZXC-Ux-6lV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="hCm-6y-J1G"/>
-                    <constraint firstItem="c5X-Kd-vyG" firstAttribute="top" secondItem="ZXC-Ux-6lV" secondAttribute="bottom" constant="10" id="hQ2-Vm-fF5"/>
-                    <constraint firstItem="gy1-YD-9Cq" firstAttribute="top" secondItem="Pcg-R7-FOQ" secondAttribute="bottom" constant="3" id="jGS-0B-NCM"/>
-                    <constraint firstAttribute="trailing" secondItem="Pcg-R7-FOQ" secondAttribute="trailing" constant="10" id="kdg-sj-gU4"/>
-                    <constraint firstAttribute="trailing" secondItem="pF0-8Q-yBB" secondAttribute="trailing" constant="10" id="lBo-d6-ZBa"/>
-                    <constraint firstItem="285-kT-KWj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="loT-BU-3xC"/>
-                    <constraint firstAttribute="trailing" secondItem="BaA-sY-MpG" secondAttribute="trailing" constant="10" id="n5x-Jf-tir"/>
-                    <constraint firstItem="285-kT-KWj" firstAttribute="top" secondItem="c5X-Kd-vyG" secondAttribute="bottom" constant="3" id="obR-yn-8Qw"/>
-                    <constraint firstItem="pF0-8Q-yBB" firstAttribute="top" secondItem="285-kT-KWj" secondAttribute="bottom" constant="10" id="q3h-eb-3Ju"/>
-                    <constraint firstItem="c5X-Kd-vyG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="t8b-2C-4jq"/>
-                    <constraint firstAttribute="trailing" secondItem="gy1-YD-9Cq" secondAttribute="trailing" constant="10" id="up7-we-Nvf"/>
-                    <constraint firstAttribute="trailing" secondItem="285-kT-KWj" secondAttribute="trailing" constant="10" id="v7V-6e-KO3"/>
+                    <constraint firstItem="c5X-Kd-vyG" firstAttribute="top" secondItem="ZXC-Ux-6lV" secondAttribute="bottom" constant="15" id="19Z-kR-9ci"/>
+                    <constraint firstItem="285-kT-KWj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="4V8-Ia-lHG"/>
+                    <constraint firstAttribute="trailing" secondItem="c5X-Kd-vyG" secondAttribute="trailing" constant="10" id="4gc-lS-hWn"/>
+                    <constraint firstAttribute="trailing" secondItem="BaA-sY-MpG" secondAttribute="trailing" constant="10" id="FC4-0y-ih0"/>
+                    <constraint firstItem="jWd-hX-hXZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="H7O-X3-9j5"/>
+                    <constraint firstItem="ZXC-Ux-6lV" firstAttribute="top" secondItem="BaA-sY-MpG" secondAttribute="bottom" constant="7" id="IDx-Yi-jyL"/>
+                    <constraint firstItem="pF0-8Q-yBB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Lo9-Q9-TXL"/>
+                    <constraint firstAttribute="trailing" secondItem="jWd-hX-hXZ" secondAttribute="trailing" constant="10" id="QPj-MZ-ru6"/>
+                    <constraint firstItem="285-kT-KWj" firstAttribute="top" secondItem="c5X-Kd-vyG" secondAttribute="bottom" constant="7" id="V3y-fy-Rhu"/>
+                    <constraint firstItem="gy1-YD-9Cq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Zib-cL-ROq"/>
+                    <constraint firstItem="jWd-hX-hXZ" firstAttribute="top" secondItem="pF0-8Q-yBB" secondAttribute="bottom" constant="7" id="bjO-EH-txv"/>
+                    <constraint firstItem="ZXC-Ux-6lV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="cSD-j7-FBu"/>
+                    <constraint firstAttribute="trailing" secondItem="gy1-YD-9Cq" secondAttribute="trailing" constant="10" id="dWj-mi-8MM"/>
+                    <constraint firstAttribute="bottom" secondItem="jWd-hX-hXZ" secondAttribute="bottom" constant="14.5" id="dXm-bm-M9d"/>
+                    <constraint firstItem="BaA-sY-MpG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="e1p-JP-k2G"/>
+                    <constraint firstItem="BaA-sY-MpG" firstAttribute="top" secondItem="gy1-YD-9Cq" secondAttribute="bottom" constant="15" id="eTD-gs-6zS"/>
+                    <constraint firstItem="pF0-8Q-yBB" firstAttribute="top" secondItem="285-kT-KWj" secondAttribute="bottom" constant="15" id="iuG-fp-aow"/>
+                    <constraint firstAttribute="trailing" secondItem="pF0-8Q-yBB" secondAttribute="trailing" constant="10" id="jne-vC-aMf"/>
+                    <constraint firstItem="gy1-YD-9Cq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="jvK-Fd-DwV"/>
+                    <constraint firstItem="c5X-Kd-vyG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="kLG-qq-9WA"/>
+                    <constraint firstAttribute="trailing" secondItem="ZXC-Ux-6lV" secondAttribute="trailing" constant="10" id="ue3-N3-GlG"/>
+                    <constraint firstAttribute="trailing" secondItem="285-kT-KWj" secondAttribute="trailing" constant="10" id="zPG-Dk-FXU"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -107,7 +98,7 @@
                 <outlet property="requestTextField" destination="ZXC-Ux-6lV" id="B61-gG-cBP"/>
                 <outlet property="time" destination="jWd-hX-hXZ" id="szJ-cb-cTc"/>
             </connections>
-            <point key="canvasLocation" x="-36" y="-15.5"/>
+            <point key="canvasLocation" x="-36" y="-11"/>
         </tableViewCell>
     </objects>
 </document>
