@@ -60,7 +60,6 @@ class HomeViewController: UIViewController, UITextViewDelegate  {
             let userProfileurl = Auth.auth().currentUser?.photoURL
             if userProfileurl != nil {
             let url = URL(string: "\(userProfileurl!)")
-            print("\(url!)")
             
             URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
                 if error != nil {
@@ -85,7 +84,6 @@ class HomeViewController: UIViewController, UITextViewDelegate  {
         //  FirebaseからobserveSingleEventで1回だけデータ検索
         ref.observe(DataEventType.value, with: { (snapshot) in
             let value = snapshot.value as? String
-            print("valueの中身＠Loglog管理者からのご連絡 は：\(value!)")
             self.commentFromLoglog.text = value
         })
         
@@ -112,7 +110,6 @@ class HomeViewController: UIViewController, UITextViewDelegate  {
         if userProfileurl != nil {
         let url = URL(string: "\(userProfileurl!)")
         
-        print("\(url!)")
         
         URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
             if error != nil {
@@ -175,12 +172,10 @@ class HomeViewController: UIViewController, UITextViewDelegate  {
         //  FirebaseからobserveSingleEventで1回だけデータ検索
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? String
-            print("valueの中身＠Loglog管理者からのご連絡 は：\(value!)")
             self.commentFromLoglog.text = value
         })
         ref.observe(DataEventType.value, with: { (snapshot) in
             let value = snapshot.value as? String
-            print("valueの中身＠Loglog管理者からのご連絡 は：\(value!)")
             self.commentFromLoglog.text = value
         })
         
@@ -193,7 +188,6 @@ class HomeViewController: UIViewController, UITextViewDelegate  {
     
     
     @IBAction func allPostedSelectButton(_ sender: Any) {
-        print("ボタン押印確認　@ allPostedSelectButton")
         
         let tabBarController = parent as! ESTabBarController
         tabBarController.setSelectedIndex(3, animated: false)
@@ -208,7 +202,6 @@ class HomeViewController: UIViewController, UITextViewDelegate  {
     
     
     @IBAction func likeSelectButton(_ sender: Any) {
-        print("ボタン押印確認　@ likeSelectButton")
         
         let tabBarController = parent as! ESTabBarController
         tabBarController.setSelectedIndex(3, animated: false)
@@ -223,7 +216,6 @@ class HomeViewController: UIViewController, UITextViewDelegate  {
     
     
     @IBAction func myMapSelectButton(_ sender: Any) {
-        print("ボタン押印確認　@ myMapSelectButton")
         
         let tabBarController = parent as! ESTabBarController
         tabBarController.setSelectedIndex(3, animated: false)
@@ -255,7 +247,6 @@ class HomeViewController: UIViewController, UITextViewDelegate  {
     
     //View1を押した際のアクション（今後View上のボタンを隠しボタンにして面白いアクションを設定するために）
     @IBAction func tapOnView1(_ sender: Any) {
-        print("ボタン押印確認　@ tapOnView1")
         
         let tabBarController = parent as! ESTabBarController
         tabBarController.setSelectedIndex(3, animated: false)
@@ -271,7 +262,6 @@ class HomeViewController: UIViewController, UITextViewDelegate  {
     
     //View2を押した際のアクション（今後View上のボタンを隠しボタンにして面白いアクションを設定するために）
     @IBAction func tapOnView2(_ sender: Any) {
-        print("ボタン押印確認　@ likeSelectButton")
         
         let tabBarController = parent as! ESTabBarController
         tabBarController.setSelectedIndex(3, animated: false)
@@ -287,7 +277,6 @@ class HomeViewController: UIViewController, UITextViewDelegate  {
     
     //View3を押した際のアクション（今後View上のボタンを隠しボタンにして面白いアクションを設定するために）
     @IBAction func tapOnView3(_ sender: Any) {
-        print("ボタン押印確認　@ myMapSelectButton")
         
         let tabBarController = parent as! ESTabBarController
         tabBarController.setSelectedIndex(3, animated: false)

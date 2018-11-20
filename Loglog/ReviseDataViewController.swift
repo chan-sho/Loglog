@@ -89,19 +89,16 @@ class ReviseDataViewController: UIViewController, UITextFieldDelegate {
         else {
             var ref: DatabaseReference!
             ref = Database.database().reference().child("posts").child("\(self.postCode.text!)").child("userID")
-            print("refの中身は：\(ref!)")
             
             //  FirebaseからobserveSingleEventで1回だけデータ検索
             ref.observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as? String
-                print("valueの中身は：\(value!)")
                 
                 let uid = Auth.auth().currentUser?.uid
                 if uid == value {
                     
                     //Firebaseから該当データを抽出
                     let refToRevise = Database.database().reference().child("posts").child("\(self.postCode.text!)")
-                    print("refToReviseの中身は：\(refToRevise)")
                     
                     refToRevise.observeSingleEvent(of: .value, with: { (snapshot) in
                         var valueToRevise = snapshot.value as! [String: AnyObject]
@@ -142,9 +139,6 @@ class ReviseDataViewController: UIViewController, UITextFieldDelegate {
         else {
             var ref: DatabaseReference!
             ref = Database.database().reference().child("posts").child("\(self.postCode.text!)").child("userID")
-            
-            //中身の確認
-            print("refの中身は：\(ref!)")
             
             //  FirebaseからobserveSingleEventで1回だけデータ検索
             ref.observeSingleEvent(of: .value, with: { (snapshot) in

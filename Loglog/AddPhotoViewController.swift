@@ -50,8 +50,6 @@ class AddPhotoViewController: UIViewController, UIImagePickerControllerDelegate,
             // 撮影/選択された画像を取得する
             let image = info[UIImagePickerControllerOriginalImage] as! UIImage
             
-            // あとでCLImageEditorライブラリで加工する
-            print("DEBUG_PRINT: image = \(image)")
             // CLImageEditorにimageを渡して、加工画面を起動する。
             let editor = CLImageEditor(image: image)!
             editor.delegate = self

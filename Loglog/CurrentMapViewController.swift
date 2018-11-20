@@ -160,11 +160,6 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
         pin.subtitle = "OKなら「投稿準備」をクリック"
         //ピンをdisplayMapの上に置く
         self.currentMapView.addAnnotation(pin)
-        
-        //座標確認
-        print("\(pin.coordinate)")
-        print("\(pin.coordinate.latitude)")
-        print("\(pin.coordinate.longitude)")
     }
     
     
@@ -181,16 +176,9 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
         userDefaults.set(pin.coordinate.longitude, forKey: "pincoodinateLongitude")
         userDefaults.synchronize()
         
-        //座標値の最終確認
-        print("Lati座標確認＝\(pin.coordinate.latitude)")
-        print("Long座標確認＝\(pin.coordinate.longitude)")
-        
         //座標から住所を作成
         let pinGeocoder = CLGeocoder()
         let pinLocation = CLLocation(latitude: pin.coordinate.latitude, longitude: pin.coordinate.longitude )
-        
-        //座標確認
-        print("\(pinLocation)")
         
         // 逆ジオコーディング開始
         pinGeocoder.reverseGeocodeLocation(pinLocation) { (placemarks, error) in
@@ -200,27 +188,27 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
                     //獲得した住所をuserDefaultsに入れる：現時点ではcontoryは入れず
                     self.userDefaults.set("\(pm.postalCode ?? "") \(pm.administrativeArea ?? "")\(pm.locality ?? "")\(pm.name ?? "")", forKey: "pinAddress")
                     
-                    print("name: \(pm.name ?? "")")
-                    print("isoCountryCode: \(pm.isoCountryCode ?? "")")
-                    print("country: \(pm.country ?? "")")
-                    print("postalCode: \(pm.postalCode ?? "")")
-                    print("administrativeArea: \(pm.administrativeArea ?? "")")
-                    print("subAdministrativeArea: \(pm.subAdministrativeArea ?? "")")
-                    print("locality: \(pm.locality ?? "")")
-                    print("subLocality: \(pm.subLocality ?? "")")
-                    print("thoroughfare: \(pm.thoroughfare ?? "")")
-                    print("subThoroughfare: \(pm.subThoroughfare ?? "")")
-                    if let region = pm.region {
-                        print("region: \(region)")
-                    }
-                    if let timeZone = pm.timeZone {
-                        print("timeZone: \(timeZone)")
-                    }
-                    print("inlandWater: \(pm.inlandWater ?? "")")
-                    print("ocean: \(pm.ocean ?? "")")
-                    if let areasOfInterest = pm.areasOfInterest {
-                        print("areasOfInterest: \(areasOfInterest)")
-                    }
+                    //*print("name: \(pm.name ?? "")")
+                    //*print("isoCountryCode: \(pm.isoCountryCode ?? "")")
+                    //*print("country: \(pm.country ?? "")")
+                    //*print("postalCode: \(pm.postalCode ?? "")")
+                    //*print("administrativeArea: \(pm.administrativeArea ?? "")")
+                    //*print("subAdministrativeArea: \(pm.subAdministrativeArea ?? "")")
+                    //*print("locality: \(pm.locality ?? "")")
+                    //*print("subLocality: \(pm.subLocality ?? "")")
+                    //*print("thoroughfare: \(pm.thoroughfare ?? "")")
+                    //*print("subThoroughfare: \(pm.subThoroughfare ?? "")")
+                    //*if let region = pm.region {
+                        //*print("region: \(region)")
+                    //*}
+                    //*if let timeZone = pm.timeZone {
+                        //*print("timeZone: \(timeZone)")
+                    //*}
+                    //*print("inlandWater: \(pm.inlandWater ?? "")")
+                    //*print("ocean: \(pm.ocean ?? "")")
+                    //*if let areasOfInterest = pm.areasOfInterest {
+                        //*print("areasOfInterest: \(areasOfInterest)")
+                    //*}
                 }
             }
         }
@@ -235,11 +223,6 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
     
     //Delegate管理したアクション（投稿ピンの表示）
     func postedPinOnCurrent(pinOfPostedLatitude: Double, pinOfPostedLongitude: Double, pinTitle: String, pinSubTitle: String) {
-        
-        //funcの通過確認
-        print(" func postedPinOnCurrent()を通過")
-        //pinsOfPostedの中身を確認
-        print("配列pinsOfPostedの中身＠初回：　\(pinsOfPosted)")
         
         let pinOfPosted = ColorMKPointAnnotation()
         
@@ -257,15 +240,6 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
         pinOfPosted.coordinate = CLLocationCoordinate2DMake(pinOfPostedLatitude, pinOfPostedLongitude)
         pinOfPosted.title = pinTitle
         pinOfPosted.subtitle = pinSubTitle
-        
-        //中身の確認
-        print("最終確認：　緯度＝\(pinOfPostedLatitude)")
-        print("最終確認：　経度＝\(pinOfPostedLongitude)")
-        print("最終確認：　Title＝\(pinTitle)")
-        print("最終確認：　SubTitle＝\(pinSubTitle)")
-        
-        //pinsOfPostedの中身を確認
-        print("配列pinsOfPostedの中身＠最終チェツク：　\(pinsOfPosted)")
         
         //pinの色を通常と異なる色に個別に設定
         pinOfPosted.pinColor = UIColor.blue
@@ -329,9 +303,6 @@ class CurrentMapViewController: UIViewController, CLLocationManagerDelegate, MKM
         if(control == view.rightCalloutAccessoryView) {
             //右のボタンが押された場合のアクション
             if view is MKPinAnnotationView {
-                print("ボタン押印確認　@ 吹き出し内の右ボタン")
-                print("\(String(describing: view.annotation?.title))")
-                print("\(String(describing: view.annotation?.subtitle))")
                 
                 userDefaults.set(view.annotation?.title!, forKey: "buttonRightTitle")
                 userDefaults.set(view.annotation?.subtitle!, forKey: "buttonRightSubtitle")

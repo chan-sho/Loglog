@@ -90,7 +90,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         //アカウント削除の2重チェックに使うFlagの初期設定
         userDefaults.set("NO", forKey: "AccountDeleteFlag")
         userDefaults.synchronize()
-        print("初期設定：AccountDeleteFlag = 「NO」")
     }
     
     
@@ -162,8 +161,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
                     return
                 }
                 else {
-                    print("DEBUG_PRINT: ログインに成功しました。")
-                    
                     // HUDを消す
                     SVProgressHUD.dismiss()
                     // 画面を閉じてViewControllerに戻る
@@ -179,7 +176,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
             
             // アドレスとパスワードと表示名のいずれかでも入力されていない時は何もしない
             if address.isEmpty || password.isEmpty || displayName.isEmpty {
-                print("DEBUG_PRINT: 何かが空文字です。")
                 SVProgressHUD.showError(withStatus: "必要項目を全て入力して下さい")
                 return
             }
@@ -195,8 +191,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
                     SVProgressHUD.showError(withStatus: "ユーザー作成に失敗しました。\n※「メールアドレス」を間違えていないか念の為ご確認下さい\n（実際に使用可能なメールアドレスが必須です）")
                     return
                 }
-                print("DEBUG_PRINT: ユーザー作成に成功しました。")
-                
                 // 表示名を設定する
                 let user = Auth.auth().currentUser
                 if let user = user {
@@ -209,8 +203,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
                             SVProgressHUD.showError(withStatus: "表示名の設定に失敗しました。")
                             return
                         }
-                        print("DEBUG_PRINT: [displayName = \(user.displayName!)]の設定に成功しました。")
-                        
                         // HUDを消す
                         SVProgressHUD.dismiss()
                         // 画面を閉じてViewControllerに戻る
@@ -243,7 +235,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
                 SVProgressHUD.showError(withStatus: "facebookサインインに失敗しました。")
                 return
             }
-            print("DEBUG_PRINT: facebookサインインに成功しました！！（by パターン②）")
             // HUDを消す
             SVProgressHUD.dismiss()
             // 画面を閉じてViewControllerに戻る
@@ -276,7 +267,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         
         // Firebaseにログインする。
         Auth.auth().signInAndRetrieveData(with: credential) { (user, error) in
-            print("DEBUG_PRINT: Googleサインインに成功しました。")
             // HUDを消す
             SVProgressHUD.dismiss()
             // 画面を閉じてViewControllerに戻る
@@ -300,7 +290,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         else {
             Auth.auth().sendPasswordReset(withEmail: mailAddressTextField.text! ) { error in
                 if let error = error {
-                    print(error)
+                    print("DEBUG_PRINT: " + error.localizedDescription)
                     SVProgressHUD.showError(withStatus: "登録済みのメールアドレス\nである事を再確認して下さい")
                     return
                 }

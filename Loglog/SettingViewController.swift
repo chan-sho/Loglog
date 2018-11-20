@@ -93,8 +93,6 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
                         print("DEBUG_PRINT: " + error.localizedDescription)
                         return
                     }
-                    print("DEBUG_PRINT: [displayName = \(user.displayName!)]の設定に成功しました。")
-                    
                     // HUDで完了を知らせる
                     SVProgressHUD.showSuccess(withStatus: "アカウント名（表示名）を変更しました")
                 }
@@ -120,8 +118,6 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
                         print("DEBUG_PRINT: " + error.localizedDescription)
                         return
                     }
-                    print("DEBUG_PRINT: [emailAddress = \(self.mailAddressTextField.text!)]の設定に成功しました。")
-                    
                     // HUDで完了を知らせる
                     SVProgressHUD.showSuccess(withStatus: "メールアドレスを変更しました")
                 }

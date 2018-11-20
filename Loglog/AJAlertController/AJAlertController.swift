@@ -222,11 +222,11 @@ class AJAlertController: UIViewController {
         //アカウント削除ボタンを押された上で、「キャンセル」を選択した際のアクション
         let AccountDeleteFlag :String = userDefaults.string(forKey: "AccountDeleteFlag")!
         if AccountDeleteFlag == "YES" {
-            print("残念ながら、アカウント削除が完了・・・")
             hide()
             let user = Auth.auth().currentUser
             user?.delete { error in
                 if let error = error {
+                    print("DEBUG_PRINT: " + error.localizedDescription)
                     SVProgressHUD.showError(withStatus: "【エラーが発生しました】\n\nアカウント削除を希望される場合は、お手数ですが再度お試し下さい。\n\n何度もエラーが発生する場合には、お手数ですがHome画面の最下部にあるリンクよりご連絡をお願いします。")
                     return
                 } else {
@@ -234,9 +234,6 @@ class AJAlertController: UIViewController {
                     
                     // ログアウトする
                     try! Auth.auth().signOut()
-                    
-                    print("アカウント削除後のログアウトCheck・・・")
-                    
                     //4秒後にアプリを閉じる
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4.0) {
                         exit(0)

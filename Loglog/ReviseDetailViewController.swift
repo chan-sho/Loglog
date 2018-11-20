@@ -189,14 +189,12 @@ class ReviseDetailViewController: UIViewController, UITextFieldDelegate, UITextV
     @IBAction func reviseFinalizeButton(_ sender: Any) {
         let reviseDataId = userDefaults.string(forKey: "reviseDataId")
         let reviseImageString = userDefaults.string(forKey: "reviseImage")
-        print("\(reviseDataId!)")
         
         if category.text == ""{
             let Data = ["category": "(カテゴリーなし)", "contents": "\(contents.text ?? "")", "relatedURL": "\(relatedURL.text ?? "")", "secretpass": "\(password.text ?? "")", "image": "\(reviseImageString!)"]
             
             //Firebaseから該当データを選択し、データの各項目をアップデート
             let refToReviseData = Database.database().reference().child("posts").child("\(reviseDataId!)")
-            print("refToReviseDataの中身は：\(refToReviseData)")
             refToReviseData.updateChildValues(Data)
         }
         else{
@@ -204,7 +202,6 @@ class ReviseDetailViewController: UIViewController, UITextFieldDelegate, UITextV
             
             //Firebaseから該当データを選択し、データの各項目をアップデート
             let refToReviseData = Database.database().reference().child("posts").child("\(reviseDataId!)")
-            print("refToReviseDataの中身は：\(refToReviseData)")
             refToReviseData.updateChildValues(Data)
         }
         

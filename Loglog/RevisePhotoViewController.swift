@@ -80,9 +80,6 @@ class RevisePhotoViewController: UIViewController, UIImagePickerControllerDelega
             // 撮影/選択された画像を取得する
             let image = info[UIImagePickerControllerOriginalImage] as! UIImage
             
-            // あとでCLImageEditorライブラリで加工する
-            print("DEBUG_PRINT: image = \(image)")
-            
             //Flagのチェック
             let checkReviseImageButtonFlag = userDefaults.string(forKey: "reviseImageButtonFlag")
             self.userDefaults.synchronize()

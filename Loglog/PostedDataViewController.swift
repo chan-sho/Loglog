@@ -77,11 +77,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         // TableViewを再表示する
         self.tableView.reloadData()
         
-        // imageViewにジェスチャーレコグナイザを設定する(ピンチイン・ピンチアウト)
-        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(pinchAction(sender:)))
-        setImage?.addGestureRecognizer(pinchGesture)
-        
-        //setImageのタップを有効にする
+        //setImageのタップを有効にする（※画像のピンチイン・アウトを実装する際のために設定）
         self.setImage?.isUserInteractionEnabled = true
     }
     
@@ -110,14 +106,12 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         self.tableView.reloadData()
         
         super.viewWillAppear(animated)
-        print("DEBUG_PRINT: viewWillAppear")
         
         if Auth.auth().currentUser != nil {
             if self.observing == false {
                 // 要素が【追加】されたらpostArrayに追加してTableViewを再表示する
                 let postsRef = Database.database().reference().child(Const.PostPath)
                 postsRef.observe(.childAdded, with: { snapshot in
-                    print("DEBUG_PRINT: .childAddedイベントが発生しました。")
                     
                     // PostDataクラスを生成して受け取ったデータを設定する
                     if let uid = Auth.auth().currentUser?.uid {
@@ -136,8 +130,6 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                 })
                 // 要素が【変更】されたら該当のデータをpostArrayから一度削除した後に新しいデータを追加してTableViewを再表示する
                 postsRef.observe(.childChanged, with: { snapshot in
-                    print("DEBUG_PRINT: .childChangedイベントが発生しました。")
-                    print("\(self.textSearchBar.text!)")
                     
                     if let uid = Auth.auth().currentUser?.uid {
                         // PostDataクラスを生成して受け取ったデータを設定する
@@ -350,7 +342,6 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
                 
                 // 要素が【削除】されたら該当のデータをpostArrayから一度削除した後に新しいデータを追加してTableViewを再表示する
                 postsRef.observe(.childRemoved, with: { snapshot in
-                    print("DEBUG_PRINT: .childChangedイベントが発生しました。")
                     
                     if let uid = Auth.auth().currentUser?.uid {
                         // PostDataクラスを生成して受け取ったデータを設定する
@@ -568,7 +559,6 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         self.tableView.dataSource = self
         // TableViewを再表示する
         self.tableView.reloadData()
-        print("viewDidApperのcheck")
     }
         
     
@@ -583,16 +573,12 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         else if textSearchBar.text == "【※貴方の全投稿を抽出中】" {
             let uid = Auth.auth().currentUser?.uid
             
-            print("\(uid!)")
-            
             let array = uid?.components(separatedBy: NSCharacterSet.whitespaces)
             var tempFilteredArray = postArrayAll
             for n in array! {
                 tempFilteredArray = tempFilteredArray.filter{($0.userID?.contains(n))!}
             }
             postArrayOnHome1 = tempFilteredArray
-            
-            print("\(postArrayOnHome1)")
             
             self.tableView.reloadData()
         }
@@ -601,16 +587,12 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         else if textSearchBar.text == "【※貴方が「いいね」した投稿を抽出中】" {
             let uid = Auth.auth().currentUser?.uid
             
-            print("\(uid!)")
-            
             let array = uid?.components(separatedBy: NSCharacterSet.whitespaces)
             var tempFilteredArray = postArrayAll
             for n in array! {
                 tempFilteredArray = tempFilteredArray.filter{($0.likes.contains(n))}
             }
             postArrayOnHome2 = tempFilteredArray
-            
-            print("\(postArrayOnHome2)")
             
             self.tableView.reloadData()
         }
@@ -619,16 +601,12 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         else if textSearchBar.text == "【※貴方の「自分専用」を抽出中】" {
             let uid = Auth.auth().currentUser?.uid
             
-            print("\(uid!)")
-            
             let array = uid?.components(separatedBy: NSCharacterSet.whitespaces)
             var tempFilteredArray = postArrayAll
             for n in array! {
                 tempFilteredArray = tempFilteredArray.filter{($0.myMap.contains(n))}
             }
             postArrayOnHome3 = tempFilteredArray
-            
-            print("\(postArrayOnHome3)")
             
             self.tableView.reloadData()
         }
@@ -796,7 +774,6 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     
     // セル内のlikeボタンがタップされた時に呼ばれるメソッド
     @objc func handleButton(_ sender: UIButton, forEvent event: UIEvent) {
-        print("DEBUG_PRINT: likeボタンがタップされました。")
         
         // タップされたセルのインデックスを求める
         let touch = event.allTouches?.first
@@ -808,36 +785,24 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         if textSearchBar.text == "" {
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArray[indexPath!.row]
-            
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by likeボタン＝\(postData)")
         }
         
         else if textSearchBar.text == "【※貴方の全投稿を抽出中】" {
             
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArrayOnHome1[indexPath!.row]
-            
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by likeボタン＝\(postData)")
         }
             
         else if textSearchBar.text == "【※貴方が「いいね」した投稿を抽出中】" {
             
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArrayOnHome2[indexPath!.row]
-            
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by likeボタン＝\(postData)")
         }
             
         else if textSearchBar.text == "【※貴方の「自分専用」を抽出中】" {
             
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArrayOnHome3[indexPath!.row]
-            
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by likeボタン＝\(postData)")
         }
         
         else {
@@ -851,9 +816,6 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             }
             postArrayBySearch = tempFilteredArray
             postData = postArrayBySearch[indexPath!.row]
-            
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by likeボタン＝\(postData)")
         }
         
         // Firebaseに保存するデータの準備
@@ -882,7 +844,6 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
     
     // セル内のMyMapボタンがタップされた時に呼ばれるメソッド
     @objc func handleMyMapButton(_ sender: UIButton, forEvent event: UIEvent) {
-        print("DEBUG_PRINT: MyMapボタンがタップされました。")
         
         // タップされたセルのインデックスを求める
         let touch = event.allTouches?.first
@@ -894,36 +855,24 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         if textSearchBar.text == "" {
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArray[indexPath!.row]
-            
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by likeボタン＝\(postData)")
         }
         
         else if textSearchBar.text == "【※貴方の全投稿を抽出中】" {
             
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArrayOnHome1[indexPath!.row]
-            
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by likeボタン＝\(postData)")
         }
             
         else if textSearchBar.text == "【※貴方が「いいね」した投稿を抽出中】" {
             
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArrayOnHome2[indexPath!.row]
-            
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by likeボタン＝\(postData)")
         }
             
         else if textSearchBar.text == "【※貴方の「自分専用」を抽出中】" {
             
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArrayOnHome3[indexPath!.row]
-            
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by likeボタン＝\(postData)")
         }
             
         else {
@@ -937,9 +886,6 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             }
             postArrayBySearch = tempFilteredArray
             postData = postArrayBySearch[indexPath!.row]
-            
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by likeボタン＝\(postData)")
         }
         
         // Firebaseに保存するデータの準備
@@ -991,26 +937,18 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         if textSearchBar.text == "" {
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArray[indexPath!.row]
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by Reviseボタン＝\(postData)")
         }
         else if textSearchBar.text == "【※貴方の全投稿を抽出中】" {
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArrayOnHome1[indexPath!.row]
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by Reviseボタン＝\(postData)")
         }
         else if textSearchBar.text == "【※貴方が「いいね」した投稿を抽出中】" {
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArrayOnHome2[indexPath!.row]
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by Reviseボタン＝\(postData)")
         }
         else if textSearchBar.text == "【※貴方の「自分専用」を抽出中】" {
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArrayOnHome3[indexPath!.row]
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by Reviseボタン＝\(postData)")
         }
         else {
             // 検索バーに入力された単語をスペースで分けて配列に入れる
@@ -1023,13 +961,10 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             }
             postArrayBySearch = tempFilteredArray
             postData = postArrayBySearch[indexPath!.row]
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by Reviseボタン＝\(postData)")
         }
         
         //タップを検知されたpostDataから投稿ナンバーを抽出する
         let reviseDataId = postData.id
-        print("タップされたインデックスのid by Reviseボタン＝\(reviseDataId!)")
         
         //Reviseボタンを押したユーザーが投稿者本人かどうかの判断
         let uid = Auth.auth().currentUser?.uid
@@ -1059,26 +994,18 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         if textSearchBar.text == "" {
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArray[indexPath!.row]
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by createMapPinボタン＝\(postData)")
         }
         else if textSearchBar.text == "【※貴方の全投稿を抽出中】" {
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArrayOnHome1[indexPath!.row]
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by createMapPinボタン＝\(postData)")
         }
         else if textSearchBar.text == "【※貴方が「いいね」した投稿を抽出中】" {
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArrayOnHome2[indexPath!.row]
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by createMapPinボタン＝\(postData)")
         }
         else if textSearchBar.text == "【※貴方の「自分専用」を抽出中】" {
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArrayOnHome3[indexPath!.row]
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by createMapPinボタン＝\(postData)")
         }
         else {
             // 検索バーに入力された単語をスペースで分けて配列に入れる
@@ -1091,13 +1018,10 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             }
             postArrayBySearch = tempFilteredArray
             postData = postArrayBySearch[indexPath!.row]
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by createMapPinボタン＝\(postData)")
         }
         
         //タップを検知されたpostDataから投稿ナンバーを抽出する
         let createMapPinId = postData.id
-        print("タップされたインデックスのid by createMapPinボタン＝\(createMapPinId!)")
         
         userDefaults.set(createMapPinId, forKey: "createMapPinId")
         userDefaults.synchronize()
@@ -1125,26 +1049,18 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         if textSearchBar.text == "" {
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArray[indexPath!.row]
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by imageViewボタン＝\(postData)")
         }
         else if textSearchBar.text == "【※貴方の全投稿を抽出中】" {
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArrayOnHome1[indexPath!.row]
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by imageViewボタン＝\(postData)")
         }
         else if textSearchBar.text == "【※貴方が「いいね」した投稿を抽出中】" {
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArrayOnHome2[indexPath!.row]
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by imageViewボタン＝\(postData)")
         }
         else if textSearchBar.text == "【※貴方の「自分専用」を抽出中】" {
             // 配列からタップされたインデックスのデータを取り出す
             postData = postArrayOnHome3[indexPath!.row]
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by imageViewボタン＝\(postData)")
         }
         else {
             // 検索バーに入力された単語をスペースで分けて配列に入れる
@@ -1157,8 +1073,6 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             }
             postArrayBySearch = tempFilteredArray
             postData = postArrayBySearch[indexPath!.row]
-            // タップされたインデックスのデータを確認
-            print("タップされたインデックスのデータ by imageViewボタン＝\(postData)")
         }
         
         //タップを検知されたpostDataから投稿ナンバー／写真コードを抽出する
@@ -1208,51 +1122,13 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         imageTappedFlag = 0
     }
     
-
-    //投稿画像拡大時のピンチアウト・インの実装（※うまく機能していない。。。）
-    @objc func pinchAction(sender: UIPinchGestureRecognizer) {
-        print("pinchActionの通過")
-        // imageViewを拡大縮小する
-        // ピンチ中の拡大率は0.3〜2.5倍、指を離した時の拡大率は0.5〜2.0倍とする
-        switch sender.state {
-        case .began, .changed:
-            // senderのscaleは、指を動かしていない状態が1.0となる
-            // 現在の拡大率に、(scaleから1を引いたもの) / 10(補正率)を加算する
-            currentScale = currentScale + (sender.scale - 1) / 10
-            // 拡大率が基準から外れる場合は、補正する
-            if currentScale < 0.3 {
-                currentScale = 0.3
-            } else if currentScale > 2.5 {
-                currentScale = 2.5
-            }
-            // 計算後の拡大率で、imageViewを拡大縮小する
-            setImage?.transform = CGAffineTransform(scaleX: currentScale, y: currentScale)
-        default:
-            // ピンチ中と同様だが、拡大率の範囲が異なる
-            if currentScale < 0.5 {
-                currentScale = 0.5
-            } else if currentScale > 2.0 {
-                currentScale = 2.0
-            }
-            
-            // 拡大率が基準から外れている場合、指を離したときにアニメーションで拡大率を補正する
-            // 例えば指を離す前に拡大率が0.3だった場合、0.2秒かけて拡大率が0.5に変化する
-            UIView.animate(withDuration: 0.2, animations: {
-                self.setImage?.transform = CGAffineTransform(scaleX: self.currentScale, y: self.currentScale)
-            }, completion: nil)
-        }
-    }
     
     //HomeViewControllerで「allPostedSelectButton」を押された際の処理
     func allPostedSelection() {
         self.tableView.reloadData()
         self.textSearchBar.text = "【※貴方の全投稿を抽出中】"
         
-        print("\(textSearchBar.text!)")
-        
         let uid = Auth.auth().currentUser?.uid
-        
-        print("\(uid!)")
         
         let array = uid?.components(separatedBy: NSCharacterSet.whitespaces)
         var tempFilteredArray = postArrayAll
@@ -1260,8 +1136,6 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             tempFilteredArray = tempFilteredArray.filter{($0.userID?.contains(n))!}
         }
         postArrayOnHome1 = tempFilteredArray
-        
-        print("\(postArrayOnHome1)")
         
         self.tableView.reloadData()
     }
@@ -1272,11 +1146,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         self.tableView.reloadData()
         self.textSearchBar.text = "【※貴方が「いいね」した投稿を抽出中】"
         
-        print("\(textSearchBar.text!)")
-        
         let uid = Auth.auth().currentUser?.uid
-        
-        print("\(uid!)")
         
         let array = uid?.components(separatedBy: NSCharacterSet.whitespaces)
         var tempFilteredArray = postArrayAll
@@ -1284,8 +1154,6 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             tempFilteredArray = tempFilteredArray.filter{($0.likes.contains(n))}
         }
         postArrayOnHome2 = tempFilteredArray
-        
-        print("\(postArrayOnHome2)")
         
         self.tableView.reloadData()
     }
@@ -1296,11 +1164,7 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         self.tableView.reloadData()
         self.textSearchBar.text = "【※貴方の「自分専用」を抽出中】"
         
-        print("\(textSearchBar.text!)")
-        
         let uid = Auth.auth().currentUser?.uid
-        
-        print("\(uid!)")
         
         let array = uid?.components(separatedBy: NSCharacterSet.whitespaces)
         var tempFilteredArray = postArrayAll
@@ -1308,8 +1172,6 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
             tempFilteredArray = tempFilteredArray.filter{($0.myMap.contains(n))}
         }
         postArrayOnHome3 = tempFilteredArray
-        
-        print("\(postArrayOnHome3)")
         
         self.tableView.reloadData()
     }
@@ -1322,7 +1184,6 @@ class PostedDataViewController: UIViewController, UITableViewDataSource, UITable
         let buttonRightSubtitle = userDefaults.string(forKey: "buttonRightSubtitle")!
         
         self.textSearchBar.text = "\(buttonRightTitle) \(buttonRightSubtitle)"
-        print("\(textSearchBar.text!)")
         
         // 検索バーに入力された単語をスペースで分けて配列に入れる
         let searchWords = textSearchBar.text!

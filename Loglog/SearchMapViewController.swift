@@ -83,14 +83,12 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
         inputText.resignFirstResponder()
         
         let searchKeyword = textField.text
-        print(searchKeyword!)
         
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(searchKeyword!, completionHandler: { (placemarks:[CLPlacemark]?, error:Error?) in
             
             if let placemark = placemarks?[0] {
                 if let targetCoordinate = placemark.location?.coordinate {
-                    print(targetCoordinate)
                     
                     self.pin.coordinate = targetCoordinate
                     self.pin.title = searchKeyword
@@ -98,11 +96,6 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
                     
                     self.displayMap.addAnnotation(self.pin)
                     self.displayMap.region = MKCoordinateRegionMakeWithDistance(targetCoordinate,500.0,500.0)
-                    
-                    //座標確認
-                    print("\(self.pin.coordinate)")
-                    print("\(self.pin.coordinate.latitude)")
-                    print("\(self.pin.coordinate.longitude)")
                 }
             }
         })
@@ -133,11 +126,6 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
         pin.subtitle = "OKなら「投稿準備」をクリック"
         //ピンをdisplayMapの上に置く
         self.displayMap.addAnnotation(pin)
-        
-        //座標確認
-        print("\(pin.coordinate)")
-        print("\(pin.coordinate.latitude)")
-        print("\(pin.coordinate.longitude)")
     }
     
     
@@ -154,16 +142,9 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
         userDefaults.set(pin.coordinate.longitude, forKey: "pincoodinateLongitude")
         userDefaults.synchronize()
         
-        //座標値の最終確認
-        print("Lati座標確認＝\(pin.coordinate.latitude)")
-        print("Long座標確認＝\(pin.coordinate.longitude)")
-        
         //座標から住所を作成
         let pinGeocoder = CLGeocoder()
         let pinLocation = CLLocation(latitude: pin.coordinate.latitude, longitude: pin.coordinate.longitude )
-        
-        //座標確認
-        print("\(pinLocation)")
         
         // 逆ジオコーディング開始
         pinGeocoder.reverseGeocodeLocation(pinLocation) { (placemarks, error) in
@@ -172,28 +153,6 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
                     
                     //獲得した住所をuserDefaultsに入れる：現時点ではcontoryは入れず
                     self.userDefaults.set("\(pm.postalCode ?? "") \(pm.administrativeArea ?? "")\(pm.locality ?? "")\(pm.name ?? "")", forKey: "pinAddress")
-                    
-                    print("name: \(pm.name ?? "")")
-                    print("isoCountryCode: \(pm.isoCountryCode ?? "")")
-                    print("country: \(pm.country ?? "")")
-                    print("postalCode: \(pm.postalCode ?? "")")
-                    print("administrativeArea: \(pm.administrativeArea ?? "")")
-                    print("subAdministrativeArea: \(pm.subAdministrativeArea ?? "")")
-                    print("locality: \(pm.locality ?? "")")
-                    print("subLocality: \(pm.subLocality ?? "")")
-                    print("thoroughfare: \(pm.thoroughfare ?? "")")
-                    print("subThoroughfare: \(pm.subThoroughfare ?? "")")
-                    if let region = pm.region {
-                        print("region: \(region)")
-                    }
-                    if let timeZone = pm.timeZone {
-                        print("timeZone: \(timeZone)")
-                    }
-                    print("inlandWater: \(pm.inlandWater ?? "")")
-                    print("ocean: \(pm.ocean ?? "")")
-                    if let areasOfInterest = pm.areasOfInterest {
-                        print("areasOfInterest: \(areasOfInterest)")
-                    }
                 }
             }
         }
@@ -252,11 +211,6 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
     //Delegate管理したアクション
     func postedPinOnSearch(pinOfPostedLatitude: Double, pinOfPostedLongitude: Double, pinTitle: String, pinSubTitle: String) {
         
-        //funcの通過確認
-        print(" func postedPinOnCurrent()を通過")
-        //pinsOfPostedの中身を確認
-        print("配列pinsOfPostedの中身＠初回：　\(pinsOfPosted)")
-        
          let pinOfPosted = ColorMKPointAnnotation()
         
         //一旦古いpinを全て消す
@@ -273,15 +227,6 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
         pinOfPosted.coordinate = CLLocationCoordinate2DMake(pinOfPostedLatitude, pinOfPostedLongitude)
         pinOfPosted.title = pinTitle
         pinOfPosted.subtitle = pinSubTitle
-        
-        //中身の確認
-        print("最終確認：　緯度＝\(pinOfPostedLatitude)")
-        print("最終確認：　経度＝\(pinOfPostedLongitude)")
-        print("最終確認：　Title＝\(pinTitle)")
-        print("最終確認：　SubTitle＝\(pinSubTitle)")
-        
-        //pinsOfPostedの中身を確認
-        print("配列pinsOfPostedの中身＠最終チェツク：　\(pinsOfPosted)")
         
         //pinの色を通常と異なる色に個別に設定
         pinOfPosted.pinColor = UIColor.blue
@@ -343,9 +288,6 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
         if(control == view.rightCalloutAccessoryView) {
             //右のボタンが押された場合のアクション
             if view is MKPinAnnotationView {
-                print("ボタン押印確認　@ 吹き出し内の右ボタン")
-                print("\(String(describing: view.annotation?.title))")
-                print("\(String(describing: view.annotation?.subtitle))")
                 
                 userDefaults.set(view.annotation?.title!, forKey: "buttonRightTitle")
                 userDefaults.set(view.annotation?.subtitle!, forKey: "buttonRightSubtitle")
@@ -370,13 +312,9 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
         //*self.performSegue(withIdentifier: "Detail", sender: nil)
         
         let createMapPinId = userDefaults.string(forKey: "createMapPinId")!
-        print("createMapPinId = \(createMapPinId)")
         
         var ref: DatabaseReference!
         ref = Database.database().reference().child("posts").child("\(createMapPinId)")
-            
-        //中身の確認
-        print("refの中身は：\(ref!)")
             
         //  FirebaseからobserveSingleEventで1回だけデータ検索
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -386,7 +324,6 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
                 
             //中身の確認
             if value != nil{
-                print("valueの中身は：\(value!)")
                     
                 //緯度と経度をvalue[]から取得
                 let pinOfPostedLatitude = value!["pincoodinateLatitude"] as! Double
@@ -394,21 +331,11 @@ class SearchMapViewController: UIViewController, UITextFieldDelegate, CLLocation
                 let pinTitle = "\(value!["category"] ?? "カテゴリーなし" as AnyObject) \(value!["name"] ?? "投稿者名なし" as AnyObject)"
                 let pinSubTitle = "\(value!["pinAddress"] ?? "投稿場所情報なし" as AnyObject)"
                     
-                //データの確認
-                print("緯度は：\(pinOfPostedLatitude)")
-                print("経度は：\(pinOfPostedLongitude)")
-                print("Titleは：\(pinTitle)")
-                print("SubTitleは：\(pinSubTitle)")
-                    
                 //Delegateされているfunc()を実行
                 self.postedPinOnSearch(pinOfPostedLatitude: pinOfPostedLatitude, pinOfPostedLongitude: pinOfPostedLongitude, pinTitle: pinTitle, pinSubTitle: pinSubTitle)
-                    
-                //funcの通過確認
-                print("func postedPinOnSearch()を通過")
                 
             }
             else {
-                print("valueの中身は：nil")
                 SVProgressHUD.showError(withStatus: "投稿情報をもう一度確認して下さい。\n投稿がすでに削除されている可能性があります。")
                 return
             }

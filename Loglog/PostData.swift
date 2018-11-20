@@ -44,9 +44,6 @@ class PostData: NSObject {
     init(snapshot: DataSnapshot, myId: String) {
         self.id = snapshot.key
         
-        //デバッグPrint
-        print("snapshot.keyの確認：\(self.id!)")
-        
         let valueDictionary = snapshot.value as! [String: Any]
         
         imageString = valueDictionary["image"] as? String
